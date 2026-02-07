@@ -1,33 +1,176 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CopyMinus } from 'lucide-react';
+import { Filter, Trash2, Copy, Check, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
-import ToolPlaceholder from '../../../components/shared/ToolPlaceholder';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function RemoveDuplicates() {
+    const [input, setInput] = useState('');
+    const [output, setOutput] = useState('');
+    const [stats, setStats] = useState({ original: 0, unique: 0, removed: 0 });
+    const [caseSensitive, setCaseSensitive] = useState(false);
+    const [trimWhitespace, setTrimWhitespace] = useState(true);
+    const [copied, setCopied] = useState(false);
+
+    const processText = () => {
+        if (!input) {
+            setOutput('');
+            setStats({ original: 0, unique: 0, removed: 0 });
+            return;
+        }
+
+        const lines = input.split('\n');
+        const processedLines = lines.map(line => trimWhitespace ? line.trim() : line);
+
+        let uniqueLines;
+        if (caseSensitive) {
+            uniqueLines = [...new Set(processedLines)];
+        } else {
+            // Use a map to keep the original casing of the first occurrence
+            const seen = new Set();
+            uniqueLines = processedLines.filter(line => {
+                const lower = line.toLowerCase();
+                if (seen.has(lower)) return false;
+                seen.add(lower);
+                return true;
+            });
+        }
+
+        // Filter out empty lines if trimming is on (optional, but usually desired in dedupe)
+        if (trimWhitespace) {
+            uniqueLines = uniqueLines.filter(line => line !== '');
+        }
+
+        const result = uniqueLines.join('\n');
+        setOutput(result);
+
+        setStats({
+            original: lines.length,
+            unique: uniqueLines.length,
+            removed: lines.length - uniqueLines.length
+        });
+    };
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(output);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     return (
         <ToolPageLayout>
             <Helmet>
                 <title>Duplicate Line Remover | Mini Tools by Spinotek</title>
-                <meta name="description" content="Clean up your lists by removing repeated lines automatically." />
+                <meta name="description" content="Remove duplicate lines from text lists instantly. Clean up your data with case-sensitive options." />
             </Helmet>
 
-            <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-rose-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                        <CopyMinus size={24} />
+            <div className="max-w-7xl mx-auto">
+                <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-rose-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-rose-200">
+                        <Filter size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Duplicate Line Remover</h1>
-                        <p className="text-slate-500 text-sm">Clean up your lists by removing repeated lines.</p>
+                        <h1 className="text-2xl font-black text-slate-900">Duplicate Remover</h1>
+                        <p className="text-slate-500">Clean up lists by removing repeated lines.</p>
                     </div>
                 </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Input Column */}
+                    <div className="space-y-6">
+                        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm h-full flex flex-col">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="font-bold text-slate-700">Input List</h3>
+                                <button
+                                    onClick={() => { setInput(''); setOutput(''); }}
+                                    className="text-xs text-rose-500 hover:text-rose-600 font-medium flex items-center gap-1"
+                                >
+                                    <Trash2 size={12} /> Clear
+                                </button>
+                            </div>
+                            <textarea
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder="Paste your list here (one item per line)..."
+                                className="flex-1 w-full p-4 bg-slate-50 border border-slate-200 rounded-xl resize-none outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm min-h-[400px]"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Output Column */}
+                    <div className="space-y-6">
+                        {/* Controls */}
+                        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                            <div className="flex flex-wrap gap-6 mb-6">
+                                <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={caseSensitive}
+                                        onChange={(e) => setCaseSensitive(e.target.checked)}
+                                        className="w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500"
+                                    />
+                                    Case Sensitive
+                                </label>
+                                <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={trimWhitespace}
+                                        onChange={(e) => setTrimWhitespace(e.target.checked)}
+                                        className="w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500"
+                                    />
+                                    Trim Whitespace
+                                </label>
+                            </div>
+                            <button
+                                onClick={processText}
+                                className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow-lg shadow-rose-200 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                            >
+                                <Filter size={18} /> Remove Duplicates
+                            </button>
+                        </div>
+
+                        {/* Result */}
+                        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[calc(100%-140px)] min-h-[300px]">
+                            <div className="bg-slate-50 border-b border-slate-100 px-6 py-3 flex justify-between items-center">
+                                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                    {stats.unique} Unique Items
+                                </span>
+                                <button
+                                    onClick={handleCopy}
+                                    disabled={!output}
+                                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${copied
+                                        ? 'bg-green-100 text-green-700'
+                                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-50'
+                                        }`}
+                                >
+                                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                                    {copied ? 'Copied' : 'Copy'}
+                                </button>
+                            </div>
+                            <div className="flex-1 relative">
+                                <textarea
+                                    value={output}
+                                    readOnly
+                                    placeholder="Cleaned list will appear here..."
+                                    className="absolute inset-0 w-full p-4 resize-none outline-none text-slate-700 text-sm bg-slate-50/30"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Stats Footer */}
+                        {stats.original > 0 && (
+                            <div className="flex gap-4 text-xs text-slate-500 justify-center">
+                                <span className="bg-slate-100 px-3 py-1 rounded-full">Original: {stats.original}</span>
+                                <span className="bg-rose-100 text-rose-700 px-3 py-1 rounded-full font-bold">Removed: {stats.removed}</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                <div className="mt-12 border-t border-slate-200 py-8">
+                    <RelatedTools currentToolId="remove-duplicates" categoryId="office" />
+                </div>
             </div>
-
-            <ToolPlaceholder />
-
-            <RelatedTools currentToolId="remove-duplicates" categoryId="office" />
         </ToolPageLayout>
     );
 }

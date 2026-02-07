@@ -1,7 +1,3 @@
-Tentu, ini adalah draft lengkap yang sudah saya optimalkan menggunakan Tailwind CSS untuk styling dan Headless UI untuk komponen modal yang aksesibel dan mulus.
-
-Silakan copy markdown di bawah ini:
-
 📑 Project Overview: Mini Tools
 Platform Name: Mini Tools (Utility Suite) by Spinotek
 

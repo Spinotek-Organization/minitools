@@ -126,6 +126,7 @@ import CategoryPage from './pages/tools/CategoryPage';
 import ExploreToolsPage from './pages/tools/ExploreToolsPage';
 import Home from './pages/Home';
 import { Helmet } from 'react-helmet-async';
+import LoremIpsumGenerator from './pages/tools/office/LoremIpsumGenerator';
 
 function App() {
     return (
@@ -229,7 +230,7 @@ function App() {
                     {/* Office & Admin Routes */}
                     <Route path="/tools/office/pdf-tools" element={<PdfTools />} />
                     <Route path="/tools/office/word-counter" element={<WordCounter />} />
-                    <Route path="/tools/office/extension-rename" element={<ExtensionRename />} />
+                    <Route path="/tools/office/lorem-ipsum" element={<LoremIpsumGenerator />} />
                     <Route path="/tools/office/batch-replace" element={<BatchReplace />} />
                     <Route path="/tools/office/roman-converter" element={<RomanConverter />} />
                     <Route path="/tools/office/signature-pad" element={<SignaturePad />} />

@@ -91,7 +91,7 @@ export default function Footer() {
                     <div className="flex items-center gap-8 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
                         <span className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                            System Operational
+                            PRODUCTIVITY TOOLS
                         </span>
                         <div className="flex items-center gap-4">
                             <span className="hover:text-slate-900 cursor-help transition-colors">Privacy</span>

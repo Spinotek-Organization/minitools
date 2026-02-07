@@ -5,6 +5,7 @@ import * as Icons from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
 import { TOOLS } from '../../data/toolsList';
 import Card from '../../components/shared/Card';
+import ToolCard from '../../components/shared/ToolCard';
 import Breadcrumbs from '../../components/shared/Breadcrumbs';
 import RequestToolCTA from '../../components/shared/RequestToolCTA';
 
@@ -115,30 +116,7 @@ export default function ExploreToolsPage() {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                         {cat.tools.map((tool) => {
                                             const ToolIcon = Icons[tool.icon] || Icons.HelpCircle;
-                                            return (
-                                                <Link key={tool.id} to={tool.path}>
-                                                    <Card hover className="h-full border-slate-100/60" noPadding>
-                                                        <div className="p-6">
-                                                            <div className="flex items-start justify-between mb-5">
-                                                                <div className={`w-10 h-10 rounded-xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                                                                    <ToolIcon size={20} />
-                                                                </div>
-                                                                {!tool.isReady && (
-                                                                    <span className="px-2 py-0.5 bg-slate-100 text-slate-400 rounded-full text-[9px] font-black uppercase tracking-wider border border-slate-200/50">
-                                                                        In Dev
-                                                                    </span>
-                                                                )}
-                                                            </div>
-                                                            <h3 className="text-base font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
-                                                                {tool.title}
-                                                            </h3>
-                                                            <p className="text-slate-500 text-[11px] font-medium leading-relaxed line-clamp-2">
-                                                                {tool.desc}
-                                                            </p>
-                                                        </div>
-                                                    </Card>
-                                                </Link>
-                                            );
+                                            return <ToolCard key={tool.id} tool={tool} />;
                                         })}
                                     </div>
                                 </section>

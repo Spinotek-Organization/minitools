@@ -5,6 +5,7 @@ import * as Icons from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
 import { TOOLS } from '../../data/toolsList';
 import Card from '../../components/shared/Card';
+import ToolCard from '../../components/shared/ToolCard';
 import RequestToolCTA from '../../components/shared/RequestToolCTA';
 import Breadcrumbs from '../../components/shared/Breadcrumbs';
 
@@ -87,33 +88,7 @@ export default function CategoryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {filteredTools.map((tool) => {
                             const ToolIcon = Icons[tool.icon] || Icons.HelpCircle;
-                            return (
-                                <Link key={tool.id} to={tool.path}>
-                                    <Card hover className="h-full border-slate-100/60" noPadding>
-                                        <div className="p-7">
-                                            <div className="flex items-start justify-between mb-6">
-                                                <div className={`w-12 h-12 rounded-2xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                                                    <ToolIcon size={24} />
-                                                </div>
-                                                {!tool.isReady && (
-                                                    <span className="px-2.5 py-1 bg-slate-100 text-slate-400 rounded-full text-[10px] font-black uppercase tracking-wider border border-slate-200/50">
-                                                        In Dev
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
-                                                {tool.title}
-                                            </h3>
-                                            <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6 line-clamp-2">
-                                                {tool.desc}
-                                            </p>
-                                            <div className="flex items-center gap-2 text-blue-600 text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
-                                                {tool.isReady ? 'Launch Tool' : 'Preview Tool'} <Icons.ArrowRight size={12} />
-                                            </div>
-                                        </div>
-                                    </Card>
-                                </Link>
-                            );
+                            return <ToolCard key={tool.id} tool={tool} />;
                         })}
                     </div>
                 ) : (
