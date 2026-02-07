@@ -25,8 +25,15 @@ export default function RelatedTools({ currentToolId, categoryId, limit = 4 }) {
                         <Link key={tool.id} to={tool.path} className="group">
                             <Card hover className="h-full border-slate-100/60" noPadding>
                                 <div className="p-6">
-                                    <div className={`w-10 h-10 mb-4 rounded-xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                                        <ToolIcon size={20} />
+                                    <div className="flex items-start justify-between mb-4">
+                                        <div className={`w-10 h-10 rounded-xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                                            <ToolIcon size={20} />
+                                        </div>
+                                        {!tool.isReady && (
+                                            <span className="px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded-full text-[8px] font-black uppercase tracking-wider border border-slate-200/50">
+                                                In Dev
+                                            </span>
+                                        )}
                                     </div>
                                     <h4 className="text-base font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors leading-tight">
                                         {tool.title}

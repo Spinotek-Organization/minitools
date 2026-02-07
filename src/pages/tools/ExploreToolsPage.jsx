@@ -85,8 +85,15 @@ export default function ExploreToolsPage() {
                                                 <Link key={tool.id} to={tool.path}>
                                                     <Card hover className="h-full border-slate-100/60" noPadding>
                                                         <div className="p-6">
-                                                            <div className={`w-10 h-10 mb-5 rounded-xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                                                                <ToolIcon size={20} />
+                                                            <div className="flex items-start justify-between mb-5">
+                                                                <div className={`w-10 h-10 rounded-xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                                                                    <ToolIcon size={20} />
+                                                                </div>
+                                                                {!tool.isReady && (
+                                                                    <span className="px-2 py-0.5 bg-slate-100 text-slate-400 rounded-full text-[9px] font-black uppercase tracking-wider border border-slate-200/50">
+                                                                        In Dev
+                                                                    </span>
+                                                                )}
                                                             </div>
                                                             <h3 className="text-base font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
                                                                 {tool.title}

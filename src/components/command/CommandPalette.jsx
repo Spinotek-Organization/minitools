@@ -201,6 +201,11 @@ function ToolItem({ tool, getCategoryName }) {
                                     }`}>
                                     {getCategoryName(tool.cat)}
                                 </span>
+                                {!tool.isReady && (
+                                    <span className={`text-[9px] font-black uppercase px-1.5 py-0.5 rounded-md ${active ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                                        In Dev
+                                    </span>
+                                )}
                             </div>
                             <p className="text-xs text-slate-500 line-clamp-1">{tool.desc}</p>
                         </div>

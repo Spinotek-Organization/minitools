@@ -91,8 +91,15 @@ export default function CategoryPage() {
                                 <Link key={tool.id} to={tool.path}>
                                     <Card hover className="h-full border-slate-100/60" noPadding>
                                         <div className="p-7">
-                                            <div className={`w-12 h-12 mb-6 rounded-2xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                                                <ToolIcon size={24} />
+                                            <div className="flex items-start justify-between mb-6">
+                                                <div className={`w-12 h-12 rounded-2xl ${tool.bgColor || 'bg-slate-50'} flex items-center justify-center ${tool.color || 'text-slate-400'} group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                                                    <ToolIcon size={24} />
+                                                </div>
+                                                {!tool.isReady && (
+                                                    <span className="px-2.5 py-1 bg-slate-100 text-slate-400 rounded-full text-[10px] font-black uppercase tracking-wider border border-slate-200/50">
+                                                        In Dev
+                                                    </span>
+                                                )}
                                             </div>
                                             <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
                                                 {tool.title}
@@ -101,7 +108,7 @@ export default function CategoryPage() {
                                                 {tool.desc}
                                             </p>
                                             <div className="flex items-center gap-2 text-blue-600 text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
-                                                Launch Tool <Icons.ArrowRight size={12} />
+                                                {tool.isReady ? 'Launch Tool' : 'Preview Tool'} <Icons.ArrowRight size={12} />
                                             </div>
                                         </div>
                                     </Card>
