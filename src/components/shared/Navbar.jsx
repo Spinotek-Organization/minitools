@@ -47,7 +47,7 @@ export default function Navbar() {
                                 <img src="/img/spinotek-symbol.png" alt="Spinotek" className="h-full w-full object-contain" />
                             </div>
                             <div className="flex flex-col leading-tight">
-                                <span className="text-lg font-black tracking-tight uppercase bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Mini Tools</span>
+                                <span className="text-lg font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Mini Tools</span>
                                 <span className="text-[8px] font-bold opacity-80 tracking-widest leading-none uppercase">by Spinotek</span>
                             </div>
                         </Link>
@@ -55,6 +55,7 @@ export default function Navbar() {
                         {/* Desktop Navigation Links */}
                         <div className="hidden md:flex items-center gap-6">
                             <Link to="/" className="text-sm font-bold text-white/70 hover:text-white transition-colors">Home</Link>
+                            <Link to="/explore" className="text-sm font-bold text-white/70 hover:text-white transition-colors">Explore Tools</Link>
 
                             <Menu as="div" className="relative">
                                 <Menu.Button className="text-sm font-bold text-white/70 hover:text-white transition-colors flex items-center gap-1 outline-none group">
@@ -116,6 +117,7 @@ export default function Navbar() {
             {isMobileMenuOpen && (
                 <div className="md:hidden bg-blue-800 border-b border-white/10 p-4 space-y-1 relative z-50 shadow-2xl">
                     <Link to="/" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">Home</Link>
+                    <Link to="/explore" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">Explore Tools</Link>
                     <div className="px-6 py-2 text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">Categories</div>
                     <div className="grid grid-cols-1 gap-1">
                         {CATEGORIES.map((cat) => (

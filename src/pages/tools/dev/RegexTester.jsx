@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react';
 import { SearchCode, AlertCircle, CheckCircle, Info } from 'lucide-react';
 import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
+import ToolPageLayout from '../../../components/shared/ToolPageLayout';
+import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function RegexTester() {
     const [regex, setRegex] = useState('');
@@ -61,7 +63,7 @@ export default function RegexTester() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <ToolPageLayout>
             <Helmet>
                 <title>Regex Tester | Spinotek Tools</title>
                 <meta name="description" content="Test and debug your JavaScript regular expressions with real-time highlighting and match grouping." />
@@ -192,6 +194,8 @@ export default function RegexTester() {
                     </div>
                 </Card>
             </div>
-        </div>
+
+            <RelatedTools currentToolId="regex-tester" categoryId="dev" />
+        </ToolPageLayout>
     );
 }

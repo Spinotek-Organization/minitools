@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Copy, Trash2, CheckCircle, Binary, AlertCircle, RefreshCw } from 'lucide-react';
 import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
+import ToolPageLayout from '../../../components/shared/ToolPageLayout';
+import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function Base64Codec() {
     const [input, setInput] = useState('');
@@ -50,7 +52,7 @@ export default function Base64Codec() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <ToolPageLayout>
             <Helmet>
                 <title>Base64 Encoder & Decoder | Spinotek Tools</title>
                 <meta name="description" content="Securely encode and decode strings to and from Base64 format instantly." />
@@ -156,6 +158,8 @@ export default function Base64Codec() {
                     </p>
                 </Card>
             </div>
-        </div>
+
+            <RelatedTools currentToolId="base64-enc" categoryId="dev" />
+        </ToolPageLayout>
     );
 }

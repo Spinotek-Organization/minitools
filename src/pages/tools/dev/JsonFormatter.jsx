@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Copy, Trash2, CheckCircle, FileJson, AlertCircle } from 'lucide-react';
 import Card from '../../../components/shared/Card';
+import ToolPageLayout from '../../../components/shared/ToolPageLayout';
+import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function JsonFormatter() {
     const [input, setInput] = useState('');
@@ -34,7 +36,7 @@ export default function JsonFormatter() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <ToolPageLayout>
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
@@ -113,6 +115,8 @@ export default function JsonFormatter() {
                     </div>
                 </Card>
             </div>
-        </div>
+
+            <RelatedTools currentToolId="json-fmt" categoryId="dev" />
+        </ToolPageLayout>
     );
 }

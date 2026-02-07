@@ -12,7 +12,7 @@ export default function Breadcrumbs() {
     if (pathnames.length === 0) return null;
 
     return (
-        <nav className="flex mb-8 overflow-x-auto no-scrollbar" aria-label="Breadcrumb">
+        <nav className="flex mb-6 overflow-x-auto no-scrollbar" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest whitespace-nowrap">
                 <li>
                     <Link to="/" className="text-slate-400 hover:text-blue-600 transition-colors flex items-center gap-1.5">
@@ -23,18 +23,27 @@ export default function Breadcrumbs() {
 
                 {pathnames.map((value, index) => {
                     const last = index === pathnames.length - 1;
-                    const to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
-                    // Logic to find readable names for IDs
+                    // Logic to find readable names and correct paths
                     let displayName = value;
-                    if (value === 'category') return null; // Skip 'category' segment
+                    let to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+                    if (value === 'category' || value === 'category') return null; // Skip 'category' segment
 
                     const category = CATEGORIES.find(c => c.id === value);
                     const tool = TOOLS.find(t => t.path.endsWith(value) || t.id === value);
 
-                    if (category) displayName = category.name;
-                    else if (tool) displayName = tool.title;
-                    else if (value === 'explore') displayName = 'Explore Tools';
+                    if (value === 'tools') {
+                        displayName = 'Explore Tools';
+                        to = '/explore';
+                    } else if (category) {
+                        displayName = category.name;
+                        to = `/category/${category.id}`;
+                    } else if (tool) {
+                        displayName = tool.title;
+                    } else if (value === 'explore') {
+                        displayName = 'Explore Tools';
+                    }
 
                     // Format display name (capitalize if no match found)
                     if (displayName === value) {

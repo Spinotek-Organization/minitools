@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Copy, Trash2, CheckCircle, Globe, AlertCircle, RefreshCw } from 'lucide-react';
 import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
+import ToolPageLayout from '../../../components/shared/ToolPageLayout';
+import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function UrlCodec() {
     const [input, setInput] = useState('');
@@ -50,7 +52,7 @@ export default function UrlCodec() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <ToolPageLayout>
             <Helmet>
                 <title>URL Encoder & Decoder | Spinotek Tools</title>
                 <meta name="description" content="Properly encode or decode URLs for web compatibility instantly." />
@@ -156,6 +158,8 @@ export default function UrlCodec() {
                     </p>
                 </Card>
             </div>
-        </div>
+
+            <RelatedTools currentToolId="url-enc" categoryId="dev" />
+        </ToolPageLayout>
     );
 }

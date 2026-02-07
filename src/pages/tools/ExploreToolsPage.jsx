@@ -35,7 +35,7 @@ export default function ExploreToolsPage() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                     <div className="space-y-4">
                         <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
-                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">Tools</span>
+                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500 pr-2">Tools</span>
                         </h1>
                         <p className="text-slate-500 text-lg font-medium max-w-2xl">
                             Our complete library of specialized utilities, organized for your professional workflow.

@@ -20,7 +20,7 @@ export default function Footer() {
                                 <img src="/img/spinotek-symbol.png" alt="Spinotek" className="w-full h-full object-contain" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xl font-black text-slate-900 tracking-tighter leading-none">Spinotek Tools</span>
+                                <span className="text-xl font-black text-slate-900 tracking-tighter leading-none">Mini Tools</span>
                                 <span className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">Utility Suite</span>
                             </div>
                         </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
                 <div className="mt-24 pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-4">
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                            © {currentYear} <a href="https://spinotek.com" target="_blank" rel="noreferrer" className="text-slate-900 hover:text-blue-600 transition-colors">Spinotek Studio</a>
+                            © {currentYear} <a href="https://spinotek.com" target="_blank" rel="noreferrer" className="text-slate-900 hover:text-blue-600 transition-colors">Spinotek Corp</a>
                         </p>
                     </div>
 

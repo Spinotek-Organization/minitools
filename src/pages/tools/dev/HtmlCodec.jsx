@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Copy, Trash2, CheckCircle, Code2, AlertCircle, RefreshCw } from 'lucide-react';
 import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
+import ToolPageLayout from '../../../components/shared/ToolPageLayout';
+import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function HtmlCodec() {
     const [input, setInput] = useState('');
@@ -54,7 +56,7 @@ export default function HtmlCodec() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <ToolPageLayout>
             <Helmet>
                 <title>HTML Entity Encoder & Decoder | Spinotek Tools</title>
                 <meta name="description" content="Convert characters to HTML entities and vice-versa for secure web development." />
@@ -160,6 +162,8 @@ export default function HtmlCodec() {
                     </p>
                 </Card>
             </div>
-        </div>
+
+            <RelatedTools currentToolId="html-enc" categoryId="dev" />
+        </ToolPageLayout>
     );
 }
