@@ -65,8 +65,8 @@ export default function Footer() {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 blur-[50px] rounded-full -mr-10 -mt-10" />
 
                             <div className="relative z-10 space-y-3">
-                                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-900/40">
-                                    <Cpu size={16} />
+                                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-blue-900/40 p-1.5">
+                                    <img src="/img/spinotek-symbol.png" alt="Spinotek" className="w-full h-full object-contain" />
                                 </div>
                                 <h4 className="text-lg font-bold text-white tracking-tight">Need custom software?</h4>
                                 <p className="text-slate-400 text-xs font-medium leading-relaxed">
