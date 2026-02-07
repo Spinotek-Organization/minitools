@@ -65,7 +65,7 @@ export default function RegexTester() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Regex Tester | Spinotek Tools</title>
+                <title>Regex Tester | Mini Tools by Spinotek</title>
                 <meta name="description" content="Test and debug your JavaScript regular expressions with real-time highlighting and match grouping." />
             </Helmet>
 

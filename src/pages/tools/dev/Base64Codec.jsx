@@ -54,7 +54,7 @@ export default function Base64Codec() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Base64 Encoder & Decoder | Spinotek Tools</title>
+                <title>Base64 Encoder & Decoder | Mini Tools by Spinotek</title>
                 <meta name="description" content="Securely encode and decode strings to and from Base64 format instantly." />
             </Helmet>
 

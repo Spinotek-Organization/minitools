@@ -25,7 +25,7 @@ export default function ExploreToolsPage() {
     return (
         <div className="min-h-screen bg-slate-50">
             <Helmet>
-                <title>Explore All Tools | Spinotek Tools</title>
+                <title>Explore All Tools | Mini Tools by Spinotek</title>
                 <meta name="description" content="Browse our complete collection of 120+ professional tools for developers, marketers, and builders." />
             </Helmet>
 

@@ -34,7 +34,7 @@ export default function CategoryPage() {
     return (
         <div className="min-h-screen">
             <Helmet>
-                <title>{category.name} Tools | Spinotek Tools</title>
+                <title>{category.name} Tools | Mini Tools by Spinotek</title>
                 <meta name="description" content={`Explore our collection of ${category.name} tools for your productivity needs.`} />
             </Helmet>
 

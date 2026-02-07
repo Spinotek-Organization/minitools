@@ -54,7 +54,7 @@ export default function UrlCodec() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>URL Encoder & Decoder | Spinotek Tools</title>
+                <title>URL Encoder & Decoder | Mini Tools by Spinotek</title>
                 <meta name="description" content="Properly encode or decode URLs for web compatibility instantly." />
             </Helmet>
 

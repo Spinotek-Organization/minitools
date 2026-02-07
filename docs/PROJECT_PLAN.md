@@ -2,8 +2,8 @@ Tentu, ini adalah draft lengkap yang sudah saya optimalkan menggunakan Tailwind 
 
 Silakan copy markdown di bawah ini:
 
-📑 Project Overview: Spinotek Tools
-Platform Name: Spinotek Tools (Utility Suite)
+📑 Project Overview: Mini Tools
+Platform Name: Mini Tools (Utility Suite) by Spinotek
 
 Domain: tools.spinotek.com
 
