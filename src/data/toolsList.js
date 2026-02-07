@@ -80,6 +80,46 @@ export const TOOLS = [
         color: 'text-fuchsia-500',
         bgColor: 'bg-fuchsia-50'
     },
+    {
+        id: 'hash-gen',
+        title: 'MD5/SHA256 Hasher',
+        cat: 'dev',
+        path: '/tools/dev/hash-generator',
+        desc: 'Generate secure cryptographic hashes for your data.',
+        icon: 'Hash',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'cron-guru',
+        title: 'Crontab Guru',
+        cat: 'dev',
+        path: '/tools/dev/cron-editor',
+        desc: 'Visualize and edit cron schedule expressions easily.',
+        icon: 'Clock',
+        color: 'text-yellow-500',
+        bgColor: 'bg-yellow-50'
+    },
+    {
+        id: 'diff-checker',
+        title: 'Diff Checker',
+        cat: 'dev',
+        path: '/tools/dev/diff-checker',
+        desc: 'Compare and find differences between two text sets.',
+        icon: 'Combine',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'js-minifier',
+        title: 'Javascript Minifier',
+        cat: 'dev',
+        path: '/tools/dev/js-minifier',
+        desc: 'Compress and optimize your Javascript code.',
+        icon: 'Minimize2',
+        color: 'text-yellow-600',
+        bgColor: 'bg-yellow-50'
+    },
 
     // CATEGORY: MARKETING & SEO
     {
