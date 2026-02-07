@@ -9,7 +9,7 @@ export default function YoutubeThumbnail() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>YouTube Thumbnail Preview | Mini Tools by Spinotek</title>
+                <title>YouTube Thumbnail Preview | MiniTools by Spinotek</title>
                 <meta name="description" content="Test your thumbnails against various backgrounds." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function PodcastPlanner() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Podcast Episode Planner | Mini Tools by Spinotek</title>
+                <title>Podcast Episode Planner | MiniTools by Spinotek</title>
                 <meta name="description" content="Organize your podcast episodes and guest notes." />
             </Helmet>
 

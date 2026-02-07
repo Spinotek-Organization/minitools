@@ -9,7 +9,7 @@ export default function EyeBreak() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Eye Break Timer | Mini Tools by Spinotek</title>
+                <title>Eye Break Timer | MiniTools by Spinotek</title>
                 <meta name="description" content="Protect your eyes using the 20-20-20 break rule." />
             </Helmet>
 

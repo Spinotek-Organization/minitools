@@ -9,7 +9,7 @@ export default function SalesScript() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Sales Script Generator | Mini Tools by Spinotek</title>
+                <title>Sales Script Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate persuasive sales scripts instantly." />
             </Helmet>
 

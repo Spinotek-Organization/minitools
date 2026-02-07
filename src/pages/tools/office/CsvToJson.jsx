@@ -9,7 +9,7 @@ export default function CsvToJson() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>CSV to JSON Converter | Mini Tools by Spinotek</title>
+                <title>CSV to JSON Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert spreadsheet or CSV data to JSON format easily." />
             </Helmet>
 

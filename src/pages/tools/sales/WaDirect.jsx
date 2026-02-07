@@ -9,7 +9,7 @@ export default function WaDirect() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>WhatsApp Direct Link | Mini Tools by Spinotek</title>
+                <title>WhatsApp Direct Link | MiniTools by Spinotek</title>
                 <meta name="description" content="Send WhatsApp messages without saving numbers." />
             </Helmet>
 

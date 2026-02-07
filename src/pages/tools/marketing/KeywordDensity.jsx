@@ -9,7 +9,7 @@ export default function KeywordDensity() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Keyword Density Checker | Mini Tools by Spinotek</title>
+                <title>Keyword Density Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Analyze how often keywords appear in your content." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function EmailSignature() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Email Signature Generator | Mini Tools by Spinotek</title>
+                <title>Email Signature Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create professional email signatures for your brand." />
             </Helmet>
 

@@ -95,7 +95,7 @@ export default function SortList() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Alphabetical List Sorter | Mini Tools by Spinotek</title>
+                <title>Alphabetical List Sorter | MiniTools by Spinotek</title>
                 <meta name="description" content="Sort lists alphabetically, by length, or randomize. Remove duplicates and clean up text instantly." />
             </Helmet>
 

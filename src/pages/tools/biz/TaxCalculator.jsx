@@ -9,7 +9,7 @@ export default function TaxCalculator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Tax Calculator | Mini Tools by Spinotek</title>
+                <title>Tax Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Quickly calculate PPN, PPh, and other business taxes." />
             </Helmet>
 

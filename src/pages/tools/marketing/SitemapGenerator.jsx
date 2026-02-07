@@ -9,7 +9,7 @@ export default function SitemapGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Sitemap XML Generator | Mini Tools by Spinotek</title>
+                <title>Sitemap XML Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate SEO-friendly XML sitemaps for your website." />
             </Helmet>
 

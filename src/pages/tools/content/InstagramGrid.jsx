@@ -9,7 +9,7 @@ export default function InstagramGrid() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Instagram Grid Preview | Mini Tools by Spinotek</title>
+                <title>Instagram Grid Preview | MiniTools by Spinotek</title>
                 <meta name="description" content="Plan and visualize your Instagram feed aesthetic." />
             </Helmet>
 

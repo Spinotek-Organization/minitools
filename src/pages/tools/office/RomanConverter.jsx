@@ -93,7 +93,7 @@ export default function RomanConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Roman Numeral Converter | Mini Tools by Spinotek</title>
+                <title>Roman Numeral Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert numbers to Roman Numerals (and vice versa) instantly." />
             </Helmet>
 

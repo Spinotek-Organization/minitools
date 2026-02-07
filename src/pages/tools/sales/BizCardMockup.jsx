@@ -9,7 +9,7 @@ export default function BizCardMockup() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Business Card Mockup | Mini Tools by Spinotek</title>
+                <title>Business Card Mockup | MiniTools by Spinotek</title>
                 <meta name="description" content="Visualize your business card design in realistic mockups." />
             </Helmet>
 

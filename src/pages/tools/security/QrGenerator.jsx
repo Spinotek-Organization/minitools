@@ -9,7 +9,7 @@ export default function QrGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>QR Code Generator | Mini Tools by Spinotek</title>
+                <title>QR Code Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate QR codes for URLs, text, or contact information." />
             </Helmet>
 

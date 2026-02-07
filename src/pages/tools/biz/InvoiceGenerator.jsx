@@ -9,7 +9,7 @@ export default function InvoiceGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Invoice Generator | Mini Tools by Spinotek</title>
+                <title>Invoice Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create simple, professional PDF invoices in seconds." />
             </Helmet>
 

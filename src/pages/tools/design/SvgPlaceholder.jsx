@@ -9,7 +9,7 @@ export default function SvgPlaceholder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>SVG Placeholder Generator | Mini Tools by Spinotek</title>
+                <title>SVG Placeholder Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate custom SVG placeholder images for layouts." />
             </Helmet>
 

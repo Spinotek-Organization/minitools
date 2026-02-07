@@ -9,7 +9,7 @@ export default function DecisionMatrix() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Decision Matrix (Pick for me) | Mini Tools by Spinotek</title>
+                <title>Decision Matrix (Pick for me) | MiniTools by Spinotek</title>
                 <meta name="description" content="Stuck? Let the logic help you decide what to do next." />
             </Helmet>
 

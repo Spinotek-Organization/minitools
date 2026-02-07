@@ -9,7 +9,7 @@ export default function UnitConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Unit Converter | Mini Tools by Spinotek</title>
+                <title>Unit Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert between metric and imperial units easily." />
             </Helmet>
 

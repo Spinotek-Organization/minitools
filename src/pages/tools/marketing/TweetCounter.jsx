@@ -9,7 +9,7 @@ export default function TweetCounter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Twitter/X Thread Counter | Mini Tools by Spinotek</title>
+                <title>Twitter/X Thread Counter | MiniTools by Spinotek</title>
                 <meta name="description" content="Count characters and manage your X/Twitter thread limits." />
             </Helmet>
 

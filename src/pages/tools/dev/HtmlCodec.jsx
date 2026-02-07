@@ -58,7 +58,7 @@ export default function HtmlCodec() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>HTML Entity Encoder & Decoder | Mini Tools by Spinotek</title>
+                <title>HTML Entity Encoder & Decoder | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert characters to HTML entities and vice-versa for secure web development." />
             </Helmet>
 

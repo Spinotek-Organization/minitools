@@ -9,7 +9,7 @@ export default function HabitTracker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Daily Habit Tracker | Mini Tools by Spinotek</title>
+                <title>Daily Habit Tracker | MiniTools by Spinotek</title>
                 <meta name="description" content="Track and build better daily routines and habits." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function FakeIdentity() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Fake Identity Generator | Mini Tools by Spinotek</title>
+                <title>Fake Identity Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate random profiles for software testing and privacy." />
             </Helmet>
 

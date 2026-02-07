@@ -9,7 +9,7 @@ export default function FractionCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Fraction Calculator | Mini Tools by Spinotek</title>
+                <title>Fraction Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Add, subtract, and multiply complex fractions easily." />
             </Helmet>
 

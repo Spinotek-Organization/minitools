@@ -9,7 +9,7 @@ export default function DailyReflection() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Daily Reflection Prompt | Mini Tools by Spinotek</title>
+                <title>Daily Reflection Prompt | MiniTools by Spinotek</title>
                 <meta name="description" content="Thoughtful prompts for personal growth and awareness." />
             </Helmet>
 

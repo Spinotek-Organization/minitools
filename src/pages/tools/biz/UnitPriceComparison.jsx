@@ -9,7 +9,7 @@ export default function UnitPriceComparison() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Unit Price Comparison | Mini Tools by Spinotek</title>
+                <title>Unit Price Comparison | MiniTools by Spinotek</title>
                 <meta name="description" content="Find the best deal by comparing unit prices." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function MetaGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Meta Tag Generator | Mini Tools by Spinotek</title>
+                <title>Meta Tag Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create SEO-optimized meta tags for your website." />
             </Helmet>
 

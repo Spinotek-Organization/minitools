@@ -9,7 +9,7 @@ export default function ProfitMargin() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Profit Margin Calculator | Mini Tools by Spinotek</title>
+                <title>Profit Margin Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate your margins and markup accurately." />
             </Helmet>
 

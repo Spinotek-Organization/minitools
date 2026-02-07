@@ -9,7 +9,7 @@ export default function BrowserFingerprint() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Browser Fingerprint | Mini Tools by Spinotek</title>
+                <title>Browser Fingerprint | MiniTools by Spinotek</title>
                 <meta name="description" content="See what information your browser reveals to websites." />
             </Helmet>
 

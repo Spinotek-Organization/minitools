@@ -48,7 +48,7 @@ export default function Navbar() {
                                 <Logo size={24} />
                             </div>
                             <div className="flex flex-col leading-tight">
-                                <span className="text-lg font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Mini Tools</span>
+                                <span className="text-lg font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">MiniTools</span>
                                 <span className="text-[8px] font-bold opacity-80 tracking-widest leading-none uppercase">by Spinotek</span>
                             </div>
                         </Link>

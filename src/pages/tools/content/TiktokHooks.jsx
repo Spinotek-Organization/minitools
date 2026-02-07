@@ -9,7 +9,7 @@ export default function TiktokHooks() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>TikTok Viral Hook Ideas | Mini Tools by Spinotek</title>
+                <title>TikTok Viral Hook Ideas | MiniTools by Spinotek</title>
                 <meta name="description" content="Get attention-grabbing hooks for your TikToks." />
             </Helmet>
 

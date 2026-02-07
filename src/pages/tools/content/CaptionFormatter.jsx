@@ -9,7 +9,7 @@ export default function CaptionFormatter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Caption Formatter | Mini Tools by Spinotek</title>
+                <title>Caption Formatter | MiniTools by Spinotek</title>
                 <meta name="description" content="Clean up your captions with clean line breaks." />
             </Helmet>
 

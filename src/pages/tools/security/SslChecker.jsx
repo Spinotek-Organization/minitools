@@ -9,7 +9,7 @@ export default function SslChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>SSL Certificate Checker | Mini Tools by Spinotek</title>
+                <title>SSL Certificate Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Verify the validity and details of a websites SSL certificate." />
             </Helmet>
 

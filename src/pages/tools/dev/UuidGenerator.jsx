@@ -9,7 +9,7 @@ export default function UuidGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>UUID/ULID Generator | Mini Tools by Spinotek</title>
+                <title>UUID/ULID Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate unique identifiers for your applications." />
             </Helmet>
 

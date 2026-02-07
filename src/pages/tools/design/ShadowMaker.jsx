@@ -9,7 +9,7 @@ export default function ShadowMaker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>CSS Shadow Maker | Mini Tools by Spinotek</title>
+                <title>CSS Shadow Maker | MiniTools by Spinotek</title>
                 <meta name="description" content="Visual editor for complex CSS box-shadows." />
             </Helmet>
 

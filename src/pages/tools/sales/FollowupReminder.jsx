@@ -9,7 +9,7 @@ export default function FollowupReminder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Follow-up Reminder | Mini Tools by Spinotek</title>
+                <title>Follow-up Reminder | MiniTools by Spinotek</title>
                 <meta name="description" content="Schedule and track your client follow-up timing." />
             </Helmet>
 

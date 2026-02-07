@@ -9,7 +9,7 @@ export default function BackgroundRemover() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Image Background Remover | Mini Tools by Spinotek</title>
+                <title>Image Background Remover | MiniTools by Spinotek</title>
                 <meta name="description" content="Quickly remove backgrounds from your images using AI." />
             </Helmet>
 

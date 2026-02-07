@@ -9,7 +9,7 @@ export default function AdCounter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Ad Copy Character Counter | Mini Tools by Spinotek</title>
+                <title>Ad Copy Character Counter | MiniTools by Spinotek</title>
                 <meta name="description" content="Validate character limits for Google and Meta Ads." />
             </Helmet>
 

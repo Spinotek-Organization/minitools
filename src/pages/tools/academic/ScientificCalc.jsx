@@ -9,7 +9,7 @@ export default function ScientificCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Scientific Calculator | Mini Tools by Spinotek</title>
+                <title>Scientific Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Advanced calculator for math and science needs." />
             </Helmet>
 

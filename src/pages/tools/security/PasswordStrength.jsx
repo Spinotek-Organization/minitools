@@ -9,7 +9,7 @@ export default function PasswordStrength() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Password Strength Checker | Mini Tools by Spinotek</title>
+                <title>Password Strength Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Test how secure your password is against brute-force attacks." />
             </Helmet>
 

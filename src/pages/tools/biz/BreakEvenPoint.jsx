@@ -9,7 +9,7 @@ export default function BreakEvenPoint() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Break-Even Point Calculator | Mini Tools by Spinotek</title>
+                <title>Break-Even Point Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate when your business will become profitable." />
             </Helmet>
 

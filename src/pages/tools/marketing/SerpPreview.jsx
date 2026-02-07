@@ -9,7 +9,7 @@ export default function SerpPreview() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Google SERP Preview | Mini Tools by Spinotek</title>
+                <title>Google SERP Preview | MiniTools by Spinotek</title>
                 <meta name="description" content="Visualize how your website appears on Google search results." />
             </Helmet>
 

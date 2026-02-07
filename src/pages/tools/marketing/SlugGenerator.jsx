@@ -9,7 +9,7 @@ export default function SlugGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Slug Generator | Mini Tools by Spinotek</title>
+                <title>Slug Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert any text into a URL-friendly slug." />
             </Helmet>
 

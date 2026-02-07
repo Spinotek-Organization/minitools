@@ -9,7 +9,7 @@ export default function PriceQuote() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Price Quote Generator | Mini Tools by Spinotek</title>
+                <title>Price Quote Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Quickly generate professional quotes for clients." />
             </Helmet>
 

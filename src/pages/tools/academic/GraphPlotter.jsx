@@ -9,7 +9,7 @@ export default function GraphPlotter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Simple Graph Plotter | Mini Tools by Spinotek</title>
+                <title>Simple Graph Plotter | MiniTools by Spinotek</title>
                 <meta name="description" content="Visualize your data with simple bar or line graphs easily." />
             </Helmet>
 

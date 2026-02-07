@@ -9,7 +9,7 @@ export default function SqlFormatter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>SQL Formatter | Mini Tools by Spinotek</title>
+                <title>SQL Formatter | MiniTools by Spinotek</title>
                 <meta name="description" content="Beautify and format your SQL queries instantly." />
             </Helmet>
 

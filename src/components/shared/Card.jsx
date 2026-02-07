@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Standard Card component for Mini Tools by Spinotek
+ * Standard Card component for MiniTools by Spinotek
  * @param {Object} props
  * @param {React.ReactNode} props.children
  * @param {string} [props.className] - Additional classes

@@ -9,7 +9,7 @@ export default function SortingVisualizer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Sorting Visualizer | Mini Tools by Spinotek</title>
+                <title>Sorting Visualizer | MiniTools by Spinotek</title>
                 <meta name="description" content="Watch how different sorting algorithms work in real-time." />
             </Helmet>
 

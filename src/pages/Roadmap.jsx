@@ -12,7 +12,7 @@ export default function Roadmap() {
     return (
         <div className="min-h-screen pb-20">
             <Helmet>
-                <title>Project Roadmap | Mini Tools by Spinotek</title>
+                <title>Project Roadmap | MiniTools by Spinotek</title>
                 <meta name="description" content="See what tools we're building and what's coming next to the Spinotek utility suite." />
             </Helmet>
 

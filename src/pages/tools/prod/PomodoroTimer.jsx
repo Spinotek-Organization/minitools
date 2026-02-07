@@ -9,7 +9,7 @@ export default function PomodoroTimer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Pomodoro Timer | Mini Tools by Spinotek</title>
+                <title>Pomodoro Timer | MiniTools by Spinotek</title>
                 <meta name="description" content="Stay focused with customizable work and break intervals." />
             </Helmet>
 

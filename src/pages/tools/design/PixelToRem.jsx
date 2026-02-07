@@ -9,7 +9,7 @@ export default function PixelToRem() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Pixel to REM Converter | Mini Tools by Spinotek</title>
+                <title>Pixel to REM Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert pixels to REM for modern responsive CSS." />
             </Helmet>
 

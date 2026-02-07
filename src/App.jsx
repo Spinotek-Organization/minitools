@@ -139,7 +139,7 @@ function App() {
                     <Route path="/tools/dev/json-formatter" element={
                         <>
                             <Helmet>
-                                <title>JSON Formatter & Validator | Mini Tools by Spinotek</title>
+                                <title>JSON Formatter & Validator | MiniTools by Spinotek</title>
                                 <meta name="description" content="Clean, format, and validate your JSON data instantly with our professional JSON Formatter tool." />
                             </Helmet>
                             <JsonFormatter />

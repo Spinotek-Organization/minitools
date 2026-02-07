@@ -9,7 +9,7 @@ export default function IconSearcher() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Icon Searcher | Mini Tools by Spinotek</title>
+                <title>Icon Searcher | MiniTools by Spinotek</title>
                 <meta name="description" content="Search through thousands of open-source icons." />
             </Helmet>
 

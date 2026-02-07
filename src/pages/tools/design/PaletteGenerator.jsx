@@ -9,7 +9,7 @@ export default function PaletteGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Color Palette Generator | Mini Tools by Spinotek</title>
+                <title>Color Palette Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create beautiful, harmonious color schemes for your projects." />
             </Helmet>
 

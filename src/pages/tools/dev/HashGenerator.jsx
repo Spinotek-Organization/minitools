@@ -9,7 +9,7 @@ export default function HashGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>MD5/SHA256 Hasher | Mini Tools by Spinotek</title>
+                <title>MD5/SHA256 Hasher | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate secure cryptographic hashes for your data." />
             </Helmet>
 

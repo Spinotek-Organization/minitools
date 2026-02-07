@@ -9,7 +9,7 @@ export default function ContrastChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Contrast Checker | Mini Tools by Spinotek</title>
+                <title>Contrast Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Check WCAG accessibility contrast ratios for your designs." />
             </Helmet>
 

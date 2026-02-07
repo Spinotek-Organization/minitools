@@ -9,7 +9,7 @@ export default function PortScanner() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Port Scanner | Mini Tools by Spinotek</title>
+                <title>Port Scanner | MiniTools by Spinotek</title>
                 <meta name="description" content="Check for open ports on a specific IP or domain." />
             </Helmet>
 

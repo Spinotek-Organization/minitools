@@ -9,7 +9,7 @@ export default function AspectRatio() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Video Aspect Ratio Calc | Mini Tools by Spinotek</title>
+                <title>Video Aspect Ratio Calc | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate perfect dimensions for any video format." />
             </Helmet>
 

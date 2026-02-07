@@ -9,7 +9,7 @@ export default function SignaturePad() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Digital Signature Pad | Mini Tools by Spinotek</title>
+                <title>Digital Signature Pad | MiniTools by Spinotek</title>
                 <meta name="description" content="Draw and download your digital signature for documents." />
             </Helmet>
 

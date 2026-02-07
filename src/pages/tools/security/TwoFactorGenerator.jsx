@@ -9,7 +9,7 @@ export default function TwoFactorGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>2FA Code Generator | Mini Tools by Spinotek</title>
+                <title>2FA Code Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate two-factor authentication codes for your accounts." />
             </Helmet>
 

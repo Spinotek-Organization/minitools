@@ -9,7 +9,7 @@ export default function SecretNote() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Secret Note | Mini Tools by Spinotek</title>
+                <title>Secret Note | MiniTools by Spinotek</title>
                 <meta name="description" content="Create encrypted notes that self-destruct after being read." />
             </Helmet>
 

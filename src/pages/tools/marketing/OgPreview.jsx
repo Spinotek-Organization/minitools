@@ -9,7 +9,7 @@ export default function OgPreview() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Open Graph Preview | Mini Tools by Spinotek</title>
+                <title>Open Graph Preview | MiniTools by Spinotek</title>
                 <meta name="description" content="Preview how your links will look on social media." />
             </Helmet>
 

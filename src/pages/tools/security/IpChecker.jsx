@@ -9,7 +9,7 @@ export default function IpChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>IP Address Checker | Mini Tools by Spinotek</title>
+                <title>IP Address Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Find your public IP address and approximate location." />
             </Helmet>
 

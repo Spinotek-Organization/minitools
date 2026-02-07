@@ -9,7 +9,7 @@ export default function TempEmail() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Disposable Email Linker | Mini Tools by Spinotek</title>
+                <title>Disposable Email Linker | MiniTools by Spinotek</title>
                 <meta name="description" content="Quick links to top temporary email services for privacy." />
             </Helmet>
 

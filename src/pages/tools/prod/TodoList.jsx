@@ -9,7 +9,7 @@ export default function TodoList() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Minimalist To-Do List | Mini Tools by Spinotek</title>
+                <title>Minimalist To-Do List | MiniTools by Spinotek</title>
                 <meta name="description" content="Keep your tasks simple and organized for the day." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function BreakTimer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Break Timer | Mini Tools by Spinotek</title>
+                <title>Break Timer | MiniTools by Spinotek</title>
                 <meta name="description" content="Smart reminders to step away and recharge your energy." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function AmbientNoise() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Ambient Noise Generator | Mini Tools by Spinotek</title>
+                <title>Ambient Noise Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Focus with soothing sounds like rain, coffee shop, and more." />
             </Helmet>
 

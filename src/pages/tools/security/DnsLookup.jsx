@@ -9,7 +9,7 @@ export default function DnsLookup() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>DNS Lookup | Mini Tools by Spinotek</title>
+                <title>DNS Lookup | MiniTools by Spinotek</title>
                 <meta name="description" content="Find DNS records for any domain name quickly." />
             </Helmet>
 

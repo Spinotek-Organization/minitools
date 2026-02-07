@@ -68,7 +68,7 @@ export default function WordCounter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Word Counter & Text Analyzer | Mini Tools by Spinotek</title>
+                <title>Word Counter & Text Analyzer | MiniTools by Spinotek</title>
                 <meta name="description" content="Free online word counter, character counter, and text analyzer. Calculate reading time and check keyword density instantly." />
             </Helmet>
 

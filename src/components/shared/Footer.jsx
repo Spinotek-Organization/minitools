@@ -21,7 +21,7 @@ export default function Footer() {
                                 <Logo size={28} />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xl font-black text-slate-900 tracking-tighter leading-none">Mini Tools</span>
+                                <span className="text-xl font-black text-slate-900 tracking-tighter leading-none">MiniTools</span>
                                 <span className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">By Spinotek</span>
                             </div>
                         </Link>

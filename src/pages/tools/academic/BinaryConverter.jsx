@@ -9,7 +9,7 @@ export default function BinaryConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Binary to Decimal | Mini Tools by Spinotek</title>
+                <title>Binary to Decimal | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert numbers between binary, decimal, and hex easily." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function ShortLink() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Short Link Generator | Mini Tools by Spinotek</title>
+                <title>Short Link Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create clean and trackable short URLs." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function PasswordGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Strong Password Generator | Mini Tools by Spinotek</title>
+                <title>Strong Password Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create secure, random passwords to protect your accounts." />
             </Helmet>
 

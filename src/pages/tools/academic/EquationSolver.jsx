@@ -9,7 +9,7 @@ export default function EquationSolver() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Equation Solver | Mini Tools by Spinotek</title>
+                <title>Equation Solver | MiniTools by Spinotek</title>
                 <meta name="description" content="Solve basic linear and quadratic equations step-by-step." />
             </Helmet>
 

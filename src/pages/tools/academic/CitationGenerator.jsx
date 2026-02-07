@@ -9,7 +9,7 @@ export default function CitationGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Citation Generator | Mini Tools by Spinotek</title>
+                <title>Citation Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate citations in APA, MLA, and Chicago formats easily." />
             </Helmet>
 

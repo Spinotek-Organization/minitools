@@ -9,7 +9,7 @@ export default function TimezoneConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Time Zone Converter | Mini Tools by Spinotek</title>
+                <title>Time Zone Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Coordinate meetings across different time zones." />
             </Helmet>
 

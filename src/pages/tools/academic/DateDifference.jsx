@@ -9,7 +9,7 @@ export default function DateDifference() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Date Difference Calc | Mini Tools by Spinotek</title>
+                <title>Date Difference Calc | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate the exact number of days between two dates." />
             </Helmet>
 

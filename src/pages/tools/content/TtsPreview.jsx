@@ -9,7 +9,7 @@ export default function TtsPreview() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Text-to-Speech Preview | Mini Tools by Spinotek</title>
+                <title>Text-to-Speech Preview | MiniTools by Spinotek</title>
                 <meta name="description" content="Listen to how your scripts sound with AI voices." />
             </Helmet>
 

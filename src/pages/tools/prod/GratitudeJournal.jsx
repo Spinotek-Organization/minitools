@@ -9,7 +9,7 @@ export default function GratitudeJournal() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Gratitude Journal | Mini Tools by Spinotek</title>
+                <title>Gratitude Journal | MiniTools by Spinotek</title>
                 <meta name="description" content="Improve your well-being by reflecting on positive moments." />
             </Helmet>
 

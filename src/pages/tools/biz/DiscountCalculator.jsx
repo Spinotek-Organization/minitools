@@ -9,7 +9,7 @@ export default function DiscountCalculator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Discount & Sale Calculator | Mini Tools by Spinotek</title>
+                <title>Discount & Sale Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate final prices after discounts and sales taxes." />
             </Helmet>
 

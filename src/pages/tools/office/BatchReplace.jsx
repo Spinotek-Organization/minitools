@@ -61,7 +61,7 @@ export default function BatchReplace() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Batch Search & Replace | Mini Tools by Spinotek</title>
+                <title>Batch Search & Replace | MiniTools by Spinotek</title>
                 <meta name="description" content="Find and replace text across multiple lines. Supports Case Sensitivity, Whole Words, and Regular Expressions." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function BusinessNameGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Business Name Generator | Mini Tools by Spinotek</title>
+                <title>Business Name Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Find creative and unique names for your next venture." />
             </Helmet>
 

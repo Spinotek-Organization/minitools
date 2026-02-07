@@ -9,7 +9,7 @@ export default function NumberToWords() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Number to Words (Terbilang) | Mini Tools by Spinotek</title>
+                <title>Number to Words (Terbilang) | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert numerical values into written text or words instantly." />
             </Helmet>
 

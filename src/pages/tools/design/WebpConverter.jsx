@@ -9,7 +9,7 @@ export default function WebpConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Image-to-WebP Converter | Mini Tools by Spinotek</title>
+                <title>Image-to-WebP Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert your images to high-performance WebP format." />
             </Helmet>
 

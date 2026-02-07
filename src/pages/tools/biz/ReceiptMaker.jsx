@@ -9,7 +9,7 @@ export default function ReceiptMaker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Receipt Maker | Mini Tools by Spinotek</title>
+                <title>Receipt Maker | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate simple digital receipts for your customers." />
             </Helmet>
 

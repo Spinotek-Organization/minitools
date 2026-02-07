@@ -9,7 +9,7 @@ export default function MeetingAgenda() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Meeting Agenda Builder | Mini Tools by Spinotek</title>
+                <title>Meeting Agenda Builder | MiniTools by Spinotek</title>
                 <meta name="description" content="Plan and structure productive business meetings." />
             </Helmet>
 

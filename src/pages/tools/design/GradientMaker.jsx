@@ -9,7 +9,7 @@ export default function GradientMaker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>CSS Gradient Maker | Mini Tools by Spinotek</title>
+                <title>CSS Gradient Maker | MiniTools by Spinotek</title>
                 <meta name="description" content="Design and generate CSS linear and radial gradients visually." />
             </Helmet>
 

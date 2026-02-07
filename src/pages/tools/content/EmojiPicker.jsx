@@ -9,7 +9,7 @@ export default function EmojiPicker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Emoji Keyboard/Picker | Mini Tools by Spinotek</title>
+                <title>Emoji Keyboard/Picker | MiniTools by Spinotek</title>
                 <meta name="description" content="Quickly find and copy the perfect emojis." />
             </Helmet>
 

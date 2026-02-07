@@ -9,7 +9,7 @@ export default function FaviconGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Favicon Generator | Mini Tools by Spinotek</title>
+                <title>Favicon Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create favicons for all platforms and browsers." />
             </Helmet>
 

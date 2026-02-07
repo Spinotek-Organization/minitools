@@ -9,7 +9,7 @@ export default function PdfTools() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>PDF Merge/Split | Mini Tools by Spinotek</title>
+                <title>PDF Merge/Split | MiniTools by Spinotek</title>
                 <meta name="description" content="Combine multiple PDFs or extract pages into new files easily." />
             </Helmet>
 

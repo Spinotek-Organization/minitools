@@ -9,7 +9,7 @@ export default function RedirectChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Redirect Checker | Mini Tools by Spinotek</title>
+                <title>Redirect Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Track and verify URL redirection paths and status codes." />
             </Helmet>
 

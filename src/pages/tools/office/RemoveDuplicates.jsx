@@ -60,7 +60,7 @@ export default function RemoveDuplicates() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Duplicate Line Remover | Mini Tools by Spinotek</title>
+                <title>Duplicate Line Remover | MiniTools by Spinotek</title>
                 <meta name="description" content="Remove duplicate lines from text lists instantly. Clean up your data with case-sensitive options." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function WatermarkTool() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Watermark Tool | Mini Tools by Spinotek</title>
+                <title>Watermark Tool | MiniTools by Spinotek</title>
                 <meta name="description" content="Protect your content with custom watermarks." />
             </Helmet>
 

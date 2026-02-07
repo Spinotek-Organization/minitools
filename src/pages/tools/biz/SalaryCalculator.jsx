@@ -9,7 +9,7 @@ export default function SalaryCalculator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Salary Calculator | Mini Tools by Spinotek</title>
+                <title>Salary Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate net pay after taxes and deductions." />
             </Helmet>
 

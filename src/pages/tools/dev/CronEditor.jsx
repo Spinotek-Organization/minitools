@@ -9,7 +9,7 @@ export default function CronEditor() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Crontab Guru | Mini Tools by Spinotek</title>
+                <title>Crontab Guru | MiniTools by Spinotek</title>
                 <meta name="description" content="Visualize and edit cron schedule expressions easily." />
             </Helmet>
 

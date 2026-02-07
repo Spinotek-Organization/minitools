@@ -9,7 +9,7 @@ export default function JWTDebugger() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>JWT Debugger | Mini Tools by Spinotek</title>
+                <title>JWT Debugger | MiniTools by Spinotek</title>
                 <meta name="description" content="Decode and inspect JSON Web Tokens safely." />
             </Helmet>
 

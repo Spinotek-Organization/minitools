@@ -9,7 +9,7 @@ export default function HeadlineAnalyzer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Headline Analyzer | Mini Tools by Spinotek</title>
+                <title>Headline Analyzer | MiniTools by Spinotek</title>
                 <meta name="description" content="Improve your headlines for better CTR and engagement." />
             </Helmet>
 

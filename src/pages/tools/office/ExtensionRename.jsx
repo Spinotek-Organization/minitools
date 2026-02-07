@@ -9,7 +9,7 @@ export default function ExtensionRename() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>File Extension Renamer | Mini Tools by Spinotek</title>
+                <title>File Extension Renamer | MiniTools by Spinotek</title>
                 <meta name="description" content="Batch change file extensions easily and safely." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function Bookkeeping() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Simple Bookkeeping | Mini Tools by Spinotek</title>
+                <title>Simple Bookkeeping | MiniTools by Spinotek</title>
                 <meta name="description" content="Track your daily income and expenses easily." />
             </Helmet>
 

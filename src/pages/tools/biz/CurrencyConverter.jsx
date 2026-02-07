@@ -9,7 +9,7 @@ export default function CurrencyConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Currency Converter | Mini Tools by Spinotek</title>
+                <title>Currency Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Real-time exchange rates for global business." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function CtaIdeas() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>CTA Ideas Generator | Mini Tools by Spinotek</title>
+                <title>CTA Ideas Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Catchy call-to-action ideas for higher conversion." />
             </Helmet>
 

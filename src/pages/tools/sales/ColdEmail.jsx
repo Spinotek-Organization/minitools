@@ -9,7 +9,7 @@ export default function ColdEmail() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Cold Email Templates | Mini Tools by Spinotek</title>
+                <title>Cold Email Templates | MiniTools by Spinotek</title>
                 <meta name="description" content="High-converting templates for your outreach." />
             </Helmet>
 

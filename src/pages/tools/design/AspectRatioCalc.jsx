@@ -9,7 +9,7 @@ export default function AspectRatioCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Aspect Ratio Calculator | Mini Tools by Spinotek</title>
+                <title>Aspect Ratio Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Calculate dimensions and ratios for various displays." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function TimeBoxing() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Time Boxing Planner | Mini Tools by Spinotek</title>
+                <title>Time Boxing Planner | MiniTools by Spinotek</title>
                 <meta name="description" content="Plan your day by assigning tasks to specific time blocks." />
             </Helmet>
 

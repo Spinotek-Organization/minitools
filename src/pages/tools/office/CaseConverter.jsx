@@ -54,7 +54,7 @@ export default function CaseConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Case Converter | Mini Tools by Spinotek</title>
+                <title>Case Converter | MiniTools by Spinotek</title>
                 <meta name="description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case and more." />
             </Helmet>
 

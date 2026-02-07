@@ -9,7 +9,7 @@ export default function ImageResizer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Social Media Image Resizer | Mini Tools by Spinotek</title>
+                <title>Social Media Image Resizer | MiniTools by Spinotek</title>
                 <meta name="description" content="Resize images for Instagram, Twitter, and Facebook." />
             </Helmet>
 

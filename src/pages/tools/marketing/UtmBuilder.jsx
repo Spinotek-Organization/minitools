@@ -9,7 +9,7 @@ export default function UtmBuilder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>UTM Link Builder | Mini Tools by Spinotek</title>
+                <title>UTM Link Builder | MiniTools by Spinotek</title>
                 <meta name="description" content="Easily generate UTM tracking links for your campaigns." />
             </Helmet>
 

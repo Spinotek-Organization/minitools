@@ -9,7 +9,7 @@ export default function DiffChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Diff Checker | Mini Tools by Spinotek</title>
+                <title>Diff Checker | MiniTools by Spinotek</title>
                 <meta name="description" content="Compare and find differences between two text sets." />
             </Helmet>
 

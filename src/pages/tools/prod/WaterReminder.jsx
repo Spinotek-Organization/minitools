@@ -9,7 +9,7 @@ export default function WaterReminder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Water Intake Reminder | Mini Tools by Spinotek</title>
+                <title>Water Intake Reminder | MiniTools by Spinotek</title>
                 <meta name="description" content="Stay hydrated with smart reminders throughout the day." />
             </Helmet>
 

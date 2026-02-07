@@ -9,7 +9,7 @@ export default function HashtagGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Hashtag Generator | Mini Tools by Spinotek</title>
+                <title>Hashtag Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Find trending hashtags to boost your reach." />
             </Helmet>
 

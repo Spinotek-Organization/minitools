@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/og-image.png" alt="Mini Tools by Spinotek" width="600"/>
+  <img src="public/og-image.png" alt="MiniTools by Spinotek" width="600"/>
 </p>
 
-<h1 align="center">Mini Tools by Spinotek</h1>
+<h1 align="center">MiniTools by Spinotek</h1>
 
 <p align="center">
   <strong>Your Productivity Toolkit. All in One Place.</strong><br/>
@@ -27,7 +27,7 @@
 
 ## 🚀 About
 
-**Mini Tools** is an official platform by [Spinotek](https://spinotek.com) — a Software Development Company. This project provides a comprehensive collection of free, browser-based productivity tools designed for:
+**MiniTools** is an official platform by [Spinotek](https://spinotek.com) — a Software Development Company. This project provides a comprehensive collection of free, browser-based productivity tools designed for:
 
 - 👨‍💻 **Developers** — Code formatters, converters, encoders, regex testers
 - 🎨 **Creators** — Color tools, image utilities, text generators
@@ -170,7 +170,7 @@ export default function YourToolName() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Your Tool Name | Mini Tools by Spinotek</title>
+                <title>Your Tool Name | MiniTools by Spinotek</title>
                 <meta name="description" content="Tool description here." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function PercentageCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Percentage Calculator | Mini Tools by Spinotek</title>
+                <title>Percentage Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Quickly calculate increases, decreases, and percentages." />
             </Helmet>
 

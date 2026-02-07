@@ -9,7 +9,7 @@ export default function FontPairer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Font Pairer Suggestions | Mini Tools by Spinotek</title>
+                <title>Font Pairer Suggestions | MiniTools by Spinotek</title>
                 <meta name="description" content="Find perfect typography combinations for your project." />
             </Helmet>
 

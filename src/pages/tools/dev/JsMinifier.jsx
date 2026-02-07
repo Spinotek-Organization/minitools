@@ -8,7 +8,7 @@ export default function JsMinifier() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Javascript Minifier | Mini Tools by Spinotek</title>
+                <title>Javascript Minifier | MiniTools by Spinotek</title>
                 <meta name="description" content="Compress and optimize your Javascript code." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function StatsCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Mean/Median/Mode Calc | Mini Tools by Spinotek</title>
+                <title>Mean/Median/Mode Calc | MiniTools by Spinotek</title>
                 <meta name="description" content="Find the average, middle, and most common values in a set." />
             </Helmet>
 

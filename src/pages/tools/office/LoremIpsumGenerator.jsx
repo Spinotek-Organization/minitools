@@ -103,7 +103,7 @@ export default function LoremIpsumGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Lorem Ipsum Generator | Mini Tools by Spinotek</title>
+                <title>Lorem Ipsum Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Generate random placeholder text for your designs. Choose between standard Lorem Ipsum or fun Hipster Ipsum." />
             </Helmet>
 

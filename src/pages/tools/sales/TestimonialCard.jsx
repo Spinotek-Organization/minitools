@@ -9,7 +9,7 @@ export default function TestimonialCard() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Testimonial Card Maker | Mini Tools by Spinotek</title>
+                <title>Testimonial Card Maker | MiniTools by Spinotek</title>
                 <meta name="description" content="Turn client feedback into beautiful visual cards." />
             </Helmet>
 

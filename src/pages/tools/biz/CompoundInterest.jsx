@@ -9,7 +9,7 @@ export default function CompoundInterest() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Compound Interest Calculator | Mini Tools by Spinotek</title>
+                <title>Compound Interest Calculator | MiniTools by Spinotek</title>
                 <meta name="description" content="Project your investment growth with compound interest." />
             </Helmet>
 

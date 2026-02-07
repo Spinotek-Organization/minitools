@@ -9,7 +9,7 @@ export default function PlagiarismChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Plagiarism Checker Linker | Mini Tools by Spinotek</title>
+                <title>Plagiarism Checker Linker | MiniTools by Spinotek</title>
                 <meta name="description" content="Quick links to top free plagiarism detection tools." />
             </Helmet>
 

@@ -9,7 +9,7 @@ export default function MarkdownEditor() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Markdown Editor | Mini Tools by Spinotek</title>
+                <title>Markdown Editor | MiniTools by Spinotek</title>
                 <meta name="description" content="Write and preview Markdown code with a real-time editor." />
             </Helmet>
 

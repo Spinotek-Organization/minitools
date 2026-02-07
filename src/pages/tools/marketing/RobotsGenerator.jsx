@@ -9,7 +9,7 @@ export default function RobotsGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Robots.txt Generator | Mini Tools by Spinotek</title>
+                <title>Robots.txt Generator | MiniTools by Spinotek</title>
                 <meta name="description" content="Create properly formatted robots.txt files for SEO." />
             </Helmet>
 

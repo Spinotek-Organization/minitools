@@ -9,7 +9,7 @@ export default function Stopwatch() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Simple Stopwatch | Mini Tools by Spinotek</title>
+                <title>Simple Stopwatch | MiniTools by Spinotek</title>
                 <meta name="description" content="A simple and clean interface for timing anything." />
             </Helmet>
 

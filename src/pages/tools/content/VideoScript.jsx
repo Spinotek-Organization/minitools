@@ -9,7 +9,7 @@ export default function VideoScript() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Video Script Outliner | Mini Tools by Spinotek</title>
+                <title>Video Script Outliner | MiniTools by Spinotek</title>
                 <meta name="description" content="Structure your video content for maximum impact." />
             </Helmet>
 
