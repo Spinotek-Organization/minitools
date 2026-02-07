@@ -1,7 +1,3 @@
-Ini adalah tantangan yang seru! Untuk membuat sebuah super-app produktivitas, kuncinya adalah variasi. Saya telah menyusun 10 kategori dengan masing-masing 12 tools yang spesifik dan fungsional.
-
-Beberapa tool ini sangat sederhana, namun jika dikumpulkan di satu tempat, akan menjadi sangat powerful.
-
 1. Developer Kit (Dev Kit)
 Tools teknis untuk kebutuhan koding sehari-hari.
 
@@ -23,13 +19,13 @@ Fokus pada optimasi konten dan kampanye digital.
 
 - UTM Link Builder
 - Google SERP Preview
-- Keyword Density Checker
+- Article Text Analyzer (Keyword Density)
 - Meta Tag Generator
 - Twitter/X Thread Counter
-- Redirect Checker
+- Link Cleaner / Stripper (Remove UTM)
 - Robots.txt Generator
-- Sitemap XML Generator
-- Open Graph (OG) Preview
+- URL List to Sitemap
+- Social Post Mockup (LinkedIn/Twitter)
 - Ad Copy Character Counter
 - Headline Analyzer
 - Slug Generator (Ubah judul jadi URL)
@@ -42,7 +38,7 @@ Tools untuk administrasi dan perhitungan cepat.
 - Profit Margin Calculator
 - Discount & Sale Calculator
 - Compound Interest Calculator
-- Currency Converter (API realtime)
+- Investment ROI Calculator
 - Business Name Generator
 - Receipt Maker
 - Break-Even Point Calculator
@@ -63,7 +59,7 @@ Membantu komunikasi dengan calon klien.
 - Follow-up Reminder Calc
 - Testimonial Card Maker
 - Call-to-Action (CTA) Ideas
-- Short Link Generator
+- QR Code Generator
 - Business Card Mockup
 
 5. Content & Social Media
@@ -72,14 +68,14 @@ Esensial bagi kreator konten.
 - Social Media Image Resizer
 - Video Script Outliner
 - Instagram Grid Preview
-- Hashtag Generator
+- Hashtag Manager & Counter
 - Video Aspect Ratio Calc
 - Caption Formatter (Untuk spasi di IG)
 - YouTube Thumbnail Preview
 - Podcast Episode Planner
 - TikTok Viral Hook Ideas
 - Emoji Keyboard/Picker
-- Text-to-Speech Preview
+- Online Teleprompter
 - Watermark Tool
 
 6. Design & Visual
@@ -90,11 +86,11 @@ Utilitas ringan untuk desainer non-profesional.
 - SVG Placeholder Generator
 - CSS Gradient Maker
 - Image-to-WebP Converter
-- Icon Searcher (Koleksi open source)
+- SVG Icon Viewer/Editor
 - CSS Shadow Maker
 - Font Pairer Suggestions
 - Favicon Generator
-- Image Background Remover (API)
+- Image Filters & Effects
 - Aspect Ratio Calculator
 - Pixel to REM Converter
 
@@ -103,7 +99,7 @@ Membantu pekerjaan administratif kantoran.
 
 - PDF Merge/Split
 - Word Counter
-- File Extension Rename Tool
+- Lorem Ipsum Generator
 - Batch Text Search & Replace
 - Roman Numeral Converter
 - Signature Pad (Tanda tangan digital)
@@ -141,7 +137,7 @@ Untuk pelajar, peneliti, atau pengolah data.
 - Equation Solver
 - Graph Plotter (Simple chart)
 - Sorting Algorithm Visualizer
-- Plagiarism Checker Linker
+- Bibliography Manager
 - Fraction Calculator
 - Scientific Calculator
 - Date Difference (Hitung hari/bulan)
@@ -151,13 +147,13 @@ Keamanan digital dasar.
 
 - Strong Password Generator
 - Password Strength Checker
-- QR Code Generator
+- Subnet Calculator (IP Calc)
 - Fake Identity Generator (Untuk testing)
-- Disposable Email Linker
+- Email Spam Trigger Checker
 - Secret Note (Auto-destroy link)
 - IP Address Checker
 - Browser Info Fingerprint
-- DNS Lookup
-- SSL Certificate Checker
-- Port Scanner
+- Subnet Calculator
+- Password Hash Generator (Bcrypt)
+- HTTP Header Analyzer
 - Two-Factor Auth (2FA) Code Generator

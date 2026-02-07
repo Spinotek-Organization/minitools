@@ -179,12 +179,12 @@ export const TOOLS = [
         bgColor: 'bg-slate-100'
     },
     {
-        id: 'og-preview',
-        title: 'Open Graph Preview',
+        id: 'social-mockup',
+        title: 'Social Post Mockup',
         cat: 'marketing',
-        path: '/tools/marketing/og-preview',
+        path: '/tools/marketing/social-mockup',
         isReady: false,
-        desc: 'Preview how your links will look on social media.',
+        desc: 'Preview how your posts will look on LinkedIn, Twitter, and Facebook.',
         icon: 'Share2',
         color: 'text-pink-500',
         bgColor: 'bg-pink-50'
@@ -201,12 +201,12 @@ export const TOOLS = [
         bgColor: 'bg-yellow-50'
     },
     {
-        id: 'keyword-density',
-        title: 'Keyword Density Checker',
+        id: 'text-analyzer',
+        title: 'Article Text Analyzer',
         cat: 'marketing',
-        path: '/tools/marketing/keyword-density',
+        path: '/tools/marketing/text-analyzer',
         isReady: false,
-        desc: 'Analyze how often keywords appear in your content.',
+        desc: 'Analyze word count, keyword density, and reading time of your text.',
         icon: 'Activity',
         color: 'text-emerald-500',
         bgColor: 'bg-emerald-50'
@@ -223,24 +223,24 @@ export const TOOLS = [
         bgColor: 'bg-sky-50'
     },
     {
-        id: 'redirect-check',
-        title: 'Redirect Checker',
+        id: 'link-cleaner',
+        title: 'Link Cleaner / Stripper',
         cat: 'marketing',
-        path: '/tools/marketing/redirect-checker',
+        path: '/tools/marketing/link-cleaner',
         isReady: false,
-        desc: 'Track and verify URL redirection paths and status codes.',
-        icon: 'ArrowRightLeft',
+        desc: 'Remove tracking parameters (UTM, FBCLID) from your URLs.',
+        icon: 'Eraser',
         color: 'text-indigo-500',
         bgColor: 'bg-indigo-50'
     },
     {
-        id: 'sitemap-gen',
-        title: 'Sitemap XML Generator',
+        id: 'url-sitemap',
+        title: 'URL List to Sitemap',
         cat: 'marketing',
-        path: '/tools/marketing/sitemap-generator',
+        path: '/tools/marketing/url-sitemap',
         isReady: false,
-        desc: 'Generate SEO-friendly XML sitemaps for your website.',
-        icon: 'Map',
+        desc: 'Convert a list of URLs into a properly formatted XML Sitemap.',
+        icon: 'FileCode',
         color: 'text-rose-500',
         bgColor: 'bg-rose-50'
     },
@@ -302,13 +302,13 @@ export const TOOLS = [
         bgColor: 'bg-teal-50'
     },
     {
-        id: 'currency-conv',
-        title: 'Currency Converter',
+        id: 'roi-calc',
+        title: 'Investment ROI Calculator',
         cat: 'biz',
-        path: '/tools/biz/currency-converter',
+        path: '/tools/biz/roi-calculator',
         isReady: false,
-        desc: 'Real-time exchange rates for global business.',
-        icon: 'Coins',
+        desc: 'Calculate Return on Investment and potential profit growth.',
+        icon: 'TrendingUp',
         color: 'text-yellow-600',
         bgColor: 'bg-yellow-50'
     },
@@ -513,13 +513,13 @@ export const TOOLS = [
         bgColor: 'bg-yellow-50'
     },
     {
-        id: 'short-link',
-        title: 'Short Link Generator',
+        id: 'qr-gen',
+        title: 'QR Code Generator',
         cat: 'sales',
-        path: '/tools/sales/short-link',
+        path: '/tools/sales/qr-generator',
         isReady: false,
-        desc: 'Create clean and trackable short URLs.',
-        icon: 'Link2',
+        desc: 'Create scalable QR codes for links, text, or vCards.',
+        icon: 'QrCode',
         color: 'text-sky-500',
         bgColor: 'bg-sky-50'
     },
@@ -570,12 +570,12 @@ export const TOOLS = [
         bgColor: 'bg-fuchsia-50'
     },
     {
-        id: 'hashtag-gen',
-        title: 'Hashtag Generator',
+        id: 'hashtag-manager',
+        title: 'Hashtag Manager',
         cat: 'content',
-        path: '/tools/content/hashtag-generator',
+        path: '/tools/content/hashtag-manager',
         isReady: false,
-        desc: 'Find trending hashtags to boost your reach.',
+        desc: 'Organize, count, and save your hashtag groups.',
         icon: 'Hash',
         color: 'text-blue-500',
         bgColor: 'bg-blue-50'
@@ -647,13 +647,13 @@ export const TOOLS = [
         bgColor: 'bg-yellow-50'
     },
     {
-        id: 'tts-preview',
-        title: 'Text-to-Speech Preview',
+        id: 'teleprompter',
+        title: 'Online Teleprompter',
         cat: 'content',
-        path: '/tools/content/text-to-speech',
+        path: '/tools/content/teleprompter',
         isReady: false,
-        desc: 'Listen to how your scripts sound with AI voices.',
-        icon: 'Volume2',
+        desc: 'Read your scripts smoothly while recording videos.',
+        icon: 'Monitor',
         color: 'text-sky-500',
         bgColor: 'bg-sky-50'
     },
@@ -737,12 +737,12 @@ export const TOOLS = [
         bgColor: 'bg-sky-50'
     },
     {
-        id: 'icon-search',
-        title: 'Icon Searcher',
+        id: 'icon-viewer',
+        title: 'SVG Icon Viewer/Editor',
         cat: 'design',
-        path: '/tools/design/icon-search',
+        path: '/tools/design/icon-viewer',
         isReady: false,
-        desc: 'Search through thousands of open-source icons.',
+        desc: 'View, edit colors, and optimize your SVG icons.',
         icon: 'Search',
         color: 'text-blue-500',
         bgColor: 'bg-blue-50'
@@ -770,13 +770,13 @@ export const TOOLS = [
         bgColor: 'bg-indigo-50'
     },
     {
-        id: 'bg-remover',
-        title: 'Image Background Remover',
+        id: 'image-filters',
+        title: 'Image Filters & Effects',
         cat: 'design',
-        path: '/tools/design/background-remover',
+        path: '/tools/design/image-filters',
         isReady: false,
-        desc: 'Quickly remove backgrounds from your images using AI.',
-        icon: 'Scissors',
+        desc: 'Apply beautiful filters and adjustments to your photos.',
+        icon: 'Wand2',
         color: 'text-pink-500',
         bgColor: 'bg-pink-50'
     },
@@ -827,13 +827,13 @@ export const TOOLS = [
         bgColor: 'bg-blue-50'
     },
     {
-        id: 'extension-rename',
-        title: 'File Extension Renamer',
+        id: 'lorem-gen',
+        title: 'Lorem Ipsum Generator',
         cat: 'office',
-        path: '/tools/office/extension-rename',
+        path: '/tools/office/lorem-ipsum',
         isReady: false,
-        desc: 'Batch change file extensions easily and safely.',
-        icon: 'FileType',
+        desc: 'Generate placeholder text for your designs.',
+        icon: 'Type',
         color: 'text-indigo-500',
         bgColor: 'bg-indigo-50'
     },
