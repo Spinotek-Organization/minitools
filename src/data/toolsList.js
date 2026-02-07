@@ -182,6 +182,66 @@ export const TOOLS = [
         color: 'text-yellow-500',
         bgColor: 'bg-yellow-50'
     },
+    {
+        id: 'keyword-density',
+        title: 'Keyword Density Checker',
+        cat: 'marketing',
+        path: '/tools/marketing/keyword-density',
+        desc: 'Analyze how often keywords appear in your content.',
+        icon: 'Activity',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'tweet-counter',
+        title: 'Twitter/X Thread Counter',
+        cat: 'marketing',
+        path: '/tools/marketing/tweet-counter',
+        desc: 'Count characters and manage your X/Twitter thread limits.',
+        icon: 'Twitter',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'redirect-check',
+        title: 'Redirect Checker',
+        cat: 'marketing',
+        path: '/tools/marketing/redirect-checker',
+        desc: 'Track and verify URL redirection paths and status codes.',
+        icon: 'ArrowRightLeft',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'sitemap-gen',
+        title: 'Sitemap XML Generator',
+        cat: 'marketing',
+        path: '/tools/marketing/sitemap-generator',
+        desc: 'Generate SEO-friendly XML sitemaps for your website.',
+        icon: 'Map',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'ad-counter',
+        title: 'Ad Copy Character Counter',
+        cat: 'marketing',
+        path: '/tools/marketing/ad-counter',
+        desc: 'Validate character limits for Google and Meta Ads.',
+        icon: 'Layout',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'headline-analyzer',
+        title: 'Headline Analyzer',
+        cat: 'marketing',
+        path: '/tools/marketing/headline-analyzer',
+        desc: 'Improve your headlines for better CTR and engagement.',
+        icon: 'FileText',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
 
     // CATEGORY: BUSINESS & FINANCE
     {
@@ -224,6 +284,330 @@ export const TOOLS = [
         color: 'text-yellow-600',
         bgColor: 'bg-yellow-50'
     },
+    {
+        id: 'discount-calc',
+        title: 'Discount & Sale Calculator',
+        cat: 'biz',
+        path: '/tools/biz/discount-calculator',
+        desc: 'Calculate final prices after discounts and sales taxes.',
+        icon: 'Percent',
+        color: 'text-rose-600',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'compound-interest',
+        title: 'Compound Interest Calculator',
+        cat: 'biz',
+        path: '/tools/biz/compound-interest',
+        desc: 'Project your investment growth with compound interest.',
+        icon: 'BarChart3',
+        color: 'text-blue-600',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'biz-name-gen',
+        title: 'Business Name Generator',
+        cat: 'biz',
+        path: '/tools/biz/business-name-generator',
+        desc: 'Find creative and unique names for your next venture.',
+        icon: 'Lightbulb',
+        color: 'text-amber-600',
+        bgColor: 'bg-amber-50'
+    },
+    {
+        id: 'receipt-maker',
+        title: 'Receipt Maker',
+        cat: 'biz',
+        path: '/tools/biz/receipt-maker',
+        desc: 'Generate simple digital receipts for your customers.',
+        icon: 'FileSpreadsheet',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'break-even-calc',
+        title: 'Break-Even Point Calculator',
+        cat: 'biz',
+        path: '/tools/biz/break-even',
+        desc: 'Calculate when your business will become profitable.',
+        icon: 'Target',
+        color: 'text-indigo-600',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'salary-calc',
+        title: 'Salary/Take Home Pay Calc',
+        cat: 'biz',
+        path: '/tools/biz/salary-calculator',
+        desc: 'Calculate net pay after taxes and deductions.',
+        icon: 'Wallet',
+        color: 'text-emerald-600',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'unit-price-comp',
+        title: 'Unit Price Comparison',
+        cat: 'biz',
+        path: '/tools/biz/unit-price',
+        desc: 'Find the best deal by comparing unit prices.',
+        icon: 'Scale',
+        color: 'text-cyan-600',
+        bgColor: 'bg-cyan-50'
+    },
+    {
+        id: 'bookkeeping',
+        title: 'Simple Bookkeeping Tool',
+        cat: 'biz',
+        path: '/tools/biz/bookkeeping',
+        desc: 'Track your daily income and expenses easily.',
+        icon: 'BookOpen',
+        color: 'text-violet-600',
+        bgColor: 'bg-violet-50'
+    },
+
+    // CATEGORY: SALES & CUSTOMER SUPPORT
+    {
+        id: 'wa-direct',
+        title: 'WhatsApp Direct Link',
+        cat: 'sales',
+        path: '/tools/sales/wa-direct',
+        desc: 'Send WhatsApp messages without saving numbers.',
+        icon: 'MessageSquare',
+        color: 'text-green-500',
+        bgColor: 'bg-green-50'
+    },
+    {
+        id: 'email-sig',
+        title: 'Email Signature Generator',
+        cat: 'sales',
+        path: '/tools/sales/email-signature',
+        desc: 'Create professional email signatures for your brand.',
+        icon: 'PenTool',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'cold-email',
+        title: 'Cold Email Templates',
+        cat: 'sales',
+        path: '/tools/sales/cold-email',
+        desc: 'High-converting templates for your outreach.',
+        icon: 'Mail',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'sales-script',
+        title: 'Sales Script Generator',
+        cat: 'sales',
+        path: '/tools/sales/sales-script',
+        desc: 'Generate persuasive sales scripts instantly.',
+        icon: 'FileText',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'tz-converter',
+        title: 'Time Zone Converter',
+        cat: 'sales',
+        path: '/tools/sales/timezone-converter',
+        desc: 'Coordinate meetings across different time zones.',
+        icon: 'Clock',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'meeting-agenda',
+        title: 'Meeting Agenda Builder',
+        cat: 'sales',
+        path: '/tools/sales/meeting-agenda',
+        desc: 'Plan and structure productive business meetings.',
+        icon: 'Calendar',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'price-quote',
+        title: 'Price Quote Generator',
+        cat: 'sales',
+        path: '/tools/sales/price-quote',
+        desc: 'Quickly generate professional quotes for clients.',
+        icon: 'FileBarChart',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'followup-calc',
+        title: 'Follow-up Reminder Calc',
+        cat: 'sales',
+        path: '/tools/sales/followup-reminder',
+        desc: 'Schedule and track your client follow-up timing.',
+        icon: 'Bell',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'testimonial-maker',
+        title: 'Testimonial Card Maker',
+        cat: 'sales',
+        path: '/tools/sales/testimonial-card',
+        desc: 'Turn client feedback into beautiful visual cards.',
+        icon: 'UserCheck',
+        color: 'text-pink-500',
+        bgColor: 'bg-pink-50'
+    },
+    {
+        id: 'cta-ideas',
+        title: 'CTA Ideas Generator',
+        cat: 'sales',
+        path: '/tools/sales/cta-ideas',
+        desc: 'Catchy call-to-action ideas for higher conversion.',
+        icon: 'Zap',
+        color: 'text-yellow-500',
+        bgColor: 'bg-yellow-50'
+    },
+    {
+        id: 'short-link',
+        title: 'Short Link Generator',
+        cat: 'sales',
+        path: '/tools/sales/short-link',
+        desc: 'Create clean and trackable short URLs.',
+        icon: 'Link2',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'biz-card-mockup',
+        title: 'Business Card Mockup',
+        cat: 'sales',
+        path: '/tools/sales/biz-card-mockup',
+        desc: 'Visualize your business card design in realistic mockups.',
+        icon: 'CreditCard',
+        color: 'text-amber-500',
+        bgColor: 'bg-amber-50'
+    },
+
+    // CATEGORY: CONTENT & SOCIAL MEDIA
+    {
+        id: 'img-resizer',
+        title: 'Social Media Image Resizer',
+        cat: 'content',
+        path: '/tools/content/image-resizer',
+        desc: 'Resize images for Instagram, Twitter, and Facebook.',
+        icon: 'Maximize',
+        color: 'text-pink-500',
+        bgColor: 'bg-pink-50'
+    },
+    {
+        id: 'video-outline',
+        title: 'Video Script Outliner',
+        cat: 'content',
+        path: '/tools/content/video-script',
+        desc: 'Structure your video content for maximum impact.',
+        icon: 'Video',
+        color: 'text-red-500',
+        bgColor: 'bg-red-50'
+    },
+    {
+        id: 'ig-grid',
+        title: 'Instagram Grid Preview',
+        cat: 'content',
+        path: '/tools/content/instagram-grid',
+        desc: 'Plan and visualize your Instagram feed aesthetic.',
+        icon: 'Grid',
+        color: 'text-fuchsia-500',
+        bgColor: 'bg-fuchsia-50'
+    },
+    {
+        id: 'hashtag-gen',
+        title: 'Hashtag Generator',
+        cat: 'content',
+        path: '/tools/content/hashtag-generator',
+        desc: 'Find trending hashtags to boost your reach.',
+        icon: 'Hash',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'aspect-ratio',
+        title: 'Video Aspect Ratio Calc',
+        cat: 'content',
+        path: '/tools/content/aspect-ratio',
+        desc: 'Calculate perfect dimensions for any video format.',
+        icon: 'Box',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'caption-fmt',
+        title: 'Caption Formatter',
+        cat: 'content',
+        path: '/tools/content/caption-formatter',
+        desc: 'Clean up your captions with clean line breaks.',
+        icon: 'Type',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'yt-thumbnail',
+        title: 'YouTube Thumbnail Preview',
+        cat: 'content',
+        path: '/tools/content/youtube-thumbnail',
+        desc: 'Test your thumbnails against various backgrounds.',
+        icon: 'Youtube',
+        color: 'text-red-600',
+        bgColor: 'bg-red-50'
+    },
+    {
+        id: 'podcast-planner',
+        title: 'Podcast Episode Planner',
+        cat: 'content',
+        path: '/tools/content/podcast-planner',
+        desc: 'Organize your podcast episodes and guest notes.',
+        icon: 'Mic',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'tiktok-hooks',
+        title: 'TikTok Viral Hook Ideas',
+        cat: 'content',
+        path: '/tools/content/tiktok-hooks',
+        desc: 'Get attention-grabbing hooks for your TikToks.',
+        icon: 'Zap',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'emoji-picker',
+        title: 'Emoji Keyboard/Picker',
+        cat: 'content',
+        path: '/tools/content/emoji-picker',
+        desc: 'Quickly find and copy the perfect emojis.',
+        icon: 'Smile',
+        color: 'text-yellow-500',
+        bgColor: 'bg-yellow-50'
+    },
+    {
+        id: 'tts-preview',
+        title: 'Text-to-Speech Preview',
+        cat: 'content',
+        path: '/tools/content/text-to-speech',
+        desc: 'Listen to how your scripts sound with AI voices.',
+        icon: 'Volume2',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'watermark-tool',
+        title: 'Watermark Tool',
+        cat: 'content',
+        path: '/tools/content/watermark',
+        desc: 'Protect your content with custom watermarks.',
+        icon: 'Stamp',
+        color: 'text-amber-500',
+        bgColor: 'bg-amber-50'
+    },
 
     // CATEGORY: DESIGN & VISUAL
     {
@@ -262,8 +646,576 @@ export const TOOLS = [
         cat: 'design',
         path: '/tools/design/shadow-maker',
         desc: 'Visual editor for complex CSS box-shadows.',
-        icon: 'Box',
+        icon: 'BoxSelect',
         color: 'text-slate-500',
-        bgColor: 'bg-slate-100'
-    }
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'svg-placeholder',
+        title: 'SVG Placeholder Generator',
+        cat: 'design',
+        path: '/tools/design/svg-placeholder',
+        desc: 'Generate custom SVG placeholder images for layouts.',
+        icon: 'ImagePlus',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'webp-conv',
+        title: 'Image-to-WebP Converter',
+        cat: 'design',
+        path: '/tools/design/webp-converter',
+        desc: 'Convert your images to high-performance WebP format.',
+        icon: 'FileOutput',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'icon-search',
+        title: 'Icon Searcher',
+        cat: 'design',
+        path: '/tools/design/icon-search',
+        desc: 'Search through thousands of open-source icons.',
+        icon: 'Search',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'font-pairer',
+        title: 'Font Pairer Suggestions',
+        cat: 'design',
+        path: '/tools/design/font-pairer',
+        desc: 'Find perfect typography combinations for your project.',
+        icon: 'Type',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'favicon-gen',
+        title: 'Favicon Generator',
+        cat: 'design',
+        path: '/tools/design/favicon-generator',
+        desc: 'Create favicons for all platforms and browsers.',
+        icon: 'Globe',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'bg-remover',
+        title: 'Image Background Remover',
+        cat: 'design',
+        path: '/tools/design/background-remover',
+        desc: 'Quickly remove backgrounds from your images using AI.',
+        icon: 'Scissors',
+        color: 'text-pink-500',
+        bgColor: 'bg-pink-50'
+    },
+    {
+        id: 'aspect-calc',
+        title: 'Aspect Ratio Calculator',
+        cat: 'design',
+        path: '/tools/design/aspect-ratio',
+        desc: 'Calculate dimensions and ratios for various displays.',
+        icon: 'Maximize',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'pixel-rem',
+        title: 'Pixel to REM Converter',
+        cat: 'design',
+        path: '/tools/design/pixel-to-rem',
+        desc: 'Convert pixels to REM for modern responsive CSS.',
+        icon: 'MoveHorizontal',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50'
+    },
+
+    // CATEGORY: OFFICE & ADMIN
+    {
+        id: 'pdf-merge',
+        title: 'PDF Merge/Split',
+        cat: 'office',
+        path: '/tools/office/pdf-tools',
+        desc: 'Combine multiple PDFs or extract pages into new files.',
+        icon: 'FilePlus2',
+        color: 'text-red-500',
+        bgColor: 'bg-red-50'
+    },
+    {
+        id: 'word-counter',
+        title: 'Word Counter',
+        cat: 'office',
+        path: '/tools/office/word-counter',
+        desc: 'Count words, characters, and sentences in your text.',
+        icon: 'FileText',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'extension-rename',
+        title: 'File Extension Renamer',
+        cat: 'office',
+        path: '/tools/office/extension-rename',
+        desc: 'Batch change file extensions easily and safely.',
+        icon: 'FileType',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'text-replace',
+        title: 'Batch Search & Replace',
+        cat: 'office',
+        path: '/tools/office/batch-replace',
+        desc: 'Find and replace text across multiple lines or files.',
+        icon: 'Replace',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'roman-conv',
+        title: 'Roman Numeral Converter',
+        cat: 'office',
+        path: '/tools/office/roman-converter',
+        desc: 'Convert numbers to Roman numerals and vice versa.',
+        icon: 'Hash',
+        color: 'text-amber-500',
+        bgColor: 'bg-amber-50'
+    },
+    {
+        id: 'signature-pad',
+        title: 'Digital Signature Pad',
+        cat: 'office',
+        path: '/tools/office/signature-pad',
+        desc: 'Draw and download your digital signature.',
+        icon: 'PenTool',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'sort-list',
+        title: 'Alphabetical Sorter',
+        cat: 'office',
+        path: '/tools/office/sort-list',
+        desc: 'Sort any list alphabetically or numerically.',
+        icon: 'SortAsc',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'remove-duplicates',
+        title: 'Duplicate Line Remover',
+        cat: 'office',
+        path: '/tools/office/remove-duplicates',
+        desc: 'Clean up your lists by removing repeated lines.',
+        icon: 'CopyMinus',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'case-converter',
+        title: 'Case Converter',
+        cat: 'office',
+        path: '/tools/office/case-converter',
+        desc: 'Convert text between upper, lower, and title case.',
+        icon: 'Type',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50'
+    },
+    {
+        id: 'md-editor',
+        title: 'Markdown Editor',
+        cat: 'office',
+        path: '/tools/office/markdown-editor',
+        desc: 'Write and preview Markdown with a live editor.',
+        icon: 'FileCode',
+        color: 'text-fuchsia-500',
+        bgColor: 'bg-fuchsia-50'
+    },
+    {
+        id: 'csv-json',
+        title: 'CSV to JSON Converter',
+        cat: 'office',
+        path: '/tools/office/csv-to-json',
+        desc: 'Convert spreadsheet data to JSON format.',
+        icon: 'Table',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'num-to-words',
+        title: 'Number to Words (Terbilang)',
+        cat: 'office',
+        path: '/tools/office/number-to-words',
+        desc: 'Convert numerical values into written text.',
+        icon: 'Coins',
+        color: 'text-lime-600',
+        bgColor: 'bg-lime-50'
+    },
+
+    // CATEGORY: PRODUCTIVITY & SELF-CARE
+    {
+        id: 'pomodoro',
+        title: 'Pomodoro Timer',
+        cat: 'productivity',
+        path: '/tools/prod/pomodoro',
+        desc: 'Stay focused with customizable work and break intervals.',
+        icon: 'Timer',
+        color: 'text-red-500',
+        bgColor: 'bg-red-50'
+    },
+    {
+        id: 'ambient-noise',
+        title: 'Ambient Noise Generator',
+        cat: 'productivity',
+        path: '/tools/prod/ambient-noise',
+        desc: 'Focus with soothing sounds like rain, coffee shop, and more.',
+        icon: 'Waves',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'habit-tracker',
+        title: 'Daily Habit Tracker',
+        cat: 'productivity',
+        path: '/tools/prod/habit-tracker',
+        desc: 'Track and build better daily routines and habits.',
+        icon: 'CheckCircle2',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'todo-list',
+        title: 'Minimalist To-Do List',
+        cat: 'productivity',
+        path: '/tools/prod/todo-list',
+        desc: 'Keep your tasks simple and organized for the day.',
+        icon: 'ListTodo',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'water-reminder',
+        title: 'Water Intake Reminder',
+        cat: 'productivity',
+        path: '/tools/prod/water-reminder',
+        desc: 'Stay hydrated with smart reminders throughout the day.',
+        icon: 'Droplets',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'eye-break',
+        title: 'Eye Break Timer',
+        cat: 'productivity',
+        path: '/tools/prod/eye-break',
+        desc: 'Protect your eyes using the 20-20-20 break rule.',
+        icon: 'Eye',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'gratitude-journal',
+        title: 'Gratitude Journal',
+        cat: 'productivity',
+        path: '/tools/prod/gratitude-journal',
+        desc: 'Improve your well-being by reflecting on positive moments.',
+        icon: 'Heart',
+        color: 'text-pink-500',
+        bgColor: 'bg-pink-50'
+    },
+    {
+        id: 'decision-matrix',
+        title: 'Decision Matrix (Pick for me)',
+        cat: 'productivity',
+        path: '/tools/prod/decision-matrix',
+        desc: 'Stuck? Let the logic help you decide what to do next.',
+        icon: 'Shuffle',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'break-timer',
+        title: 'Break Timer',
+        cat: 'productivity',
+        path: '/tools/prod/break-timer',
+        desc: 'Smart reminders to step away and recharge your energy.',
+        icon: 'Coffee',
+        color: 'text-amber-600',
+        bgColor: 'bg-amber-50'
+    },
+    {
+        id: 'daily-reflection',
+        title: 'Daily Reflection Prompt',
+        cat: 'productivity',
+        path: '/tools/prod/daily-reflection',
+        desc: 'Thoughtful prompts for personal growth and awareness.',
+        icon: 'BookOpen',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50'
+    },
+    {
+        id: 'stopwatch',
+        title: 'Simple Stopwatch',
+        cat: 'productivity',
+        path: '/tools/prod/stopwatch',
+        desc: 'A simple and clean interface for timing anything.',
+        icon: 'Clock',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'time-boxing',
+        title: 'Time Boxing Planner',
+        cat: 'productivity',
+        path: '/tools/prod/time-boxing',
+        desc: 'Plan your day by assigning tasks to specific time blocks.',
+        icon: 'LayoutGrid',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+
+    // CATEGORY: ACADEMIC & DATA
+    {
+        id: 'citation-gen',
+        title: 'Citation Generator',
+        cat: 'academic',
+        path: '/tools/academic/citation-generator',
+        desc: 'Generate citations in APA, MLA, and Chicago formats.',
+        icon: 'Quote',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'percentage-calc',
+        title: 'Percentage Calculator',
+        cat: 'academic',
+        path: '/tools/academic/percentage-calc',
+        desc: 'Quickly calculate increases, decreases, and percentages.',
+        icon: 'Percent',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'stats-calc',
+        title: 'Mean/Median/Mode Calc',
+        cat: 'academic',
+        path: '/tools/academic/stats-calc',
+        desc: 'Find the average, middle, and most common values in a set.',
+        icon: 'BarChart2',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'unit-conv',
+        title: 'Unit Converter',
+        cat: 'academic',
+        path: '/tools/academic/unit-converter',
+        desc: 'Convert between metric and imperial units easily.',
+        icon: 'ArrowLeftRight',
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-50'
+    },
+    {
+        id: 'binary-conv',
+        title: 'Binary to Decimal',
+        cat: 'academic',
+        path: '/tools/academic/binary-converter',
+        desc: 'Convert numbers between binary, decimal, and hex.',
+        icon: 'Binary',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'equation-solver',
+        title: 'Equation Solver',
+        cat: 'academic',
+        path: '/tools/academic/equation-solver',
+        desc: 'Solve basic linear and quadratic equations step-by-step.',
+        icon: 'Divide',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'graph-plotter',
+        title: 'Simple Graph Plotter',
+        cat: 'academic',
+        path: '/tools/academic/graph-plotter',
+        desc: 'Visualize your data with simple bar or line graphs.',
+        icon: 'LineChart',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'sorting-visualizer',
+        title: 'Sorting Visualizer',
+        cat: 'academic',
+        path: '/tools/academic/sorting-visualizer',
+        desc: 'Watch how different sorting algorithms work in real-time.',
+        icon: 'Layers',
+        color: 'text-amber-500',
+        bgColor: 'bg-amber-50'
+    },
+    {
+        id: 'plagiarism-linker',
+        title: 'Plagiarism Checker Linker',
+        cat: 'academic',
+        path: '/tools/academic/plagiarism-checker',
+        desc: 'Quick links to top free plagiarism detection tools.',
+        icon: 'Link',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'fraction-calc',
+        title: 'Fraction Calculator',
+        cat: 'academic',
+        path: '/tools/academic/fraction-calc',
+        desc: 'Add, subtract, and multiply complex fractions.',
+        icon: 'Hash',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50'
+    },
+    {
+        id: 'sci-calc',
+        title: 'Scientific Calculator',
+        cat: 'academic',
+        path: '/tools/academic/scientific-calc',
+        desc: 'Advanced calculator for math and science needs.',
+        icon: 'Calculator',
+        color: 'text-slate-500',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'date-diff',
+        title: 'Date Difference Calc',
+        cat: 'academic',
+        path: '/tools/academic/date-difference',
+        desc: 'Calculate the exact number of days between two dates.',
+        icon: 'Calendar',
+        color: 'text-pink-500',
+        bgColor: 'bg-pink-50'
+    },
+
+    // CATEGORY: SECURITY & PRIVACY
+    {
+        id: 'password-gen',
+        title: 'Strong Password Generator',
+        cat: 'security',
+        path: '/tools/security/password-generator',
+        desc: 'Create secure, random passwords to protect your accounts.',
+        icon: 'Shield',
+        color: 'text-emerald-500',
+        bgColor: 'bg-emerald-50'
+    },
+    {
+        id: 'password-strength',
+        title: 'Password Strength Checker',
+        cat: 'security',
+        path: '/tools/security/password-strength',
+        desc: 'Test how secure your password is against brute-force attacks.',
+        icon: 'Key',
+        color: 'text-amber-500',
+        bgColor: 'bg-amber-50'
+    },
+    {
+        id: 'qr-gen',
+        title: 'QR Code Generator',
+        cat: 'security',
+        path: '/tools/security/qr-generator',
+        desc: 'Generate QR codes for URLs, text, or contact information.',
+        icon: 'QrCode',
+        color: 'text-slate-900',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: 'fake-identity',
+        title: 'Fake Identity Generator',
+        cat: 'security',
+        path: '/tools/security/fake-identity',
+        desc: 'Generate random profiles for software testing and privacy.',
+        icon: 'UserCircle',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50'
+    },
+    {
+        id: 'temp-email',
+        title: 'Disposable Email Linker',
+        cat: 'security',
+        path: '/tools/security/temp-email',
+        desc: 'Quick links to top temporary email services for privacy.',
+        icon: 'Mail',
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-50'
+    },
+    {
+        id: 'secret-note',
+        title: 'Secret Note',
+        cat: 'security',
+        path: '/tools/security/secret-note',
+        desc: 'Create encrypted notes that self-destruct after being read.',
+        icon: 'EyeOff',
+        color: 'text-rose-500',
+        bgColor: 'bg-rose-50'
+    },
+    {
+        id: 'ip-checker',
+        title: 'IP Address Checker',
+        cat: 'security',
+        path: '/tools/security/ip-checker',
+        desc: 'Find your public IP address and approximate location.',
+        icon: 'Globe',
+        color: 'text-sky-500',
+        bgColor: 'bg-sky-50'
+    },
+    {
+        id: 'browser-fingerprint',
+        title: 'Browser Fingerprint',
+        cat: 'security',
+        path: '/tools/security/browser-fingerprint',
+        desc: 'See what information your browser reveals to websites.',
+        icon: 'Fingerprint',
+        color: 'text-violet-500',
+        bgColor: 'bg-violet-50'
+    },
+    {
+        id: 'dns-lookup',
+        title: 'DNS Lookup',
+        cat: 'security',
+        path: '/tools/security/dns-lookup',
+        desc: 'Find DNS records for any domain name quickly.',
+        icon: 'Search',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50'
+    },
+    {
+        id: 'ssl-checker',
+        title: 'SSL Certificate Checker',
+        cat: 'security',
+        path: '/tools/security/ssl-checker',
+        desc: 'Verify the validity and details of a websites SSL certificate.',
+        icon: 'Lock',
+        color: 'text-teal-500',
+        bgColor: 'bg-teal-50'
+    },
+    {
+        id: 'port-scanner',
+        title: 'Port Scanner',
+        cat: 'security',
+        path: '/tools/security/port-scanner',
+        desc: 'Check for open ports on a specific IP or domain.',
+        icon: 'Terminal',
+        color: 'text-slate-600',
+        bgColor: 'bg-slate-50'
+    },
+    {
+        id: '2fa-gen',
+        title: '2FA Code Generator',
+        cat: 'security',
+        path: '/tools/security/2fa-gen',
+        desc: 'Generate two-factor authentication codes for your accounts.',
+        icon: 'ShieldCheck',
+        color: 'text-blue-600',
+        bgColor: 'bg-blue-50'
+    },
 ];
