@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Copy, Trash2, CheckCircle, FileJson, AlertCircle } from 'lucide-react';
+import Card from '../../../components/shared/Card';
 
 export default function JsonFormatter() {
     const [input, setInput] = useState('');
@@ -64,20 +65,20 @@ export default function JsonFormatter() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[600px]">
                 {/* Input Area */}
-                <div className="flex flex-col bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                <Card noPadding className="flex flex-col">
                     <div className="px-6 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                         <span className="text-xs font-black uppercase tracking-widest text-slate-400">Raw Input</span>
                     </div>
                     <textarea
-                        className="flex-grow p-6 font-mono text-sm resize-none focus:ring-0 outline-none text-slate-700"
+                        className="flex-grow p-6 font-mono text-sm resize-none focus:ring-0 outline-none text-slate-700 bg-transparent"
                         placeholder='Paste your JSON here (e.g., {"name":"John", "age":30})'
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                </div>
+                </Card>
 
                 {/* Output Area */}
-                <div className="flex flex-col bg-slate-900 rounded-3xl overflow-hidden shadow-2xl relative">
+                <Card dark noPadding className="flex flex-col relative">
                     <div className="px-6 py-3 border-b border-slate-800 flex justify-between items-center bg-slate-800/50">
                         <span className="text-xs font-black uppercase tracking-widest text-slate-500">Formatted Result</span>
                         {output && (
@@ -103,14 +104,14 @@ export default function JsonFormatter() {
                                 </div>
                             </div>
                         ) : output ? (
-                            <pre className="whitespace-pre-wrap">{output}</pre>
+                            <pre className="whitespace-pre-wrap leading-relaxed">{output}</pre>
                         ) : (
                             <div className="flex items-center justify-center h-full text-slate-600 italic">
                                 Formatted output will appear here...
                             </div>
                         )}
                     </div>
-                </div>
+                </Card>
             </div>
         </div>
     );

@@ -1,16 +1,27 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Layout from './components/shared/Layout';
+import Card from './components/shared/Card';
+import RequestToolCTA from './components/shared/RequestToolCTA';
+import ScrollToTop from './components/shared/ScrollToTop';
 import { CATEGORIES } from './data/categories';
 import * as Icons from 'lucide-react';
 import JsonFormatter from './pages/tools/dev/JsonFormatter';
+import Base64Codec from './pages/tools/dev/Base64Codec';
+import UrlCodec from './pages/tools/dev/UrlCodec';
+import HtmlCodec from './pages/tools/dev/HtmlCodec';
+import RegexTester from './pages/tools/dev/RegexTester';
+import CategoryPage from './pages/tools/CategoryPage';
+import ExploreToolsPage from './pages/tools/ExploreToolsPage';
 import { Helmet } from 'react-helmet-async';
 
 function App() {
     return (
         <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <ScrollToTop />
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/explore" element={<ExploreToolsPage />} />
                     <Route path="/tools/dev/json-formatter" element={
                         <>
                             <Helmet>
@@ -20,6 +31,11 @@ function App() {
                             <JsonFormatter />
                         </>
                     } />
+                    <Route path="/tools/dev/base64-encoder" element={<Base64Codec />} />
+                    <Route path="/tools/dev/url-encoder" element={<UrlCodec />} />
+                    <Route path="/tools/dev/html-encoder" element={<HtmlCodec />} />
+                    <Route path="/tools/dev/regex-tester" element={<RegexTester />} />
+                    <Route path="/category/:id" element={<CategoryPage />} />
                 </Routes>
             </Layout>
         </Router>
@@ -53,9 +69,9 @@ function Home() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
-                        <button className="px-8 py-4 bg-blue-600 text-white font-extrabold rounded-2xl hover:bg-blue-700 transition-all active:scale-95 text-base">
+                        <Link to="/explore" className="px-8 py-4 bg-blue-600 text-white font-extrabold rounded-2xl hover:bg-blue-700 transition-all active:scale-95 text-base flex items-center justify-center">
                             Explore Tools
-                        </button>
+                        </Link>
                         <button className="px-8 py-4 bg-white text-slate-700 font-extrabold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all text-base">
                             View Roadmap
                         </button>
@@ -84,39 +100,24 @@ function Home() {
                     {CATEGORIES.map((cat, idx) => {
                         const IconComponent = Icons[cat.icon];
                         return (
-                            <Link
-                                key={cat.id}
-                                to={`/category/${cat.id}`}
-                                className="group relative bg-white p-7 rounded-[2rem] border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 overflow-hidden"
-                            >
-                                <div className="relative z-10">
-                                    <div className="w-12 h-12 mb-6 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
-                                        {IconComponent && <IconComponent size={24} />}
+                            <Link key={cat.id} to={`/category/${cat.id}`}>
+                                <Card hover className="h-full" noPadding>
+                                    <div className="p-7">
+                                        <div className={`w-12 h-12 mb-6 rounded-xl ${cat.bgColor} flex items-center justify-center ${cat.color} group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 shadow-sm`}>
+                                            {IconComponent && <IconComponent size={24} />}
+                                        </div>
+                                        <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-blue-700 transition-colors leading-tight">{cat.name}</h3>
+                                        <p className="text-slate-500 text-xs font-medium leading-relaxed group-hover:text-slate-600 transition-colors">{cat.description}</p>
                                     </div>
-                                    <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-blue-700 transition-colors leading-tight">{cat.name}</h3>
-                                    <p className="text-slate-500 text-xs font-medium leading-relaxed group-hover:text-slate-600 transition-colors">{cat.description}</p>
-                                </div>
+                                </Card>
                             </Link>
                         );
                     })}
                 </div>
 
-                {/* Trust Section / Stats Bar */}
-                <div className="mt-24 p-8 bg-slate-50/50 rounded-[2.5rem] border border-slate-100 flex flex-col md:flex-row items-center justify-around gap-8 text-center">
-                    <div className="space-y-1">
-                        <div className="text-3xl font-black text-slate-900">99.9%</div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Uptime</div>
-                    </div>
-                    <div className="w-px h-8 bg-slate-200 hidden md:block" />
-                    <div className="space-y-1">
-                        <div className="text-3xl font-black text-slate-900">0ms</div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Latency</div>
-                    </div>
-                    <div className="w-px h-8 bg-slate-200 hidden md:block" />
-                    <div className="space-y-1">
-                        <div className="text-3xl font-black text-slate-900">Flat UI</div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Modern Design</div>
-                    </div>
+                {/* Request Tool CTA */}
+                <div className="mt-20">
+                    <RequestToolCTA />
                 </div>
             </div>
         </div>
