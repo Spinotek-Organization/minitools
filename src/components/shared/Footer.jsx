@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, ArrowRight, Instagram, Linkedin, Cpu } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -17,16 +18,16 @@ export default function Footer() {
                     <div className="md:col-span-5 space-y-8">
                         <Link to="/" className="flex items-center gap-3 group">
                             <div className="w-10 h-10 flex items-center justify-center p-1.5 bg-slate-50 rounded-xl group-hover:bg-blue-50 group-hover:rotate-[10deg] transition-all duration-500 shadow-sm border border-slate-100">
-                                <img src="/img/spinotek-symbol.png" alt="Spinotek" className="w-full h-full object-contain" />
+                                <Logo size={28} />
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-xl font-black text-slate-900 tracking-tighter leading-none">Mini Tools</span>
-                                <span className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">Utility Suite</span>
+                                <span className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">By Spinotek</span>
                             </div>
                         </Link>
 
                         <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-sm">
-                            Providing high-end digital utilities for professional <span className="text-slate-900">developers</span> and <span className="text-slate-900">modern makers</span> worldwide. Excellence through simplicity.
+                            120+ browser-based productivity tools for <span className="text-slate-900">developers</span>, <span className="text-slate-900">creators</span>, and <span className="text-slate-900">professionals</span>. Zero friction. Instant results.
                         </p>
 
                         {/* Social Media - Premium Style */}

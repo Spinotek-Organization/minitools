@@ -58,16 +58,16 @@ export default function Hero() {
                 </div>
 
                 <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[1.1]">
-                    Utility Suite for <br />
+                    Your Productivity Toolkit. <br />
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">
-                        Modern Makers.
+                        All in One Place.
                     </span>
                 </h2>
 
                 <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-                    Professional collection of specialized tools for <span className="text-slate-900">developers</span>,
-                    <span className="text-slate-900"> marketers</span>, and <span className="text-slate-900">builders</span>.
-                    No sign-up. Fast. Flat. Free.
+                    120+ browser-based tools for <span className="text-slate-900">developers</span>,
+                    <span className="text-slate-900"> creators</span>, and <span className="text-slate-900">professionals</span>.
+                    Zero friction. Instant results.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">

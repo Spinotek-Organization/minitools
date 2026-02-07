@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, Menu as MenuIcon, X, ChevronDown } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { CATEGORIES } from '../../data/categories';
+import Logo from './Logo';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Navbar() {
                         {/* Branding */}
                         <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
                             <div className="h-8 w-8 overflow-hidden rounded-lg bg-white p-1 shadow-inner">
-                                <img src="/img/spinotek-symbol.png" alt="Spinotek" className="h-full w-full object-contain" />
+                                <Logo size={24} />
                             </div>
                             <div className="flex flex-col leading-tight">
                                 <span className="text-lg font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">Mini Tools</span>
