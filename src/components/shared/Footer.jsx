@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, ArrowRight, Instagram, Linkedin, Cpu } from 'lucide-react';
+import { Globe, ArrowRight, Instagram, Linkedin, Cpu, Github } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -33,6 +33,7 @@ export default function Footer() {
                         {/* Social Media - Premium Style */}
                         <div className="flex items-center gap-3">
                             <SocialLink href="https://spinotek.com" icon={<Globe size={18} />} label="Website" />
+                            <SocialLink href="https://github.com/Spinotek-Organization/minitools" icon={<Github size={18} />} label="GitHub" />
                             <SocialLink href="https://www.instagram.com/spinotekcorp/" icon={<Instagram size={18} />} label="Instagram" />
                             <SocialLink href="https://www.linkedin.com/company/spinotek-corp/" icon={<Linkedin size={18} />} label="LinkedIn" />
                         </div>
@@ -90,10 +91,16 @@ export default function Footer() {
                     </div>
 
                     <div className="flex items-center gap-8 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
-                        <span className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                            PRODUCTIVITY TOOLS
-                        </span>
+                        <a
+                            href="https://github.com/Spinotek-Organization/minitools"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2 hover:text-blue-600 transition-colors group"
+                        >
+                            <Github size={14} className="group-hover:scale-110 transition-transform" />
+                            Contribute Here
+                            <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                        </a>
                         <div className="flex items-center gap-4">
                             <span className="hover:text-slate-900 cursor-help transition-colors">Privacy</span>
                             <span className="hover:text-slate-900 cursor-help transition-colors">Terms</span>

@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Menu as MenuIcon, X, ChevronDown } from 'lucide-react';
+import { Search, Menu as MenuIcon, X, ChevronDown, Github } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { CATEGORIES } from '../../data/categories';
 import Logo from './Logo';
@@ -108,6 +108,17 @@ export default function Navbar() {
                                 <kbd className="px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white shadow-sm">/</kbd>
                             </div>
                         </button>
+
+                        {/* GitHub Link */}
+                        <a
+                            href="https://github.com/Spinotek-Organization/minitools"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hidden md:flex items-center justify-center w-9 h-9 bg-white/10 border border-white/10 rounded-xl text-white/70 hover:text-white hover:bg-white/20 transition-all"
+                            title="View on GitHub"
+                        >
+                            <Github size={18} />
+                        </a>
 
                         <div className="flex items-center gap-2">
                             {/* Mobile Menu Toggle */}
