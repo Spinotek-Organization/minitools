@@ -74,9 +74,9 @@ export default function Hero() {
                     <Link to="/explore" className="px-8 py-4 bg-blue-600 text-white font-extrabold rounded-2xl hover:bg-blue-700 transition-all active:scale-95 text-base flex items-center justify-center">
                         Explore Tools
                     </Link>
-                    <button className="px-8 py-4 bg-white text-slate-700 font-extrabold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all text-base">
+                    <Link to="/roadmap" className="px-8 py-4 bg-white text-slate-700 font-extrabold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all text-base flex items-center justify-center">
                         View Roadmap
-                    </button>
+                    </Link>
                 </div>
 
                 <div className="pt-8 flex flex-col items-center gap-4">

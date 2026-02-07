@@ -121,6 +121,7 @@ import DnsLookup from './pages/tools/security/DnsLookup';
 import SslChecker from './pages/tools/security/SslChecker';
 import PortScanner from './pages/tools/security/PortScanner';
 import TwoFactorGenerator from './pages/tools/security/TwoFactorGenerator';
+import Roadmap from './pages/Roadmap';
 import CategoryPage from './pages/tools/CategoryPage';
 import ExploreToolsPage from './pages/tools/ExploreToolsPage';
 import Home from './pages/Home';
@@ -282,6 +283,7 @@ function App() {
                     <Route path="/tools/security/2fa-gen" element={<TwoFactorGenerator />} />
 
                     <Route path="/category/:id" element={<CategoryPage />} />
+                    <Route path="/roadmap" element={<Roadmap />} />
                 </Routes>
             </Layout>
         </Router>
