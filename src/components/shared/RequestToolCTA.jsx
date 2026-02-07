@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, PlusCircle } from 'lucide-react';
 
 export default function RequestToolCTA() {
     return (
-        <div className="w-full relative py-12">
+        <div className="w-full relative py-12 hidden">
             {/* Background Decor - Full Width */}
             <div className="absolute inset-0 bg-slate-50/50 -z-10" />
 

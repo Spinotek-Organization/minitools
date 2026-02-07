@@ -100,7 +100,12 @@ export default function Navbar() {
                         >
                             <Search size={16} />
                             <span className="text-xs font-bold tracking-wide">Search tools...</span>
-                            <kbd className="ml-4 px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white/50 group-hover:text-white transition-colors">/</kbd>
+                            <div className="ml-4 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-all">
+                                <kbd className="px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white shadow-sm">
+                                    {window.navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl'}
+                                </kbd>
+                                <kbd className="px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white shadow-sm">/</kbd>
+                            </div>
                         </button>
 
                         <div className="flex items-center gap-2">
