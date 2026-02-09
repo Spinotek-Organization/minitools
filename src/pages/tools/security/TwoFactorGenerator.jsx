@@ -1,16 +1,110 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Plus, Trash2, Copy, RefreshCw, KeyRound } from 'lucide-react';
+import * as OTPAuth from 'otpauth';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
-import ToolPlaceholder from '../../../components/shared/ToolPlaceholder';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function TwoFactorGenerator() {
+    const [accounts, setAccounts] = useState(() => {
+        const saved = localStorage.getItem('minitools_2fa_accounts');
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    const [newAccount, setNewAccount] = useState('');
+    const [newSecret, setNewSecret] = useState('');
+    const [tokens, setTokens] = useState({});
+    const [progress, setProgress] = useState(0);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        localStorage.setItem('minitools_2fa_accounts', JSON.stringify(accounts));
+        updateTokens();
+    }, [accounts]);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            updateTokens();
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [accounts]);
+
+    const updateTokens = () => {
+        const newTokens = {};
+        const now = Math.floor(Date.now() / 1000);
+        const period = 30;
+        const newProgress = ((now % period) / period) * 100;
+        
+        setProgress(newProgress);
+
+        accounts.forEach(acc => {
+            try {
+                // Clean input secret (remove spaces)
+                const cleanSecret = acc.secret.replace(/\s/g, '').toUpperCase();
+                
+                const totp = new OTPAuth.TOTP({
+                    issuer: 'MiniTools',
+                    label: acc.name,
+                    algorithm: 'SHA1',
+                    digits: 6,
+                    period: 30,
+                    secret: OTPAuth.Secret.fromBase32(cleanSecret)
+                });
+                
+                newTokens[acc.id] = totp.generate();
+            } catch (err) {
+                console.error("Invalid secret for account:", acc.name, err);
+                newTokens[acc.id] = 'ERROR';
+            }
+        });
+
+        setTokens(newTokens);
+    };
+
+    const handleAddAccount = (e) => {
+        e.preventDefault();
+        setError('');
+
+        if (!newAccount.trim() || !newSecret.trim()) {
+            setError('Please fill in all fields');
+            return;
+        }
+
+        // Basic Base32 validation
+        const cleanSecret = newSecret.replace(/\s/g, '').toUpperCase();
+        if (!/^[A-Z2-7]+$/.test(cleanSecret)) {
+            setError('Invalid Secret Key. Base32 keys only contain letters A-Z and numbers 2-7.');
+            return;
+        }
+
+        try {
+            // Verify secret works
+            OTPAuth.Secret.fromBase32(cleanSecret);
+
+            const newId = Date.now().toString();
+            setAccounts([...accounts, { id: newId, name: newAccount, secret: cleanSecret }]);
+            setNewAccount('');
+            setNewSecret('');
+        } catch (err) {
+            setError('Invalid Secret Key format.');
+        }
+    };
+
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete this account?')) {
+            setAccounts(accounts.filter(acc => acc.id !== id));
+        }
+    };
+
+    const handleCopy = (code) => {
+        navigator.clipboard.writeText(code);
+    };
+
     return (
         <ToolPageLayout>
             <Helmet>
                 <title>2FA Code Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate two-factor authentication codes for your accounts." />
+                <meta name="description" content="Generate two-factor authentication codes for your accounts securely in your browser." />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -20,12 +114,136 @@ export default function TwoFactorGenerator() {
                     </div>
                     <div>
                         <h1 className="text-2xl font-black text-slate-900">2FA Code Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate two-factor authentication codes for your accounts.</p>
+                        <p className="text-slate-500 text-sm">Generate TOTP codes for your accounts directly in your browser.</p>
                     </div>
                 </div>
             </div>
 
-            <ToolPlaceholder />
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                {/* Form Section */}
+                <div className="lg:col-span-1">
+                    <div className="bg-white rounded-3xl border border-slate-100 p-6 sticky top-24">
+                        <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                            <Plus size={20} className="text-blue-600" />
+                            Add New Account
+                        </h2>
+                        
+                        <form onSubmit={handleAddAccount} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Account Name</label>
+                                <input
+                                    type="text"
+                                    value={newAccount}
+                                    onChange={(e) => setNewAccount(e.target.value)}
+                                    placeholder="e.g. Google, GitHub"
+                                    className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Secret Key</label>
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        value={newSecret}
+                                        onChange={(e) => setNewSecret(e.target.value)}
+                                        placeholder="JBSWY3DPEHPK3PXP"
+                                        className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono uppercase"
+                                    />
+                                    <KeyRound size={16} className="absolute left-3 top-2.5 text-slate-400" />
+                                </div>
+                                <p className="text-xs text-slate-400 mt-1">Base32 secret provided by the service.</p>
+                            </div>
+
+                            {error && (
+                                <div className="text-xs text-red-500 bg-red-50 p-2 rounded-lg">
+                                    {error}
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+                            >
+                                <Plus size={16} />
+                                Add Account
+                            </button>
+                        </form>
+
+                        <div className="mt-6 pt-6 border-t border-slate-100 text-xs text-slate-400">
+                            <strong>Privacy Note:</strong> Your secret keys are stored only in your browser's local storage and are never sent to any server.
+                        </div>
+                    </div>
+                </div>
+
+                {/* Accounts List Section */}
+                <div className="lg:col-span-2">
+                    {accounts.length === 0 ? (
+                        <div className="bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 p-12 text-center">
+                            <ShieldCheck size={48} className="mx-auto text-slate-300 mb-4" />
+                            <h3 className="text-slate-900 font-medium mb-1">No Accounts Added Yet</h3>
+                            <p className="text-slate-500 text-sm">Add an account using your secret key to start generating codes.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {accounts.map(account => (
+                                <div key={account.id} className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                                    {/* Progress background indicator */}
+                                    <div 
+                                        className="absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-1000 ease-linear"
+                                        style={{ width: `${100 - progress}%` }}
+                                    ></div>
+
+                                    <div className="flex justify-between items-start mb-3">
+                                        <h3 className="font-bold text-slate-800 text-lg truncate pr-8" title={account.name}>
+                                            {account.name}
+                                        </h3>
+                                        <button 
+                                            onClick={() => handleDelete(account.id)}
+                                            className="text-slate-300 hover:text-red-500 transition-colors p-1"
+                                            title="Delete Account"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </div>
+
+                                    <div className="flex items-center justify-between mb-2">
+                                        <div className="font-mono text-3xl font-black text-blue-600 tracking-wider">
+                                            {tokens[account.id] ? (
+                                                <>
+                                                    {tokens[account.id].slice(0, 3)} <span className="text-blue-300"> </span> {tokens[account.id].slice(3)}
+                                                </>
+                                            ) : (
+                                                <span className="text-slate-200">------</span>
+                                            )}
+                                        </div>
+                                        
+                                        <button 
+                                            onClick={() => handleCopy(tokens[account.id])}
+                                            className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                            title="Copy Code"
+                                        >
+                                            <Copy size={20} />
+                                        </button>
+                                    </div>
+                                    
+                                    <div className="flex items-center justify-between text-xs text-slate-400">
+                                        <span className="font-mono truncate w-32" title={account.secret}>
+                                            {account.secret.substring(0, 4)}...{account.secret.slice(-4)}
+                                        </span>
+                                        <div className="flex items-center gap-1">
+                                            <RefreshCw size={10} className={progress > 90 ? "animate-spin" : ""} />
+                                            <span>{Math.ceil(30 - (30 * (progress / 100)))}s</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
 
             <RelatedTools currentToolId="2fa-gen" categoryId="security" />
         </ToolPageLayout>

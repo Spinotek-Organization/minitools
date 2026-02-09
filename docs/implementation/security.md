@@ -157,3 +157,67 @@ This document outlines the technical implementation details for the Security & P
 2. "Add Account".
 3. List of active codes (updating every 30s with a progress circle).
 4. No QR scanning (webcams are tricky), just Key input.
+
+---
+
+## 12. Disposable Email Linker (`temp-email`)
+**Goal**: Quick links to top temporary email services for privacy.
+**Tech Stack**: Static Links / Cards.
+
+**User Flow**:
+1. List of curated disposable email providers (Temp Mail, 10 Minute Mail, etc.).
+2. Cards displaying:
+   - Service Name
+   - Retention Policy (e.g. "10 Minutes", "Until closed").
+   - "Open Service" button (External Link).
+3. Privacy tips sidebar (e.g. "Do not use for banking").
+
+---
+
+## 13. SSL Certificate Checker (`ssl-checker`)
+**Goal**: Verify SSL certificate details using top industry tools.
+**Tech Stack**: Domain Input + External Tool Deep Linking.
+
+**User Flow**:
+1. Input field: Domain Name (e.g., `google.com`).
+2. "Analyze" buttons for:
+   - **Qualys SSL Labs**: Deep server analysis (Grade A-F).
+   - **Digicert**: Certificate chain validation.
+   - **crt.sh**: Certificate Transparency logs (History).
+   - **Why No Padlock**: Mixed content checker.
+3. Clicking a button opens the respective tool in a new tab with the domain pre-filled in the URL query.
+
+---
+
+## 14. QR Code Generator (`qr-gen`)
+**Goal**: Generate secure, client-side QR codes.
+**Tech Stack**: `qrcode.react`.
+
+**User Flow**:
+1. Input Type Selector: URL, Text, Email, WiFi.
+2. Input Fields: Dynamic based on selection (e.g., SSID + Password for WiFi).
+3. Live Preview: QR Code renders instantly.
+4. Customization: 
+   - Foreground/Background Color.
+   - Size slider.
+   - Error Correction Level (L, M, Q, H).
+5. "Download" button (PNG/SVG).
+
+---
+
+## 15. Port Scanner (`port-scanner`)
+**Goal**: Check for open ports on a domain/IP using trusted external APIs (Client-side port scanning is restricted by browsers).
+**Tech Stack**: Domain Input + Deep Linking to External Tools.
+
+**User Flow**:
+1. Input: Domain Name or IP address.
+2. "Scan" buttons linking to:
+   - **HackerTarget**: Fast Nmap scan.
+   - **ViewDNS.info**: Comprehensive port check.
+   - **YouGetSignal**: Port forwarding tester.
+   - **IPVoid**: TCP port scanner.
+3. Reference Table: List of Common Ports (21, 22, 53, 80, 443, 3306, 8080) and their typical usage.
+
+
+
+
