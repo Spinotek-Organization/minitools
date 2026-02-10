@@ -30,6 +30,7 @@ import TaxCalculator from './pages/tools/biz/TaxCalculator';
 import ProfitMargin from './pages/tools/biz/ProfitMargin';
 import CurrencyConverter from './pages/tools/biz/CurrencyConverter';
 import DiscountCalculator from './pages/tools/biz/DiscountCalculator';
+import InvestmentRoi from './pages/tools/biz/InvestmentRoi';
 import CompoundInterest from './pages/tools/biz/CompoundInterest';
 import BusinessNameGenerator from './pages/tools/biz/BusinessNameGenerator';
 import ReceiptMaker from './pages/tools/biz/ReceiptMaker';
@@ -49,6 +50,7 @@ import TestimonialCard from './pages/tools/sales/TestimonialCard';
 import CtaIdeas from './pages/tools/sales/CtaIdeas';
 import ShortLink from './pages/tools/sales/ShortLink';
 import BizCardMockup from './pages/tools/sales/BizCardMockup';
+import QrCodeGenerator from './pages/tools/sales/QrCodeGenerator';
 import ImageResizer from './pages/tools/content/ImageResizer';
 import VideoScript from './pages/tools/content/VideoScript';
 import InstagramGrid from './pages/tools/content/InstagramGrid';
@@ -59,18 +61,18 @@ import YoutubeThumbnail from './pages/tools/content/YoutubeThumbnail';
 import PodcastPlanner from './pages/tools/content/PodcastPlanner';
 import TiktokHooks from './pages/tools/content/TiktokHooks';
 import EmojiPicker from './pages/tools/content/EmojiPicker';
-import TtsPreview from './pages/tools/content/TtsPreview';
+import Teleprompter from './pages/tools/content/Teleprompter';
 import WatermarkTool from './pages/tools/content/WatermarkTool';
 import PaletteGenerator from './pages/tools/design/PaletteGenerator';
 import ContrastChecker from './pages/tools/design/ContrastChecker';
 import SvgPlaceholder from './pages/tools/design/SvgPlaceholder';
 import GradientMaker from './pages/tools/design/GradientMaker';
 import WebpConverter from './pages/tools/design/WebpConverter';
-import IconSearcher from './pages/tools/design/IconSearcher';
+import IconViewer from './pages/tools/design/IconViewer';
 import ShadowMaker from './pages/tools/design/ShadowMaker';
 import FontPairer from './pages/tools/design/FontPairer';
 import FaviconGenerator from './pages/tools/design/FaviconGenerator';
-import BackgroundRemover from './pages/tools/design/BackgroundRemover';
+import ImageFilters from './pages/tools/design/ImageFilters';
 import AspectRatioCalc from './pages/tools/design/AspectRatioCalc';
 import PixelToRem from './pages/tools/design/PixelToRem';
 import PdfTools from './pages/tools/office/PdfTools';
@@ -162,12 +164,12 @@ function App() {
                     <Route path="/tools/marketing/serp-preview" element={<SerpPreview />} />
                     <Route path="/tools/marketing/meta-generator" element={<MetaGenerator />} />
                     <Route path="/tools/marketing/robots-generator" element={<RobotsGenerator />} />
-                    <Route path="/tools/marketing/og-preview" element={<OgPreview />} />
+                    <Route path="/tools/marketing/social-mockup" element={<OgPreview />} />
                     <Route path="/tools/marketing/slug-generator" element={<SlugGenerator />} />
-                    <Route path="/tools/marketing/keyword-density" element={<KeywordDensity />} />
+                    <Route path="/tools/marketing/text-analyzer" element={<KeywordDensity />} />
                     <Route path="/tools/marketing/tweet-counter" element={<TweetCounter />} />
-                    <Route path="/tools/marketing/redirect-checker" element={<RedirectChecker />} />
-                    <Route path="/tools/marketing/sitemap-generator" element={<SitemapGenerator />} />
+                    <Route path="/tools/marketing/link-cleaner" element={<RedirectChecker />} />
+                    <Route path="/tools/marketing/url-sitemap" element={<SitemapGenerator />} />
                     <Route path="/tools/marketing/ad-counter" element={<AdCounter />} />
                     <Route path="/tools/marketing/headline-analyzer" element={<HeadlineAnalyzer />} />
 
@@ -177,12 +179,13 @@ function App() {
                     <Route path="/tools/biz/profit-margin" element={<ProfitMargin />} />
                     <Route path="/tools/biz/currency-converter" element={<CurrencyConverter />} />
                     <Route path="/tools/biz/discount-calculator" element={<DiscountCalculator />} />
+                    <Route path="/tools/biz/roi-calculator" element={<InvestmentRoi />} />
                     <Route path="/tools/biz/compound-interest" element={<CompoundInterest />} />
                     <Route path="/tools/biz/business-name-generator" element={<BusinessNameGenerator />} />
                     <Route path="/tools/biz/receipt-maker" element={<ReceiptMaker />} />
-                    <Route path="/tools/biz/break-even" element={<BreakEvenPoint />} />
+                    <Route path="/tools/biz/break-even-calculator" element={<BreakEvenPoint />} />
                     <Route path="/tools/biz/salary-calculator" element={<SalaryCalculator />} />
-                    <Route path="/tools/biz/unit-price" element={<UnitPriceComparison />} />
+                    <Route path="/tools/biz/unit-price-comparison" element={<UnitPriceComparison />} />
                     <Route path="/tools/biz/bookkeeping" element={<Bookkeeping />} />
 
                     {/* Sales & Customer Support Routes */}
@@ -197,20 +200,21 @@ function App() {
                     <Route path="/tools/sales/testimonial-card" element={<TestimonialCard />} />
                     <Route path="/tools/sales/cta-ideas" element={<CtaIdeas />} />
                     <Route path="/tools/sales/short-link" element={<ShortLink />} />
+                    <Route path="/tools/sales/qr-generator" element={<QrCodeGenerator />} />
                     <Route path="/tools/sales/biz-card-mockup" element={<BizCardMockup />} />
 
                     {/* Content & Social Media Routes */}
                     <Route path="/tools/content/image-resizer" element={<ImageResizer />} />
                     <Route path="/tools/content/video-script" element={<VideoScript />} />
                     <Route path="/tools/content/instagram-grid" element={<InstagramGrid />} />
-                    <Route path="/tools/content/hashtag-generator" element={<HashtagGenerator />} />
+                    <Route path="/tools/content/hashtag-manager" element={<HashtagGenerator />} />
                     <Route path="/tools/content/aspect-ratio" element={<AspectRatio />} />
                     <Route path="/tools/content/caption-formatter" element={<CaptionFormatter />} />
                     <Route path="/tools/content/youtube-thumbnail" element={<YoutubeThumbnail />} />
                     <Route path="/tools/content/podcast-planner" element={<PodcastPlanner />} />
                     <Route path="/tools/content/tiktok-hooks" element={<TiktokHooks />} />
                     <Route path="/tools/content/emoji-picker" element={<EmojiPicker />} />
-                    <Route path="/tools/content/text-to-speech" element={<TtsPreview />} />
+                    <Route path="/tools/content/teleprompter" element={<Teleprompter />} />
                     <Route path="/tools/content/watermark" element={<WatermarkTool />} />
 
                     {/* Design & Visual Routes */}
@@ -219,11 +223,11 @@ function App() {
                     <Route path="/tools/design/svg-placeholder" element={<SvgPlaceholder />} />
                     <Route path="/tools/design/gradient-maker" element={<GradientMaker />} />
                     <Route path="/tools/design/webp-converter" element={<WebpConverter />} />
-                    <Route path="/tools/design/icon-search" element={<IconSearcher />} />
+                    <Route path="/tools/design/icon-viewer" element={<IconViewer />} />
                     <Route path="/tools/design/shadow-maker" element={<ShadowMaker />} />
                     <Route path="/tools/design/font-pairer" element={<FontPairer />} />
                     <Route path="/tools/design/favicon-generator" element={<FaviconGenerator />} />
-                    <Route path="/tools/design/background-remover" element={<BackgroundRemover />} />
+                    <Route path="/tools/design/image-filters" element={<ImageFilters />} />
                     <Route path="/tools/design/aspect-ratio" element={<AspectRatioCalc />} />
                     <Route path="/tools/design/pixel-to-rem" element={<PixelToRem />} />
 
