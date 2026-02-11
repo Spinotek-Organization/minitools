@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function Hero() {
+    const { t } = useTranslation();
     const toggleSearch = () => {
         window.dispatchEvent(new CustomEvent('toggle-search'));
     };
@@ -54,34 +56,36 @@ export default function Hero() {
             {/* 4. Content - Top Layer */}
             <div className="text-center space-y-6 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] animate-float">
-                    <Icons.Zap size={12} /> 120+ Tools and Counting
+                    <Icons.Zap size={12} /> {t('home.tools_count')}
                 </div>
 
                 <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[1.1]">
-                    Your Productivity Toolkit. <br />
+                    {t('home.hero_title')} <br />
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">
-                        All in One Place.
+                        {t('home.hero_subtitle')}
                     </span>
                 </h2>
 
                 <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-                    120+ browser-based tools for <span className="text-slate-900">developers</span>,
-                    <span className="text-slate-900"> creators</span>, and <span className="text-slate-900">professionals</span>.
-                    Zero friction. Instant results.
+                    <Trans i18nKey="home.hero_description">
+                        120+ browser-based tools for <span className="text-slate-900">developers</span>,
+                        <span className="text-slate-900"> creators</span>, and <span className="text-slate-900">professionals</span>.
+                        Zero friction. Instant results.
+                    </Trans>
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
                     <Link to="/explore" className="px-8 py-4 bg-blue-600 text-white font-extrabold rounded-2xl hover:bg-blue-700 transition-all active:scale-95 text-base flex items-center justify-center">
-                        Explore Tools
+                        {t('home.explore_cta')}
                     </Link>
                     <Link to="/roadmap" className="px-8 py-4 bg-white text-slate-700 font-extrabold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all text-base flex items-center justify-center">
-                        View Roadmap
+                        {t('home.roadmap_cta')}
                     </Link>
                 </div>
 
                 <div className="pt-8 flex flex-col items-center gap-4">
                     <div className="flex items-center gap-3 text-slate-400 group cursor-pointer" onClick={toggleSearch}>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Quick Search</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{t('home.quick_search')}</span>
                         <div className="flex items-center gap-1.5">
                             <kbd className="px-2 py-1 bg-white border border-slate-200 rounded-lg text-slate-900 font-mono text-[10px] group-hover:border-blue-300 transition-colors shadow-sm uppercase">
                                 {window.navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl'}

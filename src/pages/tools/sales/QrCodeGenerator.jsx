@@ -4,15 +4,18 @@ import { QRCodeCanvas } from 'qrcode.react';
 import { QrCode, Download, Link, Type, Wifi, UserSquare, Upload, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const ERROR_LEVELS = [
-    { value: 'L', label: 'Low (7%)' },
-    { value: 'M', label: 'Medium (15%)' },
-    { value: 'Q', label: 'Quartile (25%)' },
-    { value: 'H', label: 'High (30%)' },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function QrCodeGenerator() {
+    const { t } = useTranslation();
+
+    const ERROR_LEVELS = [
+        { value: 'L', label: 'Low (7%)' },
+        { value: 'M', label: 'Medium (15%)' },
+        { value: 'Q', label: 'Quartile (25%)' },
+        { value: 'H', label: 'High (30%)' },
+    ];
+
     const [type, setType] = useState('url'); // url, text, wifi, vcard
     const [content, setContent] = useState('https://example.com');
     
@@ -74,10 +77,10 @@ END:VCARD`;
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="qr-gen">
             <Helmet>
-                <title>QR Code Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create scalable QR codes for links, text, or vCards." />
+                <title>{t('tools.qr-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.qr-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -86,8 +89,8 @@ END:VCARD`;
                         <QrCode size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">QR Code Generator</h1>
-                        <p className="text-slate-500 text-sm">Create customized QR codes for any purpose.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.qr-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.qr-gen.desc')}</p>
                     </div>
                 </div>
             </div>

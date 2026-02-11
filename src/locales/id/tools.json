@@ -1,0 +1,528 @@
+{
+    "json-fmt": {
+        "title": "JSON Formatter/Validator",
+        "desc": "Format dan validasi kode JSON agar lebih mudah dibaca."
+    },
+    "base64-enc": {
+        "title": "Encoder/Decoder Base64",
+        "desc": "Encode atau decode string ke/dari format Base64."
+    },
+    "regex-tester": {
+        "title": "Penguji Regex",
+        "desc": "Uji dan debug regular expression Anda secara real-time."
+    },
+    "html-enc": {
+        "title": "Encoder Entitas HTML",
+        "desc": "Konversi karakter ke entitas HTML dan sebaliknya."
+    },
+    "url-enc": {
+        "title": "Encoder/Decoder URL",
+        "desc": "Encode atau decode URL dengan benar untuk kompatibilitas web."
+    },
+    "jwt-debug": {
+        "title": "Debugger JWT",
+        "desc": "Decode dan periksa JSON Web Token dengan aman."
+    },
+    "sql-fmt": {
+        "title": "Formatter SQL",
+        "desc": "Rapikan dan format kueri SQL Anda secara instan."
+    },
+    "uuid-gen": {
+        "title": "Generator UUID/ULID",
+        "desc": "Hasilkan identifier unik untuk aplikasi Anda."
+    },
+    "hash-gen": {
+        "title": "Hasher MD5/SHA256",
+        "desc": "Hasilkan hash kriptografis yang aman untuk data Anda."
+    },
+    "cron-guru": {
+        "title": "Guru Crontab",
+        "desc": "Visualisasikan dan edit ekspresi jadwal cron dengan mudah."
+    },
+    "diff-checker": {
+        "title": "Pemeriksa Perbedaan",
+        "desc": "Bandingkan dan temukan perbedaan antara dua teks."
+    },
+    "js-minifier": {
+        "title": "Minifier Javascript",
+        "desc": "Kompres dan optimalkan kode Javascript Anda."
+    },
+    "utm-builder": {
+        "title": "Pembuat Link UTM",
+        "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda."
+    },
+    "serp-preview": {
+        "title": "Pratinjau Google SERP",
+        "desc": "Visualisasikan bagaimana situs web Anda muncul di hasil pencarian Google."
+    },
+    "meta-gen": {
+        "title": "Generator Tag Meta",
+        "desc": "Buat tag meta yang dioptimalkan SEO untuk situs web Anda."
+    },
+    "robots-gen": {
+        "title": "Generator Robots.txt",
+        "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO."
+    },
+    "social-mockup": {
+        "title": "Mockup Postingan Sosial",
+        "desc": "Pratinjau tampilan postingan Anda di LinkedIn, Twitter, dan Facebook."
+    },
+    "slug-gen": {
+        "title": "Generator Slug",
+        "desc": "Konversi teks apa pun menjadi slug yang ramah URL."
+    },
+    "text-analyzer": {
+        "title": "Analisis Teks Artikel",
+        "desc": "Analisis jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda."
+    },
+    "tweet-counter": {
+        "title": "Penghitung Thread Twitter/X",
+        "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda."
+    },
+    "link-cleaner": {
+        "title": "Pembersih Link",
+        "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda."
+    },
+    "url-sitemap": {
+        "title": "Daftar URL ke Sitemap",
+        "desc": "Konversi daftar URL menjadi XML Sitemap yang diformat dengan benar."
+    },
+    "ad-counter": {
+        "title": "Penghitung Karakter Iklan",
+        "desc": "Validasi batas karakter untuk Google dan Meta Ads."
+    },
+    "headline-analyzer": {
+        "title": "Analisis Judul",
+        "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik."
+    },
+    "invoice-gen": {
+        "title": "Generator Faktur",
+        "desc": "Buat faktur PDF profesional dan sederhana dalam hitungan detik."
+    },
+    "tax-calc": {
+        "title": "Kalkulator Pajak",
+        "desc": "Hitung PPN, PPh, dan pajak bisnis lainnya dengan cepat."
+    },
+    "profit-calc": {
+        "title": "Kalkulator Margin Keuntungan",
+        "desc": "Hitung margin dan markup Anda secara akurat."
+    },
+    "roi-calc": {
+        "title": "Kalkulator ROI Investasi",
+        "desc": "Hitung Return on Investment dan potensi pertumbuhan keuntungan."
+    },
+    "discount-calc": {
+        "title": "Kalkulator Diskon",
+        "desc": "Hitung harga akhir setelah diskon dan pajak penjualan."
+    },
+    "compound-interest": {
+        "title": "Kalkulator Bunga Majemuk",
+        "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk."
+    },
+    "biz-name-gen": {
+        "title": "Generator Nama Bisnis",
+        "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya."
+    },
+    "receipt-maker": {
+        "title": "Pembuat Struk",
+        "desc": "Buat struk digital sederhana untuk pelanggan Anda."
+    },
+    "break-even-calc": {
+        "title": "Kalkulator Titik Impas",
+        "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan."
+    },
+    "salary-calc": {
+        "title": "Kalkulator Gaji Bersih",
+        "desc": "Hitung gaji bersih setelah pajak dan potongan."
+    },
+    "unit-price-comp": {
+        "title": "Perbandingan Harga Satuan",
+        "desc": "Temukan penawaran terbaik dengan membandingkan harga satuan."
+    },
+    "bookkeeping": {
+        "title": "Alat Pembukuan Sederhana",
+        "desc": "Lacak pendapatan dan pengeluaran harian Anda dengan mudah."
+    },
+    "wa-direct": {
+        "title": "Link WhatsApp Langsung",
+        "desc": "Kirim pesan WhatsApp tanpa menyimpan nomor.",
+        "page": {
+            "input_title": "Masukkan Detail",
+            "phone_label": "Nomor Telepon",
+            "phone_helper": "Masukkan nomor tanpa kode negara. Nol di depan akan dihapus secara otomatis.",
+            "msg_label": "Pesan (Opsional)",
+            "msg_placeholder": "Hai, saya tertarik dengan layanan Anda...",
+            "output_title": "Tautan yang Dibuat",
+            "no_link_msg": "Masukkan nomor telepon untuk membuat tautan",
+            "open_chat": "Buka Chat",
+            "copy_link": "Salin Tautan",
+            "copied": "Disalin!",
+            "show_qr": "Tampilkan Kode QR",
+            "hide_qr": "Sembunyikan Kode QR",
+            "download_qr": "Unduh Gambar QR"
+        }
+    },
+    "email-sig": {
+        "title": "Generator Tanda Tangan Email",
+        "desc": "Buat tanda tangan email profesional untuk merek Anda.",
+        "page": {
+            "tabs": {
+                "personal": "Pribadi",
+                "company": "Perusahaan",
+                "social": "Sosial",
+                "style": "Gaya"
+            },
+            "labels": {
+                "full_name": "Nama Lengkap",
+                "job_title": "Jabatan",
+                "email": "Email",
+                "phone": "Telepon",
+                "company_name": "Nama Perusahaan",
+                "website": "Situs Web",
+                "address": "Alamat",
+                "logo": "Logo",
+                "linkedin_url": "URL LinkedIn",
+                "twitter_url": "URL Twitter",
+                "instagram_url": "URL Instagram",
+                "theme_color": "Warna Tema",
+                "font_family": "Jenis Huruf"
+            },
+            "upload_btn": "Unggah Gambar",
+            "or": "atau",
+            "upload_helper": "Unggah gambar atau tempel tautan langsung. Gambar persegi paling baik.",
+            "preview_title": "Pratinjau Langsung",
+            "preview_badge": "Perubahan diterapkan secara otomatis",
+            "copy_info": "Klik <strong>Salin Tanda Tangan</strong> di bawah, lalu buka pengaturan email Anda (Gmail, Outlook, dll.) dan tempel (Ctrl+V) ke dalam kotak tanda tangan.",
+            "copy_btn": "Salin Tanda Tangan",
+            "copied_btn": "Disalin ke Clipboard!"
+        }
+    },
+    "cold-email": {
+        "title": "Template Email Dingin",
+        "desc": "Template konversi tinggi untuk penjangkauan Anda."
+    },
+    "sales-script": {
+        "title": "Generator Naskah Penjualan",
+        "desc": "Hasilkan naskah penjualan persuasif secara instan."
+    },
+    "tz-converter": {
+        "title": "Konverter Zona Waktu",
+        "desc": "Koordinasikan pertemuan di berbagai zona waktu."
+    },
+    "meeting-agenda": {
+        "title": "Pembuat Agenda Rapat",
+        "desc": "Rencanakan dan strukturkan pertemuan bisnis yang produktif."
+    },
+    "price-quote": {
+        "title": "Generator Penawaran Harga",
+        "desc": "Hasilkan penawaran profesional untuk klien dengan cepat."
+    },
+    "followup-calc": {
+        "title": "Kalkulator Pengingat Tindak Lanjut",
+        "desc": "Jadwalkan dan lacak waktu tindak lanjut klien Anda."
+    },
+    "testimonial-maker": {
+        "title": "Pembuat Kartu Testimoni",
+        "desc": "Ubah umpan balik klien menjadi kartu visual yang indah."
+    },
+    "cta-ideas": {
+        "title": "Generator Ide CTA",
+        "desc": "Ide call-to-action menarik untuk konversi yang lebih tinggi."
+    },
+    "qr-gen": {
+        "title": "Generator Kode QR",
+        "desc": "Buat kode QR yang dapat diskalakan untuk tautan, teks, atau vCard."
+    },
+    "biz-card-mockup": {
+        "title": "Mockup Kartu Nama",
+        "desc": "Visualisasikan desain kartu nama Anda dalam mockup realistis."
+    },
+    "short-link": {
+        "title": "Pelacak & Penyingkat Tautan",
+        "desc": "Buat URL pendek yang bersih dan dapat dilacak."
+    },
+    "img-resizer": {
+        "title": "Pengubah Ukuran Gambar Medsos",
+        "desc": "Ubah ukuran gambar untuk Instagram, Twitter, dan Facebook."
+    },
+    "video-outline": {
+        "title": "Outliner Naskah Video",
+        "desc": "Strukturkan konten video Anda untuk dampak maksimal."
+    },
+    "ig-grid": {
+        "title": "Pratinjau Grid Instagram",
+        "desc": "Rencanakan dan visualisasikan estetika feed Instagram Anda."
+    },
+    "hashtag-manager": {
+        "title": "Manajer Hashtag",
+        "desc": "Atur, hitung, dan simpan grup hashtag Anda."
+    },
+    "aspect-ratio": {
+        "title": "Kalkulator Rasio Aspek Video",
+        "desc": "Hitung dimensi sempurna untuk format video apa pun."
+    },
+    "caption-fmt": {
+        "title": "Formatter Keterangan",
+        "desc": "Rapikan keterangan Anda dengan jeda baris yang bersih."
+    },
+    "yt-thumbnail": {
+        "title": "Pratinjau Thumbnail YouTube",
+        "desc": "Uji thumbnail Anda dengan berbagai latar belakang."
+    },
+    "podcast-planner": {
+        "title": "Perencana Episode Podcast",
+        "desc": "Atur episode podcast dan catatan tamu Anda."
+    },
+    "tiktok-hooks": {
+        "title": "Ide Hook Viral TikTok",
+        "desc": "Dapatkan hook yang menarik perhatian untuk TikTok Anda."
+    },
+    "emoji-picker": {
+        "title": "Pemilih Emoji",
+        "desc": "Temukan dan salin emoji yang sempurna dengan cepat."
+    },
+    "teleprompter": {
+        "title": "Teleprompter Online",
+        "desc": "Baca naskah Anda dengan lancar saat merekam video."
+    },
+    "watermark-tool": {
+        "title": "Alat Watermark",
+        "desc": "Lindungi konten Anda dengan watermark kustom."
+    },
+    "palette-gen": {
+        "title": "Generator Palet Warna",
+        "desc": "Buat skema warna yang indah dan harmonis."
+    },
+    "contrast-check": {
+        "title": "Pemeriksa Kontras",
+        "desc": "Periksa rasio kontras aksesibilitas WCAG."
+    },
+    "gradient-maker": {
+        "title": "Pembuat Gradien CSS",
+        "desc": "Desain dan hasilkan gradien linear dan radial CSS."
+    },
+    "shadow-maker": {
+        "title": "Pembuat Bayangan CSS",
+        "desc": "Editor visual untuk box-shadow CSS yang kompleks."
+    },
+    "svg-placeholder": {
+        "title": "Generator Placeholder SVG",
+        "desc": "Hasilkan gambar placeholder SVG kustom untuk tata letak."
+    },
+    "webp-conv": {
+        "title": "Konverter Gambar ke WebP",
+        "desc": "Konversi gambar Anda ke format WebP berkinerja tinggi."
+    },
+    "icon-viewer": {
+        "title": "Penampil/Editor Ikon SVG",
+        "desc": "Lihat, edit warna, dan optimalkan ikon SVG Anda."
+    },
+    "font-pairer": {
+        "title": "Saran Pasangan Font",
+        "desc": "Temukan kombinasi tipografi yang sempurna untuk proyek Anda."
+    },
+    "favicon-gen": {
+        "title": "Generator Favicon",
+        "desc": "Buat favicon untuk semua platform dan browser."
+    },
+    "image-filters": {
+        "title": "Filter & Efek Gambar",
+        "desc": "Terapkan filter dan penyesuaian indah pada foto Anda."
+    },
+    "aspect-calc": {
+        "title": "Kalkulator Rasio Aspek",
+        "desc": "Hitung dimensi dan rasio untuk berbagai tampilan."
+    },
+    "pixel-rem": {
+        "title": "Konverter Pixel ke REM",
+        "desc": "Konversi pixel ke REM untuk CSS responsif modern."
+    },
+    "pdf-merge": {
+        "title": "Gabung/Pisah PDF",
+        "desc": "Gabungkan beberapa PDF atau ekstrak halaman menjadi file baru."
+    },
+    "word-counter": {
+        "title": "Penghitung Kata",
+        "desc": "Hitung kata, karakter, dan kalimat dalam teks Anda."
+    },
+    "lorem-gen": {
+        "title": "Generator Lorem Ipsum",
+        "desc": "Hasilkan teks placeholder untuk desain Anda."
+    },
+    "text-replace": {
+        "title": "Cari & Ganti Batch",
+        "desc": "Temukan dan ganti teks di beberapa baris atau file."
+    },
+    "roman-conv": {
+        "title": "Konverter Angka Romawi",
+        "desc": "Konversi angka ke angka Romawi dan sebaliknya."
+    },
+    "signature-pad": {
+        "title": "Pad Tanda Tangan Digital",
+        "desc": "Gambar dan unduh tanda tangan digital Anda."
+    },
+    "sort-list": {
+        "title": "Penyortir Alfabetis",
+        "desc": "Urutkan daftar apa pun secara alfabetis atau numerik."
+    },
+    "remove-duplicates": {
+        "title": "Penghapus Baris Duplikat",
+        "desc": "Bersihkan daftar Anda dengan menghapus baris yang berulang."
+    },
+    "case-converter": {
+        "title": "Konverter Kapitalisasi",
+        "desc": "Konversi teks antara huruf besar, kecil, dan judul."
+    },
+    "md-editor": {
+        "title": "Editor Markdown",
+        "desc": "Tulis dan pratinjau Markdown dengan editor langsung."
+    },
+    "csv-json": {
+        "title": "Konverter CSV ke JSON",
+        "desc": "Konversi data spreadsheet ke format JSON."
+    },
+    "num-to-words": {
+        "title": "Angka ke Kata (Terbilang)",
+        "desc": "Konversi nilai numerik menjadi teks tertulis."
+    },
+    "pomodoro": {
+        "title": "Timer Pomodoro",
+        "desc": "Tetap fokus dengan interval kerja dan istirahat yang dapat disesuaikan."
+    },
+    "ambient-noise": {
+        "title": "Generator Suara Sekitar",
+        "desc": "Fokus dengan suara menenangkan seperti hujan, kedai kopi, dan lainnya."
+    },
+    "habit-tracker": {
+        "title": "Pelacak Kebiasaan Harian",
+        "desc": "Lacak dan bangun rutinitas dan kebiasaan harian yang lebih baik."
+    },
+    "todo-list": {
+        "title": "Daftar Tugas Minimalis",
+        "desc": "Jaga tugas Anda tetap sederhana dan terorganisir untuk hari itu."
+    },
+    "water-reminder": {
+        "title": "Pengingat Minum Air",
+        "desc": "Tetap terhidrasi dengan pengingat cerdas sepanjang hari."
+    },
+    "eye-break": {
+        "title": "Timer Istirahat Mata",
+        "desc": "Lindungi mata Anda menggunakan aturan istirahat 20-20-20."
+    },
+    "gratitude-journal": {
+        "title": "Jurnal Rasa Syukur",
+        "desc": "Tingkatkan kesejahteraan Anda dengan merenungkan momen-momen positif."
+    },
+    "decision-matrix": {
+        "title": "Matriks Keputusan",
+        "desc": "Buntu? Biarkan logika membantu Anda memutuskan apa yang harus dilakukan selanjutnya."
+    },
+    "break-timer": {
+        "title": "Timer Istirahat",
+        "desc": "Pengingat cerdas untuk menjauh dan mengisi ulang energi Anda."
+    },
+    "daily-reflection": {
+        "title": "Prompt Refleksi Harian",
+        "desc": "Prompt bijaksana untuk pertumbuhan dan kesadaran pribadi."
+    },
+    "stopwatch": {
+        "title": "Stopwatch Sederhana",
+        "desc": "Antarmuka sederhana dan bersih untuk menghitung waktu apa pun."
+    },
+    "time-boxing": {
+        "title": "Perencana Time Boxing",
+        "desc": "Rencanakan hari Anda dengan menetapkan tugas ke blok waktu tertentu."
+    },
+    "citation-gen": {
+        "title": "Generator Kutipan",
+        "desc": "Hasilkan kutipan dalam format APA, MLA, dan Chicago."
+    },
+    "percentage-calc": {
+        "title": "Kalkulator Persentase",
+        "desc": "Hitung kenaikan, penurunan, dan persentase dengan cepat."
+    },
+    "stats-calc": {
+        "title": "Kalkulator Mean/Median/Modus",
+        "desc": "Temukan nilai rata-rata, tengah, dan paling umum dalam satu set."
+    },
+    "unit-conv": {
+        "title": "Konverter Unit",
+        "desc": "Konversi antara satuan metrik dan imperial dengan mudah."
+    },
+    "binary-conv": {
+        "title": "Biner ke Desimal",
+        "desc": "Konversi angka antara biner, desimal, dan hex."
+    },
+    "equation-solver": {
+        "title": "Pemecah Persamaan",
+        "desc": "Selesaikan persamaan linear dan kuadrat dasar langkah demi langkah."
+    },
+    "graph-plotter": {
+        "title": "Plotter Grafik Sederhana",
+        "desc": "Visualisasikan data Anda dengan grafik batang atau garis sederhana."
+    },
+    "sorting-visualizer": {
+        "title": "Visualisator Pengurutan",
+        "desc": "Lihat cara kerja berbagai algoritma pengurutan secara real-time."
+    },
+    "plagiarism-linker": {
+        "title": "Tautan Pemeriksa Plagiarisme",
+        "desc": "Tautan cepat ke alat deteksi plagiarisme gratis terbaik."
+    },
+    "fraction-calc": {
+        "title": "Kalkulator Pecahan",
+        "desc": "Tambah, kurang, dan kali pecahan kompleks."
+    },
+    "sci-calc": {
+        "title": "Kalkulator Ilmiah",
+        "desc": "Kalkulator canggih untuk kebutuhan matematika dan sains."
+    },
+    "date-diff": {
+        "title": "Kalkulator Selisih Tanggal",
+        "desc": "Hitung jumlah hari yang tepat antara dua tanggal."
+    },
+    "password-gen": {
+        "title": "Generator Kata Sandi Kuat",
+        "desc": "Buat kata sandi acak yang aman untuk melindungi akun Anda."
+    },
+    "password-strength": {
+        "title": "Pemeriksa Kekuatan Kata Sandi",
+        "desc": "Uji seberapa aman kata sandi Anda terhadap serangan brute-force."
+    },
+    "fake-identity": {
+        "title": "Generator Identitas Palsu",
+        "desc": "Hasilkan profil acak untuk pengujian perangkat lunak dan privasi."
+    },
+    "temp-email": {
+        "title": "Tautan Email Sementara",
+        "desc": "Tautan cepat ke layanan email sementara teratas untuk privasi."
+    },
+    "secret-note": {
+        "title": "Catatan Rahasia",
+        "desc": "Buat catatan terenkripsi yang hancur sendiri setelah dibaca."
+    },
+    "ip-checker": {
+        "title": "Pemeriksa Alamat IP",
+        "desc": "Temukan alamat IP publik dan perkiraan lokasi Anda."
+    },
+    "browser-fingerprint": {
+        "title": "Sidik Jari Browser",
+        "desc": "Lihat informasi apa yang diungkapkan browser Anda ke situs web."
+    },
+    "dns-lookup": {
+        "title": "Pencarian DNS",
+        "desc": "Temukan catatan DNS untuk nama domain apa pun dengan cepat."
+    },
+    "ssl-checker": {
+        "title": "Pemeriksa Sertifikat SSL",
+        "desc": "Verifikasi validitas dan detail sertifikat SSL situs web."
+    },
+    "port-scanner": {
+        "title": "Pemindai Port",
+        "desc": "Periksa port terbuka pada IP atau domain tertentu."
+    },
+    "2fa-gen": {
+        "title": "Generator Kode 2FA",
+        "desc": "Hasilkan kode otentikasi dua faktor untuk akun Anda."
+    }
+}

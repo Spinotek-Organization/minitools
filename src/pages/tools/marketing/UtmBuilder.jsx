@@ -4,7 +4,12 @@ import { Link as LinkIcon, Copy, Check, ExternalLink } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
+// ...
+
 export default function UtmBuilder() {
+    const { t } = useTranslation();
     const [form, setForm] = useState({
         url: '',
         source: '',
@@ -47,10 +52,10 @@ export default function UtmBuilder() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="utm-builder">
             <Helmet>
-                <title>UTM Link Builder | MiniTools by Spinotek</title>
-                <meta name="description" content="Easily generate UTM tracking links for your marketing campaigns." />
+                <title>{t('tools.utm-builder.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.utm-builder.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -59,8 +64,8 @@ export default function UtmBuilder() {
                         <LinkIcon size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">UTM Link Builder</h1>
-                        <p className="text-slate-500 text-sm">Easily generate UTM tracking links for your campaigns.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.utm-builder.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.utm-builder.desc')}</p>
                     </div>
                 </div>
             </div>

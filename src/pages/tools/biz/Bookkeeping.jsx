@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { BookOpen, TrendingUp, TrendingDown, Trash2, Download, Plus } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function Bookkeeping() {
+    const { t } = useTranslation();
     // Load from local storage or default
     const [transactions, setTransactions] = useState(() => {
         const saved = localStorage.getItem('minitools_bookkeeping');
@@ -72,10 +74,10 @@ export default function Bookkeeping() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="bookkeeping">
             <Helmet>
-                <title>Simple Bookkeeping | MiniTools by Spinotek</title>
-                <meta name="description" content="Track your daily income and expenses easily." />
+                <title>{t('tools.bookkeeping.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.bookkeeping.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -84,8 +86,8 @@ export default function Bookkeeping() {
                         <BookOpen size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Simple Bookkeeping</h1>
-                        <p className="text-slate-500 text-sm">Track your daily income and expenses (saved locally).</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.bookkeeping.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.bookkeeping.desc')}</p>
                     </div>
                 </div>
                 <button 

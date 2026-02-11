@@ -4,7 +4,10 @@ import { Twitter, Copy, ArrowRight, MessageCircle } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function TweetCounter() {
+    const { t } = useTranslation();
     const [text, setText] = useState('');
     const [tweets, setTweets] = useState([]);
     const [copiedIndex, setCopiedIndex] = useState(null);
@@ -39,10 +42,10 @@ export default function TweetCounter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="tweet-counter">
             <Helmet>
-                <title>Twitter/X Thread Counter | MiniTools by Spinotek</title>
-                <meta name="description" content="Split long text into tweet-sized chunks automatically." />
+                <title>{t('tools.tweet-counter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.tweet-counter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -51,8 +54,8 @@ export default function TweetCounter() {
                         <Twitter size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Twitter/X Thread Counter</h1>
-                        <p className="text-slate-500 text-sm">Count characters and manage your X/Twitter thread limits.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.tweet-counter.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.tweet-counter.desc')}</p>
                     </div>
                 </div>
             </div>

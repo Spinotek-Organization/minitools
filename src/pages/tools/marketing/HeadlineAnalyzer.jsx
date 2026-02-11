@@ -4,6 +4,8 @@ import { FileText, CheckCircle, AlertCircle, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 // Simple word lists for demonstration (in a real app, these would be larger dictionaries)
 const COMMON_WORDS = new Set(['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'from', 'by', 'with', 'in', 'of', 'as', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'can', 'could', 'should', 'would', 'will', 'may', 'might', 'must', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'this', 'that', 'these', 'those', 'what', 'which', 'who', 'whom', 'whose', 'when', 'where', 'why', 'how']);
 
@@ -12,6 +14,7 @@ const EMOTIONAL_WORDS = new Set(['amazing', 'attractive', 'best', 'bold', 'brave
 const POWER_WORDS = new Set(['absolute', 'actually', 'challenge', 'compare', 'conquer', 'crazy', 'critical', 'detailed', 'discount', 'discover', 'extra', 'fast', 'free', 'growth', 'guarantee', 'hack', 'help', 'history', 'huge', 'immediately', 'important', 'increase', 'innovative', 'instant', 'intense', 'join', 'know', 'latest', 'lifetime', 'limited', 'luxury', 'massive', 'master', 'money', 'new', 'now', 'official', 'only', 'opportunity', 'plus', 'premium', 'profit', 'protect', 'quick', 'raw', 'secure', 'special', 'strategies', 'strong', 'superior', 'today', 'top', 'tremendous', 'truly', 'unique', 'unlimited', 'unusual', 'value', 'win', 'yes']);
 
 export default function HeadlineAnalyzer() {
+    const { t } = useTranslation();
     const [headline, setHeadline] = useState('');
     const [score, setScore] = useState(0);
     const [breakdown, setBreakdown] = useState(null);
@@ -83,10 +86,10 @@ export default function HeadlineAnalyzer() {
     }
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="headline-analyzer">
             <Helmet>
-                <title>Headline Analyzer | MiniTools by Spinotek</title>
-                <meta name="description" content="Score your headlines to maximize click-through rates." />
+                <title>{t('tools.headline-analyzer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.headline-analyzer.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -95,8 +98,8 @@ export default function HeadlineAnalyzer() {
                         <FileText size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Headline Analyzer</h1>
-                        <p className="text-slate-500 text-sm">Improve your headlines for better CTR and engagement.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.headline-analyzer.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.headline-analyzer.desc')}</p>
                     </div>
                 </div>
             </div>

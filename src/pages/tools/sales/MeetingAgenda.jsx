@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Calendar, Plus, Trash2, Printer, Copy, Check, FileText } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function MeetingAgenda() {
+    const { t } = useTranslation();
     const [data, setData] = useState({
         title: 'Project Kickoff',
         date: new Date().toISOString().split('T')[0],
@@ -64,10 +66,10 @@ export default function MeetingAgenda() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="meeting-agenda">
             <Helmet>
-                <title>Meeting Agenda Builder | MiniTools by Spinotek</title>
-                <meta name="description" content="Plan and structure productive business meetings." />
+                <title>{t('tools.meeting-agenda.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.meeting-agenda.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4 print:hidden">
@@ -76,8 +78,8 @@ export default function MeetingAgenda() {
                         <Calendar size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Meeting Agenda Builder</h1>
-                        <p className="text-slate-500 text-sm">Plan and structure productive business meetings.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.meeting-agenda.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.meeting-agenda.desc')}</p>
                     </div>
                 </div>
             </div>

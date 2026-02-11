@@ -4,7 +4,10 @@ import { Search, Monitor, Smartphone, Globe } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function SerpPreview() {
+    const { t } = useTranslation();
     const [data, setData] = useState({
         title: 'Your Page Title | Brand Name',
         description: 'This is a sample meta description that will appear in search results. Make it catchy and relevant to improve your click-through rate.',
@@ -22,10 +25,10 @@ export default function SerpPreview() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="serp-preview">
             <Helmet>
-                <title>Google SERP Preview | MiniTools by Spinotek</title>
-                <meta name="description" content="Visualize how your website appears on Google search results." />
+                <title>{t('tools.serp-preview.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.serp-preview.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -34,8 +37,8 @@ export default function SerpPreview() {
                         <Search size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Google SERP Preview</h1>
-                        <p className="text-slate-500 text-sm">Visualize how your website appears on Google search results.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.serp-preview.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.serp-preview.desc')}</p>
                     </div>
                 </div>
                 

@@ -1,0 +1,528 @@
+{
+    "json-fmt": {
+        "title": "JSON Formatter/Validator",
+        "desc": "Format and validate JSON code for better readability."
+    },
+    "base64-enc": {
+        "title": "Base64 Encoder/Decoder",
+        "desc": "Encode or decode strings to/from Base64 format."
+    },
+    "regex-tester": {
+        "title": "Regex Tester",
+        "desc": "Test and debug your regular expressions in real-time."
+    },
+    "html-enc": {
+        "title": "HTML Entity Encoder",
+        "desc": "Convert characters to HTML entities and vice-versa."
+    },
+    "url-enc": {
+        "title": "URL Encoder/Decoder",
+        "desc": "Properly encode or decode URLs for web compatibility."
+    },
+    "jwt-debug": {
+        "title": "JWT Debugger",
+        "desc": "Decode and inspect JSON Web Tokens safely."
+    },
+    "sql-fmt": {
+        "title": "SQL Formatter",
+        "desc": "Beautify and format your SQL queries instantly."
+    },
+    "uuid-gen": {
+        "title": "UUID/ULID Generator",
+        "desc": "Generate unique identifiers for your applications."
+    },
+    "hash-gen": {
+        "title": "MD5/SHA256 Hasher",
+        "desc": "Generate secure cryptographic hashes for your data."
+    },
+    "cron-guru": {
+        "title": "Crontab Guru",
+        "desc": "Visualize and edit cron schedule expressions easily."
+    },
+    "diff-checker": {
+        "title": "Diff Checker",
+        "desc": "Compare and find differences between two text sets."
+    },
+    "js-minifier": {
+        "title": "Javascript Minifier",
+        "desc": "Compress and optimize your Javascript code."
+    },
+    "utm-builder": {
+        "title": "UTM Link Builder",
+        "desc": "Easily generate UTM tracking links for your campaigns."
+    },
+    "serp-preview": {
+        "title": "Google SERP Preview",
+        "desc": "Visualize how your website appears on Google search results."
+    },
+    "meta-gen": {
+        "title": "Meta Tag Generator",
+        "desc": "Create SEO-optimized meta tags for your website."
+    },
+    "robots-gen": {
+        "title": "Robots.txt Generator",
+        "desc": "Create properly formatted robots.txt files for SEO."
+    },
+    "social-mockup": {
+        "title": "Social Post Mockup",
+        "desc": "Preview how your posts will look on LinkedIn, Twitter, and Facebook."
+    },
+    "slug-gen": {
+        "title": "Slug Generator",
+        "desc": "Convert any text into a URL-friendly slug."
+    },
+    "text-analyzer": {
+        "title": "Article Text Analyzer",
+        "desc": "Analyze word count, keyword density, and reading time of your text."
+    },
+    "tweet-counter": {
+        "title": "Twitter/X Thread Counter",
+        "desc": "Count characters and manage your X/Twitter thread limits."
+    },
+    "link-cleaner": {
+        "title": "Link Cleaner / Stripper",
+        "desc": "Remove tracking parameters (UTM, FBCLID) from your URLs."
+    },
+    "url-sitemap": {
+        "title": "URL List to Sitemap",
+        "desc": "Convert a list of URLs into a properly formatted XML Sitemap."
+    },
+    "ad-counter": {
+        "title": "Ad Copy Character Counter",
+        "desc": "Validate character limits for Google and Meta Ads."
+    },
+    "headline-analyzer": {
+        "title": "Headline Analyzer",
+        "desc": "Improve your headlines for better CTR and engagement."
+    },
+    "invoice-gen": {
+        "title": "Invoice Generator",
+        "desc": "Create simple, professional PDF invoices in seconds."
+    },
+    "tax-calc": {
+        "title": "Tax Calculator",
+        "desc": "Quickly calculate PPN, PPh, and other business taxes."
+    },
+    "profit-calc": {
+        "title": "Profit Margin Calculator",
+        "desc": "Calculate your margins and markup accurately."
+    },
+    "roi-calc": {
+        "title": "Investment ROI Calculator",
+        "desc": "Calculate Return on Investment and potential profit growth."
+    },
+    "discount-calc": {
+        "title": "Discount & Sale Calculator",
+        "desc": "Calculate final prices after discounts and sales taxes."
+    },
+    "compound-interest": {
+        "title": "Compound Interest Calculator",
+        "desc": "Project your investment growth with compound interest."
+    },
+    "biz-name-gen": {
+        "title": "Business Name Generator",
+        "desc": "Find creative and unique names for your next venture."
+    },
+    "receipt-maker": {
+        "title": "Receipt Maker",
+        "desc": "Generate simple digital receipts for your customers."
+    },
+    "break-even-calc": {
+        "title": "Break-Even Point Calculator",
+        "desc": "Calculate when your business will become profitable."
+    },
+    "salary-calc": {
+        "title": "Salary/Take Home Pay Calc",
+        "desc": "Calculate net pay after taxes and deductions."
+    },
+    "unit-price-comp": {
+        "title": "Unit Price Comparison",
+        "desc": "Find the best deal by comparing unit prices."
+    },
+    "bookkeeping": {
+        "title": "Simple Bookkeeping Tool",
+        "desc": "Track your daily income and expenses easily."
+    },
+    "wa-direct": {
+        "title": "WhatsApp Direct Link",
+        "desc": "Send WhatsApp messages without saving numbers.",
+        "page": {
+            "input_title": "Enter Details",
+            "phone_label": "Phone Number",
+            "phone_helper": "Enter the number without the country code. Leading zeros will be removed automatically.",
+            "msg_label": "Message (Optional)",
+            "msg_placeholder": "Hi, I'm interested in your services...",
+            "output_title": "Generated Link",
+            "no_link_msg": "Enter a phone number to generate a link",
+            "open_chat": "Open Chat",
+            "copy_link": "Copy Link",
+            "copied": "Copied!",
+            "show_qr": "Show QR Code",
+            "hide_qr": "Hide QR Code",
+            "download_qr": "Download QR Image"
+        }
+    },
+    "email-sig": {
+        "title": "Email Signature Generator",
+        "desc": "Create professional email signatures for your brand.",
+        "page": {
+            "tabs": {
+                "personal": "Personal",
+                "company": "Company",
+                "social": "Social",
+                "style": "Style"
+            },
+            "labels": {
+                "full_name": "Full Name",
+                "job_title": "Job Title",
+                "email": "Email",
+                "phone": "Phone",
+                "company_name": "Company Name",
+                "website": "Website",
+                "address": "Address",
+                "logo": "Logo",
+                "linkedin_url": "LinkedIn URL",
+                "twitter_url": "Twitter URL",
+                "instagram_url": "Instagram URL",
+                "theme_color": "Theme Color",
+                "font_family": "Font Family"
+            },
+            "upload_btn": "Upload Image",
+            "or": "or",
+            "upload_helper": "Upload an image or paste a direct link. Square images work best.",
+            "preview_title": "Live Preview",
+            "preview_badge": "Changes apply automatically",
+            "copy_info": "Click <strong>Copy Signature</strong> below, then go to your email settings (Gmail, Outlook, etc.) and paste (Ctrl+V) it into the signature box.",
+            "copy_btn": "Copy Signature",
+            "copied_btn": "Copied to Clipboard!"
+        }
+    },
+    "cold-email": {
+        "title": "Cold Email Templates",
+        "desc": "High-converting templates for your outreach."
+    },
+    "sales-script": {
+        "title": "Sales Script Generator",
+        "desc": "Generate persuasive sales scripts instantly."
+    },
+    "tz-converter": {
+        "title": "Time Zone Converter",
+        "desc": "Coordinate meetings across different time zones."
+    },
+    "meeting-agenda": {
+        "title": "Meeting Agenda Builder",
+        "desc": "Plan and structure productive business meetings."
+    },
+    "price-quote": {
+        "title": "Price Quote Generator",
+        "desc": "Quickly generate professional quotes for clients."
+    },
+    "followup-calc": {
+        "title": "Follow-up Reminder Calc",
+        "desc": "Schedule and track your client follow-up timing."
+    },
+    "testimonial-maker": {
+        "title": "Testimonial Card Maker",
+        "desc": "Turn client feedback into beautiful visual cards."
+    },
+    "cta-ideas": {
+        "title": "CTA Ideas Generator",
+        "desc": "Catchy call-to-action ideas for higher conversion."
+    },
+    "qr-gen": {
+        "title": "QR Code Generator",
+        "desc": "Create scalable QR codes for links, text, or vCards."
+    },
+    "biz-card-mockup": {
+        "title": "Business Card Mockup",
+        "desc": "Visualize your business card design in realistic mockups."
+    },
+    "short-link": {
+        "title": "Link Tracker & Shortener",
+        "desc": "Create clean and trackable short URLs."
+    },
+    "img-resizer": {
+        "title": "Social Media Image Resizer",
+        "desc": "Resize images for Instagram, Twitter, and Facebook."
+    },
+    "video-outline": {
+        "title": "Video Script Outliner",
+        "desc": "Structure your video content for maximum impact."
+    },
+    "ig-grid": {
+        "title": "Instagram Grid Preview",
+        "desc": "Plan and visualize your Instagram feed aesthetic."
+    },
+    "hashtag-manager": {
+        "title": "Hashtag Manager",
+        "desc": "Organize, count, and save your hashtag groups."
+    },
+    "aspect-ratio": {
+        "title": "Video Aspect Ratio Calc",
+        "desc": "Calculate perfect dimensions for any video format."
+    },
+    "caption-fmt": {
+        "title": "Caption Formatter",
+        "desc": "Clean up your captions with clean line breaks."
+    },
+    "yt-thumbnail": {
+        "title": "YouTube Thumbnail Preview",
+        "desc": "Test your thumbnails against various backgrounds."
+    },
+    "podcast-planner": {
+        "title": "Podcast Episode Planner",
+        "desc": "Organize your podcast episodes and guest notes."
+    },
+    "tiktok-hooks": {
+        "title": "TikTok Viral Hook Ideas",
+        "desc": "Get attention-grabbing hooks for your TikToks."
+    },
+    "emoji-picker": {
+        "title": "Emoji Keyboard/Picker",
+        "desc": "Quickly find and copy the perfect emojis."
+    },
+    "teleprompter": {
+        "title": "Online Teleprompter",
+        "desc": "Read your scripts smoothly while recording videos."
+    },
+    "watermark-tool": {
+        "title": "Watermark Tool",
+        "desc": "Protect your content with custom watermarks."
+    },
+    "palette-gen": {
+        "title": "Color Palette Generator",
+        "desc": "Create beautiful, harmonious color schemes."
+    },
+    "contrast-check": {
+        "title": "Contrast Checker",
+        "desc": "Check WCAG accessibility contrast ratios."
+    },
+    "gradient-maker": {
+        "title": "CSS Gradient Maker",
+        "desc": "Design and generate CSS linear and radial gradients."
+    },
+    "shadow-maker": {
+        "title": "CSS Shadow Maker",
+        "desc": "Visual editor for complex CSS box-shadows."
+    },
+    "svg-placeholder": {
+        "title": "SVG Placeholder Generator",
+        "desc": "Generate custom SVG placeholder images for layouts."
+    },
+    "webp-conv": {
+        "title": "Image-to-WebP Converter",
+        "desc": "Convert your images to high-performance WebP format."
+    },
+    "icon-viewer": {
+        "title": "SVG Icon Viewer/Editor",
+        "desc": "View, edit colors, and optimize your SVG icons."
+    },
+    "font-pairer": {
+        "title": "Font Pairer Suggestions",
+        "desc": "Find perfect typography combinations for your project."
+    },
+    "favicon-gen": {
+        "title": "Favicon Generator",
+        "desc": "Create favicons for all platforms and browsers."
+    },
+    "image-filters": {
+        "title": "Image Filters & Effects",
+        "desc": "Apply beautiful filters and adjustments to your photos."
+    },
+    "aspect-calc": {
+        "title": "Aspect Ratio Calculator",
+        "desc": "Calculate dimensions and ratios for various displays."
+    },
+    "pixel-rem": {
+        "title": "Pixel to REM Converter",
+        "desc": "Convert pixels to REM for modern responsive CSS."
+    },
+    "pdf-merge": {
+        "title": "PDF Merge/Split",
+        "desc": "Combine multiple PDFs or extract pages into new files."
+    },
+    "word-counter": {
+        "title": "Word Counter",
+        "desc": "Count words, characters, and sentences in your text."
+    },
+    "lorem-gen": {
+        "title": "Lorem Ipsum Generator",
+        "desc": "Generate placeholder text for your designs."
+    },
+    "text-replace": {
+        "title": "Batch Search & Replace",
+        "desc": "Find and replace text across multiple lines or files."
+    },
+    "roman-conv": {
+        "title": "Roman Numeral Converter",
+        "desc": "Convert numbers to Roman numerals and vice versa."
+    },
+    "signature-pad": {
+        "title": "Digital Signature Pad",
+        "desc": "Draw and download your digital signature."
+    },
+    "sort-list": {
+        "title": "Alphabetical Sorter",
+        "desc": "Sort any list alphabetically or numerically."
+    },
+    "remove-duplicates": {
+        "title": "Duplicate Line Remover",
+        "desc": "Clean up your lists by removing repeated lines."
+    },
+    "case-converter": {
+        "title": "Case Converter",
+        "desc": "Convert text between upper, lower, and title case."
+    },
+    "md-editor": {
+        "title": "Markdown Editor",
+        "desc": "Write and preview Markdown with a live editor."
+    },
+    "csv-json": {
+        "title": "CSV to JSON Converter",
+        "desc": "Convert spreadsheet data to JSON format."
+    },
+    "num-to-words": {
+        "title": "Number to Words (Terbilang)",
+        "desc": "Convert numerical values into written text."
+    },
+    "pomodoro": {
+        "title": "Pomodoro Timer",
+        "desc": "Stay focused with customizable work and break intervals."
+    },
+    "ambient-noise": {
+        "title": "Ambient Noise Generator",
+        "desc": "Focus with soothing sounds like rain, coffee shop, and more."
+    },
+    "habit-tracker": {
+        "title": "Daily Habit Tracker",
+        "desc": "Track and build better daily routines and habits."
+    },
+    "todo-list": {
+        "title": "Minimalist To-Do List",
+        "desc": "Keep your tasks simple and organized for the day."
+    },
+    "water-reminder": {
+        "title": "Water Intake Reminder",
+        "desc": "Stay hydrated with smart reminders throughout the day."
+    },
+    "eye-break": {
+        "title": "Eye Break Timer",
+        "desc": "Protect your eyes using the 20-20-20 break rule."
+    },
+    "gratitude-journal": {
+        "title": "Gratitude Journal",
+        "desc": "Improve your well-being by reflecting on positive moments."
+    },
+    "decision-matrix": {
+        "title": "Decision Matrix (Pick for me)",
+        "desc": "Stuck? Let the logic help you decide what to do next."
+    },
+    "break-timer": {
+        "title": "Break Timer",
+        "desc": "Smart reminders to step away and recharge your energy."
+    },
+    "daily-reflection": {
+        "title": "Daily Reflection Prompt",
+        "desc": "Thoughtful prompts for personal growth and awareness."
+    },
+    "stopwatch": {
+        "title": "Simple Stopwatch",
+        "desc": "A simple and clean interface for timing anything."
+    },
+    "time-boxing": {
+        "title": "Time Boxing Planner",
+        "desc": "Plan your day by assigning tasks to specific time blocks."
+    },
+    "citation-gen": {
+        "title": "Citation Generator",
+        "desc": "Generate citations in APA, MLA, and Chicago formats."
+    },
+    "percentage-calc": {
+        "title": "Percentage Calculator",
+        "desc": "Quickly calculate increases, decreases, and percentages."
+    },
+    "stats-calc": {
+        "title": "Mean/Median/Mode Calc",
+        "desc": "Find the average, middle, and most common values in a set."
+    },
+    "unit-conv": {
+        "title": "Unit Converter",
+        "desc": "Convert between metric and imperial units easily."
+    },
+    "binary-conv": {
+        "title": "Binary to Decimal",
+        "desc": "Convert numbers between binary, decimal, and hex."
+    },
+    "equation-solver": {
+        "title": "Equation Solver",
+        "desc": "Solve basic linear and quadratic equations step-by-step."
+    },
+    "graph-plotter": {
+        "title": "Simple Graph Plotter",
+        "desc": "Visualize your data with simple bar or line graphs."
+    },
+    "sorting-visualizer": {
+        "title": "Sorting Visualizer",
+        "desc": "Watch how different sorting algorithms work in real-time."
+    },
+    "plagiarism-linker": {
+        "title": "Plagiarism Checker Linker",
+        "desc": "Quick links to top free plagiarism detection tools."
+    },
+    "fraction-calc": {
+        "title": "Fraction Calculator",
+        "desc": "Add, subtract, and multiply complex fractions."
+    },
+    "sci-calc": {
+        "title": "Scientific Calculator",
+        "desc": "Advanced calculator for math and science needs."
+    },
+    "date-diff": {
+        "title": "Date Difference Calc",
+        "desc": "Calculate the exact number of days between two dates."
+    },
+    "password-gen": {
+        "title": "Strong Password Generator",
+        "desc": "Create secure, random passwords to protect your accounts."
+    },
+    "password-strength": {
+        "title": "Password Strength Checker",
+        "desc": "Test how secure your password is against brute-force attacks."
+    },
+    "fake-identity": {
+        "title": "Fake Identity Generator",
+        "desc": "Generate random profiles for software testing and privacy."
+    },
+    "temp-email": {
+        "title": "Disposable Email Linker",
+        "desc": "Quick links to top temporary email services for privacy."
+    },
+    "secret-note": {
+        "title": "Secret Note",
+        "desc": "Create encrypted notes that self-destruct after being read."
+    },
+    "ip-checker": {
+        "title": "IP Address Checker",
+        "desc": "Find your public IP address and approximate location."
+    },
+    "browser-fingerprint": {
+        "title": "Browser Fingerprint",
+        "desc": "See what information your browser reveals to websites."
+    },
+    "dns-lookup": {
+        "title": "DNS Lookup",
+        "desc": "Find DNS records for any domain name quickly."
+    },
+    "ssl-checker": {
+        "title": "SSL Certificate Checker",
+        "desc": "Verify the validity and details of a websites SSL certificate."
+    },
+    "port-scanner": {
+        "title": "Port Scanner",
+        "desc": "Check for open ports on a specific IP or domain."
+    },
+    "2fa-gen": {
+        "title": "2FA Code Generator",
+        "desc": "Generate two-factor authentication codes for your accounts."
+    }
+}

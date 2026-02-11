@@ -2,11 +2,14 @@ import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Menu as MenuIcon, X, ChevronDown, Github } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
+import { useTranslation } from 'react-i18next';
 import { CATEGORIES } from '../../data/categories';
 import Logo from './Logo';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { t } = useTranslation();
 
     const toggleSearch = () => {
         window.dispatchEvent(new CustomEvent('toggle-search'));
@@ -55,12 +58,12 @@ export default function Navbar() {
 
                         {/* Desktop Navigation Links */}
                         <div className="hidden md:flex items-center gap-6">
-                            <Link to="/" className="text-sm font-bold text-white/70 hover:text-white transition-colors">Home</Link>
-                            <Link to="/explore" className="text-sm font-bold text-white/70 hover:text-white transition-colors">Explore Tools</Link>
+                            <Link to="/" className="text-sm font-bold text-white/70 hover:text-white transition-colors">{t('navbar.home')}</Link>
+                            <Link to="/explore" className="text-sm font-bold text-white/70 hover:text-white transition-colors">{t('navbar.explore')}</Link>
 
                             <Menu as="div" className="relative">
                                 <Menu.Button className="text-sm font-bold text-white/70 hover:text-white transition-colors flex items-center gap-1 outline-none group">
-                                    Categories <ChevronDown size={14} className="group-hover:translate-y-0.5 transition-transform opacity-60" />
+                                    {t('navbar.categories')} <ChevronDown size={14} className="group-hover:translate-y-0.5 transition-transform opacity-60" />
                                 </Menu.Button>
                                 <Transition
                                     as={Fragment}
@@ -81,7 +84,7 @@ export default function Navbar() {
                                                             className={`${active ? 'bg-white/10 text-white' : 'text-white/70'
                                                                 } group flex w-full items-center rounded-xl px-4 py-2 text-sm font-bold transition-all`}
                                                         >
-                                                            {cat.name}
+                                                            {t(`categories.${cat.id}`)}
                                                         </Link>
                                                     )}
                                                 </Menu.Item>
@@ -100,7 +103,7 @@ export default function Navbar() {
                             className="hidden md:flex items-center gap-2.5 px-3.5 py-1.5 bg-white/10 border border-white/10 rounded-xl text-white/70 hover:text-white hover:bg-white/20 transition-all group"
                         >
                             <Search size={16} />
-                            <span className="text-xs font-bold tracking-wide">Search tools...</span>
+                            <span className="text-xs font-bold tracking-wide">{t('navbar.search_placeholder')}</span>
                             <div className="ml-4 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-all">
                                 <kbd className="px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white shadow-sm">
                                     {window.navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl'}
@@ -108,6 +111,8 @@ export default function Navbar() {
                                 <kbd className="px-1.5 py-0.5 text-[10px] font-black bg-blue-600 border border-white/20 rounded text-white shadow-sm">/</kbd>
                             </div>
                         </button>
+
+                        <LanguageSwitcher />
 
                         {/* GitHub Link */}
                         <a
@@ -133,13 +138,13 @@ export default function Navbar() {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="md:hidden bg-blue-800 border-b border-white/10 p-4 space-y-1 relative z-50 shadow-2xl">
-                    <Link to="/" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">Home</Link>
-                    <Link to="/explore" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">Explore Tools</Link>
-                    <div className="px-6 py-2 text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">Categories</div>
+                    <Link to="/" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">{t('navbar.home')}</Link>
+                    <Link to="/explore" className="block px-6 py-3 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all">{t('navbar.explore')}</Link>
+                    <div className="px-6 py-2 text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">{t('navbar.categories')}</div>
                     <div className="grid grid-cols-1 gap-1">
                         {CATEGORIES.map((cat) => (
                             <Link key={cat.id} to={`/category/${cat.id}`} className="block px-6 py-2.5 text-white/70 font-bold hover:bg-white/10 hover:text-white rounded-xl transition-all text-sm">
-                                {cat.name}
+                                {t(`categories.${cat.id}`)}
                             </Link>
                         ))}
                     </div>

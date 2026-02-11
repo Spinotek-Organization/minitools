@@ -3,35 +3,38 @@ import { Helmet } from 'react-helmet-async';
 import { Bell, Calendar as CalendarIcon, Download, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const STRATEGIES = [
-    {
-        id: 'standard',
-        name: 'Standard Sales Cadence',
-        description: 'Balanced frequency for most B2B sales',
-        offsets: [2, 5, 10, 20] // Days from start
-    },
-    {
-        id: 'aggressive',
-        name: 'Aggressive / High Intent',
-        description: 'Frequent touches for warm leads',
-        offsets: [1, 3, 6, 12]
-    },
-    {
-        id: 'long-term',
-        name: 'Long Term Nurture',
-        description: 'Keep in touch without being annoying',
-        offsets: [7, 14, 30, 60]
-    },
-    {
-        id: 'fibonacci',
-        name: 'Fibonacci Sequence',
-        description: 'Natural spacing (1, 2, 3, 5, 8...)',
-        offsets: [1, 2, 3, 5, 8, 13, 21]
-    }
-];
+import { useTranslation } from 'react-i18next';
 
 export default function FollowupReminder() {
+    const { t } = useTranslation();
+
+    const STRATEGIES = [
+        {
+            id: 'standard',
+            name: t('tools.followup-calc.strategies.standard.name'),
+            description: t('tools.followup-calc.strategies.standard.desc'),
+            offsets: [2, 5, 10, 20] // Days from start
+        },
+        {
+            id: 'aggressive',
+            name: t('tools.followup-calc.strategies.aggressive.name'),
+            description: t('tools.followup-calc.strategies.aggressive.desc'),
+            offsets: [1, 3, 6, 12]
+        },
+        {
+            id: 'long-term',
+            name: t('tools.followup-calc.strategies.long_term.name'),
+            description: t('tools.followup-calc.strategies.long_term.desc'),
+            offsets: [7, 14, 30, 60]
+        },
+        {
+            id: 'fibonacci',
+            name: t('tools.followup-calc.strategies.fibonacci.name'),
+            description: t('tools.followup-calc.strategies.fibonacci.desc'),
+            offsets: [1, 2, 3, 5, 8, 13, 21]
+        }
+    ];
+
     const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
     const [strategy, setStrategy] = useState('standard');
     const [reminders, setReminders] = useState([]);
@@ -94,10 +97,10 @@ END:VCALENDAR`;
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="followup-calc">
             <Helmet>
-                <title>Follow-up Reminder | MiniTools by Spinotek</title>
-                <meta name="description" content="Schedule and track your client follow-up timing." />
+                <title>{t('tools.followup-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.followup-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -106,8 +109,8 @@ END:VCALENDAR`;
                         <Bell size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Follow-up Reminder</h1>
-                        <p className="text-slate-500 text-sm">Schedule and track your client follow-up timing.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.followup-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.followup-calc.desc')}</p>
                     </div>
                 </div>
             </div>

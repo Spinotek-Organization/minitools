@@ -8,18 +8,20 @@ import Card from '../../components/shared/Card';
 import ToolCard from '../../components/shared/ToolCard';
 import RequestToolCTA from '../../components/shared/RequestToolCTA';
 import Breadcrumbs from '../../components/shared/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 export default function CategoryPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState('');
+    const { t } = useTranslation();
 
     const category = CATEGORIES.find(cat => cat.id === id);
     if (!category) {
         return (
             <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-                <h1 className="text-2xl font-black text-slate-900">Category not found</h1>
-                <Link to="/" className="text-blue-600 font-bold hover:underline mt-4 inline-block">Return Home</Link>
+                <h1 className="text-2xl font-black text-slate-900">{t('category_page.not_found')}</h1>
+                <Link to="/" className="text-blue-600 font-bold hover:underline mt-4 inline-block">{t('category_page.return_home')}</Link>
             </div>
         );
     }
@@ -35,7 +37,7 @@ export default function CategoryPage() {
     return (
         <div className="min-h-screen">
             <Helmet>
-                <title>{category.name} Tools | MiniTools by Spinotek</title>
+                <title>{t(`categories.${category.id}`)} Tools | MiniTools by Spinotek</title>
                 <meta name="description" content={`Explore our collection of ${category.name} tools for your productivity needs.`} />
             </Helmet>
 
@@ -52,10 +54,10 @@ export default function CategoryPage() {
                             </div>
                             <div>
                                 <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-2">
-                                    {category.name}
+                                    {t(`categories.${category.id}`)}
                                 </h1 >
                                 <p className="text-slate-500 font-medium max-w-xl leading-relaxed">
-                                    {category.description}
+                                    {t(`categories_desc.${category.id}`)}
                                 </p>
                             </div>
                         </div>
@@ -66,7 +68,7 @@ export default function CategoryPage() {
                             </div>
                             <input
                                 type="text"
-                                placeholder={`Search ${categoryTools.length} tools...`}
+                                placeholder={t('category_page.search_placeholder', {count: categoryTools.length})}
                                 className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium text-sm"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -80,7 +82,7 @@ export default function CategoryPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex items-center justify-between mb-8">
                     <h2 className="text-sm font-black text-slate-400 uppercase tracking-[0.2em]">
-                        {searchQuery ? `Search Results (${filteredTools.length})` : `All ${category.name} Tools`}
+                        {searchQuery ? t('category_page.search_results', {count: filteredTools.length}) : t('category_page.all_tools', {category: t(`categories.${category.id}`)})}
                     </h2>
                 </div>
 
@@ -96,8 +98,8 @@ export default function CategoryPage() {
                         <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-slate-300 mx-auto mb-4">
                             <Icons.SearchX size={32} />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900">No tools found</h3>
-                        <p className="text-slate-400 mt-2">Try searching for something else or browse categories.</p>
+                        <h3 className="text-xl font-bold text-slate-900">{t('category_page.no_tools_title')}</h3>
+                        <p className="text-slate-400 mt-2">{t('category_page.no_tools_desc')}</p>
                     </div>
                 )}
             </div>

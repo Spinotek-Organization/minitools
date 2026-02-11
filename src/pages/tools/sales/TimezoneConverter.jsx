@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Clock, Plus, Trash2, Copy, Sun, Moon } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 const COMMON_TIMEZONES = [
     { label: 'London (GMT)', value: 'Europe/London' },
@@ -27,6 +28,7 @@ const COMMON_TIMEZONES = [
 ];
 
 export default function TimezoneConverter() {
+    const { t } = useTranslation();
     const [baseDate, setBaseDate] = useState(new Date());
     const [locations, setLocations] = useState([]);
     const [sliderValue, setSliderValue] = useState(0); // Minutes from start of day
@@ -146,10 +148,10 @@ export default function TimezoneConverter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="tz-converter">
             <Helmet>
-                <title>Time Zone Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Coordinate meetings across different time zones." />
+                <title>{t('tools.tz-converter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.tz-converter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -158,8 +160,8 @@ export default function TimezoneConverter() {
                         <Clock size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Time Zone Converter</h1>
-                        <p className="text-slate-500 text-sm">Coordinate meetings across different time zones.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.tz-converter.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.tz-converter.desc')}</p>
                     </div>
                 </div>
             </div>

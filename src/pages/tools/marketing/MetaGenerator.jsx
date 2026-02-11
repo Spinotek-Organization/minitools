@@ -4,7 +4,10 @@ import { Tags, Copy, Check, Code } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function MetaGenerator() {
+    const { t } = useTranslation();
     const [data, setData] = useState({
         title: '',
         description: '',
@@ -36,10 +39,10 @@ export default function MetaGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="meta-gen">
             <Helmet>
-                <title>Meta Tag Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create SEO-optimized meta tags for your website." />
+                <title>{t('tools.meta-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.meta-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -48,8 +51,8 @@ export default function MetaGenerator() {
                         <Tags size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Meta Tag Generator</h1>
-                        <p className="text-slate-500 text-sm">Create SEO-optimized meta tags for your website.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.meta-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.meta-gen.desc')}</p>
                     </div>
                 </div>
             </div>

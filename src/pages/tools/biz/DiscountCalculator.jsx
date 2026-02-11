@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Percent, Plus, Trash2, Tag, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function DiscountCalculator() {
+    const { t } = useTranslation();
     const [originalPrice, setOriginalPrice] = useState(100);
     const [discounts, setDiscounts] = useState([{ id: 1, value: 20 }]); // Array for stacked discounts
     const [taxRate, setTaxRate] = useState(0);
@@ -51,10 +53,10 @@ export default function DiscountCalculator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="discount-calc">
             <Helmet>
-                <title>Discount & Sale Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate final price with stacked discounts and tax." />
+                <title>{t('tools.discount-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.discount-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -63,8 +65,8 @@ export default function DiscountCalculator() {
                         <Tag size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Discount Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate final price with stacked discounts and tax.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.discount-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.discount-calc.desc')}</p>
                     </div>
                 </div>
             </div>

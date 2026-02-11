@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Wallet, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function SalaryCalculator() {
+    const { t } = useTranslation();
     const [grossSalary, setGrossSalary] = useState(10000000);
     const [status, setStatus] = useState('TK/0'); // TK/0, K/0, K/1, etc.
     const [hasNPWP, setHasNPWP] = useState(true);
@@ -63,10 +65,10 @@ export default function SalaryCalculator() {
     const result = calculate();
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="salary-calc">
             <Helmet>
-                <title>Salary Calculator (Indonesia) | MiniTools by Spinotek</title>
-                <meta name="description" content="Estimate your take-home pay after BPJS and PPh 21 taxes." />
+                <title>{t('tools.salary-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.salary-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -75,8 +77,8 @@ export default function SalaryCalculator() {
                         <Wallet size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Salary Calculator (IDR)</h1>
-                        <p className="text-slate-500 text-sm">Estimate your take-home pay after BPJS and PPh 21 taxes.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.salary-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.salary-calc.desc')}</p>
                     </div>
                 </div>
             </div>

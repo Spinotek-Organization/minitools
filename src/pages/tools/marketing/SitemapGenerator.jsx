@@ -4,7 +4,10 @@ import { FileCode, Download, Copy, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function SitemapGenerator() {
+    const { t } = useTranslation();
     const [urls, setUrls] = useState('');
     const [priority, setPriority] = useState('0.8');
     const [freq, setFreq] = useState('weekly');
@@ -56,10 +59,10 @@ export default function SitemapGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="url-sitemap">
             <Helmet>
-                <title>Sitemap XML Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate SEO-friendly XML sitemaps for your website." />
+                <title>{t('tools.url-sitemap.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.url-sitemap.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -68,8 +71,8 @@ export default function SitemapGenerator() {
                         <FileCode size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Sitemap XML Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate SEO-friendly XML sitemaps for your website.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.url-sitemap.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.url-sitemap.desc')}</p>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,10 @@ import { Zap, Copy, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function SlugGenerator() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [slug, setSlug] = useState('');
     const [separator, setSeparator] = useState('-');
@@ -45,10 +48,10 @@ export default function SlugGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="slug-gen">
             <Helmet>
-                <title>Slug Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert any text into a URL-friendly slug." />
+                <title>{t('tools.slug-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.slug-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -57,8 +60,8 @@ export default function SlugGenerator() {
                         <Zap size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Slug Generator</h1>
-                        <p className="text-slate-500 text-sm">Convert any text into a URL-friendly slug instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.slug-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.slug-gen.desc')}</p>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,10 @@ import { FileSpreadsheet, Download, Plus, Trash2 } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ReceiptMaker() {
+    const { t } = useTranslation();
     const [receiptData, setReceiptData] = useState({
         storeName: 'My Store',
         address: '123 Main St, City',
@@ -70,10 +72,10 @@ export default function ReceiptMaker() {
     const totals = calculateTotals();
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="receipt-maker">
             <Helmet>
-                <title>Receipt Maker | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate simple digital receipts for your customers." />
+                <title>{t('tools.receipt-maker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.receipt-maker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -82,8 +84,8 @@ export default function ReceiptMaker() {
                         <FileSpreadsheet size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Receipt Maker</h1>
-                        <p className="text-slate-500 text-sm">Generate simple digital receipts for your customers.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.receipt-maker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.receipt-maker.desc')}</p>
                     </div>
                 </div>
                 <button

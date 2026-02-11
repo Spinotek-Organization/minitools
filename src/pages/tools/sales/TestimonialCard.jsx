@@ -4,15 +4,18 @@ import { UserCheck, Upload, Download, Star, RefreshCw, Image as ImageIcon } from
 import { toPng } from 'html-to-image';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const THEMES = [
-    { id: 'light', name: 'Clean Light', bg: 'bg-white', text: 'text-slate-900', border: 'border-slate-100', accent: 'text-indigo-600' },
-    { id: 'dark', name: 'Modern Dark', bg: 'bg-slate-900', text: 'text-white', border: 'border-slate-800', accent: 'text-indigo-400' },
-    { id: 'blue', name: 'Brand Blue', bg: 'bg-indigo-600', text: 'text-white', border: 'border-indigo-500', accent: 'text-indigo-200' },
-    { id: 'gradient', name: 'Gradient', bg: 'bg-gradient-to-br from-indigo-500 to-purple-600', text: 'text-white', border: 'border-white/20', accent: 'text-yellow-300' },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function TestimonialCard() {
+    const { t } = useTranslation();
+
+    const THEMES = [
+        { id: 'light', name: t('tools.testimonial-maker.themes.light'), bg: 'bg-white', text: 'text-slate-900', border: 'border-slate-100', accent: 'text-indigo-600' },
+        { id: 'dark', name: t('tools.testimonial-maker.themes.dark'), bg: 'bg-slate-900', text: 'text-white', border: 'border-slate-800', accent: 'text-indigo-400' },
+        { id: 'blue', name: t('tools.testimonial-maker.themes.blue'), bg: 'bg-indigo-600', text: 'text-white', border: 'border-indigo-500', accent: 'text-indigo-200' },
+        { id: 'gradient', name: t('tools.testimonial-maker.themes.gradient'), bg: 'bg-gradient-to-br from-indigo-500 to-purple-600', text: 'text-white', border: 'border-white/20', accent: 'text-yellow-300' },
+    ];
+
     const [data, setData] = useState({
         name: 'Sarah Johnson',
         role: 'Marketing Director at TechFlow',
@@ -53,10 +56,10 @@ export default function TestimonialCard() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="testimonial-maker">
             <Helmet>
-                <title>Testimonial Card Maker | MiniTools by Spinotek</title>
-                <meta name="description" content="Turn client feedback into beautiful visual cards." />
+                <title>{t('tools.testimonial-maker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.testimonial-maker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -65,8 +68,8 @@ export default function TestimonialCard() {
                         <UserCheck size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Testimonial Card Maker</h1>
-                        <p className="text-slate-500 text-sm">Turn client feedback into beautiful visual cards for social media.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.testimonial-maker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.testimonial-maker.desc')}</p>
                     </div>
                 </div>
             </div>

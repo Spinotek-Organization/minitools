@@ -1,0 +1,426 @@
+{
+    "navbar": {
+        "home": "Home",
+        "explore": "Explore Tools",
+        "categories": "Categories",
+        "search_placeholder": "Search tools...",
+        "search_toggle": "Search"
+    },
+    "footer": {
+        "description": "120+ browser-based productivity tools for <1>developers</1>, <3>creators</3>, and <5>professionals</5>. Zero friction. Instant results.",
+        "services": "Services",
+        "platform": "Platform",
+        "products": "Products",
+        "company": "Company",
+        "web_dev": "Web Dev",
+        "mobile": "Mobile",
+        "showcase": "Showcase",
+        "custom_software": "Need custom software?",
+        "spinotek_help": "Spinotek helps businesses build high-performance Web and Mobile applications.",
+        "start_project": "Start Your Project",
+        "contribute": "Contribute Here",
+        "privacy": "Privacy",
+        "terms": "Terms"
+    },
+    "roadmap": {
+        "title": "Project Roadmap",
+        "meta_title": "Project Roadmap | MiniTools by Spinotek",
+        "meta_desc": "See what tools we're building and what's coming next to the Spinotek utility suite.",
+        "badge": "The Future of Spinotek Tools",
+        "heading_main": "Project Roadmap &",
+        "heading_highlight": "Growth Plan.",
+        "description": "We're on a mission to build the most comprehensive suite of professional mini-tools. Here's what we've achieved and what's on the horizon.",
+        "released": "Released",
+        "released_sub": "Live & Stable",
+        "ready": "Ready",
+        "in_dev": "In Dev",
+        "in_dev_sub": "Building Now",
+        "coding": "Coding...",
+        "up_next": "Up Next",
+        "up_next_sub": "Future Planned",
+        "idea_text": "Have a tool idea?",
+        "submit_btn": "Submit Request"
+    },
+    "home": {
+        "tools_count": "120+ Tools and Counting",
+        "hero_title": "Your Productivity Toolkit.",
+        "hero_subtitle": "All in One Place.",
+        "hero_description": "120+ browser-based tools for <1>developers</1>, <3>creators</3>, and <5>professionals</5>. Zero friction. Instant results.",
+        "explore_cta": "Explore Tools",
+        "roadmap_cta": "View Roadmap",
+        "quick_search": "Quick Search"
+    },
+    "categories": {
+        "office": "Office & Admin",
+        "marketing": "Marketing & SEO",
+        "biz": "Business & Finance",
+        "sales": "Sales & Support",
+        "content": "Content & Social",
+        "design": "Design & Visual",
+        "dev": "Developer Kit",
+        "productivity": "Productivity",
+        "academic": "Academic & Data",
+        "security": "Security & Privacy"
+    },
+    "categories_desc": {
+        "office": "Helpful for administrative office work.",
+        "marketing": "Optimize content and digital campaigns.",
+        "biz": "Administration and quick calculations.",
+        "sales": "Communication and sales assistance.",
+        "content": "Essential for content creators.",
+        "design": "Light utilities for non-professional designers.",
+        "dev": "Technical tools for daily coding needs.",
+        "productivity": "Focus and mental health while working.",
+        "academic": "For students, researchers, or data processors.",
+        "security": "Basic digital security and privacy."
+    },
+    "explore": {
+        "title": "Explore Tools",
+        "subtitle": "Our complete library of specialized utilities, organized for your professional workflow.",
+        "all_categories": "All Categories",
+        "search_placeholder": "Search among all tools...",
+        "no_results_title": "No tools matched your search",
+        "no_results_desc": "Try different keywords or browse our categories below.",
+        "clear_filter": "Clear search filter"
+    },
+    "category_page": {
+        "not_found": "Category not found",
+        "return_home": "Return Home",
+        "search_placeholder": "Search {{count}} tools...",
+        "search_results": "Search Results ({{count}})",
+        "all_tools": "All {{category}} Tools",
+        "no_tools_title": "No tools found",
+        "no_tools_desc": "Try searching for something else or browse categories."
+    },
+    "tool_card": {
+        "status": {
+            "in_dev": "In Dev",
+            "new": "New"
+        },
+        "action": {
+            "launch": "Launch Tool",
+            "preview": "Preview Tool"
+        }
+    },
+    "breadcrumbs": {
+        "home": "Home",
+        "explore": "Explore Tools"
+    },
+    "cta": {
+        "community_driven": "Community Driven",
+        "need_specific_tool": "Need a specific tool?",
+        "let_us_build": "Let us build it for you.",
+        "mission": "Our mission is to empower makers. If you can't find what you're looking for, we'll build it for free.",
+        "request_new_tool": "Request New Tool",
+        "response_time": "Response within 24 hours"
+    },
+    "placeholder": {
+        "title": "Tool Under Development",
+        "desc": "We're currently building something amazing here. This tool will be available in the next update!"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Something went wrong",
+        "related_utilities": "Related Utilities"
+    },
+    "generated_by": "Generated by MiniTools",
+    "tools": {
+        "utm-builder": {
+            "title": "UTM Link Builder",
+            "desc": "Easily generate UTM tracking links for your campaigns."
+        },
+        "serp-preview": {
+            "title": "Google SERP Preview",
+            "desc": "Visualize how your website appears on Google search results."
+        },
+        "meta-gen": {
+            "title": "Meta Tag Generator",
+            "desc": "Create SEO-optimized meta tags for your website."
+        },
+        "robots-gen": {
+            "title": "Robots.txt Generator",
+            "desc": "Create properly formatted robots.txt files for SEO."
+        },
+        "social-mockup": {
+            "title": "Social Post Mockup",
+            "desc": "Preview how your posts will look on LinkedIn, Twitter, and Facebook."
+        },
+        "slug-gen": {
+            "title": "Slug Generator",
+            "desc": "Convert any text into a URL-friendly slug."
+        },
+        "text-analyzer": {
+            "title": "Article Text Analyzer",
+            "desc": "Analyze word count, keyword density, and reading time of your text."
+        },
+        "tweet-counter": {
+            "title": "Twitter/X Thread Counter",
+            "desc": "Count characters and manage your X/Twitter thread limits."
+        },
+        "link-cleaner": {
+            "title": "Link Cleaner / Stripper",
+            "desc": "Remove tracking parameters (UTM, FBCLID) from your URLs."
+        },
+        "url-sitemap": {
+            "title": "URL List to Sitemap",
+            "desc": "Convert a list of URLs into a properly formatted XML Sitemap."
+        },
+        "ad-counter": {
+            "title": "Ad Copy Character Counter",
+            "desc": "Validate character limits for Google and Meta Ads."
+        },
+        "headline-analyzer": {
+            "title": "Headline Analyzer",
+            "desc": "Improve your headlines for better CTR and engagement."
+        },
+        "invoice-gen": {
+            "title": "Invoice Generator",
+            "desc": "Create simple, professional PDF invoices in seconds."
+        },
+        "tax-calc": {
+            "title": "Tax Calculator",
+            "desc": "Quickly calculate PPN, PPh, and other business taxes."
+        },
+        "profit-calc": {
+            "title": "Profit Margin Calculator",
+            "desc": "Calculate your margins and markup accurately."
+        },
+        "roi-calc": {
+            "title": "Investment ROI Calculator",
+            "desc": "Calculate Return on Investment and potential profit growth."
+        },
+        "discount-calc": {
+            "title": "Discount & Sale Calculator",
+            "desc": "Calculate final price with stacked discounts and sales taxes."
+        },
+        "compound-interest": {
+            "title": "Compound Interest Calculator",
+            "desc": "Project your investment growth with compound interest."
+        },
+        "biz-name-gen": {
+            "title": "Business Name Generator",
+            "desc": "Find creative and unique names for your next venture."
+        },
+        "receipt-maker": {
+            "title": "Receipt Maker",
+            "desc": "Generate simple digital receipts for your customers."
+        },
+        "break-even-calc": {
+            "title": "Break-Even Point Calculator",
+            "desc": "Calculate when your business will become profitable."
+        },
+        "salary-calc": {
+            "title": "Salary/Take Home Pay Calc",
+            "desc": "Calculate net pay after taxes and deductions."
+        },
+        "unit-price-comp": {
+            "title": "Unit Price Comparison",
+            "desc": "Find the best deal by comparing unit prices."
+        },
+        "bookkeeping": {
+            "title": "Simple Bookkeeping Tool",
+            "desc": "Track your daily income and expenses easily."
+        },
+        "sales-script": {
+            "title": "Sales Script Generator",
+            "desc": "Generate persuasive sales scripts instantly based on frameworks.",
+            "frameworks": {
+                "cold_call": {
+                    "name": "Cold Call",
+                    "desc": "Standard outreach script for new prospects",
+                    "template": "Hi [Prospect Name], this is [Your Name] with {{productName}}.\n\nI'm calling because we help {{targetAudience}} who are frustrated with {{painPoint}}.\n\nWe've developed a way to {{benefit}}, and I'd love to share how it works.\n\nDo you have 30 seconds for me to tell you what we do?"
+                },
+                "gatekeeper": {
+                    "name": "Gatekeeper",
+                    "desc": "Getting past the receptionist or assistant",
+                    "template": "Hi, my name is [Your Name] calling from {{productName}}.\n\nI'm looking to speak with the person who handles {{painPoint}} for the company.\n\nCould you point me in the right direction?\n\n(If asked what it's about):\nIt's about how we help {{targetAudience}} achieve {{benefit}} without the usual headaches. Using our {{productName}} solution."
+                },
+                "objection": {
+                    "name": "Objection Handling",
+                    "desc": "Responses to 'I\\'m not interested' or 'Send me info'",
+                    "template": "(prospect says \"I'm not interested\")\n\nI completely understand. A lot of {{targetAudience}} say that initially because they're used to dealing with {{painPoint}} and don't think there's a better way.\n\nBut once they see how {{productName}} allows them to {{benefit}}, they usually wish they'd had a conversation sooner.\n\nValue Proposition:\nWhat if I could show you a 5-minute overview of how we solve {{painPoint}}? Would you be open to that next Tuesday?"
+                },
+                "spin": {
+                    "name": "SPIN Selling",
+                    "desc": "Situation, Problem, Implication, Need-Payoff",
+                    "template": "SITUATION:\n\"Can you tell me a bit about your current process for handling {{painPoint}}?\"\n\"How are you currently managing expectations for your {{targetAudience}}?\"\n\nPROBLEM:\n\"Do you find that {{painPoint}} is taking up more time/resources than you'd like?\"\n\"Is it difficult to achieve {{benefit}} with your current setup?\"\n\nIMPLICATION:\n\"If {{painPoint}} continues, how will that impact your quarterly goals?\"\n\"Does failing to {{benefit}} affect your team's morale or productivity?\"\n\nNEED-PAYOFF:\n\"If you could fix {{painPoint}} and immediately start to {{benefit}}, how would that help you?\"\n\"Would it be valuable if {{productName}} could automate this for you?\""
+                },
+                "aida": {
+                    "name": "AIDA Framework",
+                    "desc": "Attention, Interest, Desire, Action",
+                    "template": "ATTENTION:\n\"Did you know that many {{targetAudience}} are losing hours every week due to {{painPoint}}?\"\n\nINTEREST:\n\"{{productName}} is a new solution designed specifically to eliminate {{painPoint}} forever.\n\nDESIRE:\n\"Imagine being able to {{benefit}} without any extra effort. Our clients are seeing results in just a few days.\"\n\nACTION:\n\"I'd love to give you a quick demo. Are you free tomorrow morning or Thursday afternoon?\""
+                }
+            }
+        },
+        "cold-email": {
+            "title": "Cold Email Templates",
+            "desc": "High-converting templates for your outreach.",
+            "templates": {
+                "quick_intro": {
+                    "title": "The \"Quick Question\" Intro",
+                    "subject": "Quick question about [Company]",
+                    "body": "Hi [First Name],\n\nI was looking at [Company] and was impressed by [Achievement/Observation].\n\nI'm writing because we help companies like yours [Benefit/Result] by [Method].\n\nI'd love to share how we could help [Company] achieve similar results. Do you have 10 minutes next week for a brief chat?\n\nBest,\n[Your Name]"
+                },
+                "pain_point": {
+                    "title": "Solving a Specific Pain Point",
+                    "subject": "Idea for [Pain Point]",
+                    "body": "Hi [First Name],\n\nI noticed that [Company] might be facing challenges with [Pain Point]. I've seen many companies in [Industry] struggle with this, often leading to [Negative Consequence].\n\nWe've developed a solution that [Solution Description], which has helped our clients reduce [Pain Point] by [Percentage]%.\n\nAre you open to a quick conversation to see if this could work for you?\n\nCheers,\n[Your Name]"
+                },
+                "followup_generic": {
+                    "title": "Generic Follow-up",
+                    "subject": "Following up on my last email",
+                    "body": "Hi [First Name],\n\nI wanted to quickly follow up on my previous email. I know things get busy, so I'll keep this brief.\n\nI'm still very interested in discussing how we can help [Company] with [Benefit].\n\nDo you have any time later this week or early next week to connect?\n\nBest regards,\n[Your Name]"
+                },
+                "thoughts_followup": {
+                    "title": "The \"Any Thoughts?\" Follow-up",
+                    "subject": "Any thoughts?",
+                    "body": "Hi [First Name],\n\nI'm writing to ask if you've had a chance to think about my previous note.\n\nIf you're not the right person to speak with, could you point me in the right direction?\n\nThanks,\n[Your Name]"
+                },
+                "breakup": {
+                    "title": "Re-engagement / Break-up",
+                    "subject": "Should I stay or should I go?",
+                    "body": "Hi [First Name],\n\nI haven't heard back from you, so I assume this isn't a priority right now or you've found another solution.\n\nI'll stop following up for now to avoid cluttering your inbox.\n\nIf you ever need help with [Benefit] in the future, feel free to reach out.\n\nBest wishes,\n[Your Name]"
+                },
+                "referral": {
+                    "title": "Referral Request",
+                    "subject": "Who handles [Department] at [Company]?",
+                    "body": "Hi [First Name],\n\nI'm looked to get in touch with the person responsible for [Department/Function] at [Company].\n\nCould you please point me in the right direction?\n\nThanks in advance,\n[Your Name]"
+                },
+                "news": {
+                    "title": "Congratulations on News",
+                    "subject": "Congrats on [News/Event]",
+                    "body": "Hi [First Name],\n\nI saw the news about [News/Event] - congratulations! It's great to see [Company] doing so well.\n\nI was thinking that with this growth, you might be looking for ways to [Benefit related to your product].\n\nWe've helped similar companies scale by [Value Proposition].\n\nWould you be open to a quick chat?\n\nBest,\n[Your Name]"
+                },
+                "resource": {
+                    "title": "Resource/Value Add",
+                    "subject": "A resource for [Company]",
+                    "body": "Hi [First Name],\n\nI found this article/resource about [Topic] and thought it might be relevant to what you're doing at [Company].\n\n[Link to Resource]\n\nWe also specialize in this area and have some other insights that might be useful.\n\nLet me know if you'd like to hear more.\n\nBest,\n[Your Name]"
+                }
+            }
+        },
+        "tz-converter": {
+            "title": "Time Zone Converter",
+            "desc": "Coordinate meetings across different time zones."
+        },
+        "meeting-agenda": {
+            "title": "Meeting Agenda Builder",
+            "desc": "Plan and structure productive business meetings."
+        },
+        "price-quote": {
+            "title": "Price Quote Generator",
+            "desc": "Quickly generate professional quotes for clients."
+        },
+        "followup-calc": {
+            "title": "Follow-up Reminder",
+            "desc": "Schedule and track your client follow-up timing.",
+            "strategies": {
+                "standard": {
+                    "name": "Standard Sales Cadence",
+                    "desc": "Balanced frequency for most B2B sales"
+                },
+                "aggressive": {
+                    "name": "Aggressive / High Intent",
+                    "desc": "Frequent touches for warm leads"
+                },
+                "long_term": {
+                    "name": "Long Term Nurture",
+                    "desc": "Keep in touch without being annoying"
+                },
+                "fibonacci": {
+                    "name": "Fibonacci Sequence",
+                    "desc": "Natural spacing (1, 2, 3, 5, 8...)"
+                }
+            }
+        },
+        "testimonial-maker": {
+            "title": "Testimonial Card Maker",
+            "desc": "Turn client feedback into beautiful visual cards.",
+            "themes": {
+                "light": "Clean Light",
+                "dark": "Modern Dark",
+                "blue": "Brand Blue",
+                "gradient": "Gradient"
+            }
+        },
+        "cta-ideas": {
+            "title": "CTA Ideas Generator",
+            "desc": "Catchy call-to-action ideas for higher conversion.",
+            "ctas": {
+                "ecommerce": {
+                    "shop_save": "Shop Now & Save 20%",
+                    "add_cart": "Add to Cart - Limited Stock",
+                    "free_gift": "Claim Your Free Gift",
+                    "gone_soon": "Get It Before It's Gone",
+                    "free_shipping": "Yes, I Want Free Shipping"
+                },
+                "saas": {
+                    "free_trial": "Start Your Free 14-Day Trial",
+                    "how_it_works": "See How It Works",
+                    "get_started": "Get Started for Free",
+                    "book_demo": "Book a Live Demo",
+                    "no_credit_card": "No Credit Card Required"
+                },
+                "newsletter": {
+                    "join_marketers": "Join 10,000+ Marketers",
+                    "send_guide": "Send Me the Guide",
+                    "subscribe_tips": "Subscribe for Weekly Tips",
+                    "unlock_content": "Unlock Exclusive Content",
+                    "download_pdf": "Download Now (PDF)"
+                },
+                "events": {
+                    "save_seat": "Save My Seat",
+                    "register_free": "Register for Free",
+                    "reserve_spot": "Reserve Your Spot",
+                    "add_calendar": "Add to Calendar"
+                },
+                "social": {
+                    "follow_more": "Follow for More",
+                    "tell_thoughts": "Tell Me Your Thoughts Below",
+                    "share_friend": "Share with a Friend",
+                    "learn_more": "Learn More",
+                    "link_bio": "Link in Bio"
+                }
+            }
+        },
+        "email-sig": {
+            "title": "Email Signature Generator",
+            "desc": "Create professional email signatures in minutes."
+        },
+        "wa-direct": {
+            "title": "WhatsApp Direct Link",
+            "desc": "Start a WhatsApp chat without saving the number.",
+            "page": {
+                "input_title": "Enter Phone Number",
+                "phone_label": "Country Code",
+                "phone_helper": "Enter number without leading zero (e.g. 812...)",
+                "msg_label": "Message (Optional)",
+                "msg_placeholder": "Hello, I'm interested in...",
+                "output_title": "Direct Link",
+                "no_link_msg": "Enter a number to generate",
+                "open_chat": "Open Chat",
+                "copy_link": "Copy Link",
+                "copied": "Copied!",
+                "show_qr": "Show QR Code",
+                "hide_qr": "Hide QR Code",
+                "download_qr": "Download QR"
+            }
+        },
+        "biz-card-mockup": {
+            "title": "Business Card Mockup",
+            "desc": "Visualize your business card design in realistic mockups.",
+            "scenes": {
+                "floating": "Floating 3D",
+                "stack": "Stack",
+                "flat": "Flat Lay"
+            }
+        },
+        "qr-gen": {
+            "title": "QR Code Generator",
+            "desc": "Create customized QR codes for any purpose."
+        },
+        "short-link": {
+            "title": "Link Tracker & Shortener",
+            "desc": "Build trackable URLs and prepare them for sharing."
+        }
+    }
+}

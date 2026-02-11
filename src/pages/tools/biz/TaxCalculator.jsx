@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Calculator, ArrowRight, Info, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function TaxCalculator() {
+    const { t } = useTranslation();
     const [taxType, setTaxType] = useState('ppn'); // ppn, pph21, pph23
     const [calculationMode, setCalculationMode] = useState('exclude'); // exclude (add tax), include (extract tax)
     const [amount, setAmount] = useState('');
@@ -66,10 +68,10 @@ export default function TaxCalculator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="tax-calc">
             <Helmet>
-                <title>Tax Calculator (PPN/PPh) | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate Indonesian tax obligations (PPN 11%, PPh 21/23)." />
+                <title>{t('tools.tax-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.tax-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -78,8 +80,8 @@ export default function TaxCalculator() {
                         <Calculator size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Tax Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate PPN (VAT) and PPh (Income Tax) instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.tax-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.tax-calc.desc')}</p>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { PenTool, Copy, Check, Info, User, Building, Share2, Palette, Upload } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation, Trans } from 'react-i18next';
 
 const FONTS = [
     { name: 'Sans Serif', value: 'Arial, Helvetica, sans-serif' },
@@ -22,6 +23,7 @@ const COLORS = [
 ];
 
 export default function EmailSignature() {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState('personal');
     const [copied, setCopied] = useState(false);
     const signatureRef = useRef(null);
@@ -172,10 +174,10 @@ export default function EmailSignature() {
     );
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="email-sig">
             <Helmet>
-                <title>Email Signature Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create professional email signatures for your brand." />
+                <title>{t('tools.email-sig.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.email-sig.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -184,8 +186,8 @@ export default function EmailSignature() {
                         <PenTool size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Email Signature Generator</h1>
-                        <p className="text-slate-500 text-sm">Create professional email signatures for your brand.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.email-sig.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.email-sig.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -196,10 +198,10 @@ export default function EmailSignature() {
                     {/* Tabs */}
                     <div className="flex space-x-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
                         {[
-                            { id: 'personal', icon: User, label: 'Personal' },
-                            { id: 'company', icon: Building, label: 'Company' },
-                            { id: 'social', icon: Share2, label: 'Social' },
-                            { id: 'style', icon: Palette, label: 'Style' },
+                            { id: 'personal', icon: User, label: t('tools.email-sig.page.tabs.personal') },
+                            { id: 'company', icon: Building, label: t('tools.email-sig.page.tabs.company') },
+                            { id: 'social', icon: Share2, label: t('tools.email-sig.page.tabs.social') },
+                            { id: 'style', icon: Palette, label: t('tools.email-sig.page.tabs.style') },
                         ].map((tab) => (
                             <button
                                 key={tab.id}
@@ -220,7 +222,7 @@ export default function EmailSignature() {
                         {activeTab === 'personal' && (
                             <div className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.full_name')}</label>
                                     <input
                                         type="text"
                                         name="fullName"
@@ -230,7 +232,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Job Title</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.job_title')}</label>
                                     <input
                                         type="text"
                                         name="jobTitle"
@@ -240,7 +242,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.email')}</label>
                                     <input
                                         type="email"
                                         name="email"
@@ -250,7 +252,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.phone')}</label>
                                     <input
                                         type="tel"
                                         name="phone"
@@ -265,7 +267,7 @@ export default function EmailSignature() {
                         {activeTab === 'company' && (
                             <div className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Company Name</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.company_name')}</label>
                                     <input
                                         type="text"
                                         name="companyName"
@@ -275,7 +277,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Website</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.website')}</label>
                                     <input
                                         type="text"
                                         name="website"
@@ -285,7 +287,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Address</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.address')}</label>
                                     <input
                                         type="text"
                                         name="address"
@@ -295,12 +297,12 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Logo</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.logo')}</label>
                                     <div className="space-y-3">
                                         <div className="flex items-center gap-3">
                                             <label className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer bg-white">
                                                 <Upload size={16} />
-                                                Upload Image
+                                                {t('tools.email-sig.page.upload_btn')}
                                                 <input
                                                     type="file"
                                                     accept="image/*"
@@ -308,7 +310,7 @@ export default function EmailSignature() {
                                                     className="hidden"
                                                 />
                                             </label>
-                                            <span className="text-xs text-slate-400">or</span>
+                                            <span className="text-xs text-slate-400">{t('tools.email-sig.page.or')}</span>
                                             <input
                                                 type="text"
                                                 name="logoUrl"
@@ -319,7 +321,7 @@ export default function EmailSignature() {
                                             />
                                         </div>
                                         <p className="text-xs text-slate-400">
-                                            Upload an image or paste a direct link. Square images work best.
+                                            {t('tools.email-sig.page.upload_helper')}
                                         </p>
                                     </div>
                                 </div>
@@ -329,7 +331,7 @@ export default function EmailSignature() {
                         {activeTab === 'social' && (
                             <div className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">LinkedIn URL</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.linkedin_url')}</label>
                                     <input
                                         type="text"
                                         name="linkedin"
@@ -340,7 +342,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Twitter URL</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.twitter_url')}</label>
                                     <input
                                         type="text"
                                         name="twitter"
@@ -351,7 +353,7 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Instagram URL</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.email-sig.page.labels.instagram_url')}</label>
                                     <input
                                         type="text"
                                         name="instagram"
@@ -367,7 +369,7 @@ export default function EmailSignature() {
                         {activeTab === 'style' && (
                             <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Theme Color</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.email-sig.page.labels.theme_color')}</label>
                                     <div className="flex flex-wrap gap-2">
                                         {COLORS.map((color) => (
                                             <button
@@ -383,7 +385,7 @@ export default function EmailSignature() {
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Font Family</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.email-sig.page.labels.font_family')}</label>
                                     <div className="space-y-2">
                                         {FONTS.map((font) => (
                                             <label key={font.value} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
@@ -408,9 +410,9 @@ export default function EmailSignature() {
                 {/* Preview */}
                 <div className="flex flex-col">
                     <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-lg font-bold text-slate-900">Live Preview</h2>
+                        <h2 className="text-lg font-bold text-slate-900">{t('tools.email-sig.page.preview_title')}</h2>
                         <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
-                            Changes apply automatically
+                            {t('tools.email-sig.page.preview_badge')}
                         </span>
                     </div>
 
@@ -425,7 +427,9 @@ export default function EmailSignature() {
                             <div className="mb-4 flex items-start gap-3 bg-blue-50 text-blue-800 p-4 rounded-xl text-sm">
                                 <Info size={18} className="flex-shrink-0 mt-0.5" />
                                 <p>
-                                    Click <strong>Copy Signature</strong> below, then go to your email settings (Gmail, Outlook, etc.) and paste (Ctrl+V) it into the signature box.
+                                    <Trans i18nKey="tools.email-sig.page.copy_info">
+                                        Click <strong>Copy Signature</strong> below, then go to your email settings (Gmail, Outlook, etc.) and paste (Ctrl+V) it into the signature box.
+                                    </Trans>
                                 </p>
                             </div>
                             <button
@@ -437,7 +441,7 @@ export default function EmailSignature() {
                                 }`}
                             >
                                 {copied ? <Check size={20} /> : <Copy size={20} />}
-                                {copied ? 'Copied to Clipboard!' : 'Copy Signature'}
+                                {copied ? t('tools.email-sig.page.copied_btn') : t('tools.email-sig.page.copy_btn')}
                             </button>
                         </div>
                     </div>

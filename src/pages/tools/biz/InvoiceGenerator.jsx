@@ -5,8 +5,10 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function InvoiceGenerator() {
+    const { t } = useTranslation();
     const [invoiceData, setInvoiceData] = useState({
         invoiceNumber: 'INV-001',
         date: new Date().toISOString().split('T')[0],
@@ -150,10 +152,10 @@ export default function InvoiceGenerator() {
     const totals = calculateTotals();
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="invoice-gen">
             <Helmet>
-                <title>Invoice Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create simple, professional PDF invoices in seconds." />
+                <title>{t('tools.invoice-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.invoice-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -162,8 +164,8 @@ export default function InvoiceGenerator() {
                         <FileText size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Invoice Generator</h1>
-                        <p className="text-slate-500 text-sm">Create simple, professional PDF invoices in seconds.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.invoice-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.invoice-gen.desc')}</p>
                     </div>
                 </div>
                 <button

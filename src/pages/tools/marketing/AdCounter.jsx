@@ -4,7 +4,10 @@ import { Layout, Globe } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function AdCounter() {
+    const { t } = useTranslation();
     const [platform, setPlatform] = useState('google');
     const [data, setData] = useState({
         headline1: 'Best Coffee in Town',
@@ -28,10 +31,10 @@ export default function AdCounter() {
     const isOver = (text, limit) => text.length > limit;
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="ad-counter">
             <Helmet>
-                <title>Ad Copy Character Counter | MiniTools by Spinotek</title>
-                <meta name="description" content="Validate character limits for Google Ads." />
+                <title>{t('tools.ad-counter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.ad-counter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -40,8 +43,8 @@ export default function AdCounter() {
                         <Layout size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Ad Copy Character Counter</h1>
-                        <p className="text-slate-500 text-sm">Validate character limits for Google and Meta Ads.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.ad-counter.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.ad-counter.desc')}</p>
                     </div>
                 </div>
             </div>

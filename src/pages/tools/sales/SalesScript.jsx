@@ -3,85 +3,44 @@ import { Helmet } from 'react-helmet-async';
 import { FileText, Play, Copy, Check, RefreshCw, MessageSquare } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const FRAMEWORKS = [
-    {
-        id: 'cold-call',
-        name: 'Cold Call',
-        description: 'Standard outreach script for new prospects',
-        template: (data) => `Hi [Prospect Name], this is [Your Name] with ${data.productName || '[Product Name]'}.
-
-I'm calling because we help ${data.targetAudience || '[Target Audience]'} who are frustrated with ${data.painPoint || '[Key Pain Point]'}.
-
-We've developed a way to ${data.benefit || '[Key Benefit]'}, and I'd love to share how it works.
-
-Do you have 30 seconds for me to tell you what we do?`
-    },
-    {
-        id: 'gatekeeper',
-        name: 'Gatekeeper',
-        description: 'Getting past the receptionist or assistant',
-        template: (data) => `Hi, my name is [Your Name] calling from ${data.productName || '[Product Name]'}.
-
-I'm looking to speak with the person who handles ${data.painPoint || '[Key Pain Point]'} for the company.
-
-Could you point me in the right direction?
-
-(If asked what it's about):
-It's about how we help ${data.targetAudience || '[Target Audience]'} achieve ${data.benefit || '[Key Benefit]'} without the usual headaches. Using our ${data.productName || '[Product Name]'} solution.`
-    },
-    {
-        id: 'objection',
-        name: 'Objection Handling',
-        description: 'Responses to "I\'m not interested" or "Send me info"',
-        template: (data) => `(prospect says "I'm not interested")
-
-I completely understand. A lot of ${data.targetAudience || '[Target Audience]'} say that initially because they're used to dealing with ${data.painPoint || '[Key Pain Point]'} and don't think there's a better way.
-
-But once they see how ${data.productName || '[Product Name]'} allows them to ${data.benefit || '[Key Benefit]'}, they usually wish they'd had a conversation sooner.
-
-Value Proposition:
-What if I could show you a 5-minute overview of how we solve ${data.painPoint || '[Key Pain Point]'}? Would you be open to that next Tuesday?`
-    },
-       {
-        id: 'spin',
-        name: 'SPIN Selling',
-        description: 'Situation, Problem, Implication, Need-Payoff',
-        template: (data) => ` SITUATION:
-"Can you tell me a bit about your current process for handling ${data.painPoint || '[Key Pain Point]'}?"
-"How are you currently managing expectations for your ${data.targetAudience || '[Target Audience]'}?"
-
- PROBLEM:
-"Do you find that ${data.painPoint || '[Key Pain Point]'} is taking up more time/resources than you'd like?"
-"Is it difficult to achieve ${data.benefit || '[Key Benefit]'} with your current setup?"
-
- IMPLICATION:
-"If ${data.painPoint || '[Key Pain Point]'} continues, how will that impact your quarterly goals?"
-"Does failing to ${data.benefit || '[Key Benefit]'} affect your team's morale or productivity?"
-
- NEED-PAYOFF:
-"If you could fix ${data.painPoint || '[Key Pain Point]'} and immediately start to ${data.benefit || '[Key Benefit]'}, how would that help you?"
-"Would it be valuable if ${data.productName || '[Product Name]'} could automate this for you?"`
-    },
-    {
-        id: 'aida',
-        name: 'AIDA Framework',
-        description: 'Attention, Interest, Desire, Action',
-        template: (data) => ` ATTENTION:
-"Did you know that many ${data.targetAudience || '[Target Audience]'} are losing hours every week due to ${data.painPoint || '[Key Pain Point]'}?"
-
- INTEREST:
-"${data.productName || '[Product Name]'} is a new solution designed specifically to eliminate ${data.painPoint || '[Key Pain Point]'} forever."
-
- DESIRE:
-"Imagine being able to ${data.benefit || '[Key Benefit]'} without any extra effort. Our clients are seeing results in just a few days."
-
- ACTION:
-"I'd love to give you a quick demo. Are you free tomorrow morning or Thursday afternoon?"`
-    }
-];
+import { useTranslation } from 'react-i18next';
 
 export default function SalesScript() {
+    const { t } = useTranslation();
+
+    const FRAMEWORKS = [
+        {
+            id: 'cold-call',
+            name: t('tools.sales-script.frameworks.cold_call.name'),
+            description: t('tools.sales-script.frameworks.cold_call.desc'),
+            template: (data) => t('tools.sales-script.frameworks.cold_call.template', { ...data, productName: data.productName || '[Product Name]', targetAudience: data.targetAudience || '[Target Audience]', painPoint: data.painPoint || '[Key Pain Point]', benefit: data.benefit || '[Key Benefit]' })
+        },
+        {
+            id: 'gatekeeper',
+            name: t('tools.sales-script.frameworks.gatekeeper.name'),
+            description: t('tools.sales-script.frameworks.gatekeeper.desc'),
+            template: (data) => t('tools.sales-script.frameworks.gatekeeper.template', { ...data, productName: data.productName || '[Product Name]', painPoint: data.painPoint || '[Key Pain Point]', targetAudience: data.targetAudience || '[Target Audience]', benefit: data.benefit || '[Key Benefit]' })
+        },
+        {
+            id: 'objection',
+            name: t('tools.sales-script.frameworks.objection.name'),
+            description: t('tools.sales-script.frameworks.objection.desc'),
+            template: (data) => t('tools.sales-script.frameworks.objection.template', { ...data, targetAudience: data.targetAudience || '[Target Audience]', painPoint: data.painPoint || '[Key Pain Point]', productName: data.productName || '[Product Name]', benefit: data.benefit || '[Key Benefit]' })
+        },
+        {
+            id: 'spin',
+            name: t('tools.sales-script.frameworks.spin.name'),
+            description: t('tools.sales-script.frameworks.spin.desc'),
+            template: (data) => t('tools.sales-script.frameworks.spin.template', { ...data, painPoint: data.painPoint || '[Key Pain Point]', targetAudience: data.targetAudience || '[Target Audience]', benefit: data.benefit || '[Key Benefit]', productName: data.productName || '[Product Name]' })
+        },
+        {
+            id: 'aida',
+            name: t('tools.sales-script.frameworks.aida.name'),
+            description: t('tools.sales-script.frameworks.aida.desc'),
+            template: (data) => t('tools.sales-script.frameworks.aida.template', { ...data, targetAudience: data.targetAudience || '[Target Audience]', painPoint: data.painPoint || '[Key Pain Point]', productName: data.productName || '[Product Name]', benefit: data.benefit || '[Key Benefit]' })
+        }
+    ];
+
     const [inputs, setInputs] = useState({
         productName: '',
         targetAudience: '',
@@ -116,10 +75,10 @@ export default function SalesScript() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="sales-script">
             <Helmet>
-                <title>Sales Script Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate persuasive sales scripts instantly." />
+                <title>{t('tools.sales-script.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.sales-script.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -128,8 +87,8 @@ export default function SalesScript() {
                         <FileText size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Sales Script Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate persuasive sales scripts instantly based on frameworks.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.sales-script.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.sales-script.desc')}</p>
                     </div>
                 </div>
             </div>

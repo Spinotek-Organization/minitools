@@ -4,7 +4,10 @@ import { Activity, Clock, Mic, AlignLeft } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function ArticleTextAnalyzer() {
+    const { t } = useTranslation();
     const [text, setText] = useState('');
     const [stats, setStats] = useState({
         words: 0,
@@ -67,10 +70,10 @@ export default function ArticleTextAnalyzer() {
     }, [text]);
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="text-analyzer">
             <Helmet>
-                <title>Article Text Analyzer | MiniTools by Spinotek</title>
-                <meta name="description" content="Analyze word count, keyword density, and reading time of your text." />
+                <title>{t('tools.text-analyzer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.text-analyzer.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -79,8 +82,8 @@ export default function ArticleTextAnalyzer() {
                         <Activity size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Article Text Analyzer</h1>
-                        <p className="text-slate-500 text-sm">Analyze word count, keyword density, and reading time.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.text-analyzer.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.text-analyzer.desc')}</p>
                     </div>
                 </div>
             </div>

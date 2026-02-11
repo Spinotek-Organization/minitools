@@ -4,8 +4,10 @@ import { TrendingUp, Calculator, RefreshCw } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function InvestmentRoi() {
+    const { t } = useTranslation();
     const [initialInvestment, setInitialInvestment] = useState(10000);
     const [revenue, setRevenue] = useState(15000);
     const [years, setYears] = useState(5);
@@ -48,10 +50,10 @@ export default function InvestmentRoi() {
     const chartData = generateChartData();
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="roi-calc">
             <Helmet>
-                <title>Investment ROI Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate Return on Investment and potential profit growth." />
+                <title>{t('tools.roi-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.roi-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -60,8 +62,8 @@ export default function InvestmentRoi() {
                         <TrendingUp size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Investment ROI Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate Return on Investment and potential profit growth.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.roi-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.roi-calc.desc')}</p>
                     </div>
                 </div>
             </div>

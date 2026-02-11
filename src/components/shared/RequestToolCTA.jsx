@@ -1,7 +1,10 @@
 import React from 'react';
 import { ArrowRight, Sparkles, PlusCircle } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function RequestToolCTA() {
+    const { t } = useTranslation();
+
     return (
         <div className="w-full relative py-12 hidden">
             {/* Background Decor - Full Width */}
@@ -30,14 +33,14 @@ export default function RequestToolCTA() {
 
                             <div className="space-y-3">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 rounded-full text-blue-600 text-[10px] font-bold uppercase tracking-wider">
-                                    <Sparkles size={12} /> Community Driven
+                                    <Sparkles size={12} /> {t('cta.community_driven')}
                                 </div>
                                 <h3 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-                                    Need a specific tool? <br />
-                                    <span className="text-blue-600">Let us build it for you.</span>
+                                    {t('cta.need_specific_tool')} <br />
+                                    <span className="text-blue-600">{t('cta.let_us_build')}</span>
                                 </h3>
                                 <p className="text-slate-500 text-lg font-medium max-w-xl">
-                                    Our mission is to empower makers. If you can't find what you're looking for, we'll build it for free.
+                                    {t('cta.mission')}
                                 </p>
                             </div>
                         </div>
@@ -45,11 +48,11 @@ export default function RequestToolCTA() {
                         {/* Right: Button */}
                         <div className="w-full lg:w-auto">
                             <button className="w-full lg:w-auto group/btn relative flex items-center justify-center gap-3 px-10 py-5 bg-slate-900 hover:bg-blue-600 text-white font-extrabold rounded-2xl transition-all duration-300 hover:-translate-y-1 shadow-2xl shadow-slate-200">
-                                <span className="text-lg">Request New Tool</span>
+                                <span className="text-lg">{t('cta.request_new_tool')}</span>
                                 <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform duration-300" />
                             </button>
                             <p className="text-center mt-4 text-slate-400 text-xs font-semibold uppercase tracking-widest">
-                                Response within 24 hours
+                                {t('cta.response_time')}
                             </p>
                         </div>
 

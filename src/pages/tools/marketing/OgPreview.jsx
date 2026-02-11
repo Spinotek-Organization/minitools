@@ -4,7 +4,10 @@ import { Share2, Facebook, Twitter, Linkedin, ImageIcon } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function OgPreview() {
+    const { t } = useTranslation();
     const [data, setData] = useState({
         title: 'Your Page Title',
         description: 'A brief description of your content that will appear when shared on social media platforms.',
@@ -26,10 +29,10 @@ export default function OgPreview() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="social-mockup">
             <Helmet>
-                <title>Open Graph Preview | MiniTools by Spinotek</title>
-                <meta name="description" content="Preview how your links will look on social media." />
+                <title>{t('tools.social-mockup.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.social-mockup.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -38,8 +41,8 @@ export default function OgPreview() {
                         <Share2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Open Graph Preview</h1>
-                        <p className="text-slate-500 text-sm">Preview how your links will look on social media.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.social-mockup.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.social-mockup.desc')}</p>
                     </div>
                 </div>
 

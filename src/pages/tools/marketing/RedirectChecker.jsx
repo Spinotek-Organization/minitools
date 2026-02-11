@@ -4,11 +4,14 @@ import { Eraser, Link, ArrowRight, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 // Since the original directive was 'Link Cleaner / Stripper', but the filename is 'RedirectChecker.jsx' (based on toolsList),
 // I will implement the Link Cleaner functionality here as described in the implementation doc "6. Link Cleaner / Stripper".
 // Redirect checking usually requires server-side logic which we are avoiding.
 
 export default function LinkCleaner() {
+    const { t } = useTranslation();
     const [inputUrl, setInputUrl] = useState('');
     const [cleanUrl, setCleanUrl] = useState('');
     const [removedParams, setRemovedParams] = useState([]);
@@ -67,10 +70,10 @@ export default function LinkCleaner() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="link-cleaner">
             <Helmet>
-                <title>Redirect Checker | MiniTools by Spinotek</title>
-                <meta name="description" content="Track and verify URL redirection paths and status codes." />
+                <title>{t('tools.link-cleaner.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.link-cleaner.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -79,8 +82,8 @@ export default function LinkCleaner() {
                         <Eraser size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Redirect Checker</h1>
-                        <p className="text-slate-500 text-sm">Track and verify URL redirection paths and status codes.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.link-cleaner.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.link-cleaner.desc')}</p>
                     </div>
                 </div>
             </div>

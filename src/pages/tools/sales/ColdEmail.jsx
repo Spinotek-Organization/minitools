@@ -3,141 +3,72 @@ import { Helmet } from 'react-helmet-async';
 import { Mail, Search, Copy, Check, Filter, X } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const TEMPLATES = [
-    {
-        id: 1,
-        title: 'The "Quick Question" Intro',
-        category: 'Intro',
-        subject: 'Quick question about [Company]',
-        body: `Hi [First Name],
-
-I was looking at [Company] and was impressed by [Achievement/Observation].
-
-I'm writing because we help companies like yours [Benefit/Result] by [Method].
-
-I'd love to share how we could help [Company] achieve similar results. Do you have 10 minutes next week for a brief chat?
-
-Best,
-[Your Name]`
-    },
-    {
-        id: 2,
-        title: 'Solving a Specific Pain Point',
-        category: 'Intro',
-        subject: 'Idea for [Pain Point]',
-        body: `Hi [First Name],
-
-I noticed that [Company] might be facing challenges with [Pain Point]. I've seen many companies in [Industry] struggle with this, often leading to [Negative Consequence].
-
-We've developed a solution that [Solution Description], which has helped our clients reduce [Pain Point] by [Percentage]%.
-
-Are you open to a quick conversation to see if this could work for you?
-
-Cheers,
-[Your Name]`
-    },
-    {
-        id: 3,
-        title: 'Generic Follow-up',
-        category: 'Follow-up',
-        subject: 'Following up on my last email',
-        body: `Hi [First Name],
-
-I wanted to quickly follow up on my previous email. I know things get busy, so I'll keep this brief.
-
-I'm still very interested in discussing how we can help [Company] with [Benefit].
-
-Do you have any time later this week or early next week to connect?
-
-Best regards,
-[Your Name]`
-    },
-    {
-        id: 4,
-        title: 'The "Any Thoughts?" Follow-up',
-        category: 'Follow-up',
-        subject: 'Any thoughts?',
-        body: `Hi [First Name],
-
-I'm writing to ask if you've had a chance to think about my previous note.
-
-If you're not the right person to speak with, could you point me in the right direction?
-
-Thanks,
-[Your Name]`
-    },
-    {
-        id: 5,
-        title: 'Re-engagement / Break-up',
-        category: 'Re-engagement',
-        subject: 'Should I stay or should I go?',
-        body: `Hi [First Name],
-
-I haven't heard back from you, so I assume this isn't a priority right now or you've found another solution.
-
-I'll stop following up for now to avoid cluttering your inbox.
-
-If you ever need help with [Benefit] in the future, feel free to reach out.
-
-Best wishes,
-[Your Name]`
-    },
-     {
-        id: 6,
-        title: 'Referral Request',
-        category: 'Intro',
-        subject: 'Who handles [Department] at [Company]?',
-        body: `Hi [First Name],
-
-I'm looked to get in touch with the person responsible for [Department/Function] at [Company].
-
-Could you please point me in the right direction?
-
-Thanks in advance,
-[Your Name]`
-    },
-     {
-        id: 7,
-        title: 'Congratulations on News',
-        category: 'Intro',
-        subject: 'Congrats on [News/Event]',
-        body: `Hi [First Name],
-
-I saw the news about [News/Event] - congratulations! It's great to see [Company] doing so well.
-
-I was thinking that with this growth, you might be looking for ways to [Benefit related to your product].
-
-We've helped similar companies scale by [Value Proposition].
-
-Would you be open to a quick chat?
-
-Best,
-[Your Name]`
-    },
-    {
-        id: 8,
-        title: 'Resource/Value Add',
-        category: 'Intro',
-        subject: 'A resource for [Company]',
-        body: `Hi [First Name],
-
-I found this article/resource about [Topic] and thought it might be relevant to what you're doing at [Company].
-
-[Link to Resource]
-
-We also specialize in this area and have some other insights that might be useful.
-
-Let me know if you'd like to hear more.
-
-Best,
-[Your Name]`
-    },
-];
-
-const CATEGORIES = ['All', 'Intro', 'Follow-up', 'Re-engagement'];
+import { useTranslation } from 'react-i18next';
 
 export default function ColdEmail() {
+    const { t } = useTranslation();
+
+    const TEMPLATES = [
+        {
+            id: 1,
+            title: t('tools.cold-email.templates.quick_intro.title'),
+            category: 'Intro',
+            subject: t('tools.cold-email.templates.quick_intro.subject'),
+            body: t('tools.cold-email.templates.quick_intro.body')
+        },
+        {
+            id: 2,
+            title: t('tools.cold-email.templates.pain_point.title'),
+            category: 'Intro',
+            subject: t('tools.cold-email.templates.pain_point.subject'),
+            body: t('tools.cold-email.templates.pain_point.body')
+        },
+        {
+            id: 3,
+            title: t('tools.cold-email.templates.followup_generic.title'),
+            category: 'Follow-up',
+            subject: t('tools.cold-email.templates.followup_generic.subject'),
+            body: t('tools.cold-email.templates.followup_generic.body')
+        },
+        {
+            id: 4,
+            title: t('tools.cold-email.templates.thoughts_followup.title'),
+            category: 'Follow-up',
+            subject: t('tools.cold-email.templates.thoughts_followup.subject'),
+            body: t('tools.cold-email.templates.thoughts_followup.body')
+        },
+        {
+            id: 5,
+            title: t('tools.cold-email.templates.breakup.title'),
+            category: 'Re-engagement',
+            subject: t('tools.cold-email.templates.breakup.subject'),
+            body: t('tools.cold-email.templates.breakup.body')
+        },
+         {
+            id: 6,
+            title: t('tools.cold-email.templates.referral.title'),
+            category: 'Intro',
+            subject: t('tools.cold-email.templates.referral.subject'),
+            body: t('tools.cold-email.templates.referral.body')
+        },
+         {
+            id: 7,
+            title: t('tools.cold-email.templates.news.title'),
+            category: 'Intro',
+            subject: t('tools.cold-email.templates.news.subject'),
+            body: t('tools.cold-email.templates.news.body')
+        },
+        {
+            id: 8,
+            title: t('tools.cold-email.templates.resource.title'),
+            category: 'Intro',
+            subject: t('tools.cold-email.templates.resource.subject'),
+            body: t('tools.cold-email.templates.resource.body')
+        },
+    ];
+
+    const CATEGORIES = ['All', 'Intro', 'Follow-up', 'Re-engagement'];
+
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -163,10 +94,10 @@ export default function ColdEmail() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="cold-email">
             <Helmet>
-                <title>Cold Email Templates | MiniTools by Spinotek</title>
-                <meta name="description" content="High-converting templates for your outreach." />
+                <title>{t('tools.cold-email.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.cold-email.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -175,8 +106,8 @@ export default function ColdEmail() {
                         <Mail size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Cold Email Templates</h1>
-                        <p className="text-slate-500 text-sm">High-converting templates for your outreach.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.cold-email.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.cold-email.desc')}</p>
                     </div>
                 </div>
             </div>

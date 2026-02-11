@@ -3,46 +3,49 @@ import { Helmet } from 'react-helmet-async';
 import { Zap, Copy, Check, Filter } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const CTAS = [
-    // E-commerce
-    { id: 1, category: 'E-commerce', text: 'Shop Now & Save 20%' },
-    { id: 2, category: 'E-commerce', text: 'Add to Cart - Limited Stock' },
-    { id: 3, category: 'E-commerce', text: 'Claim Your Free Gift' },
-    { id: 4, category: 'E-commerce', text: 'Get It Before It\'s Gone' },
-    { id: 5, category: 'E-commerce', text: 'Yes, I Want Free Shipping' },
-
-    // SaaS / Product
-    { id: 11, category: 'SaaS', text: 'Start Your Free 14-Day Trial' },
-    { id: 12, category: 'SaaS', text: 'See How It Works' },
-    { id: 13, category: 'SaaS', text: 'Get Started for Free' },
-    { id: 14, category: 'SaaS', text: 'Book a Live Demo' },
-    { id: 15, category: 'SaaS', text: 'No Credit Card Required' },
-
-    // Newsletter / Lead Gen
-    { id: 21, category: 'Newsletter', text: 'Join 10,000+ Marketers' },
-    { id: 22, category: 'Newsletter', text: 'Send Me the Guide' },
-    { id: 23, category: 'Newsletter', text: 'Subscribe for Weekly Tips' },
-    { id: 24, category: 'Newsletter', text: 'Unlock Exclusive Content' },
-    { id: 25, category: 'Newsletter', text: 'Download Now (PDF)' },
-
-    // Webinar / Events
-    { id: 31, category: 'Events', text: 'Save My Seat' },
-    { id: 32, category: 'Events', text: 'Register for Free' },
-    { id: 33, category: 'Events', text: 'Reserve Your Spot' },
-    { id: 34, category: 'Events', text: 'Add to Calendar' },
-    
-    // Social / Generic
-    { id: 41, category: 'Social', text: 'Follow for More' },
-    { id: 42, category: 'Social', text: 'Tell Me Your Thoughts Below' },
-    { id: 43, category: 'Social', text: 'Share with a Friend' },
-    { id: 44, category: 'Social', text: 'Learn More' },
-    { id: 45, category: 'Social', text: 'Link in Bio' },
-];
-
-const CATEGORIES = ['All', ...new Set(CTAS.map(c => c.category))];
+import { useTranslation } from 'react-i18next';
 
 export default function CtaIdeas() {
+    const { t } = useTranslation();
+
+    const CTAS = [
+        // E-commerce
+        { id: 1, category: 'E-commerce', text: t('tools.cta-ideas.ctas.ecommerce.shop_save') },
+        { id: 2, category: 'E-commerce', text: t('tools.cta-ideas.ctas.ecommerce.add_cart') },
+        { id: 3, category: 'E-commerce', text: t('tools.cta-ideas.ctas.ecommerce.free_gift') },
+        { id: 4, category: 'E-commerce', text: t('tools.cta-ideas.ctas.ecommerce.gone_soon') },
+        { id: 5, category: 'E-commerce', text: t('tools.cta-ideas.ctas.ecommerce.free_shipping') },
+    
+        // SaaS / Product
+        { id: 11, category: 'SaaS', text: t('tools.cta-ideas.ctas.saas.free_trial') },
+        { id: 12, category: 'SaaS', text: t('tools.cta-ideas.ctas.saas.how_it_works') },
+        { id: 13, category: 'SaaS', text: t('tools.cta-ideas.ctas.saas.get_started') },
+        { id: 14, category: 'SaaS', text: t('tools.cta-ideas.ctas.saas.book_demo') },
+        { id: 15, category: 'SaaS', text: t('tools.cta-ideas.ctas.saas.no_credit_card') },
+    
+        // Newsletter / Lead Gen
+        { id: 21, category: 'Newsletter', text: t('tools.cta-ideas.ctas.newsletter.join_marketers') },
+        { id: 22, category: 'Newsletter', text: t('tools.cta-ideas.ctas.newsletter.send_guide') },
+        { id: 23, category: 'Newsletter', text: t('tools.cta-ideas.ctas.newsletter.subscribe_tips') },
+        { id: 24, category: 'Newsletter', text: t('tools.cta-ideas.ctas.newsletter.unlock_content') },
+        { id: 25, category: 'Newsletter', text: t('tools.cta-ideas.ctas.newsletter.download_pdf') },
+    
+        // Webinar / Events
+        { id: 31, category: 'Events', text: t('tools.cta-ideas.ctas.events.save_seat') },
+        { id: 32, category: 'Events', text: t('tools.cta-ideas.ctas.events.register_free') },
+        { id: 33, category: 'Events', text: t('tools.cta-ideas.ctas.events.reserve_spot') },
+        { id: 34, category: 'Events', text: t('tools.cta-ideas.ctas.events.add_calendar') },
+        
+        // Social / Generic
+        { id: 41, category: 'Social', text: t('tools.cta-ideas.ctas.social.follow_more') },
+        { id: 42, category: 'Social', text: t('tools.cta-ideas.ctas.social.tell_thoughts') },
+        { id: 43, category: 'Social', text: t('tools.cta-ideas.ctas.social.share_friend') },
+        { id: 44, category: 'Social', text: t('tools.cta-ideas.ctas.social.learn_more') },
+        { id: 45, category: 'Social', text: t('tools.cta-ideas.ctas.social.link_bio') },
+    ];
+    
+    const CATEGORIES = ['All', ...new Set(CTAS.map(c => c.category))];
+
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [copiedId, setCopiedId] = useState(null);
 
@@ -57,10 +60,10 @@ export default function CtaIdeas() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="cta-ideas">
             <Helmet>
-                <title>CTA Ideas Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Catchy call-to-action ideas for higher conversion." />
+                <title>{t('tools.cta-ideas.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.cta-ideas.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -69,8 +72,8 @@ export default function CtaIdeas() {
                         <Zap size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">CTA Ideas Generator</h1>
-                        <p className="text-slate-500 text-sm">Catchy call-to-action ideas for higher conversion.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.cta-ideas.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.cta-ideas.desc')}</p>
                     </div>
                 </div>
             </div>

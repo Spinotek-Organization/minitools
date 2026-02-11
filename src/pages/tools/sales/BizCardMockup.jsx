@@ -4,17 +4,17 @@ import { CreditCard, Upload, Download, Layers, Box, Grid } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const SCENES = [
-    { id: 'floating', name: 'Floating 3D', icon: Box },
-    { id: 'stack', name: 'Stack', icon: Layers },
-    { id: 'flat', name: 'Flat Lay', icon: Grid },
-];
-
-const DEFAULT_FRONT = 'https://images.unsplash.com/photo-1626544827763-d516dce335ca?q=80&w=600&auto=format&fit=crop';
-const DEFAULT_BACK = 'https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=600&auto=format&fit=crop';
+import { useTranslation } from 'react-i18next';
 
 export default function BizCardMockup() {
+    const { t } = useTranslation();
+
+    const SCENES = [
+        { id: 'floating', name: t('tools.biz-card-mockup.scenes.floating'), icon: Box },
+        { id: 'stack', name: t('tools.biz-card-mockup.scenes.stack'), icon: Layers },
+        { id: 'flat', name: t('tools.biz-card-mockup.scenes.flat'), icon: Grid },
+    ];
+
     const [frontImage, setFrontImage] = useState(DEFAULT_FRONT);
     const [backImage, setBackImage] = useState(DEFAULT_BACK);
     const [scene, setScene] = useState('floating');
@@ -52,10 +52,10 @@ export default function BizCardMockup() {
     );
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="biz-card-mockup">
             <Helmet>
-                <title>Business Card Mockup | MiniTools by Spinotek</title>
-                <meta name="description" content="Visualize your business card design in realistic mockups." />
+                <title>{t('tools.biz-card-mockup.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.biz-card-mockup.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -64,8 +64,8 @@ export default function BizCardMockup() {
                         <CreditCard size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Business Card Mockup</h1>
-                        <p className="text-slate-500 text-sm">Visualize your business card design in realistic mockups.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.biz-card-mockup.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.biz-card-mockup.desc')}</p>
                     </div>
                 </div>
             </div>

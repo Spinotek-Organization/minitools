@@ -4,6 +4,7 @@ import { MessageSquare, Copy, ExternalLink, RefreshCw, Smartphone, QrCode, Downl
 import { QRCodeCanvas } from 'qrcode.react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 // Common country codes
 const COUNTRY_CODES = [
@@ -27,10 +28,10 @@ const COUNTRY_CODES = [
     { code: '34', name: 'Spain' },
     { code: '971', name: 'UAE' },
     { code: '84', name: 'Vietnam' },
-    // Add more as needed, or use a full library if requested, but a curated list is often better for UX
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function WaDirect() {
+    const { t } = useTranslation();
     const [countryCode, setCountryCode] = useState('1');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [message, setMessage] = useState('');
@@ -86,10 +87,10 @@ export default function WaDirect() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="wa-direct">
             <Helmet>
-                <title>WhatsApp Direct Link | MiniTools by Spinotek</title>
-                <meta name="description" content="Send WhatsApp messages without saving numbers." />
+                <title>{t('tools.wa-direct.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.wa-direct.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -98,8 +99,8 @@ export default function WaDirect() {
                         <MessageSquare size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">WhatsApp Direct Link</h1>
-                        <p className="text-slate-500 text-sm">Send WhatsApp messages without saving numbers.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.wa-direct.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.wa-direct.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -109,13 +110,13 @@ export default function WaDirect() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <Smartphone size={20} className="text-green-600" />
-                        Enter Details
+                        {t('tools.wa-direct.page.input_title')}
                     </h2>
 
                     <div className="space-y-6">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">
-                                Phone Number
+                                {t('tools.wa-direct.page.phone_label')}
                             </label>
                             <div className="flex gap-3">
                                 <select
@@ -139,18 +140,18 @@ export default function WaDirect() {
                                 />
                             </div>
                             <p className="text-xs text-slate-500 mt-2">
-                                Enter the number without the country code. Leading zeros will be removed automatically.
+                                {t('tools.wa-direct.page.phone_helper')}
                             </p>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">
-                                Message (Optional)
+                                {t('tools.wa-direct.page.msg_label')}
                             </label>
                             <textarea
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Hi, I'm interested in your services..."
+                                placeholder={t('tools.wa-direct.page.msg_placeholder')}
                                 rows={4}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all placeholder:text-slate-400 resize-none"
                             />
@@ -162,14 +163,14 @@ export default function WaDirect() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm flex flex-col">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <ExternalLink size={20} className="text-blue-600" />
-                        Generated Link
+                        {t('tools.wa-direct.page.output_title')}
                     </h2>
 
                     <div className="flex-1 flex flex-col justify-center">
                         {!generatedLink ? (
                             <div className="text-center py-12 text-slate-400">
                                 <RefreshCw size={48} className="mx-auto mb-4 opacity-20" />
-                                <p>Enter a phone number to generate a link</p>
+                                <p>{t('tools.wa-direct.page.no_link_msg')}</p>
                             </div>
                         ) : (
                             <div className="space-y-6">
@@ -185,7 +186,7 @@ export default function WaDirect() {
                                         className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-colors"
                                     >
                                         <MessageSquare size={18} />
-                                        Open Chat
+                                        {t('tools.wa-direct.page.open_chat')}
                                     </a>
                                     <button
                                         onClick={handleCopy}
@@ -196,7 +197,7 @@ export default function WaDirect() {
                                         }`}
                                     >
                                         {copied ? <RefreshCw size={18} /> : <Copy size={18} />}
-                                        {copied ? 'Copied!' : 'Copy Link'}
+                                        {copied ? t('tools.wa-direct.page.copied') : t('tools.wa-direct.page.copy_link')}
                                     </button>
                                 </div>
 
@@ -205,7 +206,7 @@ export default function WaDirect() {
                                     className="w-full flex items-center justify-center gap-2 text-slate-500 hover:text-slate-700 py-2 transition-colors"
                                 >
                                     <QrCode size={18} />
-                                    {showQr ? 'Hide QR Code' : 'Show QR Code'}
+                                    {showQr ? t('tools.wa-direct.page.hide_qr') : t('tools.wa-direct.page.show_qr')}
                                 </button>
 
                                 {showQr && (
@@ -224,7 +225,7 @@ export default function WaDirect() {
                                             className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-green-600 transition-colors"
                                         >
                                             <Download size={16} />
-                                            Download QR Image
+                                            {t('tools.wa-direct.page.download_qr')}
                                         </button>
                                     </div>
                                 )}

@@ -4,7 +4,10 @@ import { Bot, Plus, Trash2, Download, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
+import { useTranslation } from 'react-i18next';
+
 export default function RobotsGenerator() {
+    const { t } = useTranslation();
     const [defaultAccess, setDefaultAccess] = useState('Allow');
     const [delay, setDelay] = useState('');
     const [sitemaps, setSitemaps] = useState(['']);
@@ -90,10 +93,10 @@ export default function RobotsGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="robots-gen">
             <Helmet>
-                <title>Robots.txt Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create properly formatted robots.txt files for SEO." />
+                <title>{t('tools.robots-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.robots-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -102,8 +105,8 @@ export default function RobotsGenerator() {
                         <Bot size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Robots.txt Generator</h1>
-                        <p className="text-slate-500 text-sm">Create properly formatted robots.txt files for SEO.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.robots-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.robots-gen.desc')}</p>
                     </div>
                 </div>
             </div>

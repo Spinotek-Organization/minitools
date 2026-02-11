@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, ArrowRight, Instagram, Linkedin, Cpu, Github } from 'lucide-react';
 import Logo from './Logo';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { t } = useTranslation();
 
     return (
         <footer className="bg-white border-t border-slate-100 pb-12 pt-24 relative overflow-hidden">
@@ -27,7 +29,9 @@ export default function Footer() {
                         </Link>
 
                         <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-sm">
-                            120+ browser-based productivity tools for <span className="text-slate-900">developers</span>, <span className="text-slate-900">creators</span>, and <span className="text-slate-900">professionals</span>. Zero friction. Instant results.
+                            <Trans i18nKey="footer.description">
+                                120+ browser-based productivity tools for <span className="text-slate-900">developers</span>, <span className="text-slate-900">creators</span>, and <span className="text-slate-900">professionals</span>. Zero friction. Instant results.
+                            </Trans>
                         </p>
 
                         {/* Social Media - Premium Style */}
@@ -42,18 +46,18 @@ export default function Footer() {
                     {/* Navigation Links */}
                     <div className="md:col-span-3 grid grid-cols-2 gap-8">
                         <div className="space-y-6">
-                            <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em]">Services</h4>
+                            <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em]">{t('footer.services')}</h4>
                             <ul className="space-y-4 text-sm font-bold text-slate-400">
-                                <li><a href="https://spinotek.com/web-development" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">Web Dev <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
-                                <li><a href="https://spinotek.com/mobile-development" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">Mobile <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
-                                <li><a href="https://spinotek.com/showcase" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">Showcase <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
+                                <li><a href="https://spinotek.com/services/web-development" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">{t('footer.web_dev')} <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
+                                <li><a href="https://spinotek.com/services/mobile-development" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">{t('footer.mobile')} <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
+                                <li><a href="https://spinotek.com/showcase" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-2 group">{t('footer.showcase')} <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /></a></li>
                             </ul>
                         </div>
                         <div className="space-y-6">
-                            <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em]">Platform</h4>
+                            <h4 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.2em]">{t('footer.platform')}</h4>
                             <ul className="space-y-4 text-sm font-bold text-slate-400">
-                                <li><a href="https://spinotek.com/products" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">Products</a></li>
-                                <li><a href="https://spinotek.com/about" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">Company</a></li>
+                                <li><a href="https://spinotek.com/products" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">{t('footer.products')}</a></li>
+                                <li><a href="https://spinotek.com/about" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">{t('footer.company')}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,14 +72,14 @@ export default function Footer() {
                                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-blue-900/40 p-1.5">
                                     <img src="/img/spinotek-symbol.png" alt="Spinotek" className="w-full h-full object-contain" />
                                 </div>
-                                <h4 className="text-lg font-bold text-white tracking-tight">Need custom software?</h4>
+                                <h4 className="text-lg font-bold text-white tracking-tight">{t('footer.custom_software')}</h4>
                                 <p className="text-slate-400 text-xs font-medium leading-relaxed">
-                                    Spinotek helps businesses build high-performance Web and Mobile applications.
+                                    {t('footer.spinotek_help')}
                                 </p>
                             </div>
 
                             <a href="https://spinotek.com/contact" target="_blank" rel="noreferrer" className="relative z-10 mt-8 flex items-center justify-between px-6 py-4 bg-white rounded-2xl text-xs font-black text-slate-900 hover:bg-blue-50 transition-all group/btn">
-                                Start Your Project
+                                {t('footer.start_project')}
                                 <ArrowRight size={16} className="text-blue-600 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                         </div>
@@ -98,12 +102,12 @@ export default function Footer() {
                             className="flex items-center gap-2 hover:text-blue-600 transition-colors group"
                         >
                             <Github size={14} className="group-hover:scale-110 transition-transform" />
-                            Contribute Here
+                            {t('footer.contribute')}
                             <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                         </a>
                         <div className="flex items-center gap-4">
-                            <span className="hover:text-slate-900 cursor-help transition-colors">Privacy</span>
-                            <span className="hover:text-slate-900 cursor-help transition-colors">Terms</span>
+                            <span className="hover:text-slate-900 cursor-help transition-colors">{t('footer.privacy')}</span>
+                            <span className="hover:text-slate-900 cursor-help transition-colors">{t('footer.terms')}</span>
                         </div>
                     </div>
                 </div>

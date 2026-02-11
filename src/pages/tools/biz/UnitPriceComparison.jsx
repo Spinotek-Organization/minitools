@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Scale, CheckCircle } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function UnitPriceComparison() {
+    const { t } = useTranslation();
     const [priceA, setPriceA] = useState('');
     const [qtyA, setQtyA] = useState('');
     const [priceB, setPriceB] = useState('');
@@ -44,10 +46,10 @@ export default function UnitPriceComparison() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="unit-price-comp">
             <Helmet>
-                <title>Unit Price Comparison | MiniTools by Spinotek</title>
-                <meta name="description" content="Find the best deal by comparing unit prices." />
+                <title>{t('tools.unit-price-comp.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.unit-price-comp.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -56,8 +58,8 @@ export default function UnitPriceComparison() {
                         <Scale size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Unit Price Comparison</h1>
-                        <p className="text-slate-500 text-sm">Find the best deal by comparing unit prices.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.unit-price-comp.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.unit-price-comp.desc')}</p>
                     </div>
                 </div>
             </div>

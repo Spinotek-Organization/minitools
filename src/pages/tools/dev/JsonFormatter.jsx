@@ -36,7 +36,7 @@ export default function JsonFormatter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="json-fmt">
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">

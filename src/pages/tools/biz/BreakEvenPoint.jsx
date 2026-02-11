@@ -4,8 +4,10 @@ import { Target, RefreshCw } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function BreakEvenPoint() {
+    const { t } = useTranslation();
     const [fixedCosts, setFixedCosts] = useState(5000);
     const [variableCostPerUnit, setVariableCostPerUnit] = useState(20);
     const [pricePerUnit, setPricePerUnit] = useState(50);
@@ -60,10 +62,10 @@ export default function BreakEvenPoint() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="break-even-calc">
             <Helmet>
-                <title>Break-Even Point Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate when your business will become profitable." />
+                <title>{t('tools.break-even-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.break-even-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -72,8 +74,8 @@ export default function BreakEvenPoint() {
                         <Target size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Break-Even Point Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate when your business will become profitable.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.break-even-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.break-even-calc.desc')}</p>
                     </div>
                 </div>
             </div>

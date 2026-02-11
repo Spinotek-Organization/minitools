@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Link2, Copy, Check, Scissors, RefreshCw, ExternalLink } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ShortLink() {
+    const { t } = useTranslation();
     const [baseUrl, setBaseUrl] = useState('');
     const [utmParams, setUtmParams] = useState({
         source: 'linkedin',
@@ -91,10 +93,10 @@ export default function ShortLink() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="short-link">
             <Helmet>
-                <title>Link Tracker & Shortener | MiniTools by Spinotek</title>
-                <meta name="description" content="Create trackable UTM links and shorten them." />
+                <title>{t('tools.short-link.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.short-link.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -103,8 +105,8 @@ export default function ShortLink() {
                         <Link2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Link Tracker & Shortener</h1>
-                        <p className="text-slate-500 text-sm">Build trackable URLs and prepare them for sharing.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.short-link.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.short-link.desc')}</p>
                     </div>
                 </div>
             </div>

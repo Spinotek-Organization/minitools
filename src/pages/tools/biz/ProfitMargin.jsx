@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { TrendingUp, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ProfitMargin() {
+    const { t } = useTranslation();
     const [cost, setCost] = useState('');
     const [revenue, setRevenue] = useState('');
     const [margin, setMargin] = useState(null);
@@ -44,10 +46,10 @@ export default function ProfitMargin() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="profit-calc">
             <Helmet>
-                <title>Profit Margin Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate your margins and markup accurately." />
+                <title>{t('tools.profit-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.profit-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -56,8 +58,8 @@ export default function ProfitMargin() {
                         <TrendingUp size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Profit Margin Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate your margins and markup accurately.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.profit-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.profit-calc.desc')}</p>
                     </div>
                 </div>
                 <button

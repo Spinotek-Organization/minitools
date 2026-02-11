@@ -4,8 +4,10 @@ import { BarChart3, Calculator, RefreshCw } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function CompoundInterest() {
+    const { t } = useTranslation();
     const [principal, setPrincipal] = useState(10000);
     const [monthlyContribution, setMonthlyContribution] = useState(500);
     const [interestRate, setInterestRate] = useState(7);
@@ -51,10 +53,10 @@ export default function CompoundInterest() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="compound-interest">
             <Helmet>
-                <title>Compound Interest Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Visualize the power of compound interest over time." />
+                <title>{t('tools.compound-interest.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.compound-interest.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -63,8 +65,8 @@ export default function CompoundInterest() {
                         <BarChart3 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Compound Interest Calculator</h1>
-                        <p className="text-slate-500 text-sm">Visualize the power of compound interest over time.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.compound-interest.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.compound-interest.desc')}</p>
                     </div>
                 </div>
             </div>

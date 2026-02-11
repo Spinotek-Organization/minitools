@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Lightbulb, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function BusinessNameGenerator() {
+    const { t } = useTranslation();
     const [keyword, setKeyword] = useState('');
     const [style, setStyle] = useState('modern'); // modern, classic, tech
     const [generatedNames, setGeneratedNames] = useState([]);
@@ -66,10 +68,10 @@ export default function BusinessNameGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="biz-name-gen">
             <Helmet>
-                <title>Business Name Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate catchy, brandable business names instantly." />
+                <title>{t('tools.biz-name-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.biz-name-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -78,8 +80,8 @@ export default function BusinessNameGenerator() {
                         <Lightbulb size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Business Name Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate catchy, brandable business names instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.biz-name-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.biz-name-gen.desc')}</p>
                     </div>
                 </div>
             </div>

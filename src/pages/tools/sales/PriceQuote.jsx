@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { FileBarChart, Plus, Trash2, Printer, Download } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function PriceQuote() {
+    const { t } = useTranslation();
     const [data, setData] = useState({
         quoteNumber: 'Q-1001',
         date: new Date().toISOString().split('T')[0],
@@ -65,10 +67,10 @@ export default function PriceQuote() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="price-quote">
             <Helmet>
-                <title>Price Quote Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Quickly generate professional quotes for clients." />
+                <title>{t('tools.price-quote.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.price-quote.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4 print:hidden">
@@ -77,8 +79,8 @@ export default function PriceQuote() {
                         <FileBarChart size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Price Quote Generator</h1>
-                        <p className="text-slate-500 text-sm">Quickly generate professional quotes for clients.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.price-quote.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.price-quote.desc')}</p>
                     </div>
                 </div>
             </div>

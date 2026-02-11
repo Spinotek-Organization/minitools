@@ -1,0 +1,426 @@
+{
+    "navbar": {
+        "home": "Beranda",
+        "explore": "Jelajahi Alat",
+        "categories": "Kategori",
+        "search_placeholder": "Cari alat...",
+        "search_toggle": "Cari"
+    },
+    "footer": {
+        "description": "120+ alat produktivitas berbasis browser untuk <1>pengembang</1>, <3>kreator</3>, dan <5>profesional</5>. Tanpa hambatan. Hasil instan.",
+        "services": "Layanan",
+        "platform": "Platform",
+        "products": "Produk",
+        "company": "Perusahaan",
+        "web_dev": "Web Dev",
+        "mobile": "Mobile",
+        "showcase": "Showcase",
+        "custom_software": "Butuh software kustom?",
+        "spinotek_help": "Spinotek membantu bisnis membangun aplikasi Web dan Mobile berkinerja tinggi.",
+        "start_project": "Mulai Proyek Anda",
+        "contribute": "Kontribusi Di Sini",
+        "privacy": "Privasi",
+        "terms": "Ketentuan"
+    },
+    "roadmap": {
+        "title": "Roadmap Proyek",
+        "meta_title": "Roadmap Proyek | MiniTools by Spinotek",
+        "meta_desc": "Lihat alat apa yang sedang kami bangun dan apa yang akan datang selanjutnya di suite utilitas Spinotek.",
+        "badge": "Masa Depan Alat Spinotek",
+        "heading_main": "Roadmap Proyek &",
+        "heading_highlight": "Rencana Pertumbuhan.",
+        "description": "Kami menjalankan misi untuk membangun suite alat mini profesional terlengkap. Inilah yang telah kami capai dan apa yang ada di cakrawala.",
+        "released": "Dirilis",
+        "released_sub": "Live & Stabil",
+        "ready": "Siap",
+        "in_dev": "Sedang Dev",
+        "in_dev_sub": "Sedang Dibangun",
+        "coding": "Coding...",
+        "up_next": "Berikutnya",
+        "up_next_sub": "Direncanakan",
+        "idea_text": "Punya ide alat?",
+        "submit_btn": "Kirim Permintaan"
+    },
+    "home": {
+        "tools_count": "120+ Alat dan Terus Bertambah",
+        "hero_title": "Toolkit Produktivitas Anda.",
+        "hero_subtitle": "Semua di Satu Tempat.",
+        "hero_description": "120+ alat berbasis browser untuk <1>pengembang</1>, <3>kreator</3>, dan <5>profesional</5>. Tanpa hambatan. Hasil instan.",
+        "explore_cta": "Jelajahi Alat",
+        "roadmap_cta": "Lihat Roadmap",
+        "quick_search": "Pencarian Cepat"
+    },
+    "categories": {
+        "office": "Kantor & Admin",
+        "marketing": "Pemasaran & SEO",
+        "biz": "Bisnis & Keuangan",
+        "sales": "Penjualan & Dukungan",
+        "content": "Konten & Sosial",
+        "design": "Desain & Visual",
+        "dev": "Dev Kit",
+        "productivity": "Produktivitas",
+        "academic": "Akademik & Data",
+        "security": "Keamanan & Privasi"
+    },
+    "categories_desc": {
+        "office": "Bermanfaat untuk pekerjaan administrasi kantor.",
+        "marketing": "Optimalkan konten dan kampanye digital.",
+        "biz": "Administrasi dan perhitungan cepat.",
+        "sales": "Bantuan komunikasi dan penjualan.",
+        "content": "Penting untuk pembuat konten.",
+        "design": "Utilitas ringan untuk desainer non-profesional.",
+        "dev": "Alat teknis untuk kebutuhan coding sehari-hari.",
+        "productivity": "Fokus dan kesehatan mental saat bekerja.",
+        "academic": "Untuk pelajar, peneliti, atau pemroses data.",
+        "security": "Keamanan dan privasi digital dasar."
+    },
+    "explore": {
+        "title": "Jelajahi Alat",
+        "subtitle": "Perpustakaan lengkap utilitas khusus kami, diatur untuk alur kerja profesional Anda.",
+        "all_categories": "Semua Kategori",
+        "search_placeholder": "Cari di antara semua alat...",
+        "no_results_title": "Tidak ada alat yang cocok dengan pencarian Anda",
+        "no_results_desc": "Coba kata kunci lain atau jelajahi kategori kami di bawah ini.",
+        "clear_filter": "Hapus filter pencarian"
+    },
+    "category_page": {
+        "not_found": "Kategori tidak ditemukan",
+        "return_home": "Kembali ke Beranda",
+        "search_placeholder": "Cari {{count}} alat...",
+        "search_results": "Hasil Pencarian ({{count}})",
+        "all_tools": "Semua Alat {{category}}",
+        "no_tools_title": "Tidak ada alat ditemukan",
+        "no_tools_desc": "Coba cari sesuatu yang lain atau jelajahi kategori."
+    },
+    "tool_card": {
+        "status": {
+            "in_dev": "Sedang Dev",
+            "new": "Baru"
+        },
+        "action": {
+            "launch": "Buka Alat",
+            "preview": "Pratinjau Alat"
+        }
+    },
+    "breadcrumbs": {
+        "home": "Beranda",
+        "explore": "Jelajahi Alat"
+    },
+    "cta": {
+        "community_driven": "Didorong Komunitas",
+        "need_specific_tool": "Butuh alat khusus?",
+        "let_us_build": "Biarkan kami membangunnya untuk Anda.",
+        "mission": "Misi kami adalah memberdayakan pembuat. Jika Anda tidak dapat menemukan apa yang Anda cari, kami akan membangunnya secara gratis.",
+        "request_new_tool": "Minta Alat Baru",
+        "response_time": "Respon dalam 24 jam"
+    },
+    "placeholder": {
+        "title": "Alat Sedang Dalam Pengembangan",
+        "desc": "Kami sedang membangun sesuatu yang menakjubkan di sini. Alat ini akan tersedia di pembaruan berikutnya!"
+    },
+    "common": {
+        "loading": "Memuat...",
+        "error": "Terjadi kesalahan",
+        "related_utilities": "Utilitas Terkait"
+    },
+    "generated_by": "Dibuat oleh MiniTools",
+    "tools": {
+        "utm-builder": {
+            "title": "UTM Link Builder",
+            "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda."
+        },
+        "serp-preview": {
+            "title": "Pratinjau Google SERP",
+            "desc": "Visualisasikan bagaimana situs web Anda muncul di hasil pencarian Google."
+        },
+        "meta-gen": {
+            "title": "Pembuat Meta Tag",
+            "desc": "Buat meta tag yang dioptimalkan SEO untuk situs web Anda."
+        },
+        "robots-gen": {
+            "title": "Pembuat Robots.txt",
+            "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO."
+        },
+        "social-mockup": {
+            "title": "Mockup Postingan Sosial",
+            "desc": "Pratinjau tampilan postingan Anda di LinkedIn, Twitter, dan Facebook."
+        },
+        "slug-gen": {
+            "title": "Pembuat Slug",
+            "desc": "Ubah teks apa pun menjadi slug yang ramah URL."
+        },
+        "text-analyzer": {
+            "title": "Analisis Teks Artikel",
+            "desc": "Analisis jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda."
+        },
+        "tweet-counter": {
+            "title": "Penghitung Thread Twitter/X",
+            "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda."
+        },
+        "link-cleaner": {
+            "title": "Pembersih Link / URL",
+            "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda."
+        },
+        "url-sitemap": {
+            "title": "Daftar URL ke Sitemap",
+            "desc": "Ubah daftar URL menjadi Sitemap XML yang diformat dengan benar."
+        },
+        "ad-counter": {
+            "title": "Penghitung Karakter Iklan",
+            "desc": "Validasi batas karakter untuk Google Ads dan Meta Ads."
+        },
+        "headline-analyzer": {
+            "title": "Penganalisis Judul",
+            "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik."
+        },
+        "invoice-gen": {
+            "title": "Pembuat Faktur",
+            "desc": "Buat faktur PDF profesional dan sederhana dalam hitungan detik."
+        },
+        "tax-calc": {
+            "title": "Kalkulator Pajak",
+            "desc": "Hitung PPN, PPh, dan pajak bisnis lainnya dengan cepat."
+        },
+        "profit-calc": {
+            "title": "Kalkulator Margin Keuntungan",
+            "desc": "Hitung margin dan markup Anda secara akurat."
+        },
+        "roi-calc": {
+            "title": "Kalkulator ROI Investasi",
+            "desc": "Hitung Pengembalian Investasi dan potensi pertumbuhan keuntungan."
+        },
+        "discount-calc": {
+            "title": "Kalkulator Diskon & Obral",
+            "desc": "Hitung harga akhir setelah diskon dan pajak penjualan."
+        },
+        "compound-interest": {
+            "title": "Kalkulator Bunga Majemuk",
+            "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk."
+        },
+        "biz-name-gen": {
+            "title": "Pembuat Nama Bisnis",
+            "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya."
+        },
+        "receipt-maker": {
+            "title": "Pembuat Kwitansi",
+            "desc": "Buat kwitansi digital sederhana untuk pelanggan Anda."
+        },
+        "break-even-calc": {
+            "title": "Kalkulator Titik Impas",
+            "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan."
+        },
+        "salary-calc": {
+            "title": "Kalkulator Gaji Bersih",
+            "desc": "Hitung gaji bersih setelah pajak dan potongan."
+        },
+        "unit-price-comp": {
+            "title": "Perbandingan Harga Satuan",
+            "desc": "Temukan penawaran terbaik dengan membandingkan harga satuan."
+        },
+        "bookkeeping": {
+            "title": "Pembukuan Sederhana",
+            "desc": "Lacak pemasukan dan pengeluaran harian Anda dengan mudah."
+        },
+        "sales-script": {
+            "title": "Pembuat Skrip Penjualan",
+            "desc": "Buat skrip penjualan persuasif secara instan berdasarkan kerangka kerja.",
+            "frameworks": {
+                "cold_call": {
+                    "name": "Cold Call",
+                    "desc": "Skrip penjangkauan standar untuk prospek baru",
+                    "template": "Hai [Nama Prospek], ini [Nama Anda] dengan {{productName}}.\n\nSaya menelepon karena kami membantu {{targetAudience}} yang frustrasi dengan {{painPoint}}.\n\nKami telah mengembangkan cara untuk {{benefit}}, dan saya ingin berbagi cara kerjanya.\n\nApakah Anda punya waktu 30 detik untuk saya jelaskan apa yang kami lakukan?"
+                },
+                "gatekeeper": {
+                    "name": "Gatekeeper",
+                    "desc": "Melewati resepsionis atau asisten",
+                    "template": "Hai, nama saya [Nama Anda] menelepon dari {{productName}}.\n\nSaya ingin berbicara dengan orang yang menangani {{painPoint}} untuk perusahaan.\n\nBisakah Anda mengarahkan saya ke arah yang benar?\n\n(Jika ditanya tentang apa):\nIni tentang bagaimana kami membantu {{targetAudience}} mencapai {{benefit}} tanpa sakit kepala yang biasa. Menggunakan solusi {{productName}} kami."
+                },
+                "objection": {
+                    "name": "Penanganan Keberatan",
+                    "desc": "Tanggapan untuk 'Saya tidak tertarik' atau 'Kirimkan saya info'",
+                    "template": "(prospek berkata \"Saya tidak tertarik\")\n\nSaya sangat mengerti. Banyak {{targetAudience}} mengatakan itu pada awalnya karena mereka terbiasa berurusan dengan {{painPoint}} dan tidak berpikir ada cara yang lebih baik.\n\nTetapi begitu mereka melihat bagaimana {{productName}} memungkinkan mereka untuk {{benefit}}, mereka biasanya berharap mereka melakukan percakapan lebih cepat.\n\nProposisi Nilai:\nBagaimana jika saya bisa menunjukkan kepada Anda ikhtisar 5 menit tentang cara kami memecahkan {{painPoint}}? Apakah Anda terbuka untuk itu Selasa depan?"
+                },
+                "spin": {
+                    "name": "SPIN Selling",
+                    "desc": "Situasi, Masalah, Implikasi, Kebutuhan-Hasil",
+                    "template": "SITUASI:\n\"Bisakah Anda ceritakan sedikit tentang proses Anda saat ini untuk menangani {{painPoint}}?\"\n\"Bagaimana Anda saat ini mengelola harapan untuk {{targetAudience}} Anda?\"\n\nMASALAH:\n\"Apakah Anda menemukan bahwa {{painPoint}} memakan lebih banyak waktu/sumber daya daripada yang Anda inginkan?\"\n\"Apakah sulit untuk mencapai {{benefit}} dengan pengaturan Anda saat ini?\"\n\nIMPLIKASI:\n\"Jika {{painPoint}} berlanjut, bagaimana hal itu akan berdampak pada tujuan kuartalan Anda?\"\n\"Apakah kegagalan untuk {{benefit}} memengaruhi moral atau produktivitas tim Anda?\"\n\nKEBUTUHAN-HASIL:\n\"Jika Anda bisa memperbaiki {{painPoint}} dan segera mulai {{benefit}}, bagaimana hal itu akan membantu Anda?\"\n\"Apakah akan berharga jika {{productName}} dapat mengotomatiskan ini untuk Anda?\""
+                },
+                "aida": {
+                    "name": "Kerangka AIDA",
+                    "desc": "Perhatian, Minat, Keinginan, Tindakan",
+                    "template": "PERHATIAN:\n\"Tahukah Anda bahwa banyak {{targetAudience}} kehilangan waktu setiap minggu karena {{painPoint}}?\"\n\nMINAT:\n\"{{productName}} adalah solusi baru yang dirancang khusus untuk menghilangkan {{painPoint}} selamanya.\n\nKEINGINAN:\n\"Bayangkan bisa {{benefit}} tanpa usaha ekstra. Klien kami melihat hasil hanya dalam beberapa hari.\"\n\nTINDAKAN:\n\"Saya ingin memberi Anda demo singkat. Apakah Anda bebas besok pagi atau Kamis sore?\""
+                }
+            }
+        },
+        "cold-email": {
+            "title": "Template Cold Email",
+            "desc": "Template konversi tinggi untuk penjangkauan Anda.",
+            "templates": {
+                "quick_intro": {
+                    "title": "Intro \"Pertanyaan Cepat\"",
+                    "subject": "Pertanyaan cepat tentang [Perusahaan]",
+                    "body": "Hai [Nama Depan],\n\nSaya melihat [Perusahaan] dan terkesan dengan [Pencapaian/Pengamatan].\n\nSaya menulis karena kami membantu perusahaan seperti Anda [Manfaat/Hasil] dengan [Metode].\n\nSaya ingin berbagi bagaimana kami dapat membantu [Perusahaan] mencapai hasil serupa. Apakah Anda punya waktu 10 menit minggu depan untuk obrolan singkat?\n\nSalam,\n[Nama Anda]"
+                },
+                "pain_point": {
+                    "title": "Memecahkan Masalah Tertentu",
+                    "subject": "Ide untuk [Masalah]",
+                    "body": "Hai [Nama Depan],\n\nSaya perhatikan bahwa [Perusahaan] mungkin menghadapi tantangan dengan [Masalah]. Saya telah melihat banyak perusahaan di [Industri] berjuang dengan ini, seringkali mengarah pada [Konsekuensi Negatif].\n\nKami telah mengembangkan solusi yang [Deskripsi Solusi], yang telah membantu klien kami mengurangi [Masalah] sebesar [Persentase]%.\n\nApakah Anda terbuka untuk percakapan singkat untuk melihat apakah ini bisa berhasil untuk Anda?\n\nSalam,\n[Nama Anda]"
+                },
+                "followup_generic": {
+                    "title": "Tindak Lanjut Umum",
+                    "subject": "Menindaklanjuti email terakhir saya",
+                    "body": "Hai [Nama Depan],\n\nSaya ingin menindaklanjuti email saya sebelumnya dengan cepat. Saya tahu segalanya menjadi sibuk, jadi saya akan mempersingkat ini.\n\nSaya masih sangat tertarik untuk mendiskusikan bagaimana kami dapat membantu [Perusahaan] dengan [Manfaat].\n\nApakah Anda punya waktu nanti minggu ini atau awal minggu depan untuk terhubung?\n\nSalam,\n[Nama Anda]"
+                },
+                "thoughts_followup": {
+                    "title": "Tindak Lanjut \"Apa Pendapat Anda?\"",
+                    "subject": "Ada pendapat?",
+                    "body": "Hai [Nama Depan],\n\nSaya menulis untuk bertanya apakah Anda sempat memikirkan catatan saya sebelumnya.\n\nJika Anda bukan orang yang tepat untuk diajak bicara, bisakah Anda mengarahkan saya ke arah yang benar?\n\nTerima kasih,\n[Nama Anda]"
+                },
+                "breakup": {
+                    "title": "Interaksi Ulang / Perpisahan",
+                    "subject": "Haruskah saya tinggal atau pergi?",
+                    "body": "Hai [Nama Depan],\n\nSaya belum mendengar kabar dari Anda, jadi saya asumsikan ini bukan prioritas saat ini atau Anda telah menemukan solusi lain.\n\nSaya akan berhenti menindaklanjuti untuk saat ini agar tidak memenuhi kotak masuk Anda.\n\nJika Anda membutuhkan bantuan dengan [Manfaat] di masa depan, jangan ragu untuk menghubungi.\n\nSalam terbaik,\n[Nama Anda]"
+                },
+                "referral": {
+                    "title": "Permintaan Referensi",
+                    "subject": "Siapa yang menangani [Departemen] di [Perusahaan]?",
+                    "body": "Hai [Nama Depan],\n\nSaya mencari orang yang bertanggung jawab untuk [Departemen/Fungsi] di [Perusahaan].\n\nBisakah Anda mengarahkan saya ke arah yang benar?\n\nTerima kasih sebelumnya,\n[Nama Anda]"
+                },
+                "news": {
+                    "title": "Selamat atas Berita",
+                    "subject": "Selamat atas [Berita/Acara]",
+                    "body": "Hai [Nama Depan],\n\nSaya melihat berita tentang [Berita/Acara] - selamat! Senang melihat [Perusahaan] berjalan dengan sangat baik.\n\nSaya berpikir bahwa dengan pertumbuhan ini, Anda mungkin mencari cara untuk [Manfaat terkait produk Anda].\n\nKami telah membantu perusahaan serupa berkembang dengan [Proposisi Nilai].\n\nApakah Anda terbuka untuk obrolan singkat?\n\nSalam,\n[Nama Anda]"
+                },
+                "resource": {
+                    "title": "Sumber Daya/Nilai Tambah",
+                    "subject": "Sumber daya untuk [Perusahaan]",
+                    "body": "Hai [Nama Depan],\n\nSaya menemukan artikel/sumber daya tentang [Topik] ini dan berpikir mungkin relevan dengan apa yang Anda lakukan di [Perusahaan].\n\n[Tautan ke Sumber Daya]\n\nKami juga berspesialisasi dalam bidang ini dan memiliki beberapa wawasan lain yang mungkin berguna.\n\nBeri tahu saya jika Anda ingin mendengar lebih banyak.\n\nSalam,\n[Nama Anda]"
+                }
+            }
+        },
+        "tz-converter": {
+            "title": "Konverter Zona Waktu",
+            "desc": "Koordinasikan pertemuan di berbagai zona waktu."
+        },
+        "meeting-agenda": {
+            "title": "Pembuat Agenda Pertemuan",
+            "desc": "Rencanakan dan strukturkan pertemuan bisnis yang produktif."
+        },
+        "price-quote": {
+            "title": "Pembuat Penawaran Harga",
+            "desc": "Buat penawaran profesional untuk klien dengan cepat."
+        },
+        "followup-calc": {
+            "title": "Pengingat Tindak Lanjut",
+            "desc": "Jadwalkan dan lacak waktu tindak lanjut klien Anda.",
+            "strategies": {
+                "standard": {
+                    "name": "Kadensi Penjualan Standar",
+                    "desc": "Frekuensi seimbang untuk sebagian besar penjualan B2B"
+                },
+                "aggressive": {
+                    "name": "Agresif / Niat Tinggi",
+                    "desc": "Sering menghubungi untuk prospek hangat"
+                },
+                "long_term": {
+                    "name": "Pemeliharaan Jangka Panjang",
+                    "desc": "Tetap berhubungan tanpa mengganggu"
+                },
+                "fibonacci": {
+                    "name": "Deret Fibonacci",
+                    "desc": "Jarak alami (1, 2, 3, 5, 8...)"
+                }
+            }
+        },
+        "testimonial-maker": {
+            "title": "Pembuat Kartu Testimoni",
+            "desc": "Ubah umpan balik klien menjadi kartu visual yang indah.",
+            "themes": {
+                "light": "Terang Bersih",
+                "dark": "Gelap Modern",
+                "blue": "Biru Brand",
+                "gradient": "Gradien"
+            }
+        },
+        "cta-ideas": {
+            "title": "Pembuat Ide CTA",
+            "desc": "Ide ajakan bertindak yang menarik untuk konversi yang lebih tinggi.",
+            "ctas": {
+                "ecommerce": {
+                    "shop_save": "Belanja Sekarang & Hemat 20%",
+                    "add_cart": "Tambah ke Keranjang - Stok Terbatas",
+                    "free_gift": "Klaim Hadiah Gratis Anda",
+                    "gone_soon": "Dapatkan Sebelum Habis",
+                    "free_shipping": "Ya, Saya Mau Gratis Ongkir"
+                },
+                "saas": {
+                    "free_trial": "Mulai Uji Coba Gratis 14 Hari",
+                    "how_it_works": "Lihat Cara Kerjanya",
+                    "get_started": "Mulai Gratis",
+                    "book_demo": "Pesan Demo Langsung",
+                    "no_credit_card": "Tanpa Kartu Kredit"
+                },
+                "newsletter": {
+                    "join_marketers": "Bergabung dengan 10.000+ Pemasar",
+                    "send_guide": "Kirimkan Saya Panduannya",
+                    "subscribe_tips": "Berlangganan untuk Tips Mingguan",
+                    "unlock_content": "Buka Konten Eksklusif",
+                    "download_pdf": "Unduh Sekarang (PDF)"
+                },
+                "events": {
+                    "save_seat": "Simpan Kursi Saya",
+                    "register_free": "Daftar Gratis",
+                    "reserve_spot": "Reservasi Tempat Anda",
+                    "add_calendar": "Tambahkan ke Kalender"
+                },
+                "social": {
+                    "follow_more": "Ikuti untuk Lebih Banyak",
+                    "tell_thoughts": "Beritahu Saya Pendapat Anda di Bawah",
+                    "share_friend": "Bagikan dengan Teman",
+                    "learn_more": "Pelajari Lebih Lanjut",
+                    "link_bio": "Link di Bio"
+                }
+            }
+        },
+        "email-sig": {
+            "title": "Pembuat Tanda Tangan Email",
+            "desc": "Buat tanda tangan email profesional dalam hitungan menit."
+        },
+        "wa-direct": {
+            "title": "Link Langsung WhatsApp",
+            "desc": "Mulai obrolan WhatsApp tanpa menyimpan nomor.",
+            "page": {
+                "input_title": "Masukkan Nomor Telepon",
+                "phone_label": "Kode Negara",
+                "phone_helper": "Masukkan nomor tanpa nol di depan (mis. 812...)",
+                "msg_label": "Pesan (Opsional)",
+                "msg_placeholder": "Halo, saya tertarik dengan...",
+                "output_title": "Link Langsung",
+                "no_link_msg": "Masukkan nomor untuk membuat",
+                "open_chat": "Buka Chat",
+                "copy_link": "Salin Link",
+                "copied": "Disalin!",
+                "show_qr": "Tampilkan Kode QR",
+                "hide_qr": "Sembunyikan Kode QR",
+                "download_qr": "Unduh QR"
+            }
+        },
+        "biz-card-mockup": {
+            "title": "Mockup Kartu Nama",
+            "desc": "Visualisasikan desain kartu nama Anda dalam mockup realistis.",
+            "scenes": {
+                "floating": "Mengambang 3D",
+                "stack": "Tumpukan",
+                "flat": "Datar"
+            }
+        },
+        "qr-gen": {
+            "title": "Pembuat Kode QR",
+            "desc": "Buat kode QR yang disesuaikan untuk tujuan apa pun."
+        },
+        "short-link": {
+            "title": "Pelacak & Penyingkat Link",
+            "desc": "Buat URL yang dapat dilacak dan persiapkan untuk dibagikan."
+        }
+    }
+}

@@ -8,10 +8,12 @@ import Card from '../../components/shared/Card';
 import ToolCard from '../../components/shared/ToolCard';
 import Breadcrumbs from '../../components/shared/Breadcrumbs';
 import RequestToolCTA from '../../components/shared/RequestToolCTA';
+import { useTranslation } from 'react-i18next';
 
 export default function ExploreToolsPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeCategory, setActiveCategory] = useState('all');
+    const { t } = useTranslation();
 
     const filteredTools = TOOLS.filter(tool =>
         tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -41,10 +43,10 @@ export default function ExploreToolsPage() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
                     <div className="space-y-4">
                         <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
-                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500 pr-2">Tools</span>
+                            {t('explore.title').split(' ')[0]} <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500 pr-2">{t('explore.title').split(' ').slice(1).join(' ')}</span>
                         </h1>
                         <p className="text-slate-500 text-lg font-medium max-w-2xl">
-                            Our complete library of specialized utilities, organized for your professional workflow.
+                            {t('explore.subtitle')}
                         </p>
                     </div>
 
@@ -54,7 +56,7 @@ export default function ExploreToolsPage() {
                         </div>
                         <input
                             type="text"
-                            placeholder="Search among all tools..."
+                            placeholder={t('explore.search_placeholder')}
                             className="w-full pl-11 pr-4 py-4 bg-white border border-slate-100 rounded-[1.5rem] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
@@ -72,7 +74,7 @@ export default function ExploreToolsPage() {
                                 : 'bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-900 border border-slate-100'
                                 }`}
                         >
-                            All Categories
+                            {t('explore.all_categories')}
                         </button>
                         {CATEGORIES.map(cat => (
                             <button
@@ -84,7 +86,7 @@ export default function ExploreToolsPage() {
                                     }`}
                             >
                                 {activeCategory === cat.id && <Icons.Check size={14} />}
-                                {cat.name}
+                                {t(`categories.${cat.id}`)}
                             </button>
                         ))}
                     </div>
@@ -101,7 +103,7 @@ export default function ExploreToolsPage() {
                                             <CatIcon size={20} />
                                         </div>
                                         <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-                                            {cat.name}
+                                            {t(`categories.${cat.id}`)}
                                         </h2>
                                         <div className="hidden md:block h-px bg-slate-100 flex-grow ml-4" />
                                         <Link
@@ -127,13 +129,13 @@ export default function ExploreToolsPage() {
                             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-slate-200 mx-auto mb-6 shadow-sm">
                                 <Icons.SearchX size={40} />
                             </div>
-                            <h3 className="text-2xl font-black text-slate-900">No tools matched your search</h3>
-                            <p className="text-slate-500 mt-2 font-medium">Try different keywords or browse our categories below.</p>
+                            <h3 className="text-2xl font-black text-slate-900">{t('explore.no_results_title')}</h3>
+                            <p className="text-slate-500 mt-2 font-medium">{t('explore.no_results_desc')}</p>
                             <button
                                 onClick={() => setSearchQuery('')}
                                 className="mt-8 text-blue-600 font-black text-sm uppercase tracking-widest hover:underline"
                             >
-                                Clear search filter
+                                {t('explore.clear_filter')}
                             </button>
                         </div>
                     )}
