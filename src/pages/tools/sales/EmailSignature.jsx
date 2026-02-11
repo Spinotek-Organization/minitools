@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PenTool, Copy, Check, Info, User, Building, Share2, Palette } from 'lucide-react';
+import { PenTool, Copy, Check, Info, User, Building, Share2, Palette, Upload } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
@@ -36,7 +36,7 @@ export default function EmailSignature() {
         companyName: 'Acme Corp',
         website: 'www.example.com',
         address: '123 Business Rd, Tech City',
-        logoUrl: 'https://via.placeholder.com/100',
+        logoUrl: 'https://dummyimage.com/100x100/e2e8f0/64748b?text=Logo',
         // Social
         linkedin: '',
         twitter: '',
@@ -49,6 +49,17 @@ export default function EmailSignature() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setData(prev => ({ ...prev, logoUrl: reader.result }));
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleCopy = async () => {
@@ -284,15 +295,33 @@ export default function EmailSignature() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Logo URL</label>
-                                    <input
-                                        type="text"
-                                        name="logoUrl"
-                                        value={data.logoUrl}
-                                        onChange={handleChange}
-                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-blue-500 outline-none"
-                                    />
-                                    <p className="text-xs text-slate-400 mt-1">Provide a direct link to an image.</p>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Logo</label>
+                                    <div className="space-y-3">
+                                        <div className="flex items-center gap-3">
+                                            <label className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer bg-white">
+                                                <Upload size={16} />
+                                                Upload Image
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={handleImageUpload}
+                                                    className="hidden"
+                                                />
+                                            </label>
+                                            <span className="text-xs text-slate-400">or</span>
+                                            <input
+                                                type="text"
+                                                name="logoUrl"
+                                                value={data.logoUrl}
+                                                onChange={handleChange}
+                                                placeholder="https://"
+                                                className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                                            />
+                                        </div>
+                                        <p className="text-xs text-slate-400">
+                                            Upload an image or paste a direct link. Square images work best.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         )}

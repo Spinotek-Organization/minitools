@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MessageSquare, Copy, ExternalLink, RefreshCw, Smartphone, QrCode } from 'lucide-react';
+import { MessageSquare, Copy, ExternalLink, RefreshCw, Smartphone, QrCode, Download } from 'lucide-react';
 import { QRCodeCanvas } from 'qrcode.react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
@@ -70,6 +70,19 @@ export default function WaDirect() {
         navigator.clipboard.writeText(generatedLink);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    };
+
+    const handleDownloadQr = () => {
+        const canvas = document.getElementById('qr-code-canvas');
+        if (canvas) {
+            const pngUrl = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pngUrl;
+            downloadLink.download = `whatsapp-qr-${phoneNumber || 'code'}.png`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
     };
 
     return (
@@ -196,10 +209,23 @@ export default function WaDirect() {
                                 </button>
 
                                 {showQr && (
-                                    <div className="flex justify-center pt-4 animate-in fade-in zoom-in duration-300">
+                                    <div className="flex flex-col items-center pt-4 animate-in fade-in zoom-in duration-300 gap-4">
                                         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                                            <QRCodeCanvas value={generatedLink} size={200} level="H" />
+                                            <QRCodeCanvas
+                                                id="qr-code-canvas"
+                                                value={generatedLink}
+                                                size={200}
+                                                level="H"
+                                                includeMargin={true}
+                                            />
                                         </div>
+                                        <button
+                                            onClick={handleDownloadQr}
+                                            className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-green-600 transition-colors"
+                                        >
+                                            <Download size={16} />
+                                            Download QR Image
+                                        </button>
                                     </div>
                                 )}
                             </div>
