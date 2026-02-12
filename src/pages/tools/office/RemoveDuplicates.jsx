@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Filter, Trash2, Copy, Check, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function RemoveDuplicates() {
+    const { t } = useTranslation('tools');
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [stats, setStats] = useState({ original: 0, unique: 0, removed: 0 });
@@ -58,10 +60,10 @@ export default function RemoveDuplicates() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="remove-duplicates">
             <Helmet>
-                <title>Duplicate Line Remover | MiniTools by Spinotek</title>
-                <meta name="description" content="Remove duplicate lines from text lists instantly. Clean up your data with case-sensitive options." />
+                <title>{t('remove-duplicates.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('remove-duplicates.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
@@ -70,8 +72,8 @@ export default function RemoveDuplicates() {
                         <Filter size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Duplicate Remover</h1>
-                        <p className="text-slate-500">Clean up lists by removing repeated lines.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('remove-duplicates.title')}</h1>
+                        <p className="text-slate-500">{t('remove-duplicates.desc')}</p>
                     </div>
                 </div>
 
@@ -80,18 +82,18 @@ export default function RemoveDuplicates() {
                     <div className="space-y-6">
                         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm h-full flex flex-col">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="font-bold text-slate-700">Input List</h3>
+                                <h3 className="font-bold text-slate-700">{t('remove-duplicates.inputs.label')}</h3>
                                 <button
                                     onClick={() => { setInput(''); setOutput(''); }}
                                     className="text-xs text-rose-500 hover:text-rose-600 font-medium flex items-center gap-1"
                                 >
-                                    <Trash2 size={12} /> Clear
+                                    <Trash2 size={12} /> {t('remove-duplicates.inputs.clear')}
                                 </button>
                             </div>
                             <textarea
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                placeholder="Paste your list here (one item per line)..."
+                                placeholder={t('remove-duplicates.inputs.placeholder')}
                                 className="flex-1 w-full p-4 bg-slate-50 border border-slate-200 rounded-xl resize-none outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm min-h-[400px]"
                             />
                         </div>
@@ -109,7 +111,7 @@ export default function RemoveDuplicates() {
                                         onChange={(e) => setCaseSensitive(e.target.checked)}
                                         className="w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500"
                                     />
-                                    Case Sensitive
+                                    {t('remove-duplicates.options.case')}
                                 </label>
                                 <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer select-none">
                                     <input
@@ -118,14 +120,14 @@ export default function RemoveDuplicates() {
                                         onChange={(e) => setTrimWhitespace(e.target.checked)}
                                         className="w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500"
                                     />
-                                    Trim Whitespace
+                                    {t('remove-duplicates.options.trim')}
                                 </label>
                             </div>
                             <button
                                 onClick={processText}
                                 className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow-lg shadow-rose-200 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                             >
-                                <Filter size={18} /> Remove Duplicates
+                                <Filter size={18} /> {t('remove-duplicates.buttons.remove')}
                             </button>
                         </div>
 
@@ -133,7 +135,7 @@ export default function RemoveDuplicates() {
                         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[calc(100%-140px)] min-h-[300px]">
                             <div className="bg-slate-50 border-b border-slate-100 px-6 py-3 flex justify-between items-center">
                                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    {stats.unique} Unique Items
+                                    {t('remove-duplicates.outputs.stats', { count: stats.unique })}
                                 </span>
                                 <button
                                     onClick={handleCopy}
@@ -144,14 +146,14 @@ export default function RemoveDuplicates() {
                                         }`}
                                 >
                                     {copied ? <Check size={14} /> : <Copy size={14} />}
-                                    {copied ? 'Copied' : 'Copy'}
+                                    {copied ? t('remove-duplicates.buttons.copied') : t('remove-duplicates.buttons.copy')}
                                 </button>
                             </div>
                             <div className="flex-1 relative">
                                 <textarea
                                     value={output}
                                     readOnly
-                                    placeholder="Cleaned list will appear here..."
+                                    placeholder={t('remove-duplicates.outputs.placeholder')}
                                     className="absolute inset-0 w-full p-4 resize-none outline-none text-slate-700 text-sm bg-slate-50/30"
                                 />
                             </div>
@@ -160,8 +162,8 @@ export default function RemoveDuplicates() {
                         {/* Stats Footer */}
                         {stats.original > 0 && (
                             <div className="flex gap-4 text-xs text-slate-500 justify-center">
-                                <span className="bg-slate-100 px-3 py-1 rounded-full">Original: {stats.original}</span>
-                                <span className="bg-rose-100 text-rose-700 px-3 py-1 rounded-full font-bold">Removed: {stats.removed}</span>
+                                <span className="bg-slate-100 px-3 py-1 rounded-full">{t('remove-duplicates.stats.original', { count: stats.original })}</span>
+                                <span className="bg-rose-100 text-rose-700 px-3 py-1 rounded-full font-bold">{t('remove-duplicates.stats.removed', { count: stats.removed })}</span>
                             </div>
                         )}
                     </div>

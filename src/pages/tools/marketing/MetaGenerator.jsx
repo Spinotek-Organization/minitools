@@ -60,55 +60,55 @@ export default function MetaGenerator() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Form */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm space-y-4">
-                    <h2 className="text-lg font-bold text-slate-900 mb-4">Site Information</h2>
+                    <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.meta-gen.form.title')}</h2>
                     
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-1">Page Title</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.pageTitle')}</label>
                         <input
                             type="text"
                             value={data.title}
                             onChange={(e) => setData({ ...data, title: e.target.value })}
-                            placeholder="e.g. My Awesome Website"
+                            placeholder={t('tools.meta-gen.form.pageTitlePlaceholder')}
                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-amber-500"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-1">Description</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.description')}</label>
                         <textarea
                             rows={3}
                             value={data.description}
                             onChange={(e) => setData({ ...data, description: e.target.value })}
-                            placeholder="A brief description of your page..."
+                            placeholder={t('tools.meta-gen.form.descriptionPlaceholder')}
                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-amber-500"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-1">Keywords</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.keywords')}</label>
                         <input
                             type="text"
                             value={data.keywords}
                             onChange={(e) => setData({ ...data, keywords: e.target.value })}
-                            placeholder="comma, separated, keywords"
+                            placeholder={t('tools.meta-gen.form.keywordsPlaceholder')}
                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-amber-500"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-1">Author</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.author')}</label>
                         <input
                             type="text"
                             value={data.author}
                             onChange={(e) => setData({ ...data, author: e.target.value })}
-                            placeholder="John Doe"
+                            placeholder={t('tools.meta-gen.form.authorPlaceholder')}
                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-amber-500"
                         />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                          <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">Robots</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.robots')}</label>
                             <select
                                 value={data.robots}
                                 onChange={(e) => setData({ ...data, robots: e.target.value })}
@@ -121,7 +121,7 @@ export default function MetaGenerator() {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">Charset</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-1">{t('tools.meta-gen.form.charset')}</label>
                             <select
                                 value={data.charset}
                                 onChange={(e) => setData({ ...data, charset: e.target.value })}
@@ -139,14 +139,14 @@ export default function MetaGenerator() {
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                             <Code size={20} className="text-amber-600" />
-                            Generated HTML
+                            {t('tools.meta-gen.output.title')}
                         </h2>
                         <button
                             onClick={handleCopy}
                             className="flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-800 transition-colors"
                         >
                             {copied ? <Check size={16} /> : <Copy size={16} />}
-                            {copied ? 'Copied' : 'Copy Code'}
+                            {copied ? t('tools.meta-gen.output.copied') : t('tools.meta-gen.output.copy')}
                         </button>
                     </div>
 

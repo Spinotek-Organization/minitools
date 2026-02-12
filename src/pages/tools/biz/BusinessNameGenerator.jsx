@@ -89,44 +89,44 @@ export default function BusinessNameGenerator() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Inputs */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
-                    <h2 className="text-lg font-bold text-slate-900 mb-6">Brainstorming Details</h2>
+                    <h2 className="text-lg font-bold text-slate-900 mb-6">{t('tools.biz-name-gen.section.details')}</h2>
                     
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Main Keyword</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.biz-name-gen.form.keyword')}</label>
                             <input
                                 type="text"
                                 value={keyword}
                                 onChange={(e) => setKeyword(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && generateNames()}
-                                placeholder="e.g. Coffee, Code, Design"
+                                placeholder={t('tools.biz-name-gen.form.keywordPlaceholder')}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 outline-none focus:ring-2 focus:ring-amber-500"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Naming Style</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.biz-name-gen.form.style')}</label>
                             <div className="grid grid-cols-3 gap-2">
                                 <button 
                                     onClick={() => setStyle('modern')}
                                     className={`py-3 rounded-xl text-sm font-bold border transition-all ${style === 'modern' ? 'bg-amber-100 border-amber-300 text-amber-800' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                                 >
-                                    Modern
-                                    <span className="block text-[10px] font-normal opacity-70">Short, catchy</span>
+                                    {t('tools.biz-name-gen.style.modern')}
+                                    <span className="block text-[10px] font-normal opacity-70">{t('tools.biz-name-gen.style.modernDesc')}</span>
                                 </button>
                                 <button 
                                     onClick={() => setStyle('classic')}
                                      className={`py-3 rounded-xl text-sm font-bold border transition-all ${style === 'classic' ? 'bg-amber-100 border-amber-300 text-amber-800' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                                 >
-                                    Classic
-                                    <span className="block text-[10px] font-normal opacity-70">Professional, trusty</span>
+                                    {t('tools.biz-name-gen.style.classic')}
+                                    <span className="block text-[10px] font-normal opacity-70">{t('tools.biz-name-gen.style.classicDesc')}</span>
                                 </button>
                                 <button 
                                     onClick={() => setStyle('tech')}
                                      className={`py-3 rounded-xl text-sm font-bold border transition-all ${style === 'tech' ? 'bg-amber-100 border-amber-300 text-amber-800' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                                 >
-                                    Tech
-                                    <span className="block text-[10px] font-normal opacity-70">Futuristic, geeky</span>
+                                    {t('tools.biz-name-gen.style.tech')}
+                                    <span className="block text-[10px] font-normal opacity-70">{t('tools.biz-name-gen.style.techDesc')}</span>
                                 </button>
                             </div>
                         </div>
@@ -137,7 +137,7 @@ export default function BusinessNameGenerator() {
                             className="w-full bg-slate-900 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2"
                         >
                             <Lightbulb size={20} />
-                            Generate Ideas
+                            {t('tools.biz-name-gen.action.generate')}
                         </button>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ export default function BusinessNameGenerator() {
                     {!generatedNames.length ? (
                         <div className="h-full flex flex-col items-center justify-center text-slate-400 opacity-60">
                             <Lightbulb size={48} className="mb-4" />
-                            <p className="font-medium text-center">Enter a keyword and hit generate<br/>to see magic happen!</p>
+                            <p className="font-medium text-center">{t('tools.biz-name-gen.result.empty')}</p>
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

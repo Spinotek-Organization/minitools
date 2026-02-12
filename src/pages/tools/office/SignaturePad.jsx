@@ -4,8 +4,10 @@ import SignatureCanvas from 'react-signature-canvas';
 import { PenTool, Download, Eraser, Trash2, Palette } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function SignaturePad() {
+    const { t } = useTranslation('tools');
     const sigCanvas = useRef({});
     const [penColor, setPenColor] = useState('black');
     const [penWidth, setPenWidth] = useState(2);
@@ -18,7 +20,7 @@ export default function SignaturePad() {
 
     const save = (format) => {
         if (sigCanvas.current.isEmpty()) {
-            alert('Please sign before saving!');
+            alert(t('signature-pad.alerts.empty'));
             return;
         }
 
@@ -43,10 +45,10 @@ export default function SignaturePad() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="signature-pad">
             <Helmet>
-                <title>Digital Signature Pad | MiniTools by Spinotek</title>
-                <meta name="description" content="Draw and download your digital signature in transparent PNG format." />
+                <title>{t('signature-pad.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('signature-pad.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -55,8 +57,8 @@ export default function SignaturePad() {
                         <PenTool size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Digital Signature Pad</h1>
-                        <p className="text-slate-500 text-sm">Draw and download your digital signature.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('signature-pad.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('signature-pad.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +81,7 @@ export default function SignaturePad() {
                                 backgroundColor="rgba(0,0,0,0)"
                             />
                             <div className="absolute bottom-2 right-2 text-xs text-slate-300 pointer-events-none select-none font-bold uppercase tracking-wider">
-                                Sign Here
+                                {t('signature-pad.signHere')}
                             </div>
                         </div>
                         
@@ -88,13 +90,13 @@ export default function SignaturePad() {
                                 onClick={clear}
                                 className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl transition-colors flex items-center gap-2"
                             >
-                                <Trash2 size={18} /> Clear
+                                <Trash2 size={18} /> {t('signature-pad.buttons.clear')}
                             </button>
                             <button
                                 onClick={() => save('png')}
                                 className="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl shadow-lg shadow-slate-300 transition-all flex items-center gap-2"
                             >
-                                <Download size={18} /> Download Transparent PNG
+                                <Download size={18} /> {t('signature-pad.buttons.download')}
                             </button>
                         </div>
                     </div>
@@ -104,12 +106,12 @@ export default function SignaturePad() {
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
                         <h3 className="text-sm font-bold text-slate-900 mb-6 flex items-center gap-2">
-                            <Palette size={18} className="text-slate-500" /> Pen Settings
+                            <Palette size={18} className="text-slate-500" /> {t('signature-pad.settings.title')}
                         </h3>
                         
                         {/* Colors */}
                         <div className="mb-6">
-                            <label className="block text-xs font-bold text-slate-500 uppercase mb-3">Color</label>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-3">{t('signature-pad.settings.color')}</label>
                             <div className="flex gap-3">
                                 {['black', 'blue', 'red', 'green'].map(color => (
                                     <button
@@ -125,7 +127,7 @@ export default function SignaturePad() {
 
                         {/* Thickness */}
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 uppercase mb-3">Thickness</label>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-3">{t('signature-pad.settings.thickness')}</label>
                             <input 
                                 type="range" 
                                 min="1" 
@@ -136,16 +138,16 @@ export default function SignaturePad() {
                                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-700"
                             />
                             <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
-                                <span>Thin</span>
+                                <span>{t('signature-pad.settings.thin')}</span>
                                 <span>{penWidth}px</span>
-                                <span>Thick</span>
+                                <span>{t('signature-pad.settings.thick')}</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-blue-50 border border-blue-100 p-6 rounded-3xl text-sm text-blue-800">
-                        <strong className="block mb-2 font-bold">Privacy Note</strong>
-                        Your signature is generated purely in your browser using HTML5 Canvas. It is never uploaded to any server.
+                        <strong className="block mb-2 font-bold">{t('signature-pad.privacy.title')}</strong>
+                        {t('signature-pad.privacy.text')}
                     </div>
                 </div>
             </div>

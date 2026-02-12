@@ -11,6 +11,7 @@ export default function SitemapGenerator() {
     const [urls, setUrls] = useState('');
     const [priority, setPriority] = useState('0.8');
     const [freq, setFreq] = useState('weekly');
+    const [includeLastMod, setIncludeLastMod] = useState(true);
     const [lastMod, setLastMod] = useState(new Date().toISOString().split('T')[0]);
     const [result, setResult] = useState('');
     const [copied, setCopied] = useState(false);
@@ -30,9 +31,13 @@ export default function SitemapGenerator() {
                                .replace(/</g, '&lt;');
 
             xml += `   <url>
-      <loc>${cleanUrl}</loc>
-      <lastmod>${lastMod}</lastmod>
-      <changefreq>${freq}</changefreq>
+      <loc>${cleanUrl}</loc>\n`;
+            
+            if (includeLastMod) {
+                xml += `      <lastmod>${lastMod}</lastmod>\n`;
+            }
+            
+            xml += `      <changefreq>${freq}</changefreq>
       <priority>${priority}</priority>
    </url>
 `;
@@ -78,114 +83,123 @@ export default function SitemapGenerator() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                {/* Input */}
-                <div className="flex flex-col gap-6">
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex-1">
-                        <div className="flex justify-between mb-2">
-                             <label className="text-sm font-bold text-slate-700">Pages List (One URL per line)</label>
-                             <button
-                                onClick={() => setUrls('')}
-                                className="text-xs font-bold text-slate-400 hover:text-red-500"
-                             >
-                                Clear
-                             </button>
-                        </div>
+                {/* Inputs */}
+                <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex flex-col h-full">
+                    <div className="flex justify-between items-center mb-4">
+                        <label className="text-sm font-bold text-slate-700">{t('tools.url-sitemap.input.label')}</label>
+                        <button 
+                            onClick={() => setUrls('')}
+                            className="text-xs font-bold text-slate-400 hover:text-red-500 transition-colors"
+                        >
+                            {t('tools.url-sitemap.input.clear')}
+                        </button>
+                    </div>
                         <textarea
                             value={urls}
                             onChange={(e) => setUrls(e.target.value)}
                             placeholder="https://example.com/page1&#10;https://example.com/page2"
                             className="w-full h-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-rose-500 font-mono text-sm resize-none"
                         />
-                    </div>
-
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h3 className="font-bold text-slate-900 mb-4">Default Settings</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Frequency</label>
-                                <select 
-                                    value={freq} 
-                                    onChange={(e) => setFreq(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm"
-                                >
-                                    <option value="always">Always</option>
-                                    <option value="hourly">Hourly</option>
-                                    <option value="daily">Daily</option>
-                                    <option value="weekly">Weekly</option>
-                                    <option value="monthly">Monthly</option>
-                                    <option value="yearly">Yearly</option>
-                                    <option value="never">Never</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Priority</label>
-                                <select 
-                                    value={priority} 
-                                    onChange={(e) => setPriority(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm"
-                                >
-                                    <option value="1.0">1.0</option>
-                                    <option value="0.9">0.9</option>
-                                    <option value="0.8">0.8</option>
-                                    <option value="0.7">0.7</option>
-                                    <option value="0.6">0.6</option>
-                                    <option value="0.5">0.5</option>
-                                    <option value="0.4">0.4</option>
-                                    <option value="0.3">0.3</option>
-                                </select>
-                            </div>
-                             <div>
-                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Last Mod</label>
-                                <input
-                                    type="date"
-                                    value={lastMod}
-                                    onChange={(e) => setLastMod(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm"
-                                />
-                            </div>
-                        </div>
-
-                         <button
-                            onClick={generateSitemap}
-                            disabled={!urls}
-                            className={`w-full mt-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
-                                urls 
-                                    ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-lg shadow-rose-200' 
-                                    : 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                            }`}
-                        >
-                            <RefreshCw size={20} /> Generate Sitemap
-                        </button>
-                    </div>
                 </div>
 
-                {/* Output */}
-                <div className="bg-slate-800 text-slate-300 p-8 rounded-3xl flex flex-col h-full font-mono text-sm relative min-h-[400px]">
-                    <div className="absolute top-4 right-4 flex gap-2 z-10">
-                        <button 
-                            onClick={handleCopy}
-                            disabled={!result}
-                            className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors text-white disabled:opacity-50"
-                            title="Copy to Clipboard"
-                        >
-                            {copied ? <Check size={18} /> : <Copy size={18} />}
-                        </button>
-                        <button 
-                            onClick={handleDownload}
-                            disabled={!result}
-                            className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors text-white disabled:opacity-50"
-                            title="Download File"
-                        >
-                            <Download size={18} />
-                        </button>
+                {/* Settings */}
+                <div className="space-y-6">
+                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
+                        <h3 className="font-bold text-slate-900 mb-4">{t('tools.url-sitemap.settings.title')}</h3>
+                        
+                        <div className="space-y-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.url-sitemap.settings.freq')}</label>
+                                    <select 
+                                        value={freq}
+                                        onChange={(e) => setFreq(e.target.value)}
+                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-rose-500 text-sm"
+                                    >
+                                        <option value="always">always</option>
+                                        <option value="hourly">hourly</option>
+                                        <option value="daily">daily</option>
+                                        <option value="weekly">weekly</option>
+                                        <option value="monthly">monthly</option>
+                                        <option value="yearly">yearly</option>
+                                        <option value="never">never</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.url-sitemap.settings.priority')}</label>
+                                    <select
+                                        value={priority}
+                                        onChange={(e) => setPriority(e.target.value)}
+                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-rose-500 text-sm"
+                                    >
+                                        <option value="1.0">1.0</option>
+                                        <option value="0.9">0.9</option>
+                                        <option value="0.8">0.8</option>
+                                        <option value="0.7">0.7</option>
+                                        <option value="0.6">0.6</option>
+                                        <option value="0.5">0.5</option>
+                                        <option value="0.4">0.4</option>
+                                        <option value="0.3">0.3</option>
+                                        <option value="0.2">0.2</option>
+                                        <option value="0.1">0.1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div className="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    id="lastmod"
+                                    checked={includeLastMod}
+                                    onChange={(e) => setIncludeLastMod(e.target.checked)}
+                                    className="w-4 h-4 text-rose-600 rounded focus:ring-rose-500"
+                                />
+                                <label htmlFor="lastmod" className="text-sm font-medium text-slate-700">{t('tools.url-sitemap.settings.lastmod')}</label>
+                            </div>
+
+                            <button
+                                onClick={generateSitemap}
+                                className={`w-full py-3 rounded-xl font-bold transition-all shadow-lg ${
+                                    urls.trim() 
+                                    ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-rose-200' 
+                                    : 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
+                                }`}
+                                disabled={!urls.trim()}
+                            >
+                                <RefreshCw size={20} /> {t('tools.url-sitemap.settings.generate')}
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="mb-4 font-bold text-slate-400 uppercase tracking-wider text-xs">XML Output</div>
-                    <textarea
-                        readOnly
-                        value={result || '<!-- Your XML sitemap will appear here -->'}
-                        className="w-full h-full bg-transparent resize-none outline-none text-rose-300"
-                    />
+                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex flex-col h-full">
+                         <div className="flex justify-between items-center mb-4">
+                            <h3 className="font-bold text-slate-900">{t('tools.url-sitemap.output.title')}</h3>
+                            <div className="flex gap-2">
+                                <button 
+                                    onClick={handleCopy}
+                                    disabled={!result}
+                                     className="p-2 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 disabled:opacity-50"
+                                     title={t('tools.url-sitemap.output.copy')}
+                                >
+                                    {copied ? <Check size={18} /> : <Copy size={18} />}
+                                </button>
+                                <button 
+                                    onClick={handleDownload}
+                                    disabled={!result}
+                                     className="p-2 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 disabled:opacity-50"
+                                     title={t('tools.url-sitemap.output.download')}
+                                >
+                                    <Download size={18} />
+                                </button>
+                            </div>
+                        </div>
+                        <textarea
+                            value={result}
+                            readOnly
+                            placeholder={t('tools.url-sitemap.output.placeholder')}
+                            className="w-full flex-1 min-h-[200px] bg-slate-800 rounded-xl px-4 py-3 outline-none text-slate-300 font-mono text-xs leading-relaxed resize-none"
+                        />
+                    </div>
                 </div>
             </div>
 

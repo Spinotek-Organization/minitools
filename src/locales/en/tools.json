@@ -49,51 +49,253 @@
     },
     "utm-builder": {
         "title": "UTM Link Builder",
-        "desc": "Easily generate UTM tracking links for your campaigns."
+        "desc": "Easily generate UTM tracking links for your campaigns.",
+        "form": {
+            "title": "Campaign Details",
+            "url": "Website URL",
+            "source": "Campaign Source",
+            "medium": "Campaign Medium",
+            "name": "Campaign Name",
+            "term": "Campaign Term (Optional)",
+            "content": "Campaign Content (Optional)"
+        },
+        "output": {
+            "title": "Generated URL",
+            "placeholder": "Fill in the required fields to generate your link...",
+            "test": "Test Link",
+            "copy": "Copy URL",
+            "copied": "Copied!"
+        },
+        "guide": {
+            "title": "Parameter Guide",
+            "source": "The referrer (e.g. google, newsletter)",
+            "medium": "Marketing medium (e.g. cpc, banner, email)",
+            "campaign": "Product, promo code, or slogan"
+        }
     },
     "serp-preview": {
         "title": "Google SERP Preview",
-        "desc": "Visualize how your website appears on Google search results."
+        "desc": "Visualize how your website appears on Google search results.",
+        "view": {
+            "desktop": "Desktop",
+            "mobile": "Mobile"
+        },
+        "form": {
+            "title": "SEO Title",
+            "titleTruncated": "Title is likely to be truncated.",
+            "desc": "Meta Description",
+            "descTruncated": "Description is likely to be truncated.",
+            "domain": "Domain",
+            "path": "URL Path"
+        }
     },
     "meta-gen": {
         "title": "Meta Tag Generator",
-        "desc": "Create SEO-optimized meta tags for your website."
+        "desc": "Create SEO-optimized meta tags for your website.",
+        "form": {
+            "title": "Site Information",
+            "pageTitle": "Page Title",
+            "pageTitlePlaceholder": "e.g. My Awesome Website",
+            "description": "Description",
+            "descriptionPlaceholder": "A brief description of your page...",
+            "keywords": "Keywords",
+            "keywordsPlaceholder": "comma, separated, keywords",
+            "author": "Author",
+            "authorPlaceholder": "John Doe",
+            "robots": "Robots",
+            "charset": "Charset"
+        },
+        "output": {
+            "title": "Generated HTML",
+            "copy": "Copy Code",
+            "copied": "Copied"
+        }
     },
     "robots-gen": {
         "title": "Robots.txt Generator",
-        "desc": "Create properly formatted robots.txt files for SEO."
+        "desc": "Create properly formatted robots.txt files for SEO.",
+        "rules": {
+            "title": "User Agent Rules",
+            "add": "Add Bot",
+            "agent": "User Agent",
+            "allow": "Allow",
+            "disallow": "Disallow",
+            "hint": "Separate multiple paths with commas."
+        },
+        "sitemap": {
+            "title": "Sitemaps & Extras",
+            "urls": "Sitemap URLs",
+            "add": "Add Sitemap",
+            "delay": "Crawl Delay (Seconds)",
+            "delayPlaceholder": "e.g. 10 (Optional)"
+        },
+        "output": {
+            "copy": "Copy to Clipboard",
+            "download": "Download File",
+            "preview": "robots.txt Preview"
+        }
     },
     "social-mockup": {
         "title": "Social Post Mockup",
-        "desc": "Preview how your posts will look on LinkedIn, Twitter, and Facebook."
+        "desc": "Preview how your posts will look on LinkedIn, Twitter, and Facebook.",
+        "platforms": {
+            "facebook": "Facebook",
+            "twitter": "Twitter",
+            "linkedin": "LinkedIn"
+        },
+        "form": {
+            "title": "Title",
+            "description": "Description",
+            "image": "Image URL or Upload",
+            "upload": "Upload Image",
+            "domain": "Domain"
+        },
+        "preview": {
+            "noImage": "No Image",
+            "promoted": "PROMOTED"
+        }
     },
     "slug-gen": {
         "title": "Slug Generator",
-        "desc": "Convert any text into a URL-friendly slug."
+        "desc": "Convert any text into a URL-friendly slug.",
+        "input": {
+            "label": "Input Text",
+            "placeholder": "Type your title here..."
+        },
+        "options": {
+            "title": "Options",
+            "separator": "Separator",
+            "removeNumbers": "Remove Numbers",
+            "removeStop": "Remove Stop Words (a, the, and...)"
+        },
+        "output": {
+            "title": "Generated Slug",
+            "placeholder": "your-slug-will-appear-here",
+            "copy": "COPY SLUG",
+            "copied": "COPIED!"
+        }
     },
     "text-analyzer": {
         "title": "Article Text Analyzer",
-        "desc": "Analyze word count, keyword density, and reading time of your text."
+        "desc": "Analyze word count, keyword density, and reading time of your text.",
+        "input": {
+            "label": "Your Article Draft",
+            "placeholder": "Paste your content here to analyze...",
+            "stats": "{{count}} characters"
+        },
+        "stats": {
+            "words": "Words",
+            "chars": "Chars",
+            "readTime": "Read Time",
+            "speakTime": "Speak Time"
+        },
+        "density": {
+            "title": "Keyword Density",
+            "one": "Top 1-Word",
+            "two": "Top 2-Words",
+            "three": "Top 3-Words",
+            "empty": "No data yet"
+        }
     },
     "tweet-counter": {
         "title": "Twitter/X Thread Counter",
-        "desc": "Count characters and manage your X/Twitter thread limits."
+        "desc": "Count characters and manage your X/Twitter thread limits.",
+        "input": {
+            "label": "Draft Content",
+            "stats": "{{count}} chars",
+            "placeholder": "Type your long thread here..."
+        },
+        "output": {
+            "title": "Preview ({{count}} tweets)",
+            "placeholder": "Start typing to see your thread preview here.",
+            "copy": "Copy",
+            "copied": "Copied"
+        }
     },
     "link-cleaner": {
         "title": "Link Cleaner / Stripper",
-        "desc": "Remove tracking parameters (UTM, FBCLID) from your URLs."
+        "desc": "Remove tracking parameters (UTM, FBCLID) from your URLs.",
+        "input": {
+            "label": "Paste Dirty URL",
+            "placeholder": "https://example.com?utm_source=facebook&fbclid=IwAR2...",
+            "button": "Clean URL"
+        },
+        "output": {
+            "removed": "Removed {{count}} params",
+            "title": "Clean URL",
+            "placeholder": "Clean URL will appear here...",
+            "copy": "Copy Clean Link",
+            "copied": "Copied!",
+            "stripped": "Stripped Parameters",
+            "invalid": "Invalid URL"
+        }
     },
     "url-sitemap": {
         "title": "URL List to Sitemap",
-        "desc": "Convert a list of URLs into a properly formatted XML Sitemap."
+        "desc": "Convert a list of URLs into a properly formatted XML Sitemap.",
+        "input": {
+            "label": "Pages List (One URL per line)",
+            "clear": "Clear"
+        },
+        "settings": {
+            "title": "Default Settings",
+            "freq": "Frequency",
+            "priority": "Priority",
+            "lastmod": "Last Mod",
+            "generate": "Generate Sitemap"
+        },
+        "output": {
+            "copy": "Copy to Clipboard",
+            "download": "Download File",
+            "title": "XML Output",
+            "placeholder": "<!-- Your XML sitemap will appear here -->"
+        }
     },
     "ad-counter": {
         "title": "Ad Copy Character Counter",
-        "desc": "Validate character limits for Google and Meta Ads."
+        "desc": "Validate character limits for Google and Meta Ads.",
+        "headlines": "Headlines (30 chars)",
+        "headline": "Headline {{index}}",
+        "descriptions": "Descriptions (90 chars)",
+        "description": "Description {{index}}",
+        "preview": {
+            "title": "Ad Preview",
+            "ad": "Ad",
+            "tip": "Tip:",
+            "tipText": "Ensure your keywords are in Headline 1 for better Quality Score. Use Title Case for headlines."
+        }
     },
     "headline-analyzer": {
         "title": "Headline Analyzer",
-        "desc": "Improve your headlines for better CTR and engagement."
+        "desc": "Improve your headlines for better CTR and engagement.",
+        "input": {
+            "label": "Your Headline",
+            "placeholder": "e.g. 10 Secrets to Growing Your Business Fast",
+            "analyze": "Analyze Headline"
+        },
+        "tips": {
+            "title": "Tips for High-Converting Headlines",
+            "list": [
+                "Use numbers (e.g. \"7 Ways...\", \"10 Tips...\")",
+                "Use strong emotional words (e.g. \"Amazing\", \"Fear\")",
+                "Keep it between 50-60 characters for optimal search visibility.",
+                "Address the reader directly with \"You\" or \"Your\"."
+            ]
+        },
+        "score": {
+            "title": "Headline Score",
+            "good": "Great job! This headline is likely to perform well.",
+            "bad": "This headline could use some improvement. Try adding more emotional or power words.",
+            "empty": "Enter a headline to see your analysis score."
+        },
+        "stats": {
+            "common": "Common Words",
+            "uncommon": "Uncommon Words",
+            "emotional": "Emotional",
+            "power": "Power Words",
+            "target": "Target: {{range}}",
+            "chars": "Character Count"
+        }
     },
     "invoice-gen": {
         "title": "Invoice Generator",
@@ -115,21 +317,9 @@
         "title": "Discount & Sale Calculator",
         "desc": "Calculate final prices after discounts and sales taxes."
     },
-    "compound-interest": {
-        "title": "Compound Interest Calculator",
-        "desc": "Project your investment growth with compound interest."
-    },
-    "biz-name-gen": {
-        "title": "Business Name Generator",
-        "desc": "Find creative and unique names for your next venture."
-    },
     "receipt-maker": {
         "title": "Receipt Maker",
         "desc": "Generate simple digital receipts for your customers."
-    },
-    "break-even-calc": {
-        "title": "Break-Even Point Calculator",
-        "desc": "Calculate when your business will become profitable."
     },
     "salary-calc": {
         "title": "Salary/Take Home Pay Calc",
@@ -141,7 +331,100 @@
     },
     "bookkeeping": {
         "title": "Simple Bookkeeping Tool",
-        "desc": "Track your daily income and expenses easily."
+        "desc": "Track your daily income and expenses easily.",
+        "actions": {
+            "download": "Export CSV"
+        },
+        "stats": {
+            "income": "Total Income",
+            "expense": "Total Expense",
+            "balance": "Net Balance"
+        },
+        "form": {
+            "title": "Add Transaction",
+            "type": "Type",
+            "types": {
+                "income": "Income",
+                "expense": "Expense"
+            },
+            "date": "Date",
+            "desc": "Description",
+            "descPlaceholder": "e.g. Freelance project",
+            "amount": "Amount",
+            "add": "Add Entry"
+        },
+        "list": {
+            "title": "Recent Transactions",
+            "items": "items",
+            "empty": "No transactions yet. Add one to get started!"
+        }
+    },
+    "break-even-calc": {
+        "title": "Break-Even Point Calculator",
+        "desc": "Calculate when your business will become profitable.",
+        "section": {
+            "analysis": "Cost Analysis"
+        },
+        "form": {
+            "fixed": "Total Fixed Costs ($)",
+            "fixedHint": "Rent, salaries, insurance (monthly/yearly)",
+            "variable": "Variable Cost PER UNIT ($)",
+            "variableHint": "Materials, labor, shipping",
+            "price": "Selling Price PER UNIT ($)"
+        },
+        "error": {
+            "priceLow": "Selling Price must be higher than Variable Cost!"
+        },
+        "result": {
+            "units": "Break-Even Units",
+            "unitsSub": "Units to sell",
+            "revenue": "Break-Even Revenue",
+            "revenueSub": "Sales needed"
+        }
+    },
+    "biz-name-gen": {
+        "title": "Business Name Generator",
+        "desc": "Find creative and unique names for your next venture.",
+        "section": {
+            "details": "Brainstorming Details"
+        },
+        "form": {
+            "keyword": "Main Keyword",
+            "keywordPlaceholder": "e.g. Coffee, Code, Design",
+            "style": "Naming Style"
+        },
+        "style": {
+            "modern": "Modern",
+            "modernDesc": "Short, catchy",
+            "classic": "Classic",
+            "classicDesc": "Professional, trusty",
+            "tech": "Tech",
+            "techDesc": "Futuristic, geeky"
+        },
+        "action": {
+            "generate": "Generate Ideas"
+        },
+        "result": {
+            "empty": "Enter a keyword and hit generate to see magic happen!"
+        }
+    },
+    "compound-interest": {
+        "title": "Compound Interest Calculator",
+        "desc": "Project your investment growth with compound interest.",
+        "section": {
+            "plan": "Investment Plan"
+        },
+        "form": {
+            "principal": "Initial Deposit ($)",
+            "monthly": "Monthly Contribution ($)",
+            "rate": "Annual Interest Rate (%)",
+            "years": "Investment Period (Years)"
+        },
+        "result": {
+            "futureValue": "Future Value",
+            "interest": "Total Interest Earned",
+            "insight": "The Power of Time: Notice how the curve gets steeper over time? That's compound interest working. The money your money earns starts earning its own money!"
+        }
     },
     "wa-direct": {
         "title": "WhatsApp Direct Link",
@@ -339,51 +622,327 @@
     },
     "pdf-merge": {
         "title": "PDF Merge/Split",
-        "desc": "Combine multiple PDFs or extract pages into new files."
+        "desc": "Combine multiple PDFs or extract pages into new files.",
+        "howItWorks": {
+            "title": "How it works",
+            "items": {
+                "clientSide": {
+                    "title": "100% Client-Side",
+                    "desc": "Your files never leave your device. All processing happens in your browser."
+                },
+                "mergeOrder": {
+                    "title": "Merge Order",
+                    "desc": "Use the arrows to reorder standard PDF files before merging."
+                },
+                "splitRange": {
+                    "title": "Split Range",
+                    "desc": "Extract a continuous range of pages (e.g., 3-5) into a new document."
+                }
+            }
+        },
+        "actions": {
+            "merge": "Merge",
+            "split": "Split"
+        },
+        "dropzone": {
+            "title": "Drop PDF files here",
+            "subtitle": "or click to browse",
+            "splitTitle": "Select a PDF to Split",
+            "splitSubtitle": "Click to browse your files"
+        },
+        "fileList": {
+            "title": "Files to Merge",
+            "clear": "Clear All",
+            "change": "Change File"
+        },
+        "split": {
+            "sectionTitle": "Extract Pages",
+            "from": "From Page",
+            "to": "To Page",
+            "separator": "TO"
+        },
+        "buttons": {
+            "processing": "Processing...",
+            "merge": "Merge {{count}} Files",
+            "download": "Download Selected Pages"
+        },
+        "alerts": {
+            "mergeError": "Failed to merge PDFs. One of the files might be corrupted or password protected.",
+            "splitError": "Failed to split PDF. It might be corrupted or protected."
+        }
     },
     "word-counter": {
         "title": "Word Counter",
-        "desc": "Count words, characters, and sentences in your text."
+        "desc": "Count words, characters, and sentences in your text.",
+        "input": {
+            "placeholder": "Type or paste your text here...",
+            "clear": "Clear Text"
+        },
+        "stats": {
+            "summary": "{{words}} Words • {{chars}} Characters",
+            "title": "Text Statistics",
+            "words": "Words",
+            "chars": "Characters",
+            "sentences": "Sentences",
+            "paragraphs": "Paragraphs",
+            "readTime": "Reading Time",
+            "speakTime": "Speaking Time"
+        },
+        "frequency": {
+            "title": "Word Frequency",
+            "empty": "No words found yet",
+            "hint": "Type some text to see word frequency."
+        },
+        "actions": {
+            "copy": "Copy",
+            "copied": "Copied"
+        }
     },
     "lorem-gen": {
         "title": "Lorem Ipsum Generator",
-        "desc": "Generate placeholder text for your designs."
+        "desc": "Generate placeholder text for your designs.",
+        "controls": {
+            "count": "Count",
+            "unit": {
+                "paragraphs": "Paragraphs",
+                "sentences": "Sentences",
+                "words": "Words"
+            },
+            "type": {
+                "standard": "Standard Lorem Ipsum",
+                "hipster": "Hipster Ipsum"
+            },
+            "config": "Configuration",
+            "unitLabel": "Unit",
+            "style": "Text Style",
+            "startWith": "Start with \"Lorem ipsum...\""
+        },
+        "buttons": {
+            "generate": "Generate",
+            "copy": "Copy Text",
+            "copied": "Copied!"
+        },
+        "output": {
+            "placeholder": "Generated text will appear here...",
+            "generated": "{{count}} {{unit}} Generated"
+        }
     },
     "text-replace": {
         "title": "Batch Search & Replace",
-        "desc": "Find and replace text across multiple lines or files."
+        "desc": "Find and replace text across multiple lines or files.",
+        "inputs": {
+            "source": {
+                "label": "Source Text",
+                "placeholder": "Paste your text here..."
+            },
+            "find": {
+                "label": "Find",
+                "placeholder": "Text to find..."
+            },
+            "replace": {
+                "label": "Replace with",
+                "placeholder": "Replacement text..."
+            }
+        },
+        "options": {
+            "caseSensitive": "Case Sensitive",
+            "matchWhole": "Match Whole Word",
+            "useRegex": "Use Regular Expression (Regex)"
+        },
+        "buttons": {
+            "replace": "Replace All",
+            "clear": "Clear",
+            "copy": "Copy Result",
+            "copied": "Copied!"
+        },
+        "output": {
+            "label": "Result",
+            "placeholder": "Result will appear here..."
+        },
+        "stats": {
+            "matches": "{{count}} matches replaced"
+        }
     },
     "roman-conv": {
         "title": "Roman Numeral Converter",
-        "desc": "Convert numbers to Roman numerals and vice versa."
+        "desc": "Convert numbers to Roman numerals and back.",
+        "inputs": {
+            "decimal": "Decimal Number (1-3999)",
+            "roman": "Roman Numeral",
+            "decimalPlaceholder": "2024",
+            "romanPlaceholder": "MMXXIV"
+        },
+        "errors": {
+            "large": "Value too large (max 3999)",
+            "positive": "Enter a positive integer",
+            "format": "Invalid Roman Numeral format (e.g. use IV instead of IIII)"
+        },
+        "quickRef": "Quick Reference"
     },
     "signature-pad": {
-        "title": "Digital Signature Pad",
-        "desc": "Draw and download your digital signature."
+        "title": "Signature Pad",
+        "desc": "Create and download digital signatures.",
+        "signHere": "Sign Here",
+        "buttons": {
+            "clear": "Clear",
+            "download": "Download Transparent PNG"
+        },
+        "settings": {
+            "title": "Pen Settings",
+            "color": "Color",
+            "thickness": "Thickness",
+            "thin": "Thin",
+            "thick": "Thick"
+        },
+        "privacy": {
+            "title": "Privacy Note",
+            "text": "Your signature is generated purely in your browser using HTML5 Canvas. It is never uploaded to any server."
+        },
+        "alerts": {
+            "empty": "Please sign before saving!"
+        }
     },
     "sort-list": {
-        "title": "Alphabetical Sorter",
-        "desc": "Sort any list alphabetically or numerically."
+        "title": "List Sorter",
+        "desc": "Sort lists alphabetically, by length, or randomly.",
+        "inputs": {
+            "label": "Input List",
+            "clear": "Clear",
+            "placeholder": "Paste your list here..."
+        },
+        "options": {
+            "label": "Sort Order",
+            "asc": "A to Z (Ascending)",
+            "desc": "Z to A (Descending)",
+            "length": "Length (Short to Long)",
+            "reverseL": "Length (Long to Short)",
+            "random": "Randomize (Shuffle)",
+            "numeric": "Numeric Sort (1, 2, 10...)",
+            "removeDuplicates": "Remove Duplicates"
+        },
+        "buttons": {
+            "sort": "Sort List",
+            "copy": "Copy",
+            "copied": "Copied"
+        },
+        "outputs": {
+            "stats": "{{count}} Items Sorted",
+            "placeholder": "Sorted list will appear here..."
+        }
     },
     "remove-duplicates": {
-        "title": "Duplicate Line Remover",
-        "desc": "Clean up your lists by removing repeated lines."
+        "title": "Remove Duplicates",
+        "desc": "Clean up lists by removing duplicate entries.",
+        "inputs": {
+            "label": "Input List",
+            "clear": "Clear",
+            "placeholder": "Paste your list here (one item per line)..."
+        },
+        "options": {
+            "case": "Case Sensitive",
+            "trim": "Trim Whitespace"
+        },
+        "buttons": {
+            "remove": "Remove Duplicates",
+            "copy": "Copy",
+            "copied": "Copied"
+        },
+        "outputs": {
+            "stats": "{{count}} Unique Items",
+            "placeholder": "Cleaned list will appear here..."
+        },
+        "stats": {
+            "original": "Original: {{count}}",
+            "removed": "Removed: {{count}}"
+        }
     },
     "case-converter": {
         "title": "Case Converter",
-        "desc": "Convert text between upper, lower, and title case."
+        "desc": "Convert text between different letter cases.",
+        "stats": {
+            "summary": "{{words}} Words • {{chars}} Characters"
+        },
+        "btns": {
+            "clear": "Clear Text",
+            "copy": "Copy",
+            "copied": "Copied",
+            "download": "Download as .txt"
+        },
+        "labels": {
+            "convertTo": "Convert To",
+            "placeholder": "Type or paste your text here to convert...",
+            "sentence": "Sentence case",
+            "lower": "lower case",
+            "upper": "UPPER CASE",
+            "capitalized": "Capitalized Case",
+            "alternating": "aLtErNaTiNg cAsE",
+            "inverse": "InVeRsE CaSe"
+        }
     },
     "md-editor": {
         "title": "Markdown Editor",
-        "desc": "Write and preview Markdown with a live editor."
+        "desc": "Write and preview Markdown in real-time.",
+        "view": {
+            "editor": "Editor Only",
+            "split": "Split View",
+            "preview": "Preview Only"
+        },
+        "toolbar": {
+            "bold": "Bold",
+            "italic": "Italic",
+            "link": "Link",
+            "image": "Image",
+            "quote": "Quote",
+            "code": "Inline Code",
+            "list": "List Item"
+        },
+        "statusbar": {
+            "chars": "{{count}} chars"
+        },
+        "placeholder": "Type your markdown here..."
     },
     "csv-json": {
         "title": "CSV to JSON Converter",
-        "desc": "Convert spreadsheet data to JSON format."
+        "desc": "Convert CSV data to JSON format.",
+        "inputs": {
+            "label": "CSV Input",
+            "upload": "Upload File",
+            "placeholder": "Paste your CSV data here..."
+        },
+        "options": {
+            "header": "First row is header",
+            "skipEmpty": "Skip empty lines",
+            "minify": "Minify"
+        },
+        "outputs": {
+            "label": "JSON Output",
+            "placeholder": "JSON output will appear here..."
+        },
+        "stats": {
+            "records": "{{count}} Records found"
+        },
+        "buttons": {
+            "copy": "Copy to Clipboard",
+            "download": "Download .json"
+        }
     },
     "num-to-words": {
-        "title": "Number to Words (Terbilang)",
-        "desc": "Convert numerical values into written text."
+        "title": "Number to Words",
+        "desc": "Convert numbers to words in English or Indonesian.",
+        "inputs": {
+            "label": "Enter Number",
+            "placeholder": "12345"
+        },
+        "options": {
+            "currency": "Format as Currency"
+        },
+        "outputs": {
+            "label": "Result"
+        },
+        "langs": {
+            "en": "English",
+            "id": "Indonesian"
+        }
     },
     "pomodoro": {
         "title": "Pomodoro Timer",
@@ -524,5 +1083,9 @@
     "2fa-gen": {
         "title": "2FA Code Generator",
         "desc": "Generate two-factor authentication codes for your accounts."
+    },
+    "extension-rename": {
+        "title": "File Extension Renamer",
+        "desc": "Batch change file extensions easily and safely."
     }
 }

@@ -58,7 +58,7 @@ export default function LinkCleaner() {
 
             setCleanUrl(newUrl);
         } catch (e) {
-            setCleanUrl('Invalid URL');
+            setCleanUrl(t('tools.link-cleaner.output.invalid'));
             setRemovedParams([]);
         }
     };
@@ -91,7 +91,7 @@ export default function LinkCleaner() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Input */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex flex-col justify-center">
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Paste Dirty URL</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.link-cleaner.input.label')}</label>
                     <textarea
                         value={inputUrl}
                         onChange={(e) => setInputUrl(e.target.value)}
@@ -107,7 +107,7 @@ export default function LinkCleaner() {
                                 : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                         }`}
                     >
-                        <Eraser size={20} /> Clean URL
+                        <Eraser size={20} /> {t('tools.link-cleaner.input.button')}
                     </button>
                 </div>
 
@@ -115,31 +115,31 @@ export default function LinkCleaner() {
                 <div className="bg-indigo-50 border border-indigo-100 p-6 rounded-3xl flex flex-col justify-center h-full relative">
                     {removedParams.length > 0 && (
                         <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-indigo-600 shadow-sm border border-indigo-100">
-                            Removed {removedParams.length} params
+                            {t('tools.link-cleaner.output.removed', { count: removedParams.length })}
                         </div>
                     )}
                     
-                    <h3 className="text-md font-bold text-slate-900 mb-2">Clean URL</h3>
+                    <h3 className="text-md font-bold text-slate-900 mb-2">{t('tools.link-cleaner.output.title')}</h3>
                     <div className="bg-white border border-indigo-200 rounded-2xl p-4 break-all min-h-[80px] text-slate-800 font-medium text-lg mb-4 flex items-center">
-                        {cleanUrl || <span className="text-slate-300 text-sm">Clean URL will appear here...</span>}
+                        {cleanUrl || <span className="text-slate-300 text-sm">{t('tools.link-cleaner.output.placeholder')}</span>}
                     </div>
 
                     <button
                         onClick={handleCopy}
-                        disabled={!cleanUrl || cleanUrl === 'Invalid URL'}
+                        disabled={!cleanUrl || cleanUrl === t('tools.link-cleaner.output.invalid')}
                         className={`w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
-                            cleanUrl && cleanUrl !== 'Invalid URL'
+                            cleanUrl && cleanUrl !== t('tools.link-cleaner.output.invalid')
                                 ? 'bg-white border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50' 
                                 : 'bg-slate-200 text-slate-400 cursor-not-allowed border-2 border-transparent'
                         }`}
                     >
                          {copied ? <Check size={20} /> : <Link size={20} />}
-                         {copied ? 'Copied!' : 'Copy Clean Link'}
+                         {copied ? t('tools.link-cleaner.output.copied') : t('tools.link-cleaner.output.copy')}
                     </button>
 
                     {removedParams.length > 0 && (
                         <div className="mt-6">
-                            <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">Stripped Parameters</h4>
+                            <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.link-cleaner.output.stripped')}</h4>
                             <div className="flex flex-wrap gap-2">
                                 {removedParams.map(p => (
                                     <span key={p} className="bg-red-100 text-red-600 px-2 py-1 rounded text-xs font-mono border border-red-200">

@@ -114,98 +114,102 @@ export default function RobotsGenerator() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Configuration */}
                 <div className="space-y-6">
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-lg font-bold text-slate-900">User Agent Rules</h2>
-                            <button onClick={addRule} className="text-sm flex items-center gap-1 text-slate-600 font-bold hover:text-slate-900">
-                                <Plus size={16} /> Add Bot
+                    <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-lg font-bold text-slate-900">{t('tools.robots-gen.rules.title')}</h2>
+                            <button onClick={addRule} className="text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                                <Plus size={16} /> {t('tools.robots-gen.rules.add')}
                             </button>
                         </div>
                         
                         <div className="space-y-6">
                             {rules.map((rule, index) => (
                                 <div key={index} className="bg-slate-50 p-4 rounded-xl border border-slate-200 relative group">
-                                    {index > 0 && (
-                                        <button 
-                                            onClick={() => removeRule(index)}
-                                            className="absolute top-2 right-2 text-slate-400 hover:text-red-500"
-                                        >
-                                            <Trash2 size={16} />
-                                        </button>
-                                    )}
+                                    <button 
+                                        onClick={() => removeRule(index)}
+                                        className="absolute top-2 right-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
                                     <div className="mb-3">
-                                        <label className="block text-xs font-bold text-slate-500 uppercase mb-1">User Agent</label>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('tools.robots-gen.rules.agent')}</label>
                                         <input
                                             type="text"
                                             value={rule.userAgent}
                                             onChange={(e) => updateRule(index, 'userAgent', e.target.value)}
                                             placeholder="*"
-                                            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm"
+                                            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono text-slate-700"
                                         />
                                     </div>
-                                    <div className="grid grid-cols-2 gap-3">
+                                    <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-xs font-bold text-green-600 uppercase mb-1">Allow</label>
+                                            <label className="block text-xs font-bold text-green-600 uppercase mb-1">{t('tools.robots-gen.rules.allow')}</label>
                                             <input
                                                 type="text"
                                                 value={rule.allow}
                                                 onChange={(e) => updateRule(index, 'allow', e.target.value)}
-                                                placeholder="/public/"
-                                                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm"
+                                                placeholder="/"
+                                                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono text-slate-700"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-bold text-red-600 uppercase mb-1">Disallow</label>
+                                            <label className="block text-xs font-bold text-red-600 uppercase mb-1">{t('tools.robots-gen.rules.disallow')}</label>
                                             <input
                                                 type="text"
                                                 value={rule.disallow}
                                                 onChange={(e) => updateRule(index, 'disallow', e.target.value)}
-                                                placeholder="/admin/, /private/"
-                                                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm"
+                                                placeholder="/admin/"
+                                                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono text-slate-700"
                                             />
                                         </div>
                                     </div>
-                                    <p className="text-[10px] text-slate-400 mt-2">Separate multiple paths with commas.</p>
                                 </div>
                             ))}
+                            <p className="text-xs text-slate-400 italic text-center">
+                                {t('tools.robots-gen.rules.hint')}
+                            </p>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Sitemaps & Extras</h2>
-                        
-                        <div className="space-y-3 mb-6">
-                            <label className="block text-sm font-bold text-slate-700">Sitemap URLs</label>
-                            {sitemaps.map((map, index) => (
-                                <div key={index} className="flex gap-2">
-                                    <input
-                                        type="text"
-                                        value={map}
-                                        onChange={(e) => updateSitemap(index, e.target.value)}
-                                        placeholder="https://example.com/sitemap.xml"
-                                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm"
-                                    />
-                                    {sitemaps.length > 1 && (
-                                        <button onClick={() => removeSitemap(index)} className="text-slate-400 hover:text-red-500">
-                                            <Trash2 size={18} />
-                                        </button>
-                                    )}
-                                </div>
-                            ))}
-                            <button onClick={addSitemap} className="text-sm font-bold text-slate-600 flex items-center gap-1">
-                                <Plus size={16} /> Add Sitemap
-                            </button>
+                    <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-lg font-bold text-slate-900">{t('tools.robots-gen.sitemap.title')}</h2>
                         </div>
+                        
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.robots-gen.sitemap.urls')}</label>
+                                {sitemaps.map((map, index) => (
+                                    <div key={index} className="flex gap-2 mb-2">
+                                        <input
+                                            type="text"
+                                            value={map}
+                                            onChange={(e) => updateSitemap(index, e.target.value)}
+                                            placeholder="https://example.com/sitemap.xml"
+                                            className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                        {sitemaps.length > 1 && (
+                                            <button onClick={() => removeSitemap(index)} className="text-slate-400 hover:text-red-500">
+                                                <Trash2 size={18} />
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+                                <button onClick={addSitemap} className="text-sm font-bold text-blue-600 mt-2 flex items-center gap-1">
+                                    <Plus size={16} /> {t('tools.robots-gen.sitemap.add')}
+                                </button>
+                            </div>
 
-                        <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">Crawl Delay (Seconds)</label>
-                            <input
-                                type="number"
-                                value={delay}
-                                onChange={(e) => setDelay(e.target.value)}
-                                placeholder="e.g. 10 (Optional)"
-                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2"
-                            />
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.robots-gen.sitemap.delay')}</label>
+                                <input
+                                    type="number"
+                                    value={delay}
+                                    onChange={(e) => setDelay(e.target.value)}
+                                    placeholder={t('tools.robots-gen.sitemap.delayPlaceholder')}
+                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,20 +220,20 @@ export default function RobotsGenerator() {
                         <button 
                             onClick={handleCopy}
                             className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors text-white"
-                            title="Copy to Clipboard"
+                            title={t('tools.robots-gen.output.copy')}
                         >
                             {copied ? <Check size={18} /> : <Copy size={18} />}
                         </button>
                         <button 
                             onClick={handleDownload}
                             className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors text-white"
-                            title="Download File"
+                            title={t('tools.robots-gen.output.download')}
                         >
                             <Download size={18} />
                         </button>
                     </div>
 
-                    <div className="mb-4 font-bold text-slate-400 uppercase tracking-wider text-xs">robots.txt Preview</div>
+                    <div className="mb-4 font-bold text-slate-400 uppercase tracking-wider text-xs">{t('tools.robots-gen.output.preview')}</div>
                     <textarea
                         readOnly
                         value={generatedTxt}

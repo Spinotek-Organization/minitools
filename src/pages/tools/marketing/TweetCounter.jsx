@@ -64,59 +64,68 @@ export default function TweetCounter() {
                 {/* Input */}
                 <div className="flex flex-col h-full">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex-1 flex flex-col">
-                        <label className="block text-sm font-bold text-slate-700 mb-2 flex justify-between">
-                            <span>Draft Content</span>
-                            <span className="text-slate-400 font-normal">{text.length} chars</span>
-                        </label>
+                        <div className="flex justify-between items-center mb-2">
+                            <label className="block text-sm font-bold text-slate-700">{t('tools.tweet-counter.input.label')}</label>
+                            <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-full">
+                                {t('tools.tweet-counter.input.stats', { count: text.length })}
+                            </span>
+                        </div>
                         <textarea
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            placeholder="Type your long thread here..."
+                            placeholder={t('tools.tweet-counter.input.placeholder')}
                             className="flex-1 w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-sky-500 text-lg resize-none min-h-[300px]"
                         />
                     </div>
                 </div>
 
                 {/* Output */}
-                <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-wider mb-2">
-                        <MessageCircle size={16} /> Preview ({tweets.length} tweets)
+                <div className="bg-sky-50 border border-sky-100 p-8 rounded-3xl flex flex-col h-full overflow-hidden">
+                    <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <Twitter size={20} className="text-sky-500" />
+                            {t('tools.tweet-counter.output.title', { count: tweets.length })}
+                        </h2>
                     </div>
-                    
-                    {tweets.length === 0 && (
-                        <div className="bg-slate-50 border border-dashed border-slate-300 rounded-3xl p-8 text-center text-slate-400">
-                            Start typing to see your thread preview here.
-                        </div>
-                    )}
-
-                    {tweets.map((tweet, i) => (
-                        <div key={i} className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm relative group hover:border-sky-200 transition-colors">
-                            <div className="absolute -left-3 top-6 w-6 h-6 bg-slate-100 rounded-full border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-500 z-10">
-                                {i + 1}
+                    <div className="space-y-4 overflow-y-auto pr-2 -mr-2">
+                        {tweets.length > 0 ? (
+                            tweets.map((tweet, index) => (
+                                <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-sky-100 relative group">
+                                    <div className="flex gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-slate-200 flex-shrink-0" />
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-1 mb-0.5">
+                                                <span className="font-bold text-slate-900 text-sm">You</span>
+                                                <span className="text-slate-400 text-sm">@you</span>
+                                                <span className="text-slate-400 text-xs">· now</span>
+                                            </div>
+                                            <p className="text-slate-900 text-[15px] whitespace-pre-wrap leading-normal">
+                                                {tweet}
+                                                {index < tweets.length - 1 && <span className="text-sky-500 ml-1 font-medium">...</span>}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button 
+                                            onClick={() => handleCopy(tweet, index)}
+                                            className="p-1.5 hover:bg-slate-100 rounded text-slate-400 hover:text-sky-500"
+                                            title={t('tools.tweet-counter.output.copy')}
+                                        >
+                                            {copiedIndex === index ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+                                        </button>
+                                    </div>
+                                    <div className="absolute bottom-2 right-4 text-xs font-bold text-slate-300">
+                                        {index + 1}/{tweets.length}
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="h-full flex flex-col items-center justify-center text-slate-400 opacity-50">
+                                <Twitter size={48} className="mb-2" />
+                                <p>{t('tools.tweet-counter.output.placeholder')}</p>
                             </div>
-                            {i < tweets.length - 1 && (
-                                <div className="absolute left-0 top-12 bottom-0 w-[2px] bg-slate-100 -ml-[1px]" />
-                            )}
-                            
-                            <p className="text-slate-800 text-lg mb-4 whitespace-pre-wrap break-words">{tweet}</p>
-                            
-                            <div className="flex justify-between items-center">
-                                <span className={`text-xs font-bold ${tweet.length > 280 ? 'text-red-500' : 'text-slate-300'}`}>
-                                    {tweet.length} chars
-                                </span>
-                                <button
-                                    onClick={() => handleCopy(tweet, i)}
-                                    className={`flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-bold transition-all ${
-                                        copiedIndex === i 
-                                            ? 'bg-green-100 text-green-600' 
-                                            : 'bg-slate-50 text-slate-500 hover:bg-sky-50 hover:text-sky-600'
-                                    }`}
-                                >
-                                    {copiedIndex === i ? 'Copied' : 'Copy'} <Copy size={14} />
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+                        )}
+                    </div>
                 </div>
             </div>
 

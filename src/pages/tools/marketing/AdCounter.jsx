@@ -53,12 +53,12 @@ export default function AdCounter() {
                 {/* Inputs */}
                 <div className="space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Headlines (30 chars)</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.ad-counter.headlines')}</h2>
                         <div className="space-y-4">
                             {['headline1', 'headline2', 'headline3'].map((h, i) => (
                                 <div key={h}>
                                     <div className="flex justify-between mb-1">
-                                        <label className="text-sm font-bold text-slate-700">Headline {i + 1}</label>
+                                        <label className="text-sm font-bold text-slate-700">{t('tools.ad-counter.headline', { index: i + 1 })}</label>
                                         <span className={`text-xs font-bold ${isOver(data[h], LIMITS.google.h1) ? 'text-red-500' : 'text-slate-400'}`}>
                                             {data[h].length} / {LIMITS.google.h1}
                                         </span>
@@ -75,12 +75,12 @@ export default function AdCounter() {
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Descriptions (90 chars)</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.ad-counter.descriptions')}</h2>
                         <div className="space-y-4">
                             {['desc1', 'desc2'].map((d, i) => (
                                 <div key={d}>
                                     <div className="flex justify-between mb-1">
-                                        <label className="text-sm font-bold text-slate-700">Description {i + 1}</label>
+                                        <label className="text-sm font-bold text-slate-700">{t('tools.ad-counter.description', { index: i + 1 })}</label>
                                         <span className={`text-xs font-bold ${isOver(data[d], LIMITS.google.d1) ? 'text-red-500' : 'text-slate-400'}`}>
                                             {data[d].length} / {LIMITS.google.d1}
                                         </span>
@@ -99,11 +99,11 @@ export default function AdCounter() {
 
                 {/* Preview */}
                 <div className="bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-start">
-                    <h3 className="text-sm font-bold text-slate-500 uppercase mb-4 tracking-wider">Ad Preview</h3>
+                    <h3 className="text-sm font-bold text-slate-500 uppercase mb-4 tracking-wider">{t('tools.ad-counter.preview.title')}</h3>
                     
                     <div className="bg-white p-6 shadow-sm rounded-lg max-w-sm">
                         <div className="flex items-center gap-1 mb-1">
-                            <span className="font-bold text-slate-900 text-sm">Ad</span>
+                            <span className="font-bold text-slate-900 text-sm">{t('tools.ad-counter.preview.ad')}</span>
                             <span className="text-slate-400 text-xs mx-1">·</span>
                             <span className="text-slate-500 text-xs">example.com/coffee</span>
                         </div>
@@ -124,8 +124,8 @@ export default function AdCounter() {
                     </div>
 
                     <div className="mt-8 bg-blue-50 border border-blue-100 p-4 rounded-xl text-blue-800 text-sm">
-                        <strong className="block mb-1">Tip:</strong>
-                        Ensure your keywords are in Headline 1 for better Quality Score. Use Title Case for headlines.
+                        <strong className="block mb-1">{t('tools.ad-counter.preview.tip')}</strong>
+                        {t('tools.ad-counter.preview.tipText')}
                     </div>
                 </div>
             </div>

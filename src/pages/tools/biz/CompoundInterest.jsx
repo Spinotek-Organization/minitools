@@ -77,12 +77,12 @@ export default function CompoundInterest() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <Calculator size={20} className="text-blue-600" />
-                            Investment Plan
+                            {t('tools.compound-interest.section.plan')}
                         </h2>
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Initial Deposit ($)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.compound-interest.form.principal')}</label>
                                 <input
                                     type="number"
                                     value={principal}
@@ -91,7 +91,7 @@ export default function CompoundInterest() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Monthly Contribution ($)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.compound-interest.form.monthly')}</label>
                                 <input
                                     type="number"
                                     value={monthlyContribution}
@@ -100,7 +100,7 @@ export default function CompoundInterest() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Annual Interest Rate (%)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.compound-interest.form.rate')}</label>
                                 <input
                                     type="number"
                                     value={interestRate}
@@ -109,7 +109,7 @@ export default function CompoundInterest() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Investment Period (Years)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.compound-interest.form.years')}</label>
                                 <input
                                     type="number"
                                     value={years}
@@ -134,13 +134,13 @@ export default function CompoundInterest() {
                     {/* Summary Cards */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="bg-blue-600 text-white p-6 rounded-3xl shadow-lg shadow-blue-200">
-                            <div className="text-blue-200 text-sm font-medium uppercase mb-1">Future Value</div>
+                            <div className="text-blue-200 text-sm font-medium uppercase mb-1">{t('tools.compound-interest.result.futureValue')}</div>
                             <div className="text-4xl font-black">
                                 {results.length > 0 && formatCurrency(results[results.length - 1].balance)}
                             </div>
                         </div>
                          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                            <div className="text-slate-500 text-sm font-medium uppercase mb-1">Total Interest Earned</div>
+                            <div className="text-slate-500 text-sm font-medium uppercase mb-1">{t('tools.compound-interest.result.interest')}</div>
                             <div className="text-3xl font-black text-emerald-500">
                                 {results.length > 0 && formatCurrency(results[results.length - 1].interest)}
                             </div>
@@ -168,14 +168,14 @@ export default function CompoundInterest() {
                                     formatter={(value) => formatCurrency(value)}
                                     contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0' }}
                                 />
-                                <Area type="monotone" dataKey="balance" stroke="#2563eb" fillOpacity={1} fill="url(#colorBalance)" name="Total Balance" />
-                                <Area type="monotone" dataKey="interest" stroke="#10b981" fillOpacity={1} fill="url(#colorInterest)" name="Interest Portion" />
+                                <Area type="monotone" dataKey="balance" stroke="#2563eb" fillOpacity={1} fill="url(#colorBalance)" name={t('tools.compound-interest.chart.balance')} />
+                                <Area type="monotone" dataKey="interest" stroke="#10b981" fillOpacity={1} fill="url(#colorInterest)" name={t('tools.compound-interest.chart.interest')} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
 
                     <div className="bg-slate-50 text-slate-600 p-4 rounded-2xl text-sm border border-slate-200">
-                        <strong>The Power of Time:</strong> Notice how the curve gets steeper over time? That's compound interest working. The money your money earns starts earning its own money!
+                        {t('tools.compound-interest.result.insight')}
                     </div>
                 </div>
             </div>

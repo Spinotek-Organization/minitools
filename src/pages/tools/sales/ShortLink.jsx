@@ -11,7 +11,7 @@ export default function ShortLink() {
     const [utmParams, setUtmParams] = useState({
         source: 'linkedin',
         medium: 'social',
-        campaign: 'summer_sale',
+        campaign: t('tools.short-link.page.campaign_ph'),
         term: '',
         content: ''
     });
@@ -116,23 +116,23 @@ export default function ShortLink() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <RefreshCw size={20} className="text-sky-600" />
-                        URL Parameters
+                        {t('tools.short-link.page.input_title')}
                     </h2>
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Destination URL</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.dest_url')}</label>
                             <div className="flex gap-2">
                                 <input
                                     type="text"
                                     value={baseUrl}
                                     onChange={(e) => setBaseUrl(e.target.value)}
-                                    placeholder="https://example.com/page"
+                                    placeholder={t('tools.short-link.page.dest_ph')}
                                     className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                                 />
                                 <button 
                                     onClick={cleanUrl}
-                                    title="Clean existing params"
+                                    title={t('tools.short-link.page.clean_params')}
                                     className="bg-slate-100 text-slate-600 px-3 rounded-xl hover:bg-slate-200 transition-colors"
                                 >
                                     <Scissors size={20} />
@@ -142,61 +142,61 @@ export default function ShortLink() {
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Campaign Source (utm_source)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.utm_source')}</label>
                                 <input
                                     type="text"
                                     name="source"
                                     value={utmParams.source}
                                     onChange={handleParamChange}
-                                    placeholder="google, newsletter"
+                                    placeholder={t('tools.short-link.page.source_ph')}
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Campaign Medium (utm_medium)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.utm_medium')}</label>
                                 <input
                                     type="text"
                                     name="medium"
                                     value={utmParams.medium}
                                     onChange={handleParamChange}
-                                    placeholder="cpc, banner, email"
+                                    placeholder={t('tools.short-link.page.medium_ph')}
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Campaign Name (utm_campaign)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.utm_campaign')}</label>
                             <input
                                 type="text"
                                 name="campaign"
                                 value={utmParams.campaign}
                                 onChange={handleParamChange}
-                                placeholder="spring_sale"
+                                placeholder={t('tools.short-link.page.campaign_ph')}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                             />
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Term (optional)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.utm_term')}</label>
                                 <input
                                     type="text"
                                     name="term"
                                     value={utmParams.term}
                                     onChange={handleParamChange}
-                                    placeholder="running+shoes"
+                                    placeholder={t('tools.short-link.page.term_ph')}
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Content (optional)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.short-link.page.utm_content')}</label>
                                 <input
                                     type="text"
                                     name="content"
                                     value={utmParams.content}
                                     onChange={handleParamChange}
-                                    placeholder="logolink, textlink"
+                                    placeholder={t('tools.short-link.page.content_ph')}
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 focus:ring-2 focus:ring-sky-500 outline-none"
                                 />
                             </div>
@@ -208,11 +208,11 @@ export default function ShortLink() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <Link2 size={20} className="text-sky-600" />
-                        Generated Link
+                        {t('tools.short-link.page.generated_title')}
                     </h2>
 
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 break-all mb-6 font-mono text-sm text-slate-700">
-                        {generatedUrl || 'Start typing to generate link...'}
+                        {generatedUrl || t('tools.short-link.page.start_typing')}
                     </div>
 
                     <button
@@ -225,11 +225,11 @@ export default function ShortLink() {
                         }`}
                     >
                         {copied ? <Check size={20} /> : <Copy size={20} />}
-                        {copied ? 'Copied to Clipboard' : 'Copy Tracking Link'}
+                        {copied ? t('tools.short-link.page.copied_clipboard') : t('tools.short-link.page.copy_link')}
                     </button>
 
                     <div className="pt-6 border-t border-slate-100">
-                         <h3 className="text-sm font-bold text-slate-700 mb-3">Shorten with external service:</h3>
+                         <h3 className="text-sm font-bold text-slate-700 mb-3">{t('tools.short-link.page.shorten_service')}</h3>
                          <div className="grid grid-cols-2 gap-3">
                              <button
                                 onClick={() => openShortener('tinyurl')}

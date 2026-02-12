@@ -89,11 +89,11 @@ export default function TaxCalculator() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Inputs */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
-                    <h2 className="text-lg font-bold text-slate-900 mb-6">Tax Settings</h2>
+                    <h2 className="text-lg font-bold text-slate-900 mb-6">{t('tools.tax-calc.settings')}</h2>
                     
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Tax Type</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.tax-calc.taxType')}</label>
                             <div className="flex flex-wrap gap-2">
                                 <button
                                     onClick={() => setTaxType('ppn')}
@@ -101,7 +101,8 @@ export default function TaxCalculator() {
                                         taxType === 'ppn' ? 'bg-lime-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                                     }`}
                                 >
-                                    PPN (11%)
+
+                                    {t('tools.tax-calc.type.ppn')}
                                 </button>
                                 <button
                                     onClick={() => setTaxType('pph23')}
@@ -109,7 +110,7 @@ export default function TaxCalculator() {
                                         taxType === 'pph23' ? 'bg-lime-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                                     }`}
                                 >
-                                    PPh 23 (2%)
+                                    {t('tools.tax-calc.type.pph23')}
                                 </button>
                                 <button
                                     onClick={() => setTaxType('custom')}
@@ -117,13 +118,13 @@ export default function TaxCalculator() {
                                         taxType === 'custom' ? 'bg-lime-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                                     }`}
                                 >
-                                    Custom Rate
+                                    {t('tools.tax-calc.type.custom')}
                                 </button>
                             </div>
                         </div>
 
                         <div>
-                             <label className="block text-sm font-medium text-slate-700 mb-2">Calculation Mode</label>
+                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.tax-calc.calcMode')}</label>
                              <div className="flex bg-slate-100 p-1 rounded-xl">
                                 <button
                                     onClick={() => setCalculationMode('exclude')}
@@ -131,7 +132,7 @@ export default function TaxCalculator() {
                                         calculationMode === 'exclude' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
                                     }`}
                                 >
-                                    Exclude Tax (Add Tax)
+                                    {t('tools.tax-calc.mode.exclude')}
                                 </button>
                                 <button
                                     onClick={() => setCalculationMode('include')}
@@ -139,19 +140,19 @@ export default function TaxCalculator() {
                                         calculationMode === 'include' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'
                                     }`}
                                 >
-                                    Include Tax (Extract)
+                                    {t('tools.tax-calc.mode.include')}
                                 </button>
                              </div>
                              <p className="text-xs text-slate-500 mt-2">
                                 {calculationMode === 'exclude' 
-                                    ? 'Select this if the amount is pure base price (DPP).' 
-                                    : 'Select this if the input amount already includes tax.'}
+                                    ? t('tools.tax-calc.modeHelper.exclude') 
+                                    : t('tools.tax-calc.modeHelper.include')}
                              </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Amount (Rp)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.tax-calc.amount')}</label>
                                 <input
                                     type="number"
                                     value={amount}
@@ -161,7 +162,7 @@ export default function TaxCalculator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Tax Rate (%)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.tax-calc.taxRate')}</label>
                                 <input
                                     type="number"
                                     value={taxRate}
@@ -181,13 +182,13 @@ export default function TaxCalculator() {
                     {!result ? (
                         <div className="text-center text-lime-800/50">
                             <Info size={48} className="mx-auto mb-4 opacity-50" />
-                            <p className="font-medium">Enter an amount to verify calculation.</p>
+                            <p className="font-medium">{t('tools.tax-calc.empty')}</p>
                         </div>
                     ) : (
                         <div className="space-y-6 w-full">
                             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-lime-100">
                                 <div className="text-sm font-bold text-slate-500 uppercase mb-1">
-                                    Base Price (DPP)
+                                    {t('tools.tax-calc.result.dpp')}
                                 </div>
                                 <div className="text-2xl font-black text-slate-900">
                                     {formatCurrency(result.dpp)}
@@ -200,7 +201,7 @@ export default function TaxCalculator() {
 
                             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-lime-100">
                                 <div className="text-sm font-bold text-slate-500 uppercase mb-1 flex justify-between">
-                                    <span>Tax Value ({taxRate}%)</span>
+                                    <span>{t('tools.tax-calc.result.taxValue')} ({taxRate}%)</span>
                                 </div>
                                 <div className="text-2xl font-black text-red-500">
                                     {formatCurrency(result.taxValue)}
@@ -209,14 +210,14 @@ export default function TaxCalculator() {
 
                              <div className="bg-lime-600 text-white p-6 rounded-2xl shadow-lg mt-4">
                                 <div className="text-sm font-bold text-lime-100 uppercase mb-1">
-                                    Total Amount
+                                    {t('tools.tax-calc.result.total')}
                                 </div>
                                 <div className="text-3xl font-black">
                                     {formatCurrency(result.total)}
                                 </div>
                                 {calculationMode === 'exclude' && taxType.startsWith('pph') && (
                                      <p className="text-xs text-lime-100 mt-2 italic">
-                                        *For PPh, this is usually strictly withheld. Meaning you might actually pay/receive Base Price - Tax.
+                                        {t('tools.tax-calc.pphDisclaimer')}
                                     </p>
                                 )}
                             </div>

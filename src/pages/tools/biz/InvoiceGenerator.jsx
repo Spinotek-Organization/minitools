@@ -81,22 +81,22 @@ export default function InvoiceGenerator() {
 
         // Header
         doc.setFontSize(20);
-        doc.text("INVOICE", 14, 22);
+        doc.text(t('tools.invoice-gen.preview'), 14, 22);
         
         doc.setFontSize(10);
-        doc.text(`Invoice #: ${invoiceData.invoiceNumber}`, 14, 30);
-        doc.text(`Date: ${invoiceData.date}`, 14, 35);
-        doc.text(`Due Date: ${invoiceData.dueDate}`, 14, 40);
+        doc.text(`${t('tools.invoice-gen.invoiceNum')} ${invoiceData.invoiceNumber}`, 14, 30);
+        doc.text(`${t('tools.invoice-gen.date')}: ${invoiceData.date}`, 14, 35);
+        doc.text(`${t('tools.invoice-gen.dueDate')}: ${invoiceData.dueDate}`, 14, 40);
 
         // From / To
-        doc.text("From:", 14, 55);
+        doc.text(`${t('tools.invoice-gen.from')}:`, 14, 55);
         doc.setFontSize(11);
         doc.text(invoiceData.from.name, 14, 60);
         doc.setFontSize(10);
         doc.text(invoiceData.from.address, 14, 65);
         doc.text(invoiceData.from.email, 14, 70);
 
-        doc.text("To:", 105, 55);
+        doc.text(`${t('tools.invoice-gen.to')}:`, 105, 55);
         doc.setFontSize(11);
         doc.text(invoiceData.to.name, 105, 60);
         doc.setFontSize(10);
@@ -113,21 +113,26 @@ export default function InvoiceGenerator() {
 
         autoTable(doc, {
             startY: 85,
-            head: [['Description', 'Qty', 'Price', 'Total']],
+            head: [[
+                t('tools.invoice-gen.table.desc'), 
+                t('tools.invoice-gen.table.qty'), 
+                t('tools.invoice-gen.table.price'), 
+                t('tools.invoice-gen.table.total')
+            ]],
             body: tableBody,
         });
 
         const finalY = (doc).lastAutoTable.finalY + 10;
 
         // Totals
-        doc.text(`Subtotal:`, 140, finalY);
+        doc.text(`${t('tools.invoice-gen.subtotal')}:`, 140, finalY);
         doc.text(`${invoiceData.currency}${totals.subtotal.toFixed(2)}`, 190, finalY, { align: 'right' });
 
-        doc.text(`Tax (${invoiceData.taxRate}%):`, 140, finalY + 5);
+        doc.text(`${t('tools.invoice-gen.tax')} (${invoiceData.taxRate}%):`, 140, finalY + 5);
         doc.text(`${invoiceData.currency}${totals.tax.toFixed(2)}`, 190, finalY + 5, { align: 'right' });
 
         if (invoiceData.discount > 0) {
-             doc.text(`Discount (${invoiceData.discount}%):`, 140, finalY + 10);
+             doc.text(`${t('tools.invoice-gen.discount')} (${invoiceData.discount}%):`, 140, finalY + 10);
              doc.text(`-${invoiceData.currency}${totals.discountAmount.toFixed(2)}`, 190, finalY + 10, { align: 'right' });
         }
         
@@ -135,14 +140,14 @@ export default function InvoiceGenerator() {
 
         doc.setFontSize(14);
         doc.setFont(undefined, 'bold');
-        doc.text(`Total:`, 140, totalY);
+        doc.text(`${t('tools.invoice-gen.total')}:`, 140, totalY);
         doc.text(`${invoiceData.currency}${totals.total.toFixed(2)}`, 190, totalY, { align: 'right' });
 
         // Notes
         if (invoiceData.notes) {
             doc.setFontSize(10);
             doc.setFont(undefined, 'normal');
-            doc.text("Notes:", 14, totalY + 10);
+            doc.text(`${t('tools.invoice-gen.notes')}:`, 14, totalY + 10);
             doc.text(invoiceData.notes, 14, totalY + 15, { maxWidth: 100 });
         }
 
@@ -173,7 +178,7 @@ export default function InvoiceGenerator() {
                     className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg"
                 >
                     <Download size={20} />
-                    Download PDF
+                    {t('tools.invoice-gen.download')}
                 </button>
             </div>
 
@@ -182,10 +187,10 @@ export default function InvoiceGenerator() {
                 <div className="space-y-6">
                     {/* Basic Info */}
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Invoice Details</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.invoice-gen.details')}</h2>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Invoice #</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.invoiceNum')}</label>
                                 <input
                                     type="text"
                                     value={invoiceData.invoiceNumber}
@@ -194,7 +199,7 @@ export default function InvoiceGenerator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Currency</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.currency')}</label>
                                 <input
                                     type="text"
                                     value={invoiceData.currency}
@@ -203,7 +208,7 @@ export default function InvoiceGenerator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.date')}</label>
                                 <input
                                     type="date"
                                     value={invoiceData.date}
@@ -212,7 +217,7 @@ export default function InvoiceGenerator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Due Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.dueDate')}</label>
                                 <input
                                     type="date"
                                     value={invoiceData.dueDate}
@@ -227,7 +232,7 @@ export default function InvoiceGenerator() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <h2 className="text-lg font-bold text-slate-900 mb-4">From</h2>
+                                <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.invoice-gen.from')}</h2>
                                 <div className="space-y-3">
                                     <input
                                         type="text"
@@ -253,7 +258,7 @@ export default function InvoiceGenerator() {
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-lg font-bold text-slate-900 mb-4">To</h2>
+                                <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.invoice-gen.to')}</h2>
                                 <div className="space-y-3">
                                     <input
                                         type="text"
@@ -283,7 +288,7 @@ export default function InvoiceGenerator() {
 
                     {/* Items */}
                      <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Items</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.invoice-gen.items')}</h2>
                         <div className="space-y-4">
                             {invoiceData.items.map(item => (
                                 <div key={item.id} className="flex gap-2 items-start">
@@ -314,7 +319,7 @@ export default function InvoiceGenerator() {
                                 </div>
                             ))}
                             <button onClick={addItem} className="text-sm font-bold text-green-600 flex items-center gap-1">
-                                <Plus size={16} /> Add Item
+                                <Plus size={16} /> {t('tools.invoice-gen.addItem')}
                             </button>
                         </div>
                     </div>
@@ -322,7 +327,7 @@ export default function InvoiceGenerator() {
                      <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Tax Rate (%)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.taxRate')}</label>
                                 <input
                                     type="number"
                                     value={invoiceData.taxRate}
@@ -331,7 +336,7 @@ export default function InvoiceGenerator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Discount (%)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.discount')}</label>
                                 <input
                                     type="number"
                                     value={invoiceData.discount}
@@ -341,7 +346,7 @@ export default function InvoiceGenerator() {
                             </div>
                         </div>
                         <div className="mt-4">
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.invoice-gen.notes')}</label>
                             <textarea
                                 value={invoiceData.notes}
                                 onChange={(e) => handleChange('root', 'notes', e.target.value)}
@@ -358,7 +363,7 @@ export default function InvoiceGenerator() {
                         {/* Preview Header */}
                         <div className="flex justify-between items-start mb-8">
                             <div>
-                                <h1 className="text-3xl font-bold text-slate-900">INVOICE</h1>
+                                <h1 className="text-3xl font-bold text-slate-900">{t('tools.invoice-gen.preview')}</h1>
                                 <p className="text-slate-500 font-medium mt-1">#{invoiceData.invoiceNumber}</p>
                             </div>
                             <div className="text-right text-slate-500">
@@ -370,13 +375,13 @@ export default function InvoiceGenerator() {
                         {/* Addresses */}
                         <div className="flex justify-between mb-8">
                             <div>
-                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">From</p>
+                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">{t('tools.invoice-gen.from')}</p>
                                 <p className="font-bold text-slate-900">{invoiceData.from.name}</p>
                                 <p className="text-slate-600 whitespace-pre-wrap">{invoiceData.from.address}</p>
                                 <p className="text-slate-600">{invoiceData.from.email}</p>
                             </div>
                             <div className="text-right">
-                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">To</p>
+                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">{t('tools.invoice-gen.to')}</p>
                                 <p className="font-bold text-slate-900">{invoiceData.to.name}</p>
                                 <p className="text-slate-600 whitespace-pre-wrap">{invoiceData.to.address}</p>
                                 <p className="text-slate-600">{invoiceData.to.email}</p>
@@ -388,10 +393,10 @@ export default function InvoiceGenerator() {
                             <table className="w-full">
                                 <thead>
                                     <tr className="border-b-2 border-slate-900">
-                                        <th className="text-left py-2 font-bold text-slate-900">Description</th>
-                                        <th className="text-center py-2 font-bold text-slate-900">Qty</th>
-                                        <th className="text-right py-2 font-bold text-slate-900">Price</th>
-                                        <th className="text-right py-2 font-bold text-slate-900">Total</th>
+                                        <th className="text-left py-2 font-bold text-slate-900">{t('tools.invoice-gen.table.desc')}</th>
+                                        <th className="text-center py-2 font-bold text-slate-900">{t('tools.invoice-gen.table.qty')}</th>
+                                        <th className="text-right py-2 font-bold text-slate-900">{t('tools.invoice-gen.table.price')}</th>
+                                        <th className="text-right py-2 font-bold text-slate-900">{t('tools.invoice-gen.table.total')}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -411,21 +416,21 @@ export default function InvoiceGenerator() {
                         <div className="flex justify-end mb-8">
                             <div className="w-1/2 space-y-2">
                                 <div className="flex justify-between text-slate-600">
-                                    <span>Subtotal</span>
+                                    <span>{t('tools.invoice-gen.subtotal')}</span>
                                     <span>{invoiceData.currency}{totals.subtotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-slate-600">
-                                    <span>Tax ({invoiceData.taxRate}%)</span>
+                                    <span>{t('tools.invoice-gen.tax')} ({invoiceData.taxRate}%)</span>
                                     <span>{invoiceData.currency}{totals.tax.toFixed(2)}</span>
                                 </div>
                                 {invoiceData.discount > 0 && (
                                     <div className="flex justify-between text-green-600 font-medium">
-                                        <span>Discount ({invoiceData.discount}%)</span>
+                                        <span>{t('tools.invoice-gen.discount')} ({invoiceData.discount}%)</span>
                                         <span>-{invoiceData.currency}{totals.discountAmount.toFixed(2)}</span>
                                     </div>
                                 )}
                                 <div className="flex justify-between text-lg font-black text-slate-900 pt-2 border-t-2 border-slate-900">
-                                    <span>Total</span>
+                                    <span>{t('tools.invoice-gen.total')}</span>
                                     <span>{invoiceData.currency}{totals.total.toFixed(2)}</span>
                                 </div>
                             </div>
@@ -434,7 +439,7 @@ export default function InvoiceGenerator() {
                         {/* Notes */}
                         {invoiceData.notes && (
                             <div className="border-t border-slate-100 pt-4">
-                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">Notes</p>
+                                <p className="text-xs font-bold text-slate-400 uppercase mb-1">{t('tools.invoice-gen.notes')}</p>
                                 <p className="text-slate-600">{invoiceData.notes}</p>
                             </div>
                         )}

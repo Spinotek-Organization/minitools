@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FileText, Type, AlignLeft, Clock, AlertCircle } from 'lucide-react';
+import { FileText, Activity, Hash, Trash2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
+
+const StatRow = ({ label, value, sub }) => (
+    <div className="flex justify-between items-center">
+        <span className="text-slate-600 font-medium text-sm">{label}</span>
+        <span className="font-bold text-slate-800">
+            {value} {sub && <span className="text-xs text-slate-400 ml-1">{sub}</span>}
+        </span>
+    </div>
+);
 
 export default function WordCounter() {
+    const { t } = useTranslation('tools');
     const [text, setText] = useState('');
     const [stats, setStats] = useState({
         words: 0,
@@ -66,145 +77,99 @@ export default function WordCounter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="word-counter">
             <Helmet>
-                <title>Word Counter & Text Analyzer | MiniTools by Spinotek</title>
-                <meta name="description" content="Free online word counter, character counter, and text analyzer. Calculate reading time and check keyword density instantly." />
+                <title>{t('word-counter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('word-counter.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                    <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0 shadow-lg shadow-blue-200">
                         <FileText size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Word Counter</h1>
-                        <p className="text-slate-500">Real-time stats, character count, and reading estimates.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('word-counter.title')}</h1>
+                        <p className="text-slate-500">{t('word-counter.desc')}</p>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Left Column: Input Area */}
-                    <div className="lg:col-span-2 space-y-8">
-                        {/* Text Area Card */}
-                        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all">
+                    {/* Main Area */}
+                    <div className="lg:col-span-2 space-y-6">
+                        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
+                             <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-lg font-bold text-slate-800">
+                                    {t('word-counter.stats.summary', { words: stats.words, chars: stats.chars })}
+                                </h2>
+                                <button 
+                                    onClick={() => setText('')}
+                                    className="text-slate-400 hover:text-red-500 flex items-center gap-2 text-sm font-bold transition-colors"
+                                    title={t('word-counter.input.clear')}
+                                >
+                                    <Trash2 size={16} />
+                                </button>
+                            </div>
                             <textarea
                                 value={text}
                                 onChange={(e) => setText(e.target.value)}
-                                placeholder="Start typing or paste your text here..."
-                                className="w-full h-[500px] p-6 resize-none outline-none text-slate-700 placeholder-slate-400 bg-transparent text-lg leading-relaxed font-normal"
-                                spellCheck="false"
-                            />
-                            <div className="bg-slate-50 border-t border-slate-100 px-6 py-3 flex justify-between items-center text-xs text-slate-500">
-                                <span>Autosaved locally</span>
-                                <button
-                                    onClick={() => setText('')}
-                                    className="text-slate-500 hover:text-red-500 font-medium transition-colors"
-                                >
-                                    Clear Text
-                                </button>
+                                placeholder={t('word-counter.input.placeholder')}
+                                className="w-full h-80 p-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-slate-700 leading-relaxed custom-scrollbar"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    {/* Stats Sidebar */}
+                    <div className="space-y-6">
+                         
+                         {/* Detailed Stats */}
+                        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
+                            <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2">
+                                <Activity size={20} className="text-blue-500" />
+                                {t('word-counter.stats.title')}
+                            </h3>
+                            
+                            <div className="space-y-4">
+                                <StatRow label={t('word-counter.stats.words')} value={stats.words} />
+                                <StatRow label={t('word-counter.stats.chars')} value={stats.chars} />
+                                <StatRow label={t('word-counter.stats.sentences')} value={stats.sentences} />
+                                <StatRow label={t('word-counter.stats.paragraphs')} value={stats.paragraphs} />
+                                <div className="h-px bg-slate-100 my-4"></div>
+                                <StatRow label={t('word-counter.stats.readTime')} value={stats.readingTime} sub="min" />
+                                <StatRow label={t('word-counter.stats.speakTime')} value={stats.speakingTime} sub="min" />
                             </div>
                         </div>
 
-                        {/* Keyword Density Card */}
-                        {density.length > 0 && (
-                            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                                <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2">
-                                    <AlertCircle size={18} className="text-blue-500" />
-                                    Top Keywords
-                                </h3>
-                                <div className="space-y-4">
-                                    {density.map((item, index) => (
-                                        <div key={index} className="flex items-center justify-between group">
-                                            <div className="flex items-center gap-4 flex-1">
-                                                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
-                                                    {index + 1}
+                        {/* Top Words */}
+                        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
+                             <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <Hash size={20} className="text-purple-500" />
+                                {t('word-counter.frequency.title')}
+                             </h3>
+                             {density.length > 0 ? (
+                                <div className="space-y-3">
+                                    {density.map((item, i) => (
+                                        <div key={i} className="flex items-center justify-between gap-4">
+                                            <div className="flex items-center gap-3 min-w-0 flex-1">
+                                                <span className="w-6 h-6 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center text-xs font-bold text-slate-500">
+                                                    {i + 1}
                                                 </span>
-                                                <span className="font-medium text-slate-700 capitalize w-24 truncate" title={item.word}>
+                                                <span className="font-medium text-slate-700 truncate" title={item.word}>
                                                     {item.word}
                                                 </span>
-                                                <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
-                                                    <div
-                                                        className="h-full bg-blue-500 rounded-full transition-all duration-500"
-                                                        style={{ width: `${Math.min(item.percentage * 5, 100)}%` }}
-                                                    />
-                                                </div>
                                             </div>
-                                            <div className="ml-4 font-mono text-sm text-slate-500 font-medium w-16 text-right">
-                                                {item.count} <span className="text-slate-300 text-xs">x</span>
-                                            </div>
+                                            <span className="text-xs font-bold bg-purple-100 text-purple-600 px-2 py-1 rounded-full flex-shrink-0">
+                                                {item.count}
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Right Column: Stats Sticky */}
-                    <div className="lg:col-span-1 space-y-6">
-                        <div className="sticky top-24 space-y-6">
-                            {/* Primary Stats */}
-                            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">Overview</h3>
-                                <div className="grid grid-cols-2 gap-4 mb-6">
-                                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                        <div className="text-3xl font-black text-slate-900 mb-1">{stats.words.toLocaleString()}</div>
-                                        <div className="text-xs font-bold text-slate-500 flex items-center justify-center gap-1">
-                                            Words
-                                        </div>
-                                    </div>
-                                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                        <div className="text-3xl font-black text-slate-900 mb-1">{stats.chars.toLocaleString()}</div>
-                                        <div className="text-xs font-bold text-slate-500 flex items-center justify-center gap-1">
-                                            Chars
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="space-y-3 pt-4 border-t border-slate-100">
-                                    <div className="flex justify-between items-center text-sm">
-                                        <span className="text-slate-500">No Spaces</span>
-                                        <span className="font-bold text-slate-700">{stats.charsNoSpace.toLocaleString()}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center text-sm">
-                                        <span className="text-slate-500">Sentences</span>
-                                        <span className="font-bold text-slate-700">{stats.sentences.toLocaleString()}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center text-sm">
-                                        <span className="text-slate-500">Paragraphs</span>
-                                        <span className="font-bold text-slate-700">{stats.paragraphs.toLocaleString()}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Reading Time */}
-                            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">Time Estimate</h3>
-                                <div className="space-y-5">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                                            <Clock size={20} />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-slate-900 text-lg leading-tight">
-                                                {stats.readingTime} <span className="text-sm font-normal text-slate-500">min</span>
-                                            </div>
-                                            <div className="text-xs text-slate-400">Silent Reading</div>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
-                                            <AlignLeft size={20} />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-slate-900 text-lg leading-tight">
-                                                {stats.speakingTime} <span className="text-sm font-normal text-slate-500">min</span>
-                                            </div>
-                                            <div className="text-xs text-slate-400">Speaking Output</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ) : (
+                                <p className="text-sm text-slate-400 italic">
+                                    {t('word-counter.frequency.hint')}
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -215,4 +180,4 @@ export default function WordCounter() {
             </div>
         </ToolPageLayout>
     );
-}
+}   

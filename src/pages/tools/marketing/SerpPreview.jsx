@@ -45,75 +45,79 @@ export default function SerpPreview() {
                 <div className="flex bg-slate-100 p-1 rounded-xl">
                     <button
                         onClick={() => setViewMode('desktop')}
-                        className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${viewMode === 'desktop' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'}`}
+                        className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${viewMode === 'desktop' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500'}`}
                     >
-                        <Monitor size={18} /> Desktop
+                        <Monitor size={18} /> {t('tools.serp-preview.view.desktop')}
                     </button>
                     <button
                         onClick={() => setViewMode('mobile')}
-                        className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${viewMode === 'mobile' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'}`}
+                        className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${viewMode === 'mobile' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500'}`}
                     >
-                        <Smartphone size={18} /> Mobile
+                        <Smartphone size={18} /> {t('tools.serp-preview.view.mobile')}
                     </button>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Inputs */}
-                <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm space-y-6">
+                <form className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm space-y-6">
                     <div>
                         <div className="flex justify-between mb-1">
-                            <label className="text-sm font-bold text-slate-700">SEO Title</label>
-                            <span className={`text-xs font-bold ${data.title.length > TITLE_MAX ? 'text-red-500' : 'text-slate-400'}`}>
+                             <label className="text-sm font-bold text-slate-700">{t('tools.serp-preview.form.title')}</label>
+                             <span className={`text-xs font-bold ${data.title.length > TITLE_MAX ? 'text-red-500' : 'text-slate-400'}`}>
                                 {data.title.length} / {TITLE_MAX}px
-                            </span>
+                             </span>
                         </div>
                         <input
                             type="text"
                             value={data.title}
                             onChange={(e) => setData({ ...data, title: e.target.value })}
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-red-500"
+                            className={`w-full bg-slate-50 border rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 ${data.title.length > TITLE_MAX ? 'border-red-300 bg-red-50' : 'border-slate-200'}`}
                         />
-                         {data.title.length > TITLE_MAX && <p className="text-xs text-red-500 mt-1">Title is likely to be truncated.</p>}
+                        {data.title.length > TITLE_MAX && (
+                            <p className="text-xs text-red-500 mt-1">{t('tools.serp-preview.form.titleTruncated')}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="flex justify-between mb-1">
-                            <label className="text-sm font-bold text-slate-700">Meta Description</label>
-                            <span className={`text-xs font-bold ${data.description.length > DESC_MAX ? 'text-red-500' : 'text-slate-400'}`}>
+                             <label className="text-sm font-bold text-slate-700">{t('tools.serp-preview.form.desc')}</label>
+                             <span className={`text-xs font-bold ${data.description.length > DESC_MAX ? 'text-red-500' : 'text-slate-400'}`}>
                                 {data.description.length} / {DESC_MAX}px
-                            </span>
+                             </span>
                         </div>
                         <textarea
                             rows={3}
                             value={data.description}
                             onChange={(e) => setData({ ...data, description: e.target.value })}
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-red-500"
+                             className={`w-full bg-slate-50 border rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 ${data.description.length > DESC_MAX ? 'border-red-300 bg-red-50' : 'border-slate-200'}`}
                         />
-                         {data.description.length > DESC_MAX && <p className="text-xs text-red-500 mt-1">Description is likely to be truncated.</p>}
+                        {data.description.length > DESC_MAX && (
+                            <p className="text-xs text-red-500 mt-1">{t('tools.serp-preview.form.descTruncated')}</p>
+                        )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">Domain</label>
+                        <div className="flex-1">
+                            <label className="text-sm font-bold text-slate-700 mb-1 block">{t('tools.serp-preview.form.domain')}</label>
                             <input
                                 type="text"
                                 value={data.url}
                                 onChange={(e) => setData({ ...data, url: e.target.value })}
-                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-red-500"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
-                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">URL Path</label>
+                        <div className="flex-1">
+                            <label className="text-sm font-bold text-slate-700 mb-1 block">{t('tools.serp-preview.form.path')}</label>
                             <input
                                 type="text"
                                 value={data.path}
                                 onChange={(e) => setData({ ...data, path: e.target.value })}
-                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-red-500"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
                     </div>
-                </div>
+                </form>
 
                 {/* Preview Container */}
                 <div className="bg-slate-50 rounded-3xl border border-slate-100 p-8 flex items-center justify-center">

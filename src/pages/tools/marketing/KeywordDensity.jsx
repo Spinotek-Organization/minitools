@@ -93,13 +93,13 @@ export default function ArticleTextAnalyzer() {
                 <div className="lg:col-span-2 flex flex-col h-full">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex-1 flex flex-col">
                         <label className="block text-sm font-bold text-slate-700 mb-2 flex justify-between">
-                            <span>Your Article Draft</span>
-                            <span className="text-slate-400 font-normal">{stats.chars} characters</span>
+                            <span>{t('tools.text-analyzer.input.label')}</span>
+                            <span className="text-slate-400 font-normal">{t('tools.text-analyzer.input.stats', { count: stats.chars })}</span>
                         </label>
                         <textarea
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            placeholder="Paste your content here to analyze..."
+                            placeholder={t('tools.text-analyzer.input.placeholder')}
                             className="flex-1 w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 text-base resize-none min-h-[400px]"
                         />
                     </div>
@@ -112,31 +112,31 @@ export default function ArticleTextAnalyzer() {
                         <div className="bg-emerald-50 p-4 rounded-xl text-center">
                             <AlignLeft size={20} className="text-emerald-600 mx-auto mb-2" />
                             <div className="text-2xl font-black text-slate-900">{stats.words}</div>
-                            <div className="text-xs font-bold text-slate-500 uppercase">Words</div>
+                            <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.text-analyzer.stats.words')}</div>
                         </div>
                          <div className="bg-slate-50 p-4 rounded-xl text-center">
                             <div className="text-2xl font-black text-slate-900">{stats.chars}</div>
-                            <div className="text-xs font-bold text-slate-500 uppercase">Chars</div>
+                            <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.text-analyzer.stats.chars')}</div>
                         </div>
                         <div className="bg-blue-50 p-4 rounded-xl text-center">
                             <Clock size={20} className="text-blue-600 mx-auto mb-2" />
                             <div className="text-2xl font-black text-slate-900">{stats.readingTime}m</div>
-                            <div className="text-xs font-bold text-slate-500 uppercase">Read Time</div>
+                            <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.text-analyzer.stats.readTime')}</div>
                         </div>
                         <div className="bg-purple-50 p-4 rounded-xl text-center">
                             <Mic size={20} className="text-purple-600 mx-auto mb-2" />
                             <div className="text-2xl font-black text-slate-900">{stats.speakingTime}m</div>
-                            <div className="text-xs font-bold text-slate-500 uppercase">Speak Time</div>
+                            <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.text-analyzer.stats.speakTime')}</div>
                         </div>
                     </div>
 
                     {/* Checkers */}
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h3 className="font-bold text-slate-900 mb-4">Keyword Density</h3>
+                        <h3 className="font-bold text-slate-900 mb-4">{t('tools.text-analyzer.density.title')}</h3>
                         
                         <div className="space-y-6">
                             <div>
-                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">Top 1-Word</h4>
+                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.text-analyzer.density.one')}</h4>
                                 {density.one.length > 0 ? (
                                     <div className="space-y-2">
                                         {density.one.map((item, i) => (
@@ -146,11 +146,11 @@ export default function ArticleTextAnalyzer() {
                                             </div>
                                         ))}
                                     </div>
-                                ) : <div className="text-xs text-slate-300 italic">No data yet</div>}
+                                ) : <div className="text-xs text-slate-300 italic">{t('tools.text-analyzer.density.empty')}</div>}
                             </div>
 
                             <div>
-                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">Top 2-Words</h4>
+                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.text-analyzer.density.two')}</h4>
                                 {density.two.length > 0 ? (
                                     <div className="space-y-2">
                                         {density.two.map((item, i) => (
@@ -160,11 +160,11 @@ export default function ArticleTextAnalyzer() {
                                             </div>
                                         ))}
                                     </div>
-                                ) : <div className="text-xs text-slate-300 italic">No data yet</div>}
+                                ) : <div className="text-xs text-slate-300 italic">{t('tools.text-analyzer.density.empty')}</div>}
                             </div>
                             
                             <div>
-                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">Top 3-Words</h4>
+                                <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.text-analyzer.density.three')}</h4>
                                 {density.three.length > 0 ? (
                                     <div className="space-y-2">
                                         {density.three.map((item, i) => (
@@ -174,7 +174,7 @@ export default function ArticleTextAnalyzer() {
                                             </div>
                                         ))}
                                     </div>
-                                ) : <div className="text-xs text-slate-300 italic">No data yet</div>}
+                                ) : <div className="text-xs text-slate-300 italic">{t('tools.text-analyzer.density.empty')}</div>}
                             </div>
                         </div>
                     </div>

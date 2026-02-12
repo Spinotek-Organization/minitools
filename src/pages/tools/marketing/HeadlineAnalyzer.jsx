@@ -108,11 +108,11 @@ export default function HeadlineAnalyzer() {
                 {/* Input */}
                 <div className="flex flex-col gap-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Your Headline</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.headline-analyzer.input.label')}</label>
                         <textarea
                             value={headline}
                             onChange={(e) => setHeadline(e.target.value)}
-                            placeholder="e.g. 10 Secrets to Growing Your Business Fast"
+                            placeholder={t('tools.headline-analyzer.input.placeholder')}
                             className="w-full h-32 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-xl font-bold text-slate-800 resize-none mb-4"
                         />
                         <button
@@ -124,31 +124,21 @@ export default function HeadlineAnalyzer() {
                                     : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                             }`}
                         >
-                            Analyze Headline
+                            {t('tools.headline-analyzer.input.analyze')}
                         </button>
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                             <Info size={18} className="text-orange-500" /> Tips for High-Converting Headlines
+                             <Info size={18} className="text-orange-500" /> {t('tools.headline-analyzer.tips.title')}
                         </h3>
                         <ul className="space-y-3 text-sm text-slate-600">
-                            <li className="flex items-start gap-2">
-                                <span className="bg-orange-100 text-orange-600 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold shrink-0">1</span>
-                                Use numbers (e.g. "7 Ways...", "10 Tips...")
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="bg-orange-100 text-orange-600 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold shrink-0">2</span>
-                                Use strong emotional words (e.g. "Amazing", "Fear")
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="bg-orange-100 text-orange-600 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold shrink-0">3</span>
-                                Keep it between 50-60 characters for optimal search visibility.
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="bg-orange-100 text-orange-600 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold shrink-0">4</span>
-                                Address the reader directly with "You" or "Your".
-                            </li>
+                            {[0, 1, 2, 3].map(i => (
+                                <li key={i} className="flex items-start gap-2">
+                                    <span className="bg-orange-100 text-orange-600 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold shrink-0">{i + 1}</span>
+                                    {t(`tools.headline-analyzer.tips.list.${i}`)}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -158,41 +148,41 @@ export default function HeadlineAnalyzer() {
                     {breakdown ? (
                         <>
                             <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm flex flex-col items-center justify-center text-center">
-                                <div className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Headline Score</div>
+                                <div className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">{t('tools.headline-analyzer.score.title')}</div>
                                 <div className={`text-6xl font-black ${getScoreColor(score)} mb-4`}>{score}/100</div>
                                 <div className={`text-9xl font-black opacity-10 absolute pointer-events-none ${getScoreColor(score)}`}>
                                     {getGrade(score)}
                                 </div>
                                 <p className="text-slate-600 max-w-xs">
-                                    {score >= 70 ? "Great job! This headline is likely to perform well." : "This headline could use some improvement. Try adding more emotional or power words."}
+                                    {score >= 70 ? t('tools.headline-analyzer.score.good') : t('tools.headline-analyzer.score.bad')}
                                 </p>
                             </div>
 
                             <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm grid grid-cols-2 gap-4">
                                 <div className="bg-slate-50 p-4 rounded-xl">
-                                    <div className="text-xs font-bold text-slate-500 uppercase">Common Words</div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.headline-analyzer.stats.common')}</div>
                                     <div className="text-2xl font-black text-slate-800">{Math.round(breakdown.common.pct)}%</div>
-                                    <div className="text-xs text-slate-400">Target: 20-30%</div>
+                                    <div className="text-xs text-slate-400">{t('tools.headline-analyzer.stats.target', { range: '20-30%' })}</div>
                                 </div>
                                 <div className="bg-slate-50 p-4 rounded-xl">
-                                    <div className="text-xs font-bold text-slate-500 uppercase">Uncommon Words</div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase">{t('tools.headline-analyzer.stats.uncommon')}</div>
                                     <div className="text-2xl font-black text-slate-800">{Math.round(breakdown.uncommon.pct)}%</div>
-                                    <div className="text-xs text-slate-400">Target: 10-20%</div>
+                                    <div className="text-xs text-slate-400">{t('tools.headline-analyzer.stats.target', { range: '10-20%' })}</div>
                                 </div>
                                 <div className="bg-orange-50 p-4 rounded-xl">
-                                    <div className="text-xs font-bold text-orange-600 uppercase">Emotional</div>
+                                    <div className="text-xs font-bold text-orange-600 uppercase">{t('tools.headline-analyzer.stats.emotional')}</div>
                                     <div className="text-2xl font-black text-orange-800">{Math.round(breakdown.emotional.pct)}%</div>
-                                    <div className="text-xs text-orange-400">Target: 10-15%</div>
+                                    <div className="text-xs text-orange-400">{t('tools.headline-analyzer.stats.target', { range: '10-15%' })}</div>
                                 </div>
                                 <div className="bg-indigo-50 p-4 rounded-xl">
-                                    <div className="text-xs font-bold text-indigo-600 uppercase">Power Words</div>
+                                    <div className="text-xs font-bold text-indigo-600 uppercase">{t('tools.headline-analyzer.stats.power')}</div>
                                     <div className="text-2xl font-black text-indigo-800">{Math.round(breakdown.power.pct)}%</div>
-                                    <div className="text-xs text-indigo-400">Target: at least 1</div>
+                                    <div className="text-xs text-indigo-400">{t('tools.headline-analyzer.stats.target', { range: '1+' })}</div>
                                 </div>
                             </div>
                             
                             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex justify-between items-center px-6">
-                                <span className="font-bold text-slate-600">Character Count</span>
+                                <span className="font-bold text-slate-600">{t('tools.headline-analyzer.stats.chars')}</span>
                                 <span className={`font-black text-xl ${breakdown.charCount >= 50 && breakdown.charCount <= 65 ? 'text-green-500' : 'text-slate-800'}`}>
                                     {breakdown.charCount}
                                 </span>
@@ -201,7 +191,7 @@ export default function HeadlineAnalyzer() {
                     ) : (
                         <div className="bg-slate-50 border border-dashed border-slate-200 rounded-3xl p-12 flex flex-col items-center justify-center h-full text-center text-slate-400">
                              <FileText size={48} className="mb-4 opacity-20" />
-                             <p>Enter a headline to see your analysis score.</p>
+                             <p>{t('tools.headline-analyzer.score.empty')}</p>
                         </div>
                     )}
                 </div>

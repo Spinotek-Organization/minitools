@@ -93,7 +93,7 @@ export default function ReceiptMaker() {
                     className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg"
                 >
                     <Download size={20} />
-                    Download Image
+                    {t('tools.receipt-maker.download')}
                 </button>
             </div>
 
@@ -101,10 +101,10 @@ export default function ReceiptMaker() {
                 {/* Inputs */}
                 <div className="space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Store Details</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.receipt-maker.storeDetails')}</h2>
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Store Name</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.storeName')}</label>
                                 <input
                                     type="text"
                                     value={receiptData.storeName}
@@ -113,7 +113,7 @@ export default function ReceiptMaker() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Address</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.address')}</label>
                                 <input
                                     type="text"
                                     value={receiptData.address}
@@ -123,7 +123,7 @@ export default function ReceiptMaker() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.date')}</label>
                                     <input
                                         type="date"
                                         value={receiptData.date}
@@ -132,7 +132,7 @@ export default function ReceiptMaker() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Time</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.time')}</label>
                                     <input
                                         type="time"
                                         value={receiptData.time}
@@ -145,7 +145,7 @@ export default function ReceiptMaker() {
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-4">Items</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.receipt-maker.items')}</h2>
                         <div className="space-y-3">
                             {receiptData.items.map(item => (
                                 <div key={item.id} className="flex gap-2 items-center">
@@ -153,14 +153,14 @@ export default function ReceiptMaker() {
                                         type="text"
                                         value={item.name}
                                         onChange={(e) => handleItemChange(item.id, 'name', e.target.value)}
-                                        placeholder="Item Name"
+                                        placeholder={t('tools.receipt-maker.preview.item')}
                                         className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm"
                                     />
                                     <input
                                         type="number"
                                         value={item.price}
                                         onChange={(e) => handleItemChange(item.id, 'price', parseFloat(e.target.value))}
-                                        placeholder="Price"
+                                        placeholder={t('tools.receipt-maker.preview.price')}
                                         className="w-24 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm"
                                     />
                                     <button onClick={() => removeItem(item.id)} className="p-2 text-slate-400 hover:text-red-500">
@@ -169,7 +169,7 @@ export default function ReceiptMaker() {
                                 </div>
                             ))}
                             <button onClick={addItem} className="text-sm font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1 mt-2">
-                                <Plus size={16} /> Add Item
+                                <Plus size={16} /> {t('tools.receipt-maker.addItem')}
                             </button>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ export default function ReceiptMaker() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Tax Rate (%)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.taxRate')}</label>
                                 <input
                                     type="number"
                                     value={receiptData.taxRate}
@@ -186,7 +186,7 @@ export default function ReceiptMaker() {
                                 />
                             </div>
                              <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Currency Symbol</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.currencySym')}</label>
                                 <input
                                     type="text"
                                     value={receiptData.currency}
@@ -196,7 +196,7 @@ export default function ReceiptMaker() {
                             </div>
                         </div>
                         <div className="mt-4">
-                             <label className="block text-sm font-medium text-slate-700 mb-1">Footer Message</label>
+                             <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.receipt-maker.footer')}</label>
                              <input
                                 type="text"
                                 value={receiptData.footerMessage}
@@ -218,8 +218,8 @@ export default function ReceiptMaker() {
 
                         <div className="border-b-2 border-dashed border-slate-300 mb-4 pb-2">
                             <div className="flex justify-between font-bold text-xs uppercase text-slate-400 mb-2">
-                                <span>Item</span>
-                                <span>Price</span>
+                                <span>{t('tools.receipt-maker.preview.item')}</span>
+                                <span>{t('tools.receipt-maker.preview.price')}</span>
                             </div>
                             {receiptData.items.map(item => (
                                 <div key={item.id} className="flex justify-between mb-1">
@@ -231,15 +231,15 @@ export default function ReceiptMaker() {
 
                         <div className="space-y-1 mb-6">
                             <div className="flex justify-between">
-                                <span className="text-slate-500">Subtotal</span>
+                                <span className="text-slate-500">{t('tools.receipt-maker.preview.subtotal')}</span>
                                 <span>{receiptData.currency}{totals.subtotal.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="text-slate-500">Tax ({receiptData.taxRate}%)</span>
+                                <span className="text-slate-500">{t('tools.receipt-maker.preview.tax')} ({receiptData.taxRate}%)</span>
                                 <span>{receiptData.currency}{totals.tax.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between font-bold text-lg border-t-2 border-slate-800 pt-2 mt-2">
-                                <span>TOTAL</span>
+                                <span>{t('tools.receipt-maker.preview.total')}</span>
                                 <span>{receiptData.currency}{totals.total.toFixed(2)}</span>
                             </div>
                         </div>

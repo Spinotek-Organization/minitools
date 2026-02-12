@@ -3,16 +3,18 @@ import { Helmet } from 'react-helmet-async';
 import { Hash, ArrowRight, BookOpen, AlertCircle } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function RomanConverter() {
+    const { t } = useTranslation('tools');
     const [decimal, setDecimal] = useState('');
     const [roman, setRoman] = useState('');
     const [error, setError] = useState('');
 
     const convertToRoman = (num) => {
         if (!num || isNaN(num)) return '';
-        if (num > 3999) return 'Value too large (max 3999)';
-        if (num <= 0) return 'Enter a positive integer';
+        if (num > 3999) return t('roman-conv.errors.large');
+        if (num <= 0) return t('roman-conv.errors.positive');
 
         const map = {
             M: 1000, CM: 900, D: 500, CD: 400,
@@ -79,7 +81,7 @@ export default function RomanConverter() {
 
         if (val) {
             if (!isValidRoman(val)) {
-                setError('Invalid Roman Numeral format (e.g. use IV instead of IIII)');
+                setError(t('roman-conv.errors.format'));
                 setDecimal('');
                 return;
             }
@@ -91,10 +93,10 @@ export default function RomanConverter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="roman-conv">
             <Helmet>
-                <title>Roman Numeral Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert numbers to Roman Numerals (and vice versa) instantly." />
+                <title>{t('roman-conv.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('roman-conv.desc')} />
             </Helmet>
 
             <div className="max-w-4xl mx-auto">
@@ -104,8 +106,8 @@ export default function RomanConverter() {
                         <BookOpen size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Roman Numeral Converter</h1>
-                        <p className="text-slate-500">Convert standard numbers to Roman numerals and back.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('roman-conv.title')}</h1>
+                        <p className="text-slate-500">{t('roman-conv.desc')}</p>
                     </div>
                 </div>
 
@@ -117,7 +119,7 @@ export default function RomanConverter() {
                             {/* Decimal Input */}
                             <div className="space-y-4">
                                 <label className="block text-sm font-bold text-slate-500 uppercase tracking-wide">
-                                    Decimal Number (1-3999)
+                                    {t('roman-conv.inputs.decimal')}
                                 </label>
                                 <div className="relative group">
                                     <Hash className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-amber-500 transition-colors" />
@@ -125,7 +127,7 @@ export default function RomanConverter() {
                                         type="number"
                                         value={decimal}
                                         onChange={handleDecimalChange}
-                                        placeholder="2024"
+                                        placeholder={t('roman-conv.inputs.decimalPlaceholder')}
                                         className="w-full pl-12 pr-4 py-4 text-3xl font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 outline-none transition-all placeholder:text-slate-300"
                                     />
                                 </div>
@@ -139,7 +141,7 @@ export default function RomanConverter() {
                             {/* Roman Input */}
                             <div className="space-y-4">
                                 <label className="block text-sm font-bold text-slate-500 uppercase tracking-wide">
-                                    Roman Numeral
+                                    {t('roman-conv.inputs.roman')}
                                 </label>
                                 <div className="relative group">
                                     <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-amber-500 transition-colors" />
@@ -147,7 +149,7 @@ export default function RomanConverter() {
                                         type="text"
                                         value={roman}
                                         onChange={handleRomanChange}
-                                        placeholder="MMXXIV"
+                                        placeholder={t('roman-conv.inputs.romanPlaceholder')}
                                         className={`w-full pl-12 pr-4 py-4 text-3xl font-serif font-bold bg-slate-50 border rounded-2xl outline-none transition-all placeholder:text-slate-300 uppercase ${error
                                                 ? 'text-red-500 border-red-300 focus:border-red-500 bg-red-50'
                                                 : 'text-slate-800 border-slate-200 focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500'
@@ -170,7 +172,7 @@ export default function RomanConverter() {
 
                     {/* Quick Reference Table */}
                     <div className="border-t border-slate-100 bg-slate-50/50 p-8">
-                        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">Quick Reference</h3>
+                        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">{t('roman-conv.quickRef')}</h3>
                         <div className="flex justify-center flex-wrap gap-4 md:gap-8">
                             {[
                                 { r: 'I', d: 1 },

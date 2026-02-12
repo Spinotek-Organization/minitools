@@ -4,8 +4,10 @@ import ReactMarkdown from 'react-markdown';
 import { FileCode, Bold, Italic, Link, Image, Quote, Code, List, Columns, Eye, Play } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function MarkdownEditor() {
+    const { t } = useTranslation('tools');
     const [markdown, setMarkdown] = useState('# Welcome to the Markdown Editor\n\nStart typing on the left, and see the preview on the right.');
     const [viewMode, setViewMode] = useState('split'); // split, editor, preview
     const textareaRef = useRef(null);
@@ -40,10 +42,10 @@ export default function MarkdownEditor() {
     const handleList = () => insertAtCursor('- ');
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="md-editor">
             <Helmet>
-                <title>Markdown Editor | MiniTools by Spinotek</title>
-                <meta name="description" content="Write and preview Markdown in real-time. Simple, fast, and offline." />
+                <title>{t('md-editor.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('md-editor.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -52,8 +54,8 @@ export default function MarkdownEditor() {
                         <FileCode size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Markdown Editor</h1>
-                        <p className="text-slate-500 text-sm">Write and preview Markdown syntax instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('md-editor.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('md-editor.desc')}</p>
                     </div>
                 </div>
 
@@ -61,21 +63,21 @@ export default function MarkdownEditor() {
                     <button
                         onClick={() => setViewMode('editor')}
                         className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all ${viewMode === 'editor' ? 'bg-white shadow-sm text-fuchsia-600' : 'text-slate-500 hover:text-slate-700'}`}
-                        title="Editor Only"
+                        title={t('md-editor.view.editor')}
                     >
                         <Code size={16} />
                     </button>
                     <button
                         onClick={() => setViewMode('split')}
                         className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all ${viewMode === 'split' ? 'bg-white shadow-sm text-fuchsia-600' : 'text-slate-500 hover:text-slate-700'}`}
-                        title="Split View"
+                        title={t('md-editor.view.split')}
                     >
                         <Columns size={16} />
                     </button>
                     <button
                         onClick={() => setViewMode('preview')}
                         className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all ${viewMode === 'preview' ? 'bg-white shadow-sm text-fuchsia-600' : 'text-slate-500 hover:text-slate-700'}`}
-                        title="Preview Only"
+                        title={t('md-editor.view.preview')}
                     >
                         <Eye size={16} />
                     </button>
@@ -84,19 +86,19 @@ export default function MarkdownEditor() {
 
             {/* Toolbar */}
             <div className="bg-white border border-slate-200 rounded-t-2xl p-2 flex flex-wrap gap-1 sticky top-20 z-10 shadow-sm">
-                <ToolbarButton icon={<Bold size={16} />} onClick={handleBold} tooltip="Bold" />
-                <ToolbarButton icon={<Italic size={16} />} onClick={handleItalic} tooltip="Italic" />
+                <ToolbarButton icon={<Bold size={16} />} onClick={handleBold} tooltip={t('md-editor.toolbar.bold')} />
+                <ToolbarButton icon={<Italic size={16} />} onClick={handleItalic} tooltip={t('md-editor.toolbar.italic')} />
                 <div className="w-[1px] h-6 bg-slate-200 mx-1 self-center" />
-                <ToolbarButton icon={<Link size={16} />} onClick={handleLink} tooltip="Link" />
-                <ToolbarButton icon={<Image size={16} />} onClick={handleImage} tooltip="Image" />
+                <ToolbarButton icon={<Link size={16} />} onClick={handleLink} tooltip={t('md-editor.toolbar.link')} />
+                <ToolbarButton icon={<Image size={16} />} onClick={handleImage} tooltip={t('md-editor.toolbar.image')} />
                 <div className="w-[1px] h-6 bg-slate-200 mx-1 self-center" />
-                <ToolbarButton icon={<Quote size={16} />} onClick={handleQuote} tooltip="Quote" />
-                <ToolbarButton icon={<Code size={16} />} onClick={handleCode} tooltip="Inline Code" />
-                <ToolbarButton icon={<List size={16} />} onClick={handleList} tooltip="List Item" />
+                <ToolbarButton icon={<Quote size={16} />} onClick={handleQuote} tooltip={t('md-editor.toolbar.quote')} />
+                <ToolbarButton icon={<Code size={16} />} onClick={handleCode} tooltip={t('md-editor.toolbar.code')} />
+                <ToolbarButton icon={<List size={16} />} onClick={handleList} tooltip={t('md-editor.toolbar.list')} />
                 
                 <div className="flex-1" />
                 <div className="text-xs font-mono text-slate-400 self-center px-3">
-                    {markdown.length} chars
+                    {t('md-editor.statusbar.chars', { count: markdown.length })}
                 </div>
             </div>
 
@@ -108,7 +110,7 @@ export default function MarkdownEditor() {
                         value={markdown}
                         onChange={(e) => setMarkdown(e.target.value)}
                         className={`w-full h-full p-6 resize-none outline-none font-mono text-sm leading-relaxed bg-slate-50 text-slate-800 ${viewMode === 'split' ? 'border-r border-slate-200' : ''} ${viewMode === 'editor' ? 'col-span-2' : ''}`}
-                        placeholder="Type your markdown here..."
+                        placeholder={t('md-editor.placeholder')}
                         spellCheck="false"
                     />
                 )}

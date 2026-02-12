@@ -4,13 +4,15 @@ import { FileType } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import ToolPlaceholder from '../../../components/shared/ToolPlaceholder';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ExtensionRename() {
+    const { t } = useTranslation('tools');
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="extension-rename">
             <Helmet>
-                <title>File Extension Renamer | MiniTools by Spinotek</title>
-                <meta name="description" content="Batch change file extensions easily and safely." />
+                <title>{t('extension-rename.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('extension-rename.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -19,8 +21,8 @@ export default function ExtensionRename() {
                         <FileType size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">File Extension Renamer</h1>
-                        <p className="text-slate-500 text-sm">Batch change file extensions easily and safely.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('extension-rename.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('extension-rename.desc')}</p>
                     </div>
                 </div>
             </div>

@@ -43,8 +43,6 @@
     },
     "home": {
         "tools_count": "120+ Alat dan Terus Bertambah",
-        "hero_title": "Toolkit Produktivitas Anda.",
-        "hero_subtitle": "Semua di Satu Tempat.",
         "hero_description": "120+ alat berbasis browser untuk <1>pengembang</1>, <3>kreator</3>, dan <5>profesional</5>. Tanpa hambatan. Hasil instan.",
         "explore_cta": "Jelajahi Alat",
         "roadmap_cta": "Lihat Roadmap",
@@ -121,109 +119,595 @@
     "common": {
         "loading": "Memuat...",
         "error": "Terjadi kesalahan",
+        "reset": "Atur Ulang",
         "related_utilities": "Utilitas Terkait"
     },
     "generated_by": "Dibuat oleh MiniTools",
     "tools": {
         "utm-builder": {
-            "title": "UTM Link Builder",
-            "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda."
+            "title": "Pembuat Link UTM",
+            "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda.",
+            "form": {
+                "title": "Detail Kampanye",
+                "url": "URL Website",
+                "source": "Sumber Kampanye",
+                "medium": "Medium Kampanye",
+                "name": "Nama Kampanye",
+                "term": "Term Kampanye (Opsional)",
+                "content": "Konten Kampanye (Opsional)"
+            },
+            "output": {
+                "title": "URL yang Dibuat",
+                "placeholder": "Isi kolom yang diperlukan untuk membuat link Anda...",
+                "test": "Tes Link",
+                "copy": "Salin URL",
+                "copied": "Disalin!"
+            },
+            "guide": {
+                "title": "Panduan Parameter",
+                "source": "Perujuk (contoh: google, newsletter)",
+                "medium": "Medium pemasaran (contoh: cpc, banner, email)",
+                "campaign": "Produk, kode promo, atau slogan"
+            }
         },
         "serp-preview": {
             "title": "Pratinjau Google SERP",
-            "desc": "Visualisasikan bagaimana situs web Anda muncul di hasil pencarian Google."
+            "desc": "Visualisasikan tampilan website Anda di hasil pencarian Google.",
+            "view": {
+                "desktop": "Desktop",
+                "mobile": "Seluler"
+            },
+            "form": {
+                "title": "Judul SEO",
+                "titleTruncated": "Judul kemungkinan akan terpotong.",
+                "desc": "Deskripsi Meta",
+                "descTruncated": "Deskripsi kemungkinan akan terpotong.",
+                "domain": "Domain",
+                "path": "Path URL"
+            }
         },
         "meta-gen": {
-            "title": "Pembuat Meta Tag",
-            "desc": "Buat meta tag yang dioptimalkan SEO untuk situs web Anda."
+            "title": "Generator Meta Tag",
+            "desc": "Buat meta tag yang dioptimalkan untuk SEO website Anda.",
+            "form": {
+                "title": "Informasi Situs",
+                "pageTitle": "Judul Halaman",
+                "pageTitlePlaceholder": "contoh: Website Keren Saya",
+                "description": "Deskripsi",
+                "descriptionPlaceholder": "Deskripsi singkat halaman Anda...",
+                "keywords": "Kata Kunci",
+                "keywordsPlaceholder": "kata, kunci, dipisahkan, koma",
+                "author": "Penulis",
+                "authorPlaceholder": "John Doe",
+                "robots": "Robots",
+                "charset": "Charset"
+            },
+            "output": {
+                "title": "HTML yang Dibuat",
+                "copy": "Salin Kode",
+                "copied": "Disalin"
+            }
         },
         "robots-gen": {
-            "title": "Pembuat Robots.txt",
-            "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO."
+            "title": "Generator Robots.txt",
+            "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO.",
+            "rules": {
+                "title": "Aturan User Agent",
+                "add": "Tambah Bot",
+                "agent": "User Agent",
+                "allow": "Izinkan (Allow)",
+                "disallow": "Larang (Disallow)",
+                "hint": "Pisahkan beberapa path dengan koma."
+            },
+            "sitemap": {
+                "title": "Sitemap & Ekstra",
+                "urls": "URL Sitemap",
+                "add": "Tambah Sitemap",
+                "delay": "Jeda Crawl (Detik)",
+                "delayPlaceholder": "contoh: 10 (Opsional)"
+            },
+            "output": {
+                "copy": "Salin ke Clipboard",
+                "download": "Unduh File",
+                "preview": "Pratinjau robots.txt"
+            }
         },
         "social-mockup": {
-            "title": "Mockup Postingan Sosial",
-            "desc": "Pratinjau tampilan postingan Anda di LinkedIn, Twitter, dan Facebook."
+            "title": "Mockup Post Sosial",
+            "desc": "Pratinjau tampilan post Anda di LinkedIn, Twitter, dan Facebook.",
+            "platforms": {
+                "facebook": "Facebook",
+                "twitter": "Twitter",
+                "linkedin": "LinkedIn"
+            },
+            "form": {
+                "title": "Judul",
+                "description": "Deskripsi",
+                "image": "URL Gambar atau Upload",
+                "upload": "Upload Gambar",
+                "domain": "Domain"
+            },
+            "preview": {
+                "noImage": "Tidak Ada Gambar",
+                "promoted": "DIPROMOSIKAN"
+            }
         },
         "slug-gen": {
-            "title": "Pembuat Slug",
-            "desc": "Ubah teks apa pun menjadi slug yang ramah URL."
+            "title": "Generator Slug",
+            "desc": "Ubah teks apa pun menjadi slug yang ramah URL.",
+            "input": {
+                "label": "Teks Input",
+                "placeholder": "Ketik judul Anda di sini..."
+            },
+            "options": {
+                "title": "Opsi",
+                "separator": "Pemisah",
+                "removeNumbers": "Hapus Angka",
+                "removeStop": "Hapus Kata Sambung (a, the, dan...)"
+            },
+            "output": {
+                "title": "Slug yang Dibuat",
+                "placeholder": "slug-anda-akan-muncul-di-sini",
+                "copy": "SALIN SLUG",
+                "copied": "DISALIN!"
+            }
         },
         "text-analyzer": {
-            "title": "Analisis Teks Artikel",
-            "desc": "Analisis jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda."
+            "title": "Analisa Teks Artikel",
+            "desc": "Analisa jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda.",
+            "input": {
+                "label": "Draf Artikel Anda",
+                "placeholder": "Tempel konten Anda di sini untuk dianalisa...",
+                "stats": "{{count}} karakter"
+            },
+            "stats": {
+                "words": "Kata",
+                "chars": "Karakter",
+                "readTime": "Waktu Baca",
+                "speakTime": "Waktu Bicara"
+            },
+            "density": {
+                "title": "Kepadatan Kata Kunci",
+                "one": "Top 1-Kata",
+                "two": "Top 2-Kata",
+                "three": "Top 3-Kata",
+                "empty": "Belum ada data"
+            }
         },
         "tweet-counter": {
             "title": "Penghitung Thread Twitter/X",
-            "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda."
+            "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda.",
+            "input": {
+                "label": "Draf Konten",
+                "stats": "{{count}} karakter",
+                "placeholder": "Ketik thread panjang Anda di sini..."
+            },
+            "output": {
+                "title": "Pratinjau ({{count}} tweet)",
+                "placeholder": "Mulai mengetik untuk melihat pratinjau thread Anda di sini.",
+                "copy": "Salin",
+                "copied": "Disalin"
+            }
         },
         "link-cleaner": {
-            "title": "Pembersih Link / URL",
-            "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda."
+            "title": "Pembersih Link",
+            "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda.",
+            "input": {
+                "label": "Tempel URL Kotor",
+                "placeholder": "https://example.com?utm_source=facebook&fbclid=IwAR2...",
+                "button": "Bersihkan URL"
+            },
+            "output": {
+                "removed": "Dihapus {{count}} parameter",
+                "title": "URL Bersih",
+                "placeholder": "URL bersih akan muncul di sini...",
+                "copy": "Salin Link Bersih",
+                "copied": "Disalin!",
+                "stripped": "Parameter yang Dibuang",
+                "invalid": "URL Tidak Valid"
+            }
         },
         "url-sitemap": {
-            "title": "Daftar URL ke Sitemap",
-            "desc": "Ubah daftar URL menjadi Sitemap XML yang diformat dengan benar."
+            "title": "List URL ke Sitemap",
+            "desc": "Ubah daftar URL menjadi XML Sitemap yang diformat dengan benar.",
+            "input": {
+                "label": "Daftar Halaman (Satu URL per baris)",
+                "clear": "Bersihkan"
+            },
+            "settings": {
+                "title": "Pengaturan Default",
+                "freq": "Frekuensi",
+                "priority": "Prioritas",
+                "lastmod": "Last Mod",
+                "generate": "Buat Sitemap"
+            },
+            "output": {
+                "copy": "Salin ke Clipboard",
+                "download": "Unduh File",
+                "title": "Output XML",
+                "placeholder": "<!-- Sitemap XML Anda akan muncul di sini -->"
+            }
         },
         "ad-counter": {
             "title": "Penghitung Karakter Iklan",
-            "desc": "Validasi batas karakter untuk Google Ads dan Meta Ads."
+            "desc": "Validasi batas karakter untuk Google dan Meta Ads.",
+            "headlines": "Judul (30 karakter)",
+            "headline": "Judul {{index}}",
+            "descriptions": "Deskripsi (90 karakter)",
+            "description": "Deskripsi {{index}}",
+            "preview": {
+                "title": "Pratinjau Iklan",
+                "ad": "Iklan",
+                "tip": "Tip:",
+                "tipText": "Pastikan kata kunci ada di Judul 1 untuk Skor Kualitas yang lebih baik. Gunakan Huruf Kapital di Awal Kata."
+            }
         },
         "headline-analyzer": {
-            "title": "Penganalisis Judul",
-            "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik."
+            "title": "Penganalisa Judul",
+            "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik.",
+            "input": {
+                "label": "Judul Anda",
+                "placeholder": "contoh: 10 Rahasia Mengembangkan Bisnis dengan Cepat",
+                "analyze": "Analisa Judul"
+            },
+            "tips": {
+                "title": "Tips untuk Judul Berkonversi Tinggi",
+                "list": [
+                    "Gunakan angka (contoh: \"7 Cara...\", \"10 Tips...\")",
+                    "Gunakan kata-kata emosional yang kuat (contoh: \"Luar Biasa\", \"Takut\")",
+                    "Pertahankan antara 50-60 karakter untuk visibilitas pencarian optimal.",
+                    "Sapa pembaca secara langsung dengan \"Anda\" atau \"Kamu\"."
+                ]
+            },
+            "score": {
+                "title": "Skor Judul",
+                "good": "Kerja bagus! Judul ini kemungkinan akan berkinerja baik.",
+                "bad": "Judul ini butuh perbaikan. Coba tambahkan kata emosional atau power word.",
+                "empty": "Masukkan judul untuk melihat skor analisa Anda."
+            },
+            "stats": {
+                "common": "Kata Umum",
+                "uncommon": "Kata Jarang",
+                "emotional": "Emosional",
+                "power": "Kata Kuat (Power Words)",
+                "target": "Target: {{range}}",
+                "chars": "Jumlah Karakter"
+            }
         },
         "invoice-gen": {
             "title": "Pembuat Faktur",
-            "desc": "Buat faktur PDF profesional dan sederhana dalam hitungan detik."
+            "desc": "Buat faktur PDF profesional yang sederhana dalam hitungan detik.",
+            "download": "Unduh PDF",
+            "details": "Detail Faktur",
+            "invoiceNum": "No. Faktur",
+            "currency": "Mata Uang",
+            "date": "Tanggal",
+            "dueDate": "Jatuh Tempo",
+            "from": "Dari",
+            "to": "Kepada",
+            "items": "Item",
+            "addItem": "Tambah Item",
+            "taxRate": "Tarif Pajak (%)",
+            "discount": "Diskon (%)",
+            "notes": "Catatan",
+            "table": {
+                "desc": "Deskripsi",
+                "qty": "Jml",
+                "price": "Harga",
+                "total": "Total"
+            },
+            "subtotal": "Subtotal",
+            "tax": "Pajak",
+            "total": "Total",
+            "preview": "FAKTUR"
         },
         "tax-calc": {
             "title": "Kalkulator Pajak",
-            "desc": "Hitung PPN, PPh, dan pajak bisnis lainnya dengan cepat."
+            "desc": "Hitung PPN, PPh 23, dan pajak lainnya secara instan.",
+            "settings": "Pengaturan Pajak",
+            "taxType": "Jenis Pajak",
+            "type": {
+                "ppn": "PPN (11%)",
+                "pph23": "PPh 23 (2%)",
+                "custom": "Tarif Khusus"
+            },
+            "calcMode": "Mode Perhitungan",
+            "mode": {
+                "exclude": "Exclude (Tambah Pajak)",
+                "include": "Include (Ekstrak Pajak)"
+            },
+            "modeHelper": {
+                "exclude": "Pilih ini jika jumlahnya adalah harga dasar murni (DPP).",
+                "include": "Pilih ini jika jumlah masukan sudah termasuk pajak."
+            },
+            "amount": "Jumlah (Rp)",
+            "taxRate": "Tarif Pajak (%)",
+            "empty": "Masukkan jumlah untuk memverifikasi perhitungan.",
+            "result": {
+                "dpp": "Harga Dasar (DPP)",
+                "taxValue": "Nilai Pajak",
+                "total": "Jumlah Total"
+            },
+            "pphDisclaimer": "*Untuk PPh, ini biasanya dipotong langsung. Artinya Anda mungkin membayar/menerima Harga Dasar - Pajak."
         },
         "profit-calc": {
             "title": "Kalkulator Margin Keuntungan",
-            "desc": "Hitung margin dan markup Anda secara akurat."
+            "desc": "Hitung margin dan markup Anda secara akurat.",
+            "section": {
+                "input": "Nilai Input"
+            },
+            "action": {
+                "calculate": "Hitung",
+                "reset": "Atur Ulang"
+            },
+            "form": {
+                "cost": "Harga Pokok Penjualan ($)",
+                "revenue": "Harga Jual / Pendapatan ($)"
+            },
+            "result": {
+                "grossProfit": "Laba Kotor",
+                "margin": "Margin Kotor",
+                "markup": "Markup"
+            },
+            "explanation": {
+                "title": "Memahami Hasil",
+                "grossProfitLabel": "Laba Kotor:",
+                "grossProfitDesc": "Jumlah uang absolut yang Anda hasilkan (Pendapatan - Biaya).",
+                "marginLabel": "Margin Kotor:",
+                "marginDesc": "Persentase pendapatan yang merupakan keuntungan. Semakin tinggi margin semakin baik.",
+                "markupLabel": "Markup:",
+                "markupDesc": "Persentase yang Anda tambahkan ke biaya untuk mendapatkan harga jual."
+            }
         },
         "roi-calc": {
             "title": "Kalkulator ROI Investasi",
-            "desc": "Hitung Pengembalian Investasi dan potensi pertumbuhan keuntungan."
+            "desc": "Hitung Pengembalian Investasi dan potensi pertumbuhan keuntungan.",
+            "section": {
+                "input": "Detail Input"
+            },
+            "form": {
+                "investment": "Investasi Awal ($)",
+                "revenue": "Total Pendapatan/Nilai ($)",
+                "costs": "Biaya Tambahan ($)",
+                "time": "Periode Waktu (Tahun)"
+            },
+            "result": {
+                "roi": "Total ROI",
+                "annualized": "ROI Setahun",
+                "profit": "Laba Bersih"
+            },
+            "chart": {
+                "title": "Trajektori Pertumbuhan",
+                "yourInvestment": "Investasi Anda",
+                "benchmark": "Tolch Ukur 5%"
+            }
         },
         "discount-calc": {
             "title": "Kalkulator Diskon & Obral",
-            "desc": "Hitung harga akhir setelah diskon dan pajak penjualan."
+            "desc": "Hitung harga akhir setelah diskon dan pajak penjualan.",
+            "section": {
+                "price": "Rincian Harga"
+            },
+            "form": {
+                "original": "Harga Asli ($)",
+                "discounts": "Diskon (%)",
+                "addDiscount": "Tambah Diskon Lain (Bertumpuk)",
+                "tax": "Pajak Penjualan (%)"
+            },
+            "result": {
+                "final": "Harga Akhir",
+                "save": "Anda Hemat",
+                "original": "Asli",
+                "totalDiscount": "Total Diskon",
+                "tax": "Pajak",
+                "insight": "Tahukah Anda? Diskon ganda biasanya diterapkan secara berurutan (\"bertumpuk\") daripada dijumlahkan. Kalkulator ini menanganinya dengan benar!"
+            }
         },
         "compound-interest": {
             "title": "Kalkulator Bunga Majemuk",
-            "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk."
+            "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk.",
+            "section": {
+                "plan": "Rencana Investasi"
+            },
+            "form": {
+                "principal": "Setoran Awal ($)",
+                "monthly": "Kontribusi Bulanan ($)",
+                "rate": "Suku Bunga Tahunan (%)",
+                "years": "Periode Investasi (Tahun)"
+            },
+            "chart": {
+                "balance": "Total Saldo",
+                "interest": "Porsi Bunga"
+            },
+            "result": {
+                "futureValue": "Nilai Masa Depan",
+                "interest": "Total Bunga Diperoleh",
+                "insight": "Kekuatan Waktu: Perhatikan bagaimana kurva menjadi lebih curam seiring waktu? Itulah bunga majemuk yang bekerja. Uang Anda mulai menghasilkan uangnya sendiri!"
+            }
         },
         "biz-name-gen": {
             "title": "Pembuat Nama Bisnis",
-            "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya."
+            "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya.",
+            "section": {
+                "details": "Detail Brainstorming"
+            },
+            "form": {
+                "keyword": "Kata Kunci Utama",
+                "keywordPlaceholder": "contoh: Kopi, Kode, Desain",
+                "style": "Gaya Penamaan"
+            },
+            "style": {
+                "modern": "Modern",
+                "modernDesc": "Pendek, menarik",
+                "classic": "Klasik",
+                "classicDesc": "Profesional, terpercaya",
+                "tech": "Teknologi",
+                "techDesc": "Futuristik, geeky"
+            },
+            "action": {
+                "generate": "Hasilkan Ide"
+            },
+            "result": {
+                "empty": "Masukkan kata kunci dan tekan hasilkan untuk melihat keajaiban!"
+            }
         },
         "receipt-maker": {
-            "title": "Pembuat Kwitansi",
-            "desc": "Buat kwitansi digital sederhana untuk pelanggan Anda."
+            "title": "Pembuat Struk",
+            "desc": "Hasilkan struk digital sederhana untuk pelanggan Anda.",
+            "download": "Unduh Gambar",
+            "storeDetails": "Detail Toko",
+            "storeName": "Nama Toko",
+            "address": "Alamat",
+            "date": "Tanggal",
+            "time": "Waktu",
+            "items": "Item",
+            "addItem": "Tambah Item",
+            "taxRate": "Tarif Pajak (%)",
+            "currencySym": "Simbol Mata Uang",
+            "footer": "Pesan Kaki",
+            "preview": {
+                "item": "Item",
+                "price": "Harga",
+                "subtotal": "Subtotal",
+                "tax": "Pajak",
+                "total": "TOTAL"
+            }
+        },
+        "currency-conv": {
+            "title": "Konverter Mata Uang",
+            "desc": "Nilai tukar real-time untuk bisnis global.",
+            "amount": "Jumlah",
+            "convertedTo": "Dikonversi Ke",
+            "currentRate": "Nilai Tukar Saat Ini",
+            "updating": "Memperbarui...",
+            "didYouKnow": "Tahukah Anda?",
+            "didYouKnowDesc": "Nilai tukar berfluktuasi terus-menerus karena penawaran dan permintaan pasar global. Alat ini menggunakan data terbuka yang diperbarui setiap hari untuk memberikan nilai tengah pasar yang akurat.",
+            "popular": "Konversi Populer",
+            "ratesUpdated": "Nilai tukar diperbarui:"
         },
         "break-even-calc": {
             "title": "Kalkulator Titik Impas",
-            "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan."
+            "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan.",
+            "section": {
+                "analysis": "Analisa Biaya"
+            },
+            "form": {
+                "fixed": "Total Biaya Tetap ($)",
+                "fixedHint": "Sewa, gaji, asuransi (bulanan/tahunan)",
+                "variable": "Biaya Variabel PER UNIT ($)",
+                "variableHint": "Bahan, tenaga kerja, pengiriman",
+                "price": "Harga Jual PER UNIT ($)"
+            },
+            "error": {
+                "priceLow": "Harga Jual harus lebih tinggi dari Biaya Variabel!"
+            },
+            "result": {
+                "units": "Unit Titik Impas",
+                "unitsSub": "Unit untuk dijual",
+                "revenue": "Pendapatan Titik Impas",
+                "revenueSub": "Penjualan dibutuhkan"
+            },
+            "chart": {
+                "xAxis": "Unit Terjual",
+                "revenue": "Pendapatan",
+                "totalCost": "Total Biaya",
+                "fixedCost": "Biaya Tetap"
+            }
         },
         "salary-calc": {
-            "title": "Kalkulator Gaji Bersih",
-            "desc": "Hitung gaji bersih setelah pajak dan potongan."
+            "title": "Kalkulator Gaji (Indonesia)",
+            "desc": "Estimasi gaji bersih dan potongan PPh 21 (Aturan 2024).",
+            "employmentDetails": "Detail Pekerjaan",
+            "grossSalary": "Gaji Kotor Bulanan (Rp)",
+            "ptkpStatus": "Status PTKP",
+            "ptkp": {
+                "tk0": "TK/0 (Lajang, 0 Anak)",
+                "tk1": "TK/1 (Lajang, 1 Anak)",
+                "k0": "K/0 (Menikah, 0 Anak)",
+                "k1": "K/1 (Menikah, 1 Anak)",
+                "k2": "K/2 (Menikah, 2 Anak)",
+                "k3": "K/3 (Menikah, 3 Anak)"
+            },
+            "hasNPWP": "Memiliki NPWP",
+            "terInfo": "Kalkulator ini menggunakan aturan TER (Tarif Efektif Rata-rata) 2024 yang disederhanakan. Pajak aktual mungkin sedikit berbeda berdasarkan kebijakan perusahaan.",
+            "result": {
+                "takeHome": "Estimasi Gaji Bersih",
+                "perMonth": "per bulan"
+            },
+            "breakdown": "Rincian Potongan",
+            "deduction": {
+                "bpjsHealth": "BPJS Kesehatan (1%)",
+                "jht": "Jaminan Hari Tua (2%)",
+                "jp": "Jaminan Pensiun (1%)",
+                "pph21": "PPh 21 (Est. Pajak)"
+            },
+            "totalDeductions": "Total Potongan"
         },
         "unit-price-comp": {
             "title": "Perbandingan Harga Satuan",
-            "desc": "Temukan penawaran terbaik dengan membandingkan harga satuan."
+            "desc": "Temukan nilai terbaik antara dua pilihan produk.",
+            "itemA": "Item A",
+            "itemB": "Item B",
+            "price": "Harga",
+            "qty": "Kuantitas / Berat",
+            "unitPrice": "Harga Satuan",
+            "left": "Kiri",
+            "right": "Kanan",
+            "result": {
+                "cheaper": "{{winner}} Lebih Murah {{savings}}%!",
+                "tie": "Seimbang! Kedua pilihan menawarkan nilai yang sama."
+            }
         },
         "bookkeeping": {
             "title": "Pembukuan Sederhana",
-            "desc": "Lacak pemasukan dan pengeluaran harian Anda dengan mudah."
+            "desc": "Lacak pemasukan dan pengeluaran harian Anda dengan mudah.",
+            "actions": {
+                "download": "Ekspor CSV"
+            },
+            "stats": {
+                "income": "Total Pendapatan",
+                "expense": "Total Pengeluaran",
+                "balance": "Saldo Bersih"
+            },
+            "form": {
+                "title": "Tambah Transaksi",
+                "type": "Tipe",
+                "types": {
+                    "income": "Pendapatan",
+                    "expense": "Pengeluaran"
+                },
+                "date": "Tanggal",
+                "desc": "Deskripsi",
+                "descPlaceholder": "contoh: Proyek Freelance",
+                "amount": "Jumlah",
+                "add": "Tambah Entri"
+            },
+            "list": {
+                "title": "Transaksi Terbaru",
+                "items": "item",
+                "empty": "Belum ada transaksi. Tambahkan satu untuk memulai!"
+            }
         },
         "sales-script": {
             "title": "Pembuat Skrip Penjualan",
             "desc": "Buat skrip penjualan persuasif secara instan berdasarkan kerangka kerja.",
+            "page": {
+                "script_params": "Parameter Skrip",
+                "product_name": "Nama Produk / Perusahaan",
+                "product_placeholder": "mis. Indomie",
+                "target_audience": "Target Audiens",
+                "audience_placeholder": "mis. Manajer Pemasaran",
+                "pain_point": "Masalah Utama",
+                "pain_placeholder": "mis. prospek tidak terorganisir",
+                "benefit": "Manfaat Utama",
+                "benefit_placeholder": "mis. tutup kesepakatan 2x lebih cepat",
+                "select_framework": "Pilih Kerangka",
+                "generate_btn": "Buat Skrip",
+                "generated_title": "Skrip yang Dibuat",
+                "copy_btn": "Salin",
+                "copied_btn": "Disalin",
+                "empty_state": "Isi detail dan klik Buat untuk membuat skrip penjualan Anda"
+            },
             "frameworks": {
                 "cold_call": {
                     "name": "Cold Call",
@@ -255,6 +739,22 @@
         "cold-email": {
             "title": "Template Cold Email",
             "desc": "Template konversi tinggi untuk penjangkauan Anda.",
+            "page": {
+                "categories": {
+                    "all": "Semua",
+                    "intro": "Intro",
+                    "followup": "Tindak Lanjut",
+                    "reengagement": "Interaksi Ulang"
+                },
+                "search_placeholder": "Cari template...",
+                "no_results": "Tidak ada template ditemukan.",
+                "subject_label": "Baris Subjek",
+                "body_label": "Isi Email",
+                "copy_subject": "Salin Subjek",
+                "copy_body": "Salin Isi",
+                "copied": "Disalin!",
+                "close_btn": "Tutup"
+            },
             "templates": {
                 "quick_intro": {
                     "title": "Intro \"Pertanyaan Cepat\"",
@@ -300,19 +800,97 @@
         },
         "tz-converter": {
             "title": "Konverter Zona Waktu",
-            "desc": "Koordinasikan pertemuan di berbagai zona waktu."
+            "desc": "Koordinasikan pertemuan di berbagai zona waktu.",
+            "page": {
+                "local_time": "Waktu Lokal Saya",
+                "slider_label": "Slider Waktu",
+                "add_city_ph": "Tambah kota...",
+                "copy_btn": "Salin Waktu Rapat",
+                "copied": "Disalin!"
+            }
         },
         "meeting-agenda": {
             "title": "Pembuat Agenda Pertemuan",
-            "desc": "Rencanakan dan strukturkan pertemuan bisnis yang produktif."
+            "desc": "Rencanakan dan strukturkan pertemuan bisnis yang produktif.",
+            "page": {
+                "details_title": "Detail Pertemuan",
+                "meeting_title": "Judul Pertemuan",
+                "date": "Tanggal",
+                "time": "Waktu",
+                "attendees": "Peserta",
+                "attendees_placeholder": "mis. Budi, Sinta, Rudi",
+                "objective": "Tujuan",
+                "discussion_points": "Poin Diskusi",
+                "add_point_placeholder": "Tambah poin...",
+                "action_items": "Item Tindakan (Opsional)",
+                "add_item_placeholder": "Tambah item tindakan...",
+                "preview_title": "Pratinjau Agenda",
+                "copy_text": "Salin Teks",
+                "print_pdf": "Cetak / PDF"
+            },
+            "preview": {
+                "date_label": "Tanggal:",
+                "time_label": "Waktu:",
+                "attendees_title": "Peserta",
+                "objective_title": "Tujuan",
+                "no_objective": "Tidak ada tujuan ditentukan.",
+                "points_title": "Poin Diskusi",
+                "no_points": "Tidak ada poin diskusi ditambahkan.",
+                "actions_title": "Item Tindakan"
+            }
         },
         "price-quote": {
             "title": "Pembuat Penawaran Harga",
-            "desc": "Buat penawaran profesional untuk klien dengan cepat."
+            "desc": "Buat penawaran profesional untuk klien dengan cepat.",
+            "page": {
+                "editor_title": "Edit Detail Penawaran",
+                "quote_number": "No. Penawaran",
+                "currency": "Simbol Mata Uang",
+                "valid_until": "Berlaku Hingga",
+                "provider_info": "Info Penyedia",
+                "provider_name_ph": "Nama Perusahaan",
+                "provider_addr_ph": "Alamat",
+                "client_info": "Info Klien",
+                "client_name_ph": "Nama Klien",
+                "client_addr_ph": "Alamat",
+                "line_items": "Item Baris",
+                "item_desc_ph": "Deskripsi",
+                "item_qty_ph": "Jml",
+                "item_price_ph": "Harga",
+                "add_item": "Tambah Item",
+                "tax_rate": "Tarif Pajak (%)",
+                "notes": "Catatan",
+                "terms": "Ketentuan / Sangkalan",
+                "preview_title": "PENAWARAN HARGA",
+                "print_pdf": "Cetak / PDF"
+            },
+            "preview": {
+                "quoted_for": "Ditujukan Untuk",
+                "date": "Tanggal",
+                "valid_until": "Berlaku Hingga",
+                "th_desc": "Deskripsi",
+                "th_qty": "Jml",
+                "th_price": "Harga",
+                "th_amount": "Jumlah",
+                "subtotal": "Subtotal",
+                "tax": "Pajak",
+                "total": "Total",
+                "notes_title": "Catatan",
+                "terms_title": "Ketentuan"
+            }
         },
         "followup-calc": {
             "title": "Pengingat Tindak Lanjut",
             "desc": "Jadwalkan dan lacak waktu tindak lanjut klien Anda.",
+            "page": {
+                "settings_title": "Pengaturan",
+                "start_date": "Tanggal Mulai (Proposal Dikirim)",
+                "strategy_label": "Strategi",
+                "schedule_title": "Jadwal yang Dibuat",
+                "days_after": "hari setelah mulai",
+                "add_calendar": "Tambah ke Kalender",
+                "tip": "Tip: Sebagian besar penjualan membutuhkan 5-8 kontak. Jangan menyerah terlalu cepat! Unduh acara kalender untuk tetap di jalur."
+            },
             "strategies": {
                 "standard": {
                     "name": "Kadensi Penjualan Standar",
@@ -335,6 +913,20 @@
         "testimonial-maker": {
             "title": "Pembuat Kartu Testimoni",
             "desc": "Ubah umpan balik klien menjadi kartu visual yang indah.",
+            "page": {
+                "card_details": "Detail Kartu",
+                "theme_label": "Tema",
+                "data_label": "Data",
+                "client_name_ph": "Nama Klien",
+                "role_ph": "Peran / Perusahaan",
+                "quote_ph": "Teks testimoni...",
+                "rating_label": "Peringkat",
+                "photo_label": "Foto",
+                "change_photo": "Ganti Foto",
+                "upload_photo": "Unggah Foto Klien",
+                "preview_title": "Pratinjau",
+                "download_png": "Unduh PNG"
+            },
             "themes": {
                 "light": "Terang Bersih",
                 "dark": "Gelap Modern",
@@ -380,11 +972,42 @@
                     "learn_more": "Pelajari Lebih Lanjut",
                     "link_bio": "Link di Bio"
                 }
+            },
+            "page": {
+                "copied": "Disalin!",
+                "click_copy": "Klik untuk menyalin"
             }
         },
         "email-sig": {
             "title": "Pembuat Tanda Tangan Email",
-            "desc": "Buat tanda tangan email profesional dalam hitungan menit."
+            "desc": "Buat tanda tangan email profesional dalam hitungan menit.",
+            "page": {
+                "details_title": "Detail Anda",
+                "full_name": "Nama Lengkap",
+                "job_title": "Jabatan",
+                "email": "Email",
+                "phone": "Telepon",
+                "company": "Nama Perusahaan",
+                "website": "URL Website",
+                "address": "Alamat / Lokasi",
+                "social_title": "Link Sosial",
+                "linkedin": "URL LinkedIn",
+                "twitter": "URL Twitter / X",
+                "instagram": "URL Instagram",
+                "photo_title": "Foto / Logo",
+                "photo_url": "URL Gambar",
+                "photo_helper": "Tempel link langsung ke foto Anda (di-host di LinkedIn, GitHub, dll.)",
+                "style_title": "Gaya",
+                "primary_color": "Warna Utama",
+                "font_size": "Ukuran Font",
+                "preview_title": "Pratinjau Tanda Tangan",
+                "copy_html": "Salin HTML",
+                "copy_visual": "Salin Tanda Tangan",
+                "copied": "Disalin!",
+                "instruction_title": "Cara menggunakan:",
+                "instruction_gmail": "Gmail: Buka Setelan > Lihat semua setelan > Tanda tangan. Tempel di sana.",
+                "instruction_outlook": "Outlook: Buka Pengaturan > Mail > Tulis dan balas > Tanda tangan email. Tempel di sana."
+            }
         },
         "wa-direct": {
             "title": "Link Langsung WhatsApp",
@@ -408,6 +1031,14 @@
         "biz-card-mockup": {
             "title": "Mockup Kartu Nama",
             "desc": "Visualisasikan desain kartu nama Anda dalam mockup realistis.",
+            "page": {
+                "upload_title": "Unggah Desain",
+                "front_label": "Sisi Depan",
+                "back_label": "Sisi Belakang",
+                "scene_label": "Pilih Adegan",
+                "preview_title": "Pratinjau Mockup",
+                "download_btn": "Unduh"
+            },
             "scenes": {
                 "floating": "Mengambang 3D",
                 "stack": "Tumpukan",
@@ -416,11 +1047,47 @@
         },
         "qr-gen": {
             "title": "Pembuat Kode QR",
-            "desc": "Buat kode QR yang disesuaikan untuk tujuan apa pun."
+            "desc": "Buat kode QR yang disesuaikan untuk tujuan apa pun.",
+            "page": {
+                "settings_title": "Pengaturan QR",
+                "content_label": "Konten / URL",
+                "content_ph": "https://contoh.com atau teks biasa",
+                "color_label": "Warna",
+                "bg_color_label": "Latar Belakang",
+                "size_label": "Ukuran",
+                "logo_label": "Logo Tengah (Opsional)",
+                "upload_logo": "Unggah Logo",
+                "remove_logo": "Hapus Logo",
+                "preview_title": "Kode QR",
+                "download_png": "Unduh PNG",
+                "download_svg": "Unduh SVG"
+            }
         },
         "short-link": {
             "title": "Pelacak & Penyingkat Link",
-            "desc": "Buat URL yang dapat dilacak dan persiapkan untuk dibagikan."
+            "desc": "Buat URL yang dapat dilacak dan persiapkan untuk dibagikan.",
+            "page": {
+                "input_title": "Parameter URL",
+                "dest_url": "URL Tujuan",
+                "dest_ph": "https://contoh.com/halaman",
+                "clean_params": "Bersihkan parameter yang ada",
+                "utm_source": "Sumber Kampanye (utm_source)",
+                "source_ph": "google, newsletter",
+                "utm_medium": "Medium Kampanye (utm_medium)",
+                "medium_ph": "cpc, banner, email",
+                "utm_campaign": "Nama Kampanye (utm_campaign)",
+                "campaign_ph": "diskon_lebaran",
+                "utm_term": "Istilah (opsional)",
+                "term_ph": "sepatu+lari",
+                "utm_content": "Konten (opsional)",
+                "content_ph": "logolink, textlink",
+                "generated_title": "Link yang Dibuat",
+                "start_typing": "Mulai mengetik untuk membuat link...",
+                "copy_link": "Salin Link Pelacakan",
+                "copied_clipboard": "Disalin ke Clipboard!",
+                "copied": "Disalin!",
+                "shorten_service": "Pendekkan dengan layanan eksternal:"
+            }
         }
     }
 }

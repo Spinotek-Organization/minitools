@@ -74,12 +74,12 @@ export default function InvestmentRoi() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <Calculator size={20} className="text-yellow-600" />
-                            Input Details
+                            {t('tools.roi-calc.section.input')}
                         </h2>
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Initial Investment ($)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.roi-calc.form.investment')}</label>
                                 <input
                                     type="number"
                                     value={initialInvestment}
@@ -88,7 +88,7 @@ export default function InvestmentRoi() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Total Revenue/Value ($)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.roi-calc.form.revenue')}</label>
                                 <input
                                     type="number"
                                     value={revenue}
@@ -97,7 +97,7 @@ export default function InvestmentRoi() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Additional Costs ($)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.roi-calc.form.costs')}</label>
                                 <input
                                     type="number"
                                     value={costs}
@@ -106,7 +106,7 @@ export default function InvestmentRoi() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Time Period (Years)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.roi-calc.form.time')}</label>
                                 <input
                                     type="number"
                                     value={years}
@@ -123,19 +123,19 @@ export default function InvestmentRoi() {
                     {/* Summary Cards */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
-                            <div className="text-sm text-slate-500 mb-1">Total ROI</div>
+                            <div className="text-sm text-slate-500 mb-1">{t('tools.roi-calc.result.roi')}</div>
                             <div className={`text-2xl font-black ${result.roi >= 0 ? 'text-green-600' : 'text-red-500'}`}>
                                 {result.roi.toFixed(2)}%
                             </div>
                         </div>
                         <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
-                            <div className="text-sm text-slate-500 mb-1">Annualized ROI</div>
+                            <div className="text-sm text-slate-500 mb-1">{t('tools.roi-calc.result.annualized')}</div>
                             <div className={`text-2xl font-black ${result.annualizedRoi >= 0 ? 'text-blue-600' : 'text-red-500'}`}>
                                 {result.annualizedRoi.toFixed(2)}%
                             </div>
                         </div>
                          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
-                            <div className="text-sm text-slate-500 mb-1">Net Profit</div>
+                            <div className="text-sm text-slate-500 mb-1">{t('tools.roi-calc.result.profit')}</div>
                             <div className={`text-2xl font-black ${result.netProfit >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
                                 {formatCurrency(result.netProfit)}
                             </div>
@@ -144,7 +144,7 @@ export default function InvestmentRoi() {
 
                     {/* Chart */}
                     <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                         <h3 className="text-lg font-bold text-slate-900 mb-4">Growth Trajectory</h3>
+                         <h3 className="text-lg font-bold text-slate-900 mb-4">{t('tools.roi-calc.chart.title')}</h3>
                          <div className="h-80 w-full">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -162,8 +162,8 @@ export default function InvestmentRoi() {
                                         formatter={(value) => [formatCurrency(value), 'Value']}
                                     />
                                     <Legend />
-                                    <Line type="monotone" dataKey="investment" name="Your Investment" stroke="#ca8a04" strokeWidth={3} dot={{ r: 4, fill: '#ca8a04' }} activeDot={{ r: 6 }} />
-                                    <Line type="monotone" dataKey="baseline" name="5% Benchmark" stroke="#94a3b8" strokeWidth={2} strokeDasharray="5 5" dot={false} />
+                                    <Line type="monotone" dataKey="investment" name={t('tools.roi-calc.chart.yourInvestment')} stroke="#ca8a04" strokeWidth={3} dot={{ r: 4, fill: '#ca8a04' }} activeDot={{ r: 6 }} />
+                                    <Line type="monotone" dataKey="baseline" name={t('tools.roi-calc.chart.benchmark')} stroke="#94a3b8" strokeWidth={2} strokeDasharray="5 5" dot={false} />
                                 </LineChart>
                             </ResponsiveContainer>
                          </div>

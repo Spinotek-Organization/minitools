@@ -79,12 +79,12 @@ export default function TestimonialCard() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <RefreshCw size={20} className="text-pink-600" />
-                        Card Details
+                        {t('tools.testimonial-maker.page.card_details')}
                     </h2>
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Theme</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.testimonial-maker.page.theme_label')}</label>
                             <div className="grid grid-cols-2 gap-3">
                                 {THEMES.map(t => (
                                     <button
@@ -104,13 +104,13 @@ export default function TestimonialCard() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Data</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.testimonial-maker.page.data_label')}</label>
                              <input
                                 type="text"
                                 name="name"
                                 value={data.name}
                                 onChange={handleInputChange}
-                                placeholder="Client Name"
+                                placeholder={t('tools.testimonial-maker.page.client_name_ph')}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 mb-2 text-slate-900 outline-none focus:ring-2 focus:ring-pink-500"
                             />
                             <input
@@ -118,21 +118,21 @@ export default function TestimonialCard() {
                                 name="role"
                                 value={data.role}
                                 onChange={handleInputChange}
-                                placeholder="Role / Company"
+                                placeholder={t('tools.testimonial-maker.page.role_ph')}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 mb-2 text-slate-900 outline-none focus:ring-2 focus:ring-pink-500"
                             />
                             <textarea
                                 name="quote"
                                 value={data.quote}
                                 onChange={handleInputChange}
-                                placeholder="Testimonial text..."
+                                placeholder={t('tools.testimonial-maker.page.quote_ph')}
                                 rows={4}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-slate-900 outline-none focus:ring-2 focus:ring-pink-500 resize-none"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Rating</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.testimonial-maker.page.rating_label')}</label>
                             <div className="flex gap-2">
                                 {[1, 2, 3, 4, 5].map(star => (
                                     <button
@@ -149,7 +149,7 @@ export default function TestimonialCard() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Photo</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.testimonial-maker.page.photo_label')}</label>
                             <div className="relative">
                                 <input
                                     type="file"
@@ -163,7 +163,7 @@ export default function TestimonialCard() {
                                     className="flex items-center justify-center w-full p-4 border-2 border-dashed border-slate-300 rounded-xl cursor-pointer hover:border-pink-500 hover:bg-pink-50 transition-all text-slate-500 hover:text-pink-600 gap-2 font-medium"
                                 >
                                     <Upload size={20} />
-                                    {data.image ? 'Change Photo' : 'Upload Client Photo'}
+                                    {data.image ? t('tools.testimonial-maker.page.change_photo') : t('tools.testimonial-maker.page.upload_photo')}
                                 </label>
                             </div>
                         </div>
@@ -173,13 +173,13 @@ export default function TestimonialCard() {
                 {/* Preview */}
                 <div className="flex flex-col">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-lg font-bold text-slate-900">Preview</h2>
+                        <h2 className="text-lg font-bold text-slate-900">{t('tools.testimonial-maker.page.preview_title')}</h2>
                         <button
                             onClick={handleDownload}
                             className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center gap-2"
                         >
                             <Download size={18} />
-                            Download PNG
+                            {t('tools.testimonial-maker.page.download_png')}
                         </button>
                     </div>
 

@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Coins, Copy, Check, Repeat } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function NumberToWords() {
+    const { t } = useTranslation('tools');
     const [number, setNumber] = useState('');
     const [lang, setLang] = useState('en'); // 'en' or 'id'
     const [output, setOutput] = useState('');
@@ -137,10 +139,10 @@ export default function NumberToWords() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="num-to-words">
             <Helmet>
-                <title>Number to Words Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert numbers to written text in English and Indonesian (Terbilang)." />
+                <title>{t('num-to-words.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('num-to-words.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -149,8 +151,8 @@ export default function NumberToWords() {
                         <Coins size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Number to Words</h1>
-                        <p className="text-slate-500 text-sm">Convert numerical values into written text.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('num-to-words.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('num-to-words.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -159,12 +161,12 @@ export default function NumberToWords() {
                 {/* Input */}
                 <div className="space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Enter Number</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">{t('num-to-words.inputs.label')}</label>
                         <input
                             type="number"
                             value={number}
                             onChange={(e) => setNumber(e.target.value)}
-                            placeholder="12345"
+                            placeholder={t('num-to-words.inputs.placeholder')}
                             className="w-full text-4xl font-bold p-4 bg-slate-50 border-b-2 border-slate-200 outline-none focus:border-lime-500 text-slate-800 placeholder-slate-300 transition-colors"
                         />
                         
@@ -173,13 +175,13 @@ export default function NumberToWords() {
                                 onClick={() => setLang('en')}
                                 className={`flex-1 py-3 rounded-xl font-bold border transition-all ${lang === 'en' ? 'bg-lime-50 border-lime-500 text-lime-700' : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'}`}
                             >
-                                English
+                                {t('num-to-words.langs.en')}
                             </button>
                             <button
                                 onClick={() => setLang('id')}
                                 className={`flex-1 py-3 rounded-xl font-bold border transition-all ${lang === 'id' ? 'bg-lime-50 border-lime-500 text-lime-700' : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'}`}
                             >
-                                Indonesian
+                                {t('num-to-words.langs.id')}
                             </button>
                         </div>
 
@@ -189,7 +191,7 @@ export default function NumberToWords() {
                                     <div className={`w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${currencyMode ? 'translate-x-6' : 'translate-x-0'}`} />
                                 </div>
                                 <input type="checkbox" checked={currencyMode} onChange={() => setCurrencyMode(!currencyMode)} className="hidden" />
-                                Format as Currency
+                                {t('num-to-words.options.currency')}
                             </label>
                         </div>
                     </div>
@@ -197,7 +199,7 @@ export default function NumberToWords() {
 
                 {/* Output */}
                 <div className="flex flex-col h-full bg-lime-50 border border-lime-100 p-8 rounded-3xl justify-center relative">
-                     <h3 className="text-sm font-bold text-lime-800 uppercase tracking-widest mb-4">Result</h3>
+                     <h3 className="text-sm font-bold text-lime-800 uppercase tracking-widest mb-4">{t('num-to-words.outputs.label')}</h3>
                      
                      <div className="text-2xl md:text-3xl font-serif text-slate-800 leading-relaxed min-h-[100px] break-words">
                         {output || <span className="text-slate-400 italic">...</span>}

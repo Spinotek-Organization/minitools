@@ -57,7 +57,12 @@ export default function Bookkeeping() {
     };
 
     const downloadCSV = () => {
-        const headers = ["Date", "Type", "Description", "Amount"];
+        const headers = [
+            t('tools.bookkeeping.form.date'),
+            t('tools.bookkeeping.form.type'),
+            t('tools.bookkeeping.form.desc'),
+            t('tools.bookkeeping.form.amount')
+        ];
         const rows = transactions.map(t => [t.date, t.type, t.desc, t.amount]);
         
         const csvContent = "data:text/csv;charset=utf-8," 
@@ -104,21 +109,21 @@ export default function Bookkeeping() {
                 <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-3xl">
                     <div className="flex items-center gap-2 text-emerald-600 mb-2">
                         <TrendingUp size={20} />
-                        <span className="font-bold text-sm uppercase">Total Income</span>
+                        <span className="font-bold text-sm uppercase">{t('tools.bookkeeping.stats.income')}</span>
                     </div>
                     <div className="text-3xl font-black text-emerald-700">{formatCurrency(totals.income)}</div>
                 </div>
                 <div className="bg-rose-50 border border-rose-100 p-6 rounded-3xl">
                     <div className="flex items-center gap-2 text-rose-600 mb-2">
                         <TrendingDown size={20} />
-                        <span className="font-bold text-sm uppercase">Total Expense</span>
+                        <span className="font-bold text-sm uppercase">{t('tools.bookkeeping.stats.expense')}</span>
                     </div>
                     <div className="text-3xl font-black text-rose-700">{formatCurrency(totals.expense)}</div>
                 </div>
                 <div className="bg-violet-600 text-white p-6 rounded-3xl shadow-lg shadow-violet-200">
                     <div className="flex items-center gap-2 text-violet-200 mb-2">
                         <BookOpen size={20} />
-                        <span className="font-bold text-sm uppercase">Net Balance</span>
+                        <span className="font-bold text-sm uppercase">{t('tools.bookkeeping.stats.balance')}</span>
                     </div>
                     <div className="text-3xl font-black">{formatCurrency(totals.balance)}</div>
                 </div>
@@ -130,30 +135,30 @@ export default function Bookkeeping() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm sticky top-6">
                         <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <Plus size={20} className="text-violet-600" />
-                            Add Transaction
+                            {t('tools.bookkeeping.form.title')}
                         </h2>
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Type</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.bookkeeping.form.type')}</label>
                                 <div className="flex bg-slate-100 p-1 rounded-xl">
                                     <button
                                         onClick={() => setNewTrans({...newTrans, type: 'income'})}
                                         className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${newTrans.type === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-500'}`}
                                     >
-                                        Income
+                                        {t('tools.bookkeeping.form.types.income')}
                                     </button>
                                     <button
                                         onClick={() => setNewTrans({...newTrans, type: 'expense'})}
                                         className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${newTrans.type === 'expense' ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-500'}`}
                                     >
-                                        Expense
+                                        {t('tools.bookkeeping.form.types.expense')}
                                     </button>
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.bookkeeping.form.date')}</label>
                                 <input
                                     type="date"
                                     value={newTrans.date}
@@ -163,18 +168,18 @@ export default function Bookkeeping() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.bookkeeping.form.desc')}</label>
                                 <input
                                     type="text"
                                     value={newTrans.desc}
                                     onChange={(e) => setNewTrans({...newTrans, desc: e.target.value})}
-                                    placeholder="e.g. Freelance project"
+                                    placeholder={t('tools.bookkeeping.form.descPlaceholder')}
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 outline-none focus:ring-2 focus:ring-violet-500"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Amount</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.bookkeeping.form.amount')}</label>
                                 <input
                                     type="number"
                                     value={newTrans.amount}
@@ -189,7 +194,7 @@ export default function Bookkeeping() {
                                 onClick={addTransaction}
                                 className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 rounded-xl transition-colors shadow-lg shadow-violet-200"
                             >
-                                Add Entry
+                                {t('tools.bookkeeping.form.add')}
                             </button>
                         </div>
                     </div>
@@ -199,10 +204,10 @@ export default function Bookkeeping() {
                 <div className="lg:col-span-2">
                     <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
                         <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-                            <h2 className="text-lg font-bold text-slate-900">Recent Transactions</h2>
+                            <h2 className="text-lg font-bold text-slate-900">{t('tools.bookkeeping.list.title')}</h2>
                             {transactions.length > 0 && (
                                 <span className="text-xs font-medium text-slate-400 bg-slate-100 px-2 py-1 rounded-lg">
-                                    {transactions.length} items
+                                    {transactions.length} {t('tools.bookkeeping.list.items')}
                                 </span>
                             )}
                         </div>
@@ -210,7 +215,7 @@ export default function Bookkeeping() {
                         {transactions.length === 0 ? (
                             <div className="p-12 text-center text-slate-400">
                                 <BookOpen size={48} className="mx-auto mb-4 opacity-20" />
-                                <p>No transactions yet. Add one to get started!</p>
+                                <p>{t('tools.bookkeeping.list.empty')}</p>
                             </div>
                         ) : (
                             <div className="divide-y divide-slate-100">

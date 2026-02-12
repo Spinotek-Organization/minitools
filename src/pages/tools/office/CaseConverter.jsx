@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Type, Copy, RotateCcw, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function CaseConverter() {
+    const { t } = useTranslation('tools');
     const [text, setText] = useState('');
     const [stats, setStats] = useState({ words: 0, chars: 0 });
     const [copied, setCopied] = useState(false);
@@ -52,10 +54,10 @@ export default function CaseConverter() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="case-converter">
             <Helmet>
-                <title>Case Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case and more." />
+                <title>{t('case-converter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('case-converter.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
@@ -64,8 +66,8 @@ export default function CaseConverter() {
                         <Type size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Case Converter</h1>
-                        <p className="text-slate-500">Easily switch between different text case styles.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('case-converter.title')}</h1>
+                        <p className="text-slate-500">{t('case-converter.desc')}</p>
                     </div>
                 </div>
 
@@ -75,13 +77,13 @@ export default function CaseConverter() {
                     <div className="flex-1 flex flex-col border-r border-slate-100">
                         <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                                {stats.words} Words • {stats.chars} Characters
+                                {t('case-converter.stats.summary', { words: stats.words, chars: stats.chars })}
                             </div>
                             <div className="flex gap-2">
                                 <button
                                     onClick={() => setText('')}
                                     className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                    title="Clear Text"
+                                    title={t('case-converter.btns.clear')}
                                 >
                                     <RotateCcw size={16} />
                                 </button>
@@ -93,14 +95,14 @@ export default function CaseConverter() {
                                         }`}
                                 >
                                     {copied ? <Check size={14} /> : <Copy size={14} />}
-                                    {copied ? 'Copied' : 'Copy'}
+                                    {copied ? t('case-converter.btns.copied') : t('case-converter.btns.copy')}
                                 </button>
                             </div>
                         </div>
                         <textarea
                             value={text}
                             onChange={handleTextChange}
-                            placeholder="Type or paste your text here to convert..."
+                            placeholder={t('case-converter.labels.placeholder')}
                             className="flex-1 w-full p-8 resize-none outline-none text-slate-700 text-lg leading-relaxed font-normal bg-transparent focus:bg-slate-50/30 transition-colors"
                             spellCheck="false"
                         />
@@ -150,7 +152,7 @@ export default function CaseConverter() {
                                 }}
                                 className="text-xs text-slate-400 hover:text-purple-600 font-medium underline decoration-slate-300 hover:decoration-purple-300 underline-offset-4 transition-colors"
                             >
-                                Download as .txt
+                                {t('case-converter.btns.download')}
                             </button>
                         </div>
                     </div>

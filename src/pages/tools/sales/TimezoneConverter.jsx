@@ -41,7 +41,7 @@ export default function TimezoneConverter() {
             setLocations([{ 
                 id: 'local', 
                 timezone: userTz, 
-                label: 'My Local Time' 
+                label: t('tools.tz-converter.page.local_time') 
             }]);
             
             // Set slider to current time
@@ -171,7 +171,7 @@ export default function TimezoneConverter() {
                 {/* Controls */}
                 <div className="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-200">
                     <div className="flex justify-between items-end mb-4">
-                        <label className="text-sm font-bold text-slate-700">Time Slider</label>
+                        <label className="text-sm font-bold text-slate-700">{t('tools.tz-converter.page.slider_label')}</label>
                         <span className="text-2xl font-black text-orange-600 font-mono">
                             {formatTimeSlider(sliderValue)}
                         </span>
@@ -251,7 +251,7 @@ export default function TimezoneConverter() {
                             className="w-full md:w-64 appearance-none pl-10 pr-8 py-3 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl focus:ring-2 focus:ring-orange-500 outline-none cursor-pointer"
                             value=""
                         >
-                            <option value="" disabled>Add a city...</option>
+                            <option value="" disabled>{t('tools.tz-converter.page.add_city_ph')}</option>
                             {COMMON_TIMEZONES.map(tz => (
                                 <option key={tz.value} value={tz.value}>
                                     {tz.label}
@@ -270,7 +270,7 @@ export default function TimezoneConverter() {
                         }`}
                     >
                         {copied ? <Check size={18} /> : <Copy size={18} />}
-                        {copied ? 'Copied Meeting Time!' : 'Copy Meeting Time'}
+                        {copied ? t('tools.tz-converter.page.copied') : t('tools.tz-converter.page.copy_btn')}
                     </button>
                 </div>
             </div>

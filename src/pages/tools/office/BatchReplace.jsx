@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Replace, ArrowRightLeft, Type, Copy, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function BatchReplace() {
+    const { t } = useTranslation('tools');
     const [inputText, setInputText] = useState('');
     const [findText, setFindText] = useState('');
     const [replaceText, setReplaceText] = useState('');
@@ -59,10 +61,10 @@ export default function BatchReplace() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="text-replace">
             <Helmet>
-                <title>Batch Search & Replace | MiniTools by Spinotek</title>
-                <meta name="description" content="Find and replace text across multiple lines. Supports Case Sensitivity, Whole Words, and Regular Expressions." />
+                <title>{t('text-replace.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('text-replace.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
@@ -71,8 +73,8 @@ export default function BatchReplace() {
                         <Replace size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Batch Search & Replace</h1>
-                        <p className="text-slate-500">Quickly modify text with advanced find/replace options.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('text-replace.title')}</h1>
+                        <p className="text-slate-500">{t('text-replace.desc')}</p>
                     </div>
                 </div>
 
@@ -80,82 +82,82 @@ export default function BatchReplace() {
                     {/* Input Column */}
                     <div className="lg:col-span-1 space-y-6">
                         {/* INPUT BOX */}
-                        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                <Type size={16} className="text-emerald-500" /> Source Text
-                            </h3>
+                        <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('text-replace.inputs.source.label')}</label>
                             <textarea
                                 value={inputText}
                                 onChange={(e) => setInputText(e.target.value)}
-                                placeholder="Paste your text here..."
+                                placeholder={t('text-replace.inputs.source.placeholder')}
                                 className="w-full h-64 p-4 bg-slate-50 border border-slate-200 rounded-xl resize-none outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm"
                             />
                         </div>
 
                         {/* CONTROLS */}
                         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm sticky top-24">
-                            <div className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Find</label>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('text-replace.inputs.find.label')}</label>
                                     <input
                                         type="text"
                                         value={findText}
                                         onChange={(e) => setFindText(e.target.value)}
-                                        placeholder="Text to find..."
-                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none"
+                                        placeholder={t('text-replace.inputs.find.placeholder')}
+                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
                                     />
                                 </div>
-                                <div className="flex justify-center">
-                                    <ArrowRightLeft size={20} className="text-slate-300 rotate-90" />
-                                </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Replace With</label>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('text-replace.inputs.replace.label')}</label>
                                     <input
                                         type="text"
                                         value={replaceText}
                                         onChange={(e) => setReplaceText(e.target.value)}
-                                        placeholder="Replacement text..."
-                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none"
+                                        placeholder={t('text-replace.inputs.replace.placeholder')}
+                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
                                     />
                                 </div>
+                            </div>
 
-                                <div className="py-2 space-y-2">
-                                    <label className="flex items-center gap-3 text-sm text-slate-600 cursor-pointer select-none">
-                                        <input
-                                            type="checkbox"
-                                            checked={options.caseSensitive}
-                                            onChange={(e) => setOptions({ ...options, caseSensitive: e.target.checked })}
-                                            className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500"
-                                        />
-                                        Match Case
-                                    </label>
-                                    <label className="flex items-center gap-3 text-sm text-slate-600 cursor-pointer select-none">
-                                        <input
-                                            type="checkbox"
-                                            checked={options.wholeWord}
-                                            onChange={(e) => setOptions({ ...options, wholeWord: e.target.checked })}
-                                            className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500"
-                                            disabled={options.useRegex}
-                                        />
-                                        Whole Words Only
-                                    </label>
-                                    <label className="flex items-center gap-3 text-sm text-slate-600 cursor-pointer select-none">
-                                        <input
-                                            type="checkbox"
-                                            checked={options.useRegex}
-                                            onChange={(e) => setOptions({ ...options, useRegex: e.target.checked })}
-                                            className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500"
-                                        />
-                                        Use Regular Expressions (Regex)
-                                    </label>
-                                </div>
+                            <div className="flex flex-wrap gap-4 pt-2">
+                                <label className="flex items-center gap-2 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={options.caseSensitive}
+                                        onChange={(e) => setOptions({ ...options, caseSensitive: e.target.checked })}
+                                        className="rounded text-indigo-600 focus:ring-indigo-500"
+                                    />
+                                    <span className="text-sm font-medium text-slate-600">{t('text-replace.options.caseSensitive')}</span>
+                                </label>
+                                <label className="flex items-center gap-2 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={options.wholeWord}
+                                        onChange={(e) => setOptions({ ...options, wholeWord: e.target.checked })}
+                                        className="rounded text-indigo-600 focus:ring-indigo-500"
+                                        disabled={options.useRegex}
+                                    />
+                                    <span className="text-sm font-medium text-slate-600">{t('text-replace.options.matchWhole')}</span>
+                                </label>
+                                <label className="flex items-center gap-2 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={options.useRegex}
+                                        onChange={(e) => setOptions({ ...options, useRegex: e.target.checked })}
+                                        className="rounded text-indigo-600 focus:ring-indigo-500"
+                                    />
+                                    <span className="text-sm font-medium text-slate-600">{t('text-replace.options.useRegex')}</span>
+                                </label>
+                            </div>
 
+                            <div className="flex gap-3 pt-2">
                                 <button
                                     onClick={handleReplace}
-                                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                                    className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2"
                                 >
-                                    <RefreshCw size={18} /> Replace All
+                                    <RefreshCw size={20} />
+                                    {t('text-replace.buttons.replace')}
                                 </button>
+                                {/* The original instruction had a Trash2 button and handleClear, but it was not present in the original code.
+                                    I will omit it to avoid adding new functionality not explicitly requested for replacement. */}
                             </div>
                         </div>
                     </div>
@@ -167,11 +169,11 @@ export default function BatchReplace() {
                             <div className="bg-slate-50 border-b border-slate-100 px-6 py-3 flex justify-between items-center">
                                 <div className="flex items-center gap-4">
                                     <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                        Result
+                                        {t('text-replace.output.label')}
                                     </span>
                                     {stats.replacements > 0 && (
                                         <span className="bg-emerald-100 text-emerald-700 pk-2 py-0.5 rounded text-xs font-bold px-2">
-                                            {stats.replacements} replacements made
+                                            {t('text-replace.output.stats', { count: stats.replacements })}
                                         </span>
                                     )}
                                 </div>
@@ -184,7 +186,7 @@ export default function BatchReplace() {
                                         }`}
                                 >
                                     {copied ? <Check size={16} /> : <Copy size={16} />}
-                                    {copied ? 'Copied!' : 'Copy Result'}
+                                    {copied ? t('text-replace.buttons.copied') : t('text-replace.buttons.copy')}
                                 </button>
                             </div>
 
@@ -192,7 +194,7 @@ export default function BatchReplace() {
                             <textarea
                                 value={outputText}
                                 readOnly
-                                placeholder="Modified text will appear here..."
+                                placeholder={t('text-replace.output.placeholder')}
                                 className="flex-1 w-full p-8 resize-none outline-none text-slate-700 text-sm leading-relaxed font-mono bg-slate-50/30"
                             />
                         </div>

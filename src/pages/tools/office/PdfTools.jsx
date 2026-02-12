@@ -4,8 +4,10 @@ import { FilePlus2, Split, Merge, Upload, Download, Trash2, ArrowUp, ArrowDown, 
 import { PDFDocument } from 'pdf-lib';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function PdfTools() {
+    const { t } = useTranslation('tools');
     const [mode, setMode] = useState('merge'); // 'merge' or 'split'
     const [files, setFiles] = useState([]);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -57,7 +59,7 @@ export default function PdfTools() {
             downloadPdf(pdfBytes, 'merged_document.pdf');
         } catch (error) {
             console.error(error);
-            alert('Failed to merge PDFs. One of the files might be corrupted or password protected.');
+            alert(t('pdf-merge.alerts.mergeError'));
         }
         setIsProcessing(false);
     };
@@ -91,7 +93,7 @@ export default function PdfTools() {
 
         } catch (error) {
             console.error(error);
-            alert('Failed to split PDF. It might be corrupted or protected.');
+            alert(t('pdf-merge.alerts.splitError'));
         }
         setIsProcessing(false);
     }
@@ -105,10 +107,10 @@ export default function PdfTools() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="pdf-merge">
             <Helmet>
-                <title>PDF Merge/Split | MiniTools by Spinotek</title>
-                <meta name="description" content="Combine multiple PDFs or extract pages into new files within your browser." />
+                <title>{t('pdf-merge.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('pdf-merge.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -117,8 +119,8 @@ export default function PdfTools() {
                         <FilePlus2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">PDF Tools</h1>
-                        <p className="text-slate-500 text-sm">Securely merge or split PDF files entirely offline.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('pdf-merge.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('pdf-merge.desc')}</p>
                     </div>
                 </div>
 
@@ -127,13 +129,13 @@ export default function PdfTools() {
                         onClick={() => { setMode('merge'); setFiles([]); setSplitFile(null); }}
                         className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${mode === 'merge' ? 'bg-white shadow-sm text-red-600' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        <Merge size={16} /> Merge
+                        <Merge size={16} /> {t('pdf-merge.actions.merge')}
                     </button>
                     <button
                         onClick={() => { setMode('split'); setFiles([]); setSplitFile(null); }}
                         className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${mode === 'split' ? 'bg-white shadow-sm text-red-600' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        <Split size={16} /> Split
+                        <Split size={16} /> {t('pdf-merge.actions.split')}
                     </button>
                 </div>
             </div>
@@ -156,15 +158,15 @@ export default function PdfTools() {
                                 <div className="p-4 bg-white rounded-full shadow-md mb-4 text-red-500 group-hover:scale-110 transition-transform">
                                     <Upload size={24} />
                                 </div>
-                                <h3 className="font-bold text-slate-700">Drop PDF files here</h3>
-                                <p className="text-sm text-slate-400 mt-1">or click to browse</p>
+                                <h3 className="font-bold text-slate-700">{t('pdf-merge.dropzone.title')}</h3>
+                                <p className="text-sm text-slate-400 mt-1">{t('pdf-merge.dropzone.subtitle')}</p>
                             </div>
 
                             {files.length > 0 && (
                                 <div className="mt-8 text-left">
                                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-4 flex justify-between">
-                                        <span>Files to Merge ({files.length})</span>
-                                        <button onClick={() => setFiles([])} className="text-red-500 hover:underline">Clear All</button>
+                                        <span>{t('pdf-merge.fileList.title')} ({files.length})</span>
+                                        <button onClick={() => setFiles([])} className="text-red-500 hover:underline">{t('pdf-merge.fileList.clear')}</button>
                                     </h4>
                                     <div className="space-y-3">
                                         {files.map((file, i) => (
@@ -190,7 +192,7 @@ export default function PdfTools() {
                                         disabled={files.length < 2 || isProcessing}
                                         className="mt-6 w-full py-4 bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg shadow-red-200 transition-all flex items-center justify-center gap-2"
                                     >
-                                        {isProcessing ? 'Processing...' : `Merge ${files.length} Files`}
+                                        {isProcessing ? t('pdf-merge.buttons.processing') : t('pdf-merge.buttons.merge', { count: files.length })}
                                         {!isProcessing && <Merge size={20} />}
                                     </button>
                                 </div>
@@ -212,8 +214,8 @@ export default function PdfTools() {
                                     <div className="p-4 bg-white rounded-full shadow-md mb-4 text-red-500 group-hover:scale-110 transition-transform">
                                         <Upload size={24} />
                                     </div>
-                                    <h3 className="font-bold text-slate-700">Select a PDF to Split</h3>
-                                    <p className="text-sm text-slate-400 mt-1">Click to browse your files</p>
+                                    <h3 className="font-bold text-slate-700">{t('pdf-merge.dropzone.splitTitle')}</h3>
+                                    <p className="text-sm text-slate-400 mt-1">{t('pdf-merge.dropzone.splitSubtitle')}</p>
                                 </div>
                             ) : (
                                 <div className="text-left">
@@ -227,14 +229,14 @@ export default function PdfTools() {
                                                 <div className="text-xs text-slate-500">{(splitFile.size / 1024 / 1024).toFixed(2)} MB</div>
                                             </div>
                                         </div>
-                                        <button onClick={() => setSplitFile(null)} className="text-slate-400 hover:text-red-500 font-bold text-sm">Change File</button>
+                                        <button onClick={() => setSplitFile(null)} className="text-slate-400 hover:text-red-500 font-bold text-sm">{t('pdf-merge.fileList.change')}</button>
                                     </div>
 
                                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                                        <h3 className="font-bold text-slate-800 mb-4">Extract Pages</h3>
+                                        <h3 className="font-bold text-slate-800 mb-4">{t('pdf-merge.split.sectionTitle')}</h3>
                                         <div className="flex items-center gap-4">
                                             <div className="flex-1">
-                                                <label className="block text-xs font-bold text-slate-500 mb-2">From Page</label>
+                                                <label className="block text-xs font-bold text-slate-500 mb-2">{t('pdf-merge.split.from')}</label>
                                                 <input 
                                                     type="number" 
                                                     min="1" 
@@ -243,9 +245,9 @@ export default function PdfTools() {
                                                     className="w-full px-4 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none font-bold text-center"
                                                 />
                                             </div>
-                                            <div className="pt-6 font-bold text-slate-300">TO</div>
+                                            <div className="pt-6 font-bold text-slate-300">{t('pdf-merge.split.separator')}</div>
                                             <div className="flex-1">
-                                                <label className="block text-xs font-bold text-slate-500 mb-2">To Page</label>
+                                                <label className="block text-xs font-bold text-slate-500 mb-2">{t('pdf-merge.split.to')}</label>
                                                 <input 
                                                     type="number" 
                                                     min="1" 
@@ -262,7 +264,7 @@ export default function PdfTools() {
                                         disabled={isProcessing}
                                         className="mt-6 w-full py-4 bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg shadow-red-200 transition-all flex items-center justify-center gap-2"
                                     >
-                                        {isProcessing ? 'Processing...' : 'Download Selected Pages'}
+                                        {isProcessing ? t('pdf-merge.buttons.processing') : t('pdf-merge.buttons.download')}
                                         {!isProcessing && <Download size={20} />}
                                     </button>
                                 </div>
@@ -274,27 +276,27 @@ export default function PdfTools() {
                 {/* Sidebar Info */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
-                        <h3 className="font-bold text-slate-900 mb-4">How it works</h3>
+                        <h3 className="font-bold text-slate-900 mb-4">{t('pdf-merge.howItWorks.title')}</h3>
                         <ul className="space-y-3 text-sm text-slate-600">
                             <li className="flex gap-2">
                                 <span className="bg-red-100 text-red-600 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
                                 <div>
-                                    <strong className="block text-slate-800">100% Client-Side</strong>
-                                    Your files never leave your device. All processing happens in your browser.
+                                    <strong className="block text-slate-800">{t('pdf-merge.howItWorks.items.clientSide.title')}</strong>
+                                    {t('pdf-merge.howItWorks.items.clientSide.desc')}
                                 </div>
                             </li>
                              <li className="flex gap-2">
                                 <span className="bg-red-100 text-red-600 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
                                 <div>
-                                    <strong className="block text-slate-800">Merge Order</strong>
-                                    Use the arrows to reorder standard PDF files before merging.
+                                    <strong className="block text-slate-800">{t('pdf-merge.howItWorks.items.mergeOrder.title')}</strong>
+                                    {t('pdf-merge.howItWorks.items.mergeOrder.desc')}
                                 </div>
                             </li>
                              <li className="flex gap-2">
                                 <span className="bg-red-100 text-red-600 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
                                 <div>
-                                    <strong className="block text-slate-800">Split Range</strong>
-                                    Extract a continuous range of pages (e.g., 3-5) into a new document.
+                                    <strong className="block text-slate-800">{t('pdf-merge.howItWorks.items.splitRange.title')}</strong>
+                                    {t('pdf-merge.howItWorks.items.splitRange.desc')}
                                 </div>
                             </li>
                         </ul>

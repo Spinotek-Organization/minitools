@@ -76,12 +76,12 @@ export default function DiscountCalculator() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
                     <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <Percent size={20} className="text-rose-600" />
-                        Price Details
+                        {t('tools.discount-calc.section.price')}
                     </h2>
                     
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Original Price ($)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.discount-calc.form.original')}</label>
                             <input
                                 type="number"
                                 value={originalPrice}
@@ -91,7 +91,7 @@ export default function DiscountCalculator() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Discounts (%)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.discount-calc.form.discounts')}</label>
                             <div className="space-y-3">
                                 {discounts.map((discount, index) => (
                                     <div key={discount.id} className="flex gap-2 items-center">
@@ -114,12 +114,12 @@ export default function DiscountCalculator() {
                                 ))}
                             </div>
                             <button onClick={addDiscount} className="mt-3 text-sm font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1 transition-colors">
-                                <Plus size={16} /> Add Another Discount (Stack)
+                                <Plus size={16} /> {t('tools.discount-calc.form.addDiscount')}
                             </button>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Sales Tax (%)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.discount-calc.form.tax')}</label>
                             <input
                                 type="number"
                                 value={taxRate}
@@ -133,17 +133,17 @@ export default function DiscountCalculator() {
                 {/* Result */}
                 <div className="flex flex-col gap-6">
                     <div className="bg-rose-600 text-white rounded-3xl p-8 shadow-lg shadow-rose-200">
-                        <div className="text-rose-100 font-bold uppercase tracking-wider text-sm mb-1">Final Price</div>
+                        <div className="text-rose-100 font-bold uppercase tracking-wider text-sm mb-1">{t('tools.discount-calc.result.final')}</div>
                         <div className="text-5xl font-black mb-4">
                             {formatCurrency(result.finalPrice)}
                         </div>
                         <div className="flex justify-between items-end border-t border-rose-400/30 pt-4">
                             <div>
-                                <div className="text-rose-100 text-sm mb-1">You Save</div>
+                                <div className="text-rose-100 text-sm mb-1">{t('tools.discount-calc.result.save')}</div>
                                 <div className="text-2xl font-bold">{formatCurrency(result.totalSaved)}</div>
                             </div>
                              <div className="text-right">
-                                <div className="text-rose-100 text-sm mb-1">Original</div>
+                                <div className="text-rose-100 text-sm mb-1">{t('tools.discount-calc.result.original')}</div>
                                 <div className="text-xl font-medium line-through decoration-rose-300/70 opacity-80">{formatCurrency(originalPrice)}</div>
                             </div>
                         </div>
@@ -151,21 +151,21 @@ export default function DiscountCalculator() {
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         <div className="flex justify-between mb-2 pb-2 border-b border-slate-50">
-                            <span className="text-slate-500">Original Price</span>
+                            <span className="text-slate-500">{t('tools.discount-calc.form.original')}</span>
                             <span className="font-medium text-slate-900">{formatCurrency(originalPrice)}</span>
                         </div>
                          <div className="flex justify-between mb-2 pb-2 border-b border-slate-50">
-                            <span className="text-slate-500">Total Discount</span>
+                            <span className="text-slate-500">{t('tools.discount-calc.result.totalDiscount')}</span>
                             <span className="font-bold text-emerald-500">-{formatCurrency(result.totalSaved)}</span>
                         </div>
                          <div className="flex justify-between mb-2">
-                             <span className="text-slate-500">Tax ({taxRate}%)</span>
+                             <span className="text-slate-500">{t('tools.discount-calc.result.tax')} ({taxRate}%)</span>
                             <span className="font-medium text-slate-900">+{formatCurrency(result.taxPayload)}</span>
                         </div>
                     </div>
                     
                     <div className="bg-blue-50 text-blue-800 p-4 rounded-2xl text-sm border border-blue-100">
-                        <strong>Did you know?</strong> Multiple discounts are usually applied sequentially ("stacked") rather than added together. This calculator handles that correctly!
+                        {t('tools.discount-calc.result.insight')}
                     </div>
                 </div>
             </div>

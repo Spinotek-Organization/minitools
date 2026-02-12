@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Coins, ArrowRightLeft, RefreshCw, TrendingUp } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 const COMMON_CURRENCIES = [
     { code: 'USD', name: 'US Dollar', flag: '🇺🇸' },
@@ -20,6 +21,7 @@ const COMMON_CURRENCIES = [
 ];
 
 export default function CurrencyConverter() {
+    const { t } = useTranslation();
     const [amount, setAmount] = useState(1);
     const [fromCurrency, setFromCurrency] = useState('USD');
     const [toCurrency, setToCurrency] = useState('IDR');
@@ -78,8 +80,8 @@ export default function CurrencyConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Currency Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Real-time exchange rates for global business." />
+                <title>{t('tools.currency-conv.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.currency-conv.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -88,14 +90,14 @@ export default function CurrencyConverter() {
                         <Coins size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Currency Converter</h1>
-                        <p className="text-slate-500 text-sm">Real-time exchange rates for global business.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.currency-conv.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.currency-conv.desc')}</p>
                     </div>
                 </div>
                 {lastUpdated && (
                     <div className="text-xs text-slate-400 bg-slate-100 px-3 py-1 rounded-full flex items-center gap-1">
                         <RefreshCw size={12} />
-                        Rates updated: {lastUpdated}
+                        {t('tools.currency-conv.ratesUpdated')} {lastUpdated}
                     </div>
                 )}
             </div>
@@ -106,7 +108,7 @@ export default function CurrencyConverter() {
                     <div className="flex flex-col gap-6">
                         {/* From Section */}
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-slate-500 uppercase">Amount</label>
+                            <label className="text-sm font-bold text-slate-500 uppercase">{t('tools.currency-conv.amount')}</label>
                             <div className="flex gap-4">
                                 <input
                                     type="number"
@@ -144,11 +146,11 @@ export default function CurrencyConverter() {
 
                         {/* To Section */}
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-slate-500 uppercase">Converted To</label>
+                            <label className="text-sm font-bold text-slate-500 uppercase">{t('tools.currency-conv.convertedTo')}</label>
                             <div className="flex gap-4">
                                 <div className="flex-1 bg-yellow-50 border border-yellow-100 rounded-2xl px-6 py-4 flex items-center overflow-x-auto">
                                    <span className="text-3xl font-black text-slate-900 whitespace-nowrap">
-                                        {loading ? <span className="text-sm text-slate-400 font-normal">Updating...</span> : formatCurrency(convertedAmount, toCurrency)}
+                                        {loading ? <span className="text-sm text-slate-400 font-normal">{t('tools.currency-conv.updating')}</span> : formatCurrency(convertedAmount, toCurrency)}
                                    </span>
                                 </div>
                                 <div className="relative w-32 md:w-40">
@@ -171,7 +173,7 @@ export default function CurrencyConverter() {
                         </div>
 
                         <div className="bg-slate-50 rounded-xl p-4 text-center">
-                            <div className="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Current Rate</div>
+                            <div className="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">{t('tools.currency-conv.currentRate')}</div>
                             <div className="text-lg font-medium text-slate-700">
                                 1 {fromCurrency} = <span className="text-slate-900 font-bold">{exchangeRate ? exchangeRate.toFixed(4) : '...'}</span> {toCurrency}
                             </div>
@@ -187,16 +189,16 @@ export default function CurrencyConverter() {
                                 <TrendingUp size={24} />
                             </div>
                             <div>
-                                <h3 className="font-bold text-slate-900 text-lg mb-2">Did you know?</h3>
+                                <h3 className="font-bold text-slate-900 text-lg mb-2">{t('tools.currency-conv.didYouKnow')}</h3>
                                 <p className="text-slate-600 text-sm leading-relaxed">
-                                    Exchange rates fluctuate constantly due to global market supply and demand. This tool uses open data updated daily to give you accurate mid-market rates.
+                                    {t('tools.currency-conv.didYouKnowDesc')}
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-white border border-slate-100 p-6 rounded-3xl shadow-sm">
-                        <h3 className="font-bold text-slate-900 mb-4">Popular Conversions</h3>
+                        <h3 className="font-bold text-slate-900 mb-4">{t('tools.currency-conv.popular')}</h3>
                         <div className="space-y-3">
                             <div className="flex justify-between items-center text-sm border-b border-slate-50 pb-2">
                                 <span className="text-slate-500">1 USD to IDR</span>

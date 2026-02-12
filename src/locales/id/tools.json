@@ -49,51 +49,253 @@
     },
     "utm-builder": {
         "title": "Pembuat Link UTM",
-        "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda."
+        "desc": "Buat link pelacakan UTM dengan mudah untuk kampanye Anda.",
+        "form": {
+            "title": "Detail Kampanye",
+            "url": "URL Website",
+            "source": "Sumber Kampanye",
+            "medium": "Medium Kampanye",
+            "name": "Nama Kampanye",
+            "term": "Term Kampanye (Opsional)",
+            "content": "Konten Kampanye (Opsional)"
+        },
+        "output": {
+            "title": "URL yang Dibuat",
+            "placeholder": "Isi kolom yang diperlukan untuk membuat link Anda...",
+            "test": "Tes Link",
+            "copy": "Salin URL",
+            "copied": "Disalin!"
+        },
+        "guide": {
+            "title": "Panduan Parameter",
+            "source": "Perujuk (contoh: google, newsletter)",
+            "medium": "Medium pemasaran (contoh: cpc, banner, email)",
+            "campaign": "Produk, kode promo, atau slogan"
+        }
     },
     "serp-preview": {
         "title": "Pratinjau Google SERP",
-        "desc": "Visualisasikan bagaimana situs web Anda muncul di hasil pencarian Google."
+        "desc": "Visualisasikan tampilan website Anda di hasil pencarian Google.",
+        "view": {
+            "desktop": "Desktop",
+            "mobile": "Seluler"
+        },
+        "form": {
+            "title": "Judul SEO",
+            "titleTruncated": "Judul kemungkinan akan terpotong.",
+            "desc": "Deskripsi Meta",
+            "descTruncated": "Deskripsi kemungkinan akan terpotong.",
+            "domain": "Domain",
+            "path": "Path URL"
+        }
     },
     "meta-gen": {
-        "title": "Generator Tag Meta",
-        "desc": "Buat tag meta yang dioptimalkan SEO untuk situs web Anda."
+        "title": "Generator Meta Tag",
+        "desc": "Buat meta tag yang dioptimalkan untuk SEO website Anda.",
+        "form": {
+            "title": "Informasi Situs",
+            "pageTitle": "Judul Halaman",
+            "pageTitlePlaceholder": "contoh: Website Keren Saya",
+            "description": "Deskripsi",
+            "descriptionPlaceholder": "Deskripsi singkat halaman Anda...",
+            "keywords": "Kata Kunci",
+            "keywordsPlaceholder": "kata, kunci, dipisahkan, koma",
+            "author": "Penulis",
+            "authorPlaceholder": "John Doe",
+            "robots": "Robots",
+            "charset": "Charset"
+        },
+        "output": {
+            "title": "HTML yang Dibuat",
+            "copy": "Salin Kode",
+            "copied": "Disalin"
+        }
     },
     "robots-gen": {
         "title": "Generator Robots.txt",
-        "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO."
+        "desc": "Buat file robots.txt yang diformat dengan benar untuk SEO.",
+        "rules": {
+            "title": "Aturan User Agent",
+            "add": "Tambah Bot",
+            "agent": "User Agent",
+            "allow": "Izinkan (Allow)",
+            "disallow": "Larang (Disallow)",
+            "hint": "Pisahkan beberapa path dengan koma."
+        },
+        "sitemap": {
+            "title": "Sitemap & Ekstra",
+            "urls": "URL Sitemap",
+            "add": "Tambah Sitemap",
+            "delay": "Jeda Crawl (Detik)",
+            "delayPlaceholder": "contoh: 10 (Opsional)"
+        },
+        "output": {
+            "copy": "Salin ke Clipboard",
+            "download": "Unduh File",
+            "preview": "Pratinjau robots.txt"
+        }
     },
     "social-mockup": {
-        "title": "Mockup Postingan Sosial",
-        "desc": "Pratinjau tampilan postingan Anda di LinkedIn, Twitter, dan Facebook."
+        "title": "Mockup Post Sosial",
+        "desc": "Pratinjau tampilan post Anda di LinkedIn, Twitter, dan Facebook.",
+        "platforms": {
+            "facebook": "Facebook",
+            "twitter": "Twitter",
+            "linkedin": "LinkedIn"
+        },
+        "form": {
+            "title": "Judul",
+            "description": "Deskripsi",
+            "image": "URL Gambar atau Upload",
+            "upload": "Upload Gambar",
+            "domain": "Domain"
+        },
+        "preview": {
+            "noImage": "Tidak Ada Gambar",
+            "promoted": "DIPROMOSIKAN"
+        }
     },
     "slug-gen": {
         "title": "Generator Slug",
-        "desc": "Konversi teks apa pun menjadi slug yang ramah URL."
+        "desc": "Ubah teks apa pun menjadi slug yang ramah URL.",
+        "input": {
+            "label": "Teks Input",
+            "placeholder": "Ketik judul Anda di sini..."
+        },
+        "options": {
+            "title": "Opsi",
+            "separator": "Pemisah",
+            "removeNumbers": "Hapus Angka",
+            "removeStop": "Hapus Kata Sambung (a, the, dan...)"
+        },
+        "output": {
+            "title": "Slug yang Dibuat",
+            "placeholder": "slug-anda-akan-muncul-di-sini",
+            "copy": "SALIN SLUG",
+            "copied": "DISALIN!"
+        }
     },
     "text-analyzer": {
-        "title": "Analisis Teks Artikel",
-        "desc": "Analisis jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda."
+        "title": "Analisa Teks Artikel",
+        "desc": "Analisa jumlah kata, kepadatan kata kunci, dan waktu baca teks Anda.",
+        "input": {
+            "label": "Draf Artikel Anda",
+            "placeholder": "Tempel konten Anda di sini untuk dianalisa...",
+            "stats": "{{count}} karakter"
+        },
+        "stats": {
+            "words": "Kata",
+            "chars": "Karakter",
+            "readTime": "Waktu Baca",
+            "speakTime": "Waktu Bicara"
+        },
+        "density": {
+            "title": "Kepadatan Kata Kunci",
+            "one": "Top 1-Kata",
+            "two": "Top 2-Kata",
+            "three": "Top 3-Kata",
+            "empty": "Belum ada data"
+        }
     },
     "tweet-counter": {
         "title": "Penghitung Thread Twitter/X",
-        "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda."
+        "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda.",
+        "input": {
+            "label": "Draf Konten",
+            "stats": "{{count}} karakter",
+            "placeholder": "Ketik thread panjang Anda di sini..."
+        },
+        "output": {
+            "title": "Pratinjau ({{count}} tweet)",
+            "placeholder": "Mulai mengetik untuk melihat pratinjau thread Anda di sini.",
+            "copy": "Salin",
+            "copied": "Disalin"
+        }
     },
     "link-cleaner": {
         "title": "Pembersih Link",
-        "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda."
+        "desc": "Hapus parameter pelacakan (UTM, FBCLID) dari URL Anda.",
+        "input": {
+            "label": "Tempel URL Kotor",
+            "placeholder": "https://example.com?utm_source=facebook&fbclid=IwAR2...",
+            "button": "Bersihkan URL"
+        },
+        "output": {
+            "removed": "Dihapus {{count}} parameter",
+            "title": "URL Bersih",
+            "placeholder": "URL bersih akan muncul di sini...",
+            "copy": "Salin Link Bersih",
+            "copied": "Disalin!",
+            "stripped": "Parameter yang Dibuang",
+            "invalid": "URL Tidak Valid"
+        }
     },
     "url-sitemap": {
-        "title": "Daftar URL ke Sitemap",
-        "desc": "Konversi daftar URL menjadi XML Sitemap yang diformat dengan benar."
+        "title": "List URL ke Sitemap",
+        "desc": "Ubah daftar URL menjadi XML Sitemap yang diformat dengan benar.",
+        "input": {
+            "label": "Daftar Halaman (Satu URL per baris)",
+            "clear": "Bersihkan"
+        },
+        "settings": {
+            "title": "Pengaturan Default",
+            "freq": "Frekuensi",
+            "priority": "Prioritas",
+            "lastmod": "Last Mod",
+            "generate": "Buat Sitemap"
+        },
+        "output": {
+            "copy": "Salin ke Clipboard",
+            "download": "Unduh File",
+            "title": "Output XML",
+            "placeholder": "<!-- Sitemap XML Anda akan muncul di sini -->"
+        }
     },
     "ad-counter": {
         "title": "Penghitung Karakter Iklan",
-        "desc": "Validasi batas karakter untuk Google dan Meta Ads."
+        "desc": "Validasi batas karakter untuk Google dan Meta Ads.",
+        "headlines": "Judul (30 karakter)",
+        "headline": "Judul {{index}}",
+        "descriptions": "Deskripsi (90 karakter)",
+        "description": "Deskripsi {{index}}",
+        "preview": {
+            "title": "Pratinjau Iklan",
+            "ad": "Iklan",
+            "tip": "Tip:",
+            "tipText": "Pastikan kata kunci ada di Judul 1 untuk Skor Kualitas yang lebih baik. Gunakan Huruf Kapital di Awal Kata."
+        }
     },
     "headline-analyzer": {
-        "title": "Analisis Judul",
-        "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik."
+        "title": "Penganalisa Judul",
+        "desc": "Tingkatkan judul Anda untuk CTR dan keterlibatan yang lebih baik.",
+        "input": {
+            "label": "Judul Anda",
+            "placeholder": "contoh: 10 Rahasia Mengembangkan Bisnis dengan Cepat",
+            "analyze": "Analisa Judul"
+        },
+        "tips": {
+            "title": "Tips untuk Judul Berkonversi Tinggi",
+            "list": [
+                "Gunakan angka (contoh: \"7 Cara...\", \"10 Tips...\")",
+                "Gunakan kata-kata emosional yang kuat (contoh: \"Luar Biasa\", \"Takut\")",
+                "Pertahankan antara 50-60 karakter untuk visibilitas pencarian optimal.",
+                "Sapa pembaca secara langsung dengan \"Anda\" atau \"Kamu\"."
+            ]
+        },
+        "score": {
+            "title": "Skor Judul",
+            "good": "Kerja bagus! Judul ini kemungkinan akan berkinerja baik.",
+            "bad": "Judul ini butuh perbaikan. Coba tambahkan kata emosional atau power word.",
+            "empty": "Masukkan judul untuk melihat skor analisa Anda."
+        },
+        "stats": {
+            "common": "Kata Umum",
+            "uncommon": "Kata Jarang",
+            "emotional": "Emosional",
+            "power": "Kata Kuat (Power Words)",
+            "target": "Target: {{range}}",
+            "chars": "Jumlah Karakter"
+        }
     },
     "invoice-gen": {
         "title": "Generator Faktur",
@@ -115,21 +317,9 @@
         "title": "Kalkulator Diskon",
         "desc": "Hitung harga akhir setelah diskon dan pajak penjualan."
     },
-    "compound-interest": {
-        "title": "Kalkulator Bunga Majemuk",
-        "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk."
-    },
-    "biz-name-gen": {
-        "title": "Generator Nama Bisnis",
-        "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya."
-    },
     "receipt-maker": {
         "title": "Pembuat Struk",
         "desc": "Buat struk digital sederhana untuk pelanggan Anda."
-    },
-    "break-even-calc": {
-        "title": "Kalkulator Titik Impas",
-        "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan."
     },
     "salary-calc": {
         "title": "Kalkulator Gaji Bersih",
@@ -141,7 +331,100 @@
     },
     "bookkeeping": {
         "title": "Alat Pembukuan Sederhana",
-        "desc": "Lacak pendapatan dan pengeluaran harian Anda dengan mudah."
+        "desc": "Lacak pendapatan dan pengeluaran harian Anda dengan mudah.",
+        "actions": {
+            "download": "Ekspor CSV"
+        },
+        "stats": {
+            "income": "Total Pendapatan",
+            "expense": "Total Pengeluaran",
+            "balance": "Saldo Bersih"
+        },
+        "form": {
+            "title": "Tambah Transaksi",
+            "type": "Tipe",
+            "types": {
+                "income": "Pendapatan",
+                "expense": "Pengeluaran"
+            },
+            "date": "Tanggal",
+            "desc": "Deskripsi",
+            "descPlaceholder": "contoh: Proyek Freelance",
+            "amount": "Jumlah",
+            "add": "Tambah Entri"
+        },
+        "list": {
+            "title": "Transaksi Terbaru",
+            "items": "item",
+            "empty": "Belum ada transaksi. Tambahkan satu untuk memulai!"
+        }
+    },
+    "break-even-calc": {
+        "title": "Kalkulator Titik Impas",
+        "desc": "Hitung kapan bisnis Anda akan mulai menghasilkan keuntungan.",
+        "section": {
+            "analysis": "Analisa Biaya"
+        },
+        "form": {
+            "fixed": "Total Biaya Tetap ($)",
+            "fixedHint": "Sewa, gaji, asuransi (bulanan/tahunan)",
+            "variable": "Biaya Variabel PER UNIT ($)",
+            "variableHint": "Bahan, tenaga kerja, pengiriman",
+            "price": "Harga Jual PER UNIT ($)"
+        },
+        "error": {
+            "priceLow": "Harga Jual harus lebih tinggi dari Biaya Variabel!"
+        },
+        "result": {
+            "units": "Unit Titik Impas",
+            "unitsSub": "Unit untuk dijual",
+            "revenue": "Pendapatan Titik Impas",
+            "revenueSub": "Penjualan dibutuhkan"
+        }
+    },
+    "biz-name-gen": {
+        "title": "Generator Nama Bisnis",
+        "desc": "Temukan nama kreatif dan unik untuk usaha Anda berikutnya.",
+        "section": {
+            "details": "Detail Brainstorming"
+        },
+        "form": {
+            "keyword": "Kata Kunci Utama",
+            "keywordPlaceholder": "contoh: Kopi, Kode, Desain",
+            "style": "Gaya Penamaan"
+        },
+        "style": {
+            "modern": "Modern",
+            "modernDesc": "Pendek, menarik",
+            "classic": "Klasik",
+            "classicDesc": "Profesional, terpercaya",
+            "tech": "Teknologi",
+            "techDesc": "Futuristik, geeky"
+        },
+        "action": {
+            "generate": "Hasilkan Ide"
+        },
+        "result": {
+            "empty": "Masukkan kata kunci dan tekan hasilkan untuk melihat keajaiban!"
+        }
+    },
+    "compound-interest": {
+        "title": "Kalkulator Bunga Majemuk",
+        "desc": "Proyeksikan pertumbuhan investasi Anda dengan bunga majemuk.",
+        "section": {
+            "plan": "Rencana Investasi"
+        },
+        "form": {
+            "principal": "Setoran Awal ($)",
+            "monthly": "Kontribusi Bulanan ($)",
+            "rate": "Suku Bunga Tahunan (%)",
+            "years": "Periode Investasi (Tahun)"
+        },
+        "result": {
+            "futureValue": "Nilai Masa Depan",
+            "interest": "Total Bunga Diperoleh",
+            "insight": "Kekuatan Waktu: Perhatikan bagaimana kurva menjadi lebih curam seiring waktu? Itulah bunga majemuk yang bekerja. Uang Anda mulai menghasilkan uangnya sendiri!"
+        }
     },
     "wa-direct": {
         "title": "Link WhatsApp Langsung",
@@ -339,51 +622,327 @@
     },
     "pdf-merge": {
         "title": "Gabung/Pisah PDF",
-        "desc": "Gabungkan beberapa PDF atau ekstrak halaman menjadi file baru."
+        "desc": "Gabungkan beberapa PDF atau ekstrak halaman menjadi file baru.",
+        "howItWorks": {
+            "title": "Cara kerja",
+            "items": {
+                "clientSide": {
+                    "title": "100% Sisi Klien",
+                    "desc": "File Anda tidak pernah meninggalkan perangkat Anda. Semua pemrosesan terjadi di browser Anda."
+                },
+                "mergeOrder": {
+                    "title": "Urutan Penggabungan",
+                    "desc": "Gunakan panah untuk mengatur ulang file PDF sebelum digabungkan."
+                },
+                "splitRange": {
+                    "title": "Rentang Pemisahan",
+                    "desc": "Ekstrak rentang halaman berkelanjutan (mis., 3-5) menjadi dokumen baru."
+                }
+            }
+        },
+        "actions": {
+            "merge": "Gabung",
+            "split": "Pisah"
+        },
+        "dropzone": {
+            "title": "Letakkan file PDF di sini",
+            "subtitle": "atau klik untuk menjelajah",
+            "splitTitle": "Pilih PDF untuk Dipisah",
+            "splitSubtitle": "Klik untuk menjelajah file Anda"
+        },
+        "fileList": {
+            "title": "File untuk Digabung",
+            "clear": "Hapus Semua",
+            "change": "Ganti File"
+        },
+        "split": {
+            "sectionTitle": "Ekstrak Halaman",
+            "from": "Dari Halaman",
+            "to": "Ke Halaman",
+            "separator": "KE"
+        },
+        "buttons": {
+            "processing": "Memproses...",
+            "merge": "Gabung {{count}} File",
+            "download": "Unduh Halaman Terpilih"
+        },
+        "alerts": {
+            "mergeError": "Gagal menggabungkan PDF. Salah satu file mungkin rusak atau dilindungi kata sandi.",
+            "splitError": "Gagal memisahkan PDF. Mungkin rusak atau dilindungi."
+        }
     },
     "word-counter": {
         "title": "Penghitung Kata",
-        "desc": "Hitung kata, karakter, dan kalimat dalam teks Anda."
+        "desc": "Hitung kata, karakter, dan kalimat dalam teks Anda.",
+        "input": {
+            "placeholder": "Ketik atau tempel teks Anda di sini...",
+            "clear": "Hapus Teks"
+        },
+        "stats": {
+            "summary": "{{words}} Kata • {{chars}} Karakter",
+            "title": "Statistik Teks",
+            "words": "Kata",
+            "chars": "Karakter",
+            "sentences": "Kalimat",
+            "paragraphs": "Paragraf",
+            "readTime": "Waktu Baca",
+            "speakTime": "Waktu Bicara"
+        },
+        "frequency": {
+            "title": "Frekuensi Kata",
+            "empty": "Belum ada kata ditemukan",
+            "hint": "Ketik beberapa teks untuk melihat frekuensi kata."
+        },
+        "actions": {
+            "copy": "Salin",
+            "copied": "Disalin"
+        }
     },
     "lorem-gen": {
         "title": "Generator Lorem Ipsum",
-        "desc": "Hasilkan teks placeholder untuk desain Anda."
+        "desc": "Hasilkan teks contoh untuk desain Anda.",
+        "controls": {
+            "count": "Jumlah",
+            "unit": {
+                "paragraphs": "Paragraf",
+                "sentences": "Kalimat",
+                "words": "Kata"
+            },
+            "type": {
+                "standard": "Lorem Ipsum Standar",
+                "hipster": "Hipster Ipsum"
+            },
+            "config": "Konfigurasi",
+            "unitLabel": "Satuan",
+            "style": "Gaya Teks",
+            "startWith": "Mulai dengan \"Lorem ipsum...\""
+        },
+        "buttons": {
+            "generate": "Hasilkan",
+            "copy": "Salin Teks",
+            "copied": "Disalin!"
+        },
+        "output": {
+            "placeholder": "Teks yang dihasilkan akan muncul di sini...",
+            "generated": "{{count}} {{unit}} Dibuat"
+        }
     },
     "text-replace": {
-        "title": "Cari & Ganti Batch",
-        "desc": "Temukan dan ganti teks di beberapa baris atau file."
+        "title": "Cari & Ganti Massal",
+        "desc": "Temukan dan ganti teks di banyak baris atau file.",
+        "inputs": {
+            "source": {
+                "label": "Teks Sumber",
+                "placeholder": "Tempel teks Anda di sini..."
+            },
+            "find": {
+                "label": "Cari",
+                "placeholder": "Teks yang dicari..."
+            },
+            "replace": {
+                "label": "Ganti dengan",
+                "placeholder": "Teks pengganti..."
+            }
+        },
+        "options": {
+            "caseSensitive": "Sensitif Huruf Besar/Kecil",
+            "matchWhole": "Cocokkan Seluruh Kata",
+            "useRegex": "Gunakan Regular Expression (Regex)"
+        },
+        "buttons": {
+            "replace": "Ganti Semua",
+            "clear": "Bersihkan",
+            "copy": "Salin Hasil",
+            "copied": "Disalin!"
+        },
+        "output": {
+            "label": "Hasil",
+            "placeholder": "Hasil akan muncul di sini..."
+        },
+        "stats": {
+            "matches": "{{count}} kecocokan diganti"
+        }
     },
     "roman-conv": {
         "title": "Konverter Angka Romawi",
-        "desc": "Konversi angka ke angka Romawi dan sebaliknya."
+        "desc": "Konversi angka ke Romawi dan sebaliknya.",
+        "inputs": {
+            "decimal": "Angka Desimal (1-3999)",
+            "roman": "Angka Romawi",
+            "decimalPlaceholder": "2024",
+            "romanPlaceholder": "MMXXIV"
+        },
+        "errors": {
+            "large": "Nilai terlalu besar (maks 3999)",
+            "positive": "Masukkan bilangan bulat positif",
+            "format": "Format Angka Romawi tidak valid (contoh: gunakan IV, bukan IIII)"
+        },
+        "quickRef": "Referensi Cepat"
     },
     "signature-pad": {
-        "title": "Pad Tanda Tangan Digital",
-        "desc": "Gambar dan unduh tanda tangan digital Anda."
+        "title": "Papan Tanda Tangan",
+        "desc": "Buat dan unduh tanda tangan digital.",
+        "signHere": "Tanda Tangan Di Sini",
+        "buttons": {
+            "clear": "Bersihkan",
+            "download": "Unduh PNG Transparan"
+        },
+        "settings": {
+            "title": "Pengaturan Pena",
+            "color": "Warna",
+            "thickness": "Ketebalan",
+            "thin": "Tipis",
+            "thick": "Tebal"
+        },
+        "privacy": {
+            "title": "Catatan Privasi",
+            "text": "Tanda tangan Anda dibuat murni di browser Anda menggunakan HTML5 Canvas. Itu tidak pernah diunggah ke server mana pun."
+        },
+        "alerts": {
+            "empty": "Harap tanda tangan sebelum menyimpan!"
+        }
     },
     "sort-list": {
-        "title": "Penyortir Alfabetis",
-        "desc": "Urutkan daftar apa pun secara alfabetis atau numerik."
+        "title": "Penyortir Daftar",
+        "desc": "Urutkan daftar berdasarkan abjad, panjang, atau acak.",
+        "inputs": {
+            "label": "Daftar Input",
+            "clear": "Bersihkan",
+            "placeholder": "Tempel daftar Anda di sini..."
+        },
+        "options": {
+            "label": "Urutan Sortir",
+            "asc": "A ke Z (Meningkat)",
+            "desc": "Z ke A (Menurun)",
+            "length": "Panjang (Pendek ke Panjang)",
+            "reverseL": "Panjang (Panjang ke Pendek)",
+            "random": "Acak (Shuffle)",
+            "numeric": "Sortir Numerik (1, 2, 10...)",
+            "removeDuplicates": "Hapus Duplikat"
+        },
+        "buttons": {
+            "sort": "Urutkan Daftar",
+            "copy": "Salin",
+            "copied": "Disalin"
+        },
+        "outputs": {
+            "stats": "{{count}} Item Diurutkan",
+            "placeholder": "Daftar yang diurutkan akan muncul di sini..."
+        }
     },
     "remove-duplicates": {
-        "title": "Penghapus Baris Duplikat",
-        "desc": "Bersihkan daftar Anda dengan menghapus baris yang berulang."
+        "title": "Hapus Duplikat",
+        "desc": "Bersihkan daftar dengan menghapus entri ganda.",
+        "inputs": {
+            "label": "Daftar Input",
+            "clear": "Bersihkan",
+            "placeholder": "Tempel daftar Anda di sini (satu item per baris)..."
+        },
+        "options": {
+            "case": "Sensitif Huruf Besar/Kecil",
+            "trim": "Pangkas Spasi"
+        },
+        "buttons": {
+            "remove": "Hapus Duplikat",
+            "copy": "Salin",
+            "copied": "Disalin"
+        },
+        "outputs": {
+            "stats": "{{count}} Item Unik",
+            "placeholder": "Daftar bersih akan muncul di sini..."
+        },
+        "stats": {
+            "original": "Asli: {{count}}",
+            "removed": "Dihapus: {{count}}"
+        }
     },
     "case-converter": {
         "title": "Konverter Kapitalisasi",
-        "desc": "Konversi teks antara huruf besar, kecil, dan judul."
+        "desc": "Ubah teks antara berbagai jenis huruf kapital.",
+        "stats": {
+            "summary": "{{words}} Kata • {{chars}} Karakter"
+        },
+        "btns": {
+            "clear": "Hapus Teks",
+            "copy": "Salin",
+            "copied": "Disalin",
+            "download": "Unduh sebagai .txt"
+        },
+        "labels": {
+            "convertTo": "Ubah Ke",
+            "placeholder": "Ketik atau tempel teks Anda di sini...",
+            "sentence": "Huruf kalimat",
+            "lower": "huruf kecil",
+            "upper": "HURUF BESAR",
+            "capitalized": "Huruf Kapital",
+            "alternating": "hUrUf bErGaNtI-GaNtI",
+            "inverse": "hUrUf tErBaLiK"
+        }
     },
     "md-editor": {
         "title": "Editor Markdown",
-        "desc": "Tulis dan pratinjau Markdown dengan editor langsung."
+        "desc": "Tulis dan pratinjau Markdown secara real-time.",
+        "view": {
+            "editor": "Editor Saja",
+            "split": "Tampilan Terpisah",
+            "preview": "Pratinjau Saja"
+        },
+        "toolbar": {
+            "bold": "Tebal",
+            "italic": "Miring",
+            "link": "Tautan",
+            "image": "Gambar",
+            "quote": "Kutipan",
+            "code": "Kode Baris",
+            "list": "Item Daftar"
+        },
+        "statusbar": {
+            "chars": "{{count}} karakter"
+        },
+        "placeholder": "Ketik markdown Anda di sini..."
     },
     "csv-json": {
         "title": "Konverter CSV ke JSON",
-        "desc": "Konversi data spreadsheet ke format JSON."
+        "desc": "Konversi data CSV ke format JSON.",
+        "inputs": {
+            "label": "Input CSV",
+            "upload": "Unggah File",
+            "placeholder": "Tempel data CSV Anda di sini..."
+        },
+        "options": {
+            "header": "Baris pertama adalah header",
+            "skipEmpty": "Lewati baris kosong",
+            "minify": "Minimalkan (Minify)"
+        },
+        "outputs": {
+            "label": "Output JSON",
+            "placeholder": "Output JSON akan muncul di sini..."
+        },
+        "stats": {
+            "records": "{{count}} Rekaman ditemukan"
+        },
+        "buttons": {
+            "copy": "Salin ke Clipboard",
+            "download": "Unduh .json"
+        }
     },
     "num-to-words": {
-        "title": "Angka ke Kata (Terbilang)",
-        "desc": "Konversi nilai numerik menjadi teks tertulis."
+        "title": "Angka ke Kata",
+        "desc": "Konversi angka menjadi kata-kata dalam Bahasa Inggris atau Indonesia.",
+        "inputs": {
+            "label": "Masukkan Angka",
+            "placeholder": "12345"
+        },
+        "options": {
+            "currency": "Format sebagai Mata Uang"
+        },
+        "outputs": {
+            "label": "Hasil"
+        },
+        "langs": {
+            "en": "Inggris",
+            "id": "Indonesia"
+        }
     },
     "pomodoro": {
         "title": "Timer Pomodoro",
@@ -524,5 +1083,9 @@
     "2fa-gen": {
         "title": "Generator Kode 2FA",
         "desc": "Hasilkan kode otentikasi dua faktor untuk akun Anda."
+    },
+    "extension-rename": {
+        "title": "Pengubah Ekstensi File",
+        "desc": "Ubah ekstensi file secara massal dengan mudah dan aman."
     }
 }

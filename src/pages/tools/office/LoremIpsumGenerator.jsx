@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Type, Copy, RefreshCw, Check, AlignLeft, AlignJustify, List } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 // Simple Lorem Ipsum generator logic (client-side)
 const LOREM_WORDS = [
@@ -23,6 +24,7 @@ const HIPSTER_WORDS = [
 ];
 
 export default function LoremIpsumGenerator() {
+    const { t } = useTranslation('tools');
     const [count, setCount] = useState(5);
     const [unit, setUnit] = useState('paragraphs'); // paragraphs, sentences, words
     const [type, setType] = useState('standard'); // standard, hipster
@@ -101,10 +103,10 @@ export default function LoremIpsumGenerator() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="lorem-gen">
             <Helmet>
-                <title>Lorem Ipsum Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate random placeholder text for your designs. Choose between standard Lorem Ipsum or fun Hipster Ipsum." />
+                <title>{t('lorem-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('lorem-gen.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
@@ -113,8 +115,8 @@ export default function LoremIpsumGenerator() {
                         <Type size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Lorem Ipsum Generator</h1>
-                        <p className="text-slate-500">Create placeholder text for your layouts instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('lorem-gen.title')}</h1>
+                        <p className="text-slate-500">{t('lorem-gen.desc')}</p>
                     </div>
                 </div>
 
@@ -122,38 +124,38 @@ export default function LoremIpsumGenerator() {
                     {/* Controls */}
                     <div className="lg:col-span-1 space-y-6">
                         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm sticky top-24">
-                            <h3 className="text-sm font-bold text-slate-900 mb-4">Configuration</h3>
+                            <h3 className="text-sm font-bold text-slate-900 mb-4">{t('lorem-gen.controls.config')}</h3>
 
                             {/* Count & Unit */}
                             <div className="flex gap-4 mb-6">
+                                <div className="space-y-2">
+                                <label className="block text-sm font-bold text-slate-700">{t('lorem-gen.controls.count')}</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="100"
+                                    value={count}
+                                    onChange={(e) => setCount(parseInt(e.target.value) || 1)}
+                                    className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 font-bold text-slate-700"
+                                />
+                            </div>
                                 <div className="flex-1">
-                                    <label className="block text-xs font-medium text-slate-500 mb-2">Quantity</label>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        max="100"
-                                        value={count}
-                                        onChange={(e) => setCount(parseInt(e.target.value) || 1)}
-                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none"
-                                    />
-                                </div>
-                                <div className="flex-1">
-                                    <label className="block text-xs font-medium text-slate-500 mb-2">Unit</label>
+                                    <label className="block text-xs font-medium text-slate-500 mb-2">{t('lorem-gen.controls.unitLabel')}</label>
                                     <select
-                                        value={unit}
-                                        onChange={(e) => setUnit(e.target.value)}
-                                        className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none appearance-none"
-                                    >
-                                        <option value="paragraphs">Paragraphs</option>
-                                        <option value="sentences">Sentences</option>
-                                        <option value="words">Words</option>
-                                    </select>
+                                    value={unit}
+                                    onChange={(e) => setUnit(e.target.value)}
+                                    className="w-full px-4 py-[10px] bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 font-bold text-slate-700 appearance-none"
+                                >
+                                    <option value="paragraphs">{t('lorem-gen.controls.unit.paragraphs')}</option>
+                                    <option value="sentences">{t('lorem-gen.controls.unit.sentences')}</option>
+                                    <option value="words">{t('lorem-gen.controls.unit.words')}</option>
+                                </select>
                                 </div>
                             </div>
 
                             {/* Type */}
                             <div className="mb-6">
-                                <label className="block text-xs font-medium text-slate-500 mb-3">Text Style</label>
+                                <label className="block text-xs font-medium text-slate-500 mb-3">{t('lorem-gen.controls.style')}</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     <button
                                         onClick={() => setType('standard')}
@@ -184,16 +186,17 @@ export default function LoremIpsumGenerator() {
                                 >
                                     <div className={`w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${startWithLorem ? 'translate-x-6' : 'translate-x-0'}`} />
                                 </button>
-                                <span className="text-sm text-slate-600">Start with "Lorem ipsum..."</span>
+                                <span className="text-sm text-slate-600">{t('lorem-gen.controls.startWith')}</span>
                             </div>
 
                             <button
                                 onClick={generateText}
-                                className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl flex items-center justify-center gap-2 transition-colors"
+                                className="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-xl shadow-lg shadow-pink-200 transition-all flex items-center justify-center gap-2"
                             >
-                                <RefreshCw size={18} /> Regenerate
+                                <RefreshCw size={20} />
+                                {t('lorem-gen.buttons.generate')}
                             </button>
-                        </div>
+                    </div>
                     </div>
 
                     {/* Output */}
@@ -202,26 +205,22 @@ export default function LoremIpsumGenerator() {
                             {/* Toolbar */}
                             <div className="bg-slate-50 border-b border-slate-100 px-6 py-3 flex justify-between items-center">
                                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    {count} {unit} Generated
+                                    {t('lorem-gen.output.generated', { count, unit: t(`lorem-gen.controls.unit.${unit}`) })}
                                 </span>
-                                <button
+                                <button 
                                     onClick={handleCopy}
-                                    className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${copied
-                                        ? 'bg-green-100 text-green-700'
-                                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100'
-                                        }`}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-colors ${copied ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
                                 >
                                     {copied ? <Check size={16} /> : <Copy size={16} />}
-                                    {copied ? 'Copied!' : 'Copy Text'}
+                                    {copied ? t('lorem-gen.buttons.copied') : t('lorem-gen.buttons.copy')}
                                 </button>
                             </div>
-
-                            {/* Text Area */}
                             <textarea
                                 value={output}
                                 readOnly
-                                className="flex-1 w-full p-8 resize-none outline-none text-slate-700 text-lg leading-relaxed font-serif"
-                            />
+                                placeholder={t('lorem-gen.output.placeholder')}
+                                className="w-full h-64 p-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none resize-none font-mono text-slate-600 leading-relaxed custom-scrollbar"
+                            ></textarea>
                         </div>
                     </div>
                 </div>

@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { ListOrdered, ArrowDownAZ, ArrowUpZA, ArrowRight, Trash2, Copy, Check, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function SortList() {
+    const { t } = useTranslation('tools');
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [stats, setStats] = useState({ lines: 0, time: 0 });
@@ -93,10 +95,10 @@ export default function SortList() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="sort-list">
             <Helmet>
-                <title>Alphabetical List Sorter | MiniTools by Spinotek</title>
-                <meta name="description" content="Sort lists alphabetically, by length, or randomize. Remove duplicates and clean up text instantly." />
+                <title>{t('sort-list.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('sort-list.desc')} />
             </Helmet>
 
             <div className="max-w-7xl mx-auto">
@@ -105,8 +107,8 @@ export default function SortList() {
                         <ListOrdered size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">List Sorter</h1>
-                        <p className="text-slate-500">Organize your lists alphabetically or numerically.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('sort-list.title')}</h1>
+                        <p className="text-slate-500">{t('sort-list.desc')}</p>
                     </div>
                 </div>
 
@@ -115,18 +117,18 @@ export default function SortList() {
                     <div className="space-y-6">
                         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm h-full flex flex-col">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="font-bold text-slate-700">Input List</h3>
+                                <h3 className="font-bold text-slate-700">{t('sort-list.inputs.label')}</h3>
                                 <button
                                     onClick={() => { setInput(''); setOutput(''); }}
                                     className="text-xs text-rose-500 hover:text-rose-600 font-medium flex items-center gap-1"
                                 >
-                                    <Trash2 size={12} /> Clear
+                                    <Trash2 size={12} /> {t('sort-list.inputs.clear')}
                                 </button>
                             </div>
                             <textarea
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                placeholder="Paste your list here..."
+                                placeholder={t('sort-list.inputs.placeholder')}
                                 className="flex-1 w-full p-4 bg-slate-50 border border-slate-200 rounded-xl resize-none outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 text-sm min-h-[400px]"
                             />
                         </div>
@@ -138,27 +140,27 @@ export default function SortList() {
                         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
                             <div className="grid grid-cols-2 gap-4 mb-6">
                                 <div className="space-y-3">
-                                    <label className="block text-xs font-bold text-slate-400 uppercase">Sort Order</label>
+                                    <label className="block text-xs font-bold text-slate-400 uppercase">{t('sort-list.options.label')}</label>
                                     <select
                                         value={order}
                                         onChange={(e) => setOrder(e.target.value)}
                                         className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-sky-500/20"
                                     >
-                                        <option value="asc">A to Z (Ascending)</option>
-                                        <option value="desc">Z to A (Descending)</option>
-                                        <option value="length">Length (Short to Long)</option>
-                                        <option value="reverseL">Length (Long to Short)</option>
-                                        <option value="random">Randomize (Shuffle)</option>
+                                        <option value="asc">{t('sort-list.options.asc')}</option>
+                                        <option value="desc">{t('sort-list.options.desc')}</option>
+                                        <option value="length">{t('sort-list.options.length')}</option>
+                                        <option value="reverseL">{t('sort-list.options.reverseL')}</option>
+                                        <option value="random">{t('sort-list.options.random')}</option>
                                     </select>
                                 </div>
                                 <div className="space-y-2 pt-6">
                                     <label className="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer select-none">
                                         <input type="checkbox" checked={numericSort} onChange={(e) => setNumericSort(e.target.checked)} className="rounded text-sky-600 focus:ring-sky-500" />
-                                        Numeric Sort (1, 2, 10...)
+                                        {t('sort-list.options.numeric')}
                                     </label>
                                     <label className="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer select-none">
                                         <input type="checkbox" checked={removeDuplicates} onChange={(e) => setRemoveDuplicates(e.target.checked)} className="rounded text-sky-600 focus:ring-sky-500" />
-                                        Remove Duplicates
+                                        {t('sort-list.options.removeDuplicates')}
                                     </label>
                                 </div>
                             </div>
@@ -167,7 +169,7 @@ export default function SortList() {
                                 onClick={sortInput}
                                 className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-lg shadow-sky-200 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                             >
-                                <ArrowDownAZ size={18} /> Sort List
+                                <ArrowDownAZ size={18} /> {t('sort-list.buttons.sort')}
                             </button>
                         </div>
 
@@ -175,7 +177,7 @@ export default function SortList() {
                         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[calc(100%-240px)] min-h-[300px]">
                             <div className="bg-slate-50 border-b border-slate-100 px-6 py-3 flex justify-between items-center">
                                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    {stats.lines} Items Sorted
+                                    {t('sort-list.outputs.stats', { count: stats.lines })}
                                 </span>
                                 <button
                                     onClick={handleCopy}
@@ -186,14 +188,14 @@ export default function SortList() {
                                         }`}
                                 >
                                     {copied ? <Check size={14} /> : <Copy size={14} />}
-                                    {copied ? 'Copied' : 'Copy'}
+                                    {copied ? t('sort-list.buttons.copied') : t('sort-list.buttons.copy')}
                                 </button>
                             </div>
                             <div className="flex-1 relative">
                                 <textarea
                                     value={output}
                                     readOnly
-                                    placeholder="Sorted list will appear here..."
+                                    placeholder={t('sort-list.outputs.placeholder')}
                                     className="absolute inset-0 w-full p-4 resize-none outline-none text-slate-700 text-sm bg-slate-50/30 font-mono"
                                 />
                             </div>

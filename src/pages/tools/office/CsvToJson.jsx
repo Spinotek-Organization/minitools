@@ -4,8 +4,10 @@ import Papa from 'papaparse';
 import { Table, FileJson, ArrowRight, Copy, Check, Upload, Trash2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function CsvToJson() {
+    const { t } = useTranslation('tools');
     const [csv, setCsv] = useState('');
     const [json, setJson] = useState('');
     const [options, setOptions] = useState({
@@ -81,10 +83,10 @@ export default function CsvToJson() {
     };
 
     return (
-        <ToolPageLayout>
+        <ToolPageLayout toolId="csv-json">
             <Helmet>
-                <title>CSV to JSON Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert CSV data to JSON format instantly. Support for headers and minification." />
+                <title>{t('csv-json.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('csv-json.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -93,8 +95,8 @@ export default function CsvToJson() {
                         <Table size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">CSV to JSON Converter</h1>
-                        <p className="text-slate-500 text-sm">Convert spreadsheet data to JSON format.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('csv-json.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('csv-json.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -105,11 +107,11 @@ export default function CsvToJson() {
                     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex-1 flex flex-col">
                         <div className="flex justify-between items-center mb-4">
                              <h3 className="font-bold text-slate-700 flex items-center gap-2">
-                                <Table size={18} className="text-orange-500" /> CSV Input
+                                <Table size={18} className="text-orange-500" /> {t('csv-json.inputs.label')}
                             </h3>
                             <div className="relative overflow-hidden">
                                 <button className="text-xs font-bold text-orange-600 bg-orange-50 hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-2">
-                                    <Upload size={14} /> Upload File
+                                    <Upload size={14} /> {t('csv-json.inputs.upload')}
                                 </button>
                                 <input 
                                     type="file" 
@@ -123,7 +125,7 @@ export default function CsvToJson() {
                         <textarea
                             value={csv}
                             onChange={(e) => setCsv(e.target.value)}
-                            placeholder="Paste your CSV data here..."
+                            placeholder={t('csv-json.inputs.placeholder')}
                             className="flex-1 w-full p-4 bg-slate-50 border border-slate-200 rounded-xl resize-none outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 font-mono text-xs whitespace-pre leading-relaxed min-h-[300px]"
                         />
 
@@ -133,7 +135,7 @@ export default function CsvToJson() {
                                     {options.header && <Check size={14} />}
                                 </div>
                                 <input type="checkbox" checked={options.header} onChange={() => setOptions({...options, header: !options.header})} className="hidden" />
-                                First row is header
+                                {t('csv-json.options.header')}
                             </label>
 
                             <label className="flex items-center gap-2 text-sm text-slate-600 font-medium cursor-pointer select-none">
@@ -141,7 +143,7 @@ export default function CsvToJson() {
                                     {options.skipEmptyLines && <Check size={14} />}
                                 </div>
                                 <input type="checkbox" checked={options.skipEmptyLines} onChange={() => setOptions({...options, skipEmptyLines: !options.skipEmptyLines})} className="hidden" />
-                                Skip empty lines
+                                {t('csv-json.options.skipEmpty')}
                             </label>
                         </div>
                     </div>
@@ -152,7 +154,7 @@ export default function CsvToJson() {
                      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex-1 flex flex-col">
                          <div className="flex justify-between items-center mb-4">
                              <h3 className="font-bold text-slate-700 flex items-center gap-2">
-                                <FileJson size={18} className="text-orange-500" /> JSON Output
+                                <FileJson size={18} className="text-orange-500" /> {t('csv-json.outputs.label')}
                             </h3>
                             <div className="flex gap-2">
                                 <label className="flex items-center gap-2 text-xs text-slate-500 font-bold uppercase cursor-pointer select-none mr-4">
@@ -160,14 +162,14 @@ export default function CsvToJson() {
                                         <div className={`w-3 h-3 bg-white rounded-full shadow-sm transition-transform ${options.minify ? 'translate-x-4' : 'translate-x-0'}`} />
                                     </div>
                                     <input type="checkbox" checked={options.minify} onChange={() => setOptions({...options, minify: !options.minify})} className="hidden" />
-                                    Minify
+                                    {t('csv-json.options.minify')}
                                 </label>
                                 
                                 <button 
                                     onClick={handleCopy}
                                     disabled={!json}
                                     className="text-slate-400 hover:text-orange-500 transition-colors"
-                                    title="Copy to Clipboard"
+                                    title={t('csv-json.buttons.copy')}
                                 >
                                     {copied ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
                                 </button>
@@ -178,16 +180,16 @@ export default function CsvToJson() {
                             <textarea
                                 value={json}
                                 readOnly
-                                placeholder="JSON output will appear here..."
+                                placeholder={t('csv-json.outputs.placeholder')}
                                 className="absolute inset-0 w-full h-full p-4 bg-slate-900 border border-slate-700 rounded-xl resize-none outline-none text-slate-300 font-mono text-xs leading-relaxed"
                             />
                         </div>
 
                         {stats && (
                             <div className="mt-4 flex items-center justify-between text-xs font-mono text-slate-500 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
-                                <span>{stats.rows} Records found</span>
+                                <span>{t('csv-json.stats.records', { count: stats.rows })}</span>
                                 <div>
-                                    <button onClick={handleDownload} className="text-orange-600 font-bold hover:underline">Download .json</button>
+                                    <button onClick={handleDownload} className="text-orange-600 font-bold hover:underline">{t('csv-json.buttons.download')}</button>
                                 </div>
                             </div>
                         )}

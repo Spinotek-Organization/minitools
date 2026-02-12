@@ -68,20 +68,23 @@ export default function UnitPriceComparison() {
                 {/* Result Overlay for Desktop */}
                 {result && result.winner !== 'Tie' && (
                     <div className={`hidden md:block absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white shadow-xl px-6 py-3 rounded-full font-bold border-2 ${result.winner === 'A' ? 'border-l-8 border-l-cyan-500' : 'border-r-8 border-r-cyan-500'} text-slate-800 whitespace-nowrap`}>
-                        {result.savings.toFixed(1)}% {result.winner === 'A' ? 'Left' : 'Right'} is Cheaper!
+                        {t('tools.unit-price-comp.result.cheaper', { 
+                            savings: result.savings.toFixed(1), 
+                            winner: result.winner === 'A' ? t('tools.unit-price-comp.left') : t('tools.unit-price-comp.right') 
+                        })}
                     </div>
                 )}
 
                 {/* Item A */}
                 <div className={`p-8 rounded-3xl border-2 transition-all ${result?.winner === 'A' ? 'bg-cyan-50 border-cyan-500 shadow-lg shadow-cyan-100' : 'bg-white border-slate-100 shadow-sm'}`}>
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-black text-slate-900">Item A</h2>
+                        <h2 className="text-xl font-black text-slate-900">{t('tools.unit-price-comp.itemA')}</h2>
                         {result?.winner === 'A' && <CheckCircle className="text-cyan-600" size={28} />}
                     </div>
                     
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Price ($)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.unit-price-comp.price')} ($)</label>
                             <input
                                 type="number"
                                 value={priceA}
@@ -90,7 +93,7 @@ export default function UnitPriceComparison() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Quantity / Weight</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.unit-price-comp.qty')}</label>
                             <input
                                 type="number"
                                 value={qtyA}
@@ -102,7 +105,7 @@ export default function UnitPriceComparison() {
 
                     {result && (
                         <div className="mt-6 pt-6 border-t border-slate-200/50 text-center">
-                            <div className="text-sm text-slate-500 mb-1 uppercase tracking-wide">Unit Price</div>
+                            <div className="text-sm text-slate-500 mb-1 uppercase tracking-wide">{t('tools.unit-price-comp.unitPrice')}</div>
                             <div className={`text-2xl font-black ${result.winner === 'A' ? 'text-cyan-700' : 'text-slate-400'}`}>
                                 {formatCurrency(result.unitPriceA)}
                             </div>
@@ -113,13 +116,13 @@ export default function UnitPriceComparison() {
                 {/* Item B */}
                 <div className={`p-8 rounded-3xl border-2 transition-all ${result?.winner === 'B' ? 'bg-cyan-50 border-cyan-500 shadow-lg shadow-cyan-100' : 'bg-white border-slate-100 shadow-sm'}`}>
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-black text-slate-900">Item B</h2>
+                        <h2 className="text-xl font-black text-slate-900">{t('tools.unit-price-comp.itemB')}</h2>
                         {result?.winner === 'B' && <CheckCircle className="text-cyan-600" size={28} />}
                     </div>
                     
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Price ($)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.unit-price-comp.price')} ($)</label>
                             <input
                                 type="number"
                                 value={priceB}
@@ -128,7 +131,7 @@ export default function UnitPriceComparison() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Quantity / Weight</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.unit-price-comp.qty')}</label>
                             <input
                                 type="number"
                                 value={qtyB}
@@ -140,7 +143,7 @@ export default function UnitPriceComparison() {
 
                      {result && (
                         <div className="mt-6 pt-6 border-t border-slate-200/50 text-center">
-                            <div className="text-sm text-slate-500 mb-1 uppercase tracking-wide">Unit Price</div>
+                            <div className="text-sm text-slate-500 mb-1 uppercase tracking-wide">{t('tools.unit-price-comp.unitPrice')}</div>
                              <div className={`text-2xl font-black ${result.winner === 'B' ? 'text-cyan-700' : 'text-slate-400'}`}>
                                 {formatCurrency(result.unitPriceB)}
                             </div>
@@ -151,7 +154,7 @@ export default function UnitPriceComparison() {
             
             {result?.winner === 'Tie' && (
                 <div className="text-center bg-slate-100 p-4 rounded-xl font-bold text-slate-600 mb-8">
-                    It's a Tie! Both options offer the same value.
+                    {t('tools.unit-price-comp.result.tie')}
                 </div>
             )}
 

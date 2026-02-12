@@ -6,6 +6,10 @@ import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
+// Default placeholder images (light gray with text)
+const DEFAULT_FRONT = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='200' viewBox='0 0 350 200'%3E%3Crect width='350' height='200' fill='%23f1f5f9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%2364748b'%3EFront Design%3C/text%3E%3C/svg%3E";
+const DEFAULT_BACK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='200' viewBox='0 0 350 200'%3E%3Crect width='350' height='200' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%2364748b'%3EBack Design%3C/text%3E%3C/svg%3E";
+
 export default function BizCardMockup() {
     const { t } = useTranslation();
 
@@ -74,10 +78,10 @@ export default function BizCardMockup() {
                 {/* Controls */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
-                        <h2 className="text-lg font-bold text-slate-900 mb-6">Upload Designs</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-6">{t('tools.biz-card-mockup.page.upload_title')}</h2>
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Front Side</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.biz-card-mockup.page.front_label')}</label>
                                 <div className="relative group">
                                     <div className="w-full h-32 rounded-xl overflow-hidden border-2 border-dashed border-slate-300 group-hover:border-amber-500 transition-colors bg-slate-50 relative">
                                         <img src={frontImage} alt="Front" className="w-full h-full object-cover opacity-80" />
@@ -95,7 +99,7 @@ export default function BizCardMockup() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Back Side</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.biz-card-mockup.page.back_label')}</label>
                                 <div className="relative group">
                                     <div className="w-full h-32 rounded-xl overflow-hidden border-2 border-dashed border-slate-300 group-hover:border-amber-500 transition-colors bg-slate-50 relative">
                                         <img src={backImage} alt="Back" className="w-full h-full object-cover opacity-80" />
@@ -115,7 +119,7 @@ export default function BizCardMockup() {
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
-                         <h2 className="text-lg font-bold text-slate-900 mb-4">Select Scene</h2>
+                         <h2 className="text-lg font-bold text-slate-900 mb-4">{t('tools.biz-card-mockup.page.scene_label')}</h2>
                          <div className="grid grid-cols-1 gap-2">
                             {SCENES.map(s => (
                                 <button
@@ -138,13 +142,13 @@ export default function BizCardMockup() {
                 {/* Preview Canvas */}
                 <div className="lg:col-span-2">
                      <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-lg font-bold text-slate-900">Mockup Preview</h2>
+                        <h2 className="text-lg font-bold text-slate-900">{t('tools.biz-card-mockup.page.preview_title')}</h2>
                         <button
                             onClick={handleDownload}
                             className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center gap-2"
                         >
                             <Download size={18} />
-                            Download
+                            {t('tools.biz-card-mockup.page.download_btn')}
                         </button>
                     </div>
 

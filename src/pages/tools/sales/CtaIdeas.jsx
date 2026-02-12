@@ -90,7 +90,7 @@ export default function CtaIdeas() {
                                 : 'text-slate-600 hover:bg-slate-50'
                         }`}
                     >
-                        {cat}
+                        {cat === 'All' ? t('tools.cold-email.page.categories.all') : cat}
                     </button>
                 ))}
             </div>
@@ -116,12 +116,12 @@ export default function CtaIdeas() {
                             {copiedId === cta.id ? (
                                 <>
                                     <Check size={16} className="text-green-500" />
-                                    <span className="text-green-500">Copied!</span>
+                                    <span className="text-green-500">{t('tools.cta-ideas.page.copied')}</span>
                                 </>
                             ) : (
                                 <>
                                     <Copy size={16} className="group-hover:text-yellow-600 transition-colors" />
-                                    <span className="group-hover:text-yellow-600 transition-colors">Click to copy</span>
+                                    <span className="group-hover:text-yellow-600 transition-colors">{t('tools.cta-ideas.page.click_copy')}</span>
                                 </>
                             )}
                         </div>

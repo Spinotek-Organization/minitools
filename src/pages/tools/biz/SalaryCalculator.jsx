@@ -86,11 +86,11 @@ export default function SalaryCalculator() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Inputs */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm h-fit">
-                    <h2 className="text-lg font-bold text-slate-900 mb-6">Employment Details</h2>
+                    <h2 className="text-lg font-bold text-slate-900 mb-6">{t('tools.salary-calc.employmentDetails')}</h2>
                     
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Gross Monthly Salary (Rp)</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.salary-calc.grossSalary')}</label>
                             <input
                                 type="number"
                                 value={grossSalary}
@@ -100,18 +100,18 @@ export default function SalaryCalculator() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">PTKP Status</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.salary-calc.ptkpStatus')}</label>
                             <select
                                 value={status}
                                 onChange={(e) => setStatus(e.target.value)}
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 appearance-none"
                             >
-                                <option value="TK/0">TK/0 (Single, No Kids)</option>
-                                <option value="TK/1">TK/1 (Single, 1 Kid)</option>
-                                <option value="K/0">K/0 (Married, No Kids)</option>
-                                <option value="K/1">K/1 (Married, 1 Kid)</option>
-                                <option value="K/2">K/2 (Married, 2 Kids)</option>
-                                <option value="K/3">K/3 (Married, 3 Kids)</option>
+                                <option value="TK/0">{t('tools.salary-calc.ptkp.tk0')}</option>
+                                <option value="TK/1">{t('tools.salary-calc.ptkp.tk1')}</option>
+                                <option value="K/0">{t('tools.salary-calc.ptkp.k0')}</option>
+                                <option value="K/1">{t('tools.salary-calc.ptkp.k1')}</option>
+                                <option value="K/2">{t('tools.salary-calc.ptkp.k2')}</option>
+                                <option value="K/3">{t('tools.salary-calc.ptkp.k3')}</option>
                             </select>
                         </div>
                         
@@ -123,12 +123,12 @@ export default function SalaryCalculator() {
                                 onChange={(e) => setHasNPWP(e.target.checked)}
                                 className="w-5 h-5 accent-emerald-600 rounded"
                             />
-                            <label htmlFor="npwp" className="text-sm font-medium text-slate-700 select-none">I have NPWP</label>
+                            <label htmlFor="npwp" className="text-sm font-medium text-slate-700 select-none">{t('tools.salary-calc.hasNPWP')}</label>
                         </div>
 
                          <div className="bg-yellow-50 text-yellow-800 p-4 rounded-xl text-xs border border-yellow-100 flex gap-2">
                             <Info size={16} className="shrink-0 mt-0.5" />
-                            <p>This calculator uses simplified TER (Tarif Efektif Rata-rata) 2024 rules. Actual tax may vary slightly based on specific company policies.</p>
+                            <p>{t('tools.salary-calc.terInfo')}</p>
                         </div>
                     </div>
                 </div>
@@ -136,34 +136,34 @@ export default function SalaryCalculator() {
                 {/* Results */}
                 <div className="space-y-6">
                     <div className="bg-emerald-600 text-white rounded-3xl p-8 shadow-lg shadow-emerald-200">
-                        <div className="text-emerald-100 text-sm font-bold uppercase mb-1">Estimated Take Home Pay</div>
+                        <div className="text-emerald-100 text-sm font-bold uppercase mb-1">{t('tools.salary-calc.result.takeHome')}</div>
                         <div className="text-4xl font-black mb-1">
                             {formatCurrency(result.takeHomePay)}
                         </div>
-                        <div className="text-emerald-200 text-sm">per month</div>
+                        <div className="text-emerald-200 text-sm">{t('tools.salary-calc.result.perMonth')}</div>
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
-                        <h3 className="font-bold text-slate-900 mb-4">Deduction Breakdown</h3>
+                        <h3 className="font-bold text-slate-900 mb-4">{t('tools.salary-calc.breakdown')}</h3>
                         <div className="space-y-3">
                             <div className="flex justify-between text-sm py-2 border-b border-slate-50">
-                                <span className="text-slate-600">BPJS Kesehatan (1%)</span>
+                                <span className="text-slate-600">{t('tools.salary-calc.deduction.bpjsHealth')}</span>
                                 <span className="font-medium text-red-500">-{formatCurrency(result.bpjsKesehatan)}</span>
                             </div>
                             <div className="flex justify-between text-sm py-2 border-b border-slate-50">
-                                <span className="text-slate-600">Jaminan Hari Tua (2%)</span>
+                                <span className="text-slate-600">{t('tools.salary-calc.deduction.jht')}</span>
                                 <span className="font-medium text-red-500">-{formatCurrency(result.jht)}</span>
                             </div>
                             <div className="flex justify-between text-sm py-2 border-b border-slate-50">
-                                <span className="text-slate-600">Jaminan Pensiun (1%)</span>
+                                <span className="text-slate-600">{t('tools.salary-calc.deduction.jp')}</span>
                                 <span className="font-medium text-red-500">-{formatCurrency(result.jp)}</span>
                             </div>
                             <div className="flex justify-between text-sm py-2 border-b border-slate-50">
-                                <span className="text-slate-600">PPh 21 (Est. Tax)</span>
+                                <span className="text-slate-600">{t('tools.salary-calc.deduction.pph21')}</span>
                                 <span className="font-medium text-red-500">-{formatCurrency(result.pph21)}</span>
                             </div>
                             <div className="flex justify-between font-bold pt-2">
-                                <span className="text-slate-900">Total Deductions</span>
+                                <span className="text-slate-900">{t('tools.salary-calc.totalDeductions')}</span>
                                 <span className="text-red-600">-{formatCurrency(result.totalDeductions)}</span>
                             </div>
                         </div>
