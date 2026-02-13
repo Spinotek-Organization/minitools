@@ -512,10 +512,6 @@
         "title": "CTA Ideas Generator",
         "desc": "Catchy call-to-action ideas for higher conversion."
     },
-    "qr-gen": {
-        "title": "QR Code Generator",
-        "desc": "Create scalable QR codes for links, text, or vCards."
-    },
     "biz-card-mockup": {
         "title": "Business Card Mockup",
         "desc": "Visualize your business card design in realistic mockups."
@@ -1042,47 +1038,430 @@
     },
     "password-gen": {
         "title": "Strong Password Generator",
-        "desc": "Create secure, random passwords to protect your accounts."
+        "desc": "Create secure, random passwords using cryptographic randomness.",
+        "length": "Password Length",
+        "options": {
+            "uppercase": "Uppercase (A-Z)",
+            "lowercase": "Lowercase (a-z)",
+            "numbers": "Numbers (0-9)",
+            "symbols": "Symbols (!@#)",
+            "ambiguous": "Avoid Ambiguous Characters",
+            "ambiguousHint": "(e.g. i, l, 1, L, o, 0, O)"
+        },
+        "history": {
+            "title": "History (Last 5)",
+            "empty": "Generated passwords will appear here.",
+            "clickToCopy": "Click to copy"
+        },
+        "actions": {
+            "regenerate": "Regenerate",
+            "copy": "Copy Password",
+            "copied": "Copied!"
+        }
     },
     "password-strength": {
         "title": "Password Strength Checker",
-        "desc": "Test how secure your password is against brute-force attacks."
+        "desc": "Analyze your password's resistance to hacking attempts.",
+        "inputLabel": "My Password",
+        "placeholder": "Type a password...",
+        "strength": "Strength",
+        "scores": {
+            "0": "Very Weak",
+            "1": "Weak",
+            "2": "So-so",
+            "3": "Good",
+            "4": "Strong",
+            "empty": "Enter Password"
+        },
+        "composition": {
+            "title": "Composition Check",
+            "length": "At least 12 characters",
+            "uppercase": "Contains uppercase",
+            "lowercase": "Contains lowercase",
+            "number": "Contains number",
+            "symbol": "Contains symbol"
+        },
+        "analysis": {
+            "crackTime": "Time to Crack",
+            "entropy": "{{bits}} Bits of Entropy",
+            "online": "Online Attack",
+            "onlineScenario": "Scenario: Attacker guessing via a login form (throttled).",
+            "offline": "Offline Attack",
+            "offlineScenario": "Scenario: Attacker has your database hash and a GPU farm.",
+            "weakness": "Weakness Analysis",
+            "critical": "Critical Weakness",
+            "suggestions": "Improvement Suggestions:",
+            "excellent": "Excellent Password",
+            "excellentDesc": "No common patterns found. This password is cryptographically strong.",
+            "generic": "Consider adding more random words or characters to increase entropy."
+        },
+        "empty": {
+            "title": "Enter a password to see its analysis.",
+            "subtitle": "All checking is done locally in your browser. No data is sent anywhere."
+        }
     },
     "fake-identity": {
         "title": "Fake Identity Generator",
-        "desc": "Generate random profiles for software testing and privacy."
+        "desc": "Generate random profiles for software testing and privacy.",
+        "config": "Configuration",
+        "gender": {
+            "label": "Gender",
+            "random": "Random",
+            "male": "Male",
+            "female": "Female"
+        },
+        "generate": "Generate New Identity",
+        "generating": "Generating...",
+        "usage": {
+            "title": "Usage Note",
+            "text": "These identities are completely fictional and generated algorithmically. Do not use for illegal activities."
+        },
+        "copy": "Copy as JSON",
+        "personal": {
+            "title": "Personal Details",
+            "dob": "Date of Birth",
+            "gender": "Gender",
+            "email": "Email Address",
+            "phone": "Phone Number"
+        },
+        "location": {
+            "title": "Location"
+        },
+        "online": {
+            "title": "Online Profile",
+            "username": "Username",
+            "uuid": "UUID"
+        }
     },
     "temp-email": {
         "title": "Disposable Email Linker",
-        "desc": "Quick links to top temporary email services for privacy."
+        "desc": "Quick links to top temporary email services for privacy.",
+        "providers": {
+            "temp-mail": {
+                "desc": "Most popular temporary email service. Simple and fast.",
+                "lifespan": "Until browser closed (or manual delete)"
+            },
+            "10-min": {
+                "desc": "Classic disposable email. Gives you 10 minutes, extendable.",
+                "lifespan": "10 Minutes (Extendable)"
+            },
+            "guerrilla": {
+                "desc": "Feature-rich, customizable addresses. No registration.",
+                "lifespan": "Emails kept for 1 hour"
+            },
+            "emailondeck": {
+                "desc": "Secure and private. Good for strict spam filters.",
+                "lifespan": "Variable (usually hours)"
+            },
+            "maildrop": {
+                "desc": "Open inbox system. Great for quick signups.",
+                "lifespan": "Files < 100k, cleared inactive"
+            },
+            "burner": {
+                "desc": "Forward emails to your real inbox privately.",
+                "lifespan": "Requires Extension/Signup"
+            }
+        },
+        "warnings": {
+            "title": "Important Warnings",
+            "list": [
+                "Do not use these emails for banking, government services, or sensitive accounts.",
+                "Anyone who guesses the address (for open inboxes) can read your emails.",
+                "Once expired, you cannot recover the emails or the address."
+            ]
+        },
+        "info": {
+            "title": "Why use disposable email?",
+            "p1": "When you sign up for a service just to test it or get a freebie, they often sell your email or spam you.",
+            "p2": "Using a disposable address keeps your real inbox clean and protects your identity."
+        }
     },
     "secret-note": {
         "title": "Secret Note",
-        "desc": "Create encrypted notes that self-destruct after being read."
+        "desc": "Create encrypted notes that self-destruct after being read.",
+        "modes": {
+            "encrypt": "Encrypt Mode",
+            "decrypt": "Decrypt Mode"
+        },
+        "form": {
+            "messageLabel": "Message to Encrypt",
+            "encryptedLabel": "Encrypted Text",
+            "messagePlaceholder": "Type your secret message here...",
+            "encryptedPlaceholder": "Paste the encrypted text string here...",
+            "passwordLabel": "Password / Key",
+            "passwordPlaceholder": "Enter a strong password",
+            "encryptBtn": "Encrypt Message",
+            "decryptBtn": "Decrypt Message"
+        },
+        "results": {
+            "encryptedLabel": "Encrypted Result (Share this)",
+            "decryptedLabel": "Decrypted Message",
+            "copy": "Copy to Clipboard"
+        },
+        "messages": {
+            "errorInput": "Please enter both a message and a password.",
+            "errorDecryptInput": "Please enter the encrypted text and password.",
+            "successEncrypt": "Message encrypted successfully!",
+            "errorEncrypt": "Encryption failed. Please try again.",
+            "successDecrypt": "Message decrypted successfully!",
+            "errorDecrypt": "Decryption failed. Wrong password or corrupted data.",
+            "copySuccess": "Copied to clipboard!"
+        }
     },
     "ip-checker": {
         "title": "IP Address Checker",
-        "desc": "Find your public IP address and approximate location."
+        "desc": "Find your public IP address and approximate location.",
+        "refresh": "Refresh Data",
+        "checking": "Checking...",
+        "unknown": "Unknown",
+        "errors": {
+            "failed": "Check Failed",
+            "tryAgain": "Try Again",
+            "fetchIp": "Failed to fetch IP address",
+            "general": "Unable to determine IP information."
+        },
+        "results": {
+            "ipv4": "Your IPv4 Address",
+            "visible": "Publicly Visible",
+            "isp": "Internet Provider (ISP)",
+            "location": "Location",
+            "timezone": "Timezone",
+            "coordinates": "Coordinates",
+            "map": "View Exact Location on Google Maps"
+        },
+        "accuracy": {
+            "title": "Location Not Accurate?",
+            "text": "IP-based location is an estimate. It often points to your Internet Provider's (ISP) data center, which can be in a different city or 50+ miles away from your actual home.",
+            "note": "This is normal for all IP tools."
+        }
     },
     "browser-fingerprint": {
         "title": "Browser Fingerprint",
-        "desc": "See what information your browser reveals to websites."
+        "desc": "See what information your browser reveals to websites.",
+        "unknown": "Unknown",
+        "canvas": {
+            "title": "Your Canvas Fingerprint ID",
+            "desc": "This ID is generated by asking your browser to draw an invisible image. Because every device renders graphics slightly differently (due to drivers, GPU, etc.), this ID can uniquely identify you across different websites even without cookies."
+        },
+        "hardware": {
+            "title": "Hardware & System",
+            "screen": "Screen Resolution",
+            "pixel": "Pixel Ratio",
+            "color": "Color Depth",
+            "cores": "CPU Cores",
+            "memory": "Device Memory",
+            "platform": "Platform"
+        },
+        "location": {
+            "title": "Location & Localization",
+            "language": "Language",
+            "timezone": "Timezone",
+            "cookies": "Cookies Enabled",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "ua": "Full User Agent String"
     },
     "dns-lookup": {
         "title": "DNS Lookup",
-        "desc": "Find DNS records for any domain name quickly."
+        "desc": "Find DNS records for any domain name quickly.",
+        "form": {
+            "domainLabel": "Target Domain",
+            "domainPlaceholder": "example.com",
+            "typeLabel": "Record Type",
+            "submit": "Lookup Records",
+            "querying": "Querying...",
+            "errorStatus": "DNS Error: Status Code {{status}}"
+        },
+        "types": {
+            "A": "A (IPv4 Address)",
+            "AAAA": "AAAA (IPv6 Address)",
+            "MX": "MX (Mail Server)",
+            "NS": "NS (Name Server)",
+            "TXT": "TXT (Text Records)",
+            "CNAME": "CNAME (Alias)",
+            "SOA": "SOA (Start of Authority)"
+        },
+        "howItWorks": {
+            "title": "How it works",
+            "text": "This tool queries Google's Public DNS (8.8.8.8) directly via HTTPS to fetch the authoritative records for the domain."
+        },
+        "results": {
+            "empty": "Enter a domain and select a record type to start.",
+            "failed": "Lookup Failed",
+            "fetchError": "Failed to fetch DNS records.",
+            "title": "Results for {{domain}}",
+            "type": "TYPE: {{type}}",
+            "noRecords": "No Records Found",
+            "noRecordsDesc": "No {{type}} records were returned for this domain.",
+            "nxdomain": "Error: NXDOMAIN (Domain does not exist)"
+        }
     },
     "ssl-checker": {
         "title": "SSL Certificate Checker",
-        "desc": "Verify the validity and details of a websites SSL certificate."
+        "desc": "Verify the validity and details of a websites SSL certificate.",
+        "headerDesc": "Analyze your SSL configuration and find security issues.",
+        "inputLabel": "Enter Domain to Analyze",
+        "placeholder": "example.com",
+        "hint": "Enter a domain (e.g. google.com) to enable the analysis tools below.",
+        "alert": "Please enter a domain name first.",
+        "analyzeBtn": "Analyze",
+        "tools": {
+            "ssllabs": {
+                "name": "Qualys SSL Labs",
+                "desc": "Deep server configuration analysis. Gives you a grade (A+ to F)."
+            },
+            "digicert": {
+                "name": "DigiCert SSL Helper",
+                "desc": "Checks for common installation issues and intermediate chain validity."
+            },
+            "crtsh": {
+                "name": "crt.sh (Log Search)",
+                "desc": "Search Certificate Transparency logs for all certificates issued to this domain."
+            },
+            "whynopadlock": {
+                "name": "Why No Padlock?",
+                "desc": "Identify mixed content errors (http resources on https pages)."
+            },
+            "sslshopper": {
+                "name": "SSL Shopper",
+                "desc": "Quick visual check of certificate expiration and server support."
+            }
+        }
     },
     "port-scanner": {
         "title": "Port Scanner",
-        "desc": "Check for open ports on a specific IP or domain."
+        "desc": "Check for open ports on a specific IP or domain.",
+        "services": {
+            "21": "FTP (File Transfer)",
+            "22": "SSH (Secure Shell)",
+            "23": "Telnet (Unencrypted Text)",
+            "25": "SMTP (Email Sending)",
+            "53": "DNS (Domain Name System)",
+            "80": "HTTP (Web Server)",
+            "110": "POP3 (Email Receiving)",
+            "143": "IMAP (Email Receiving)",
+            "443": "HTTPS (Secure Web)",
+            "3306": "MySQL (Database)",
+            "3389": "RDP (Remote Desktop)",
+            "5432": "PostgreSQL (Database)",
+            "6379": "Redis (Data Store)",
+            "8080": "HTTP Proxy (Alt Web)",
+            "27017": "MongoDB (Database)"
+        },
+        "form": {
+            "label": "Target Address",
+            "placeholder": "google.com",
+            "submit": "Scan Now",
+            "scanning": "Scanning..."
+        },
+        "errors": {
+            "noIp": "Could not find an IP address for this domain.",
+            "ipNotFound": "No IP address found.",
+            "noOpenPorts": "No open ports found for {{ip}}. The host might be down or fully firewalled.",
+            "fetchFailed": "Could not fetch port data. Please try again.",
+            "general": "An error occurred.",
+            "failed": "Scan Failed"
+        },
+        "results": {
+            "title": "Scan Results",
+            "found": "Found {{count}} Open Ports",
+            "foundDesc": "These services are publicly accessible on the internet.",
+            "unknownService": "Unknown Service",
+            "tcp": "TCP Protocol",
+            "open": "Open",
+            "noPorts": "No common open ports found. This is good!",
+            "hostnames": "Associated Hostnames"
+        },
+        "empty": {
+            "title": "Enter a domain or IP (e.g. google.com) to scan.",
+            "desc": "We'll check a public database to see what's open."
+        },
+        "loading": "Checking public records..."
     },
-    "2fa-gen": {
+    "qr-gen": {
+        "title": "QR Code Generator",
+        "desc": "Generate QR codes for URLs, text, or contact information.",
+        "tabs": {
+            "url": "URL",
+            "text": "Text",
+            "email": "Email",
+            "wifi": "WiFi",
+            "vcard": "Contact"
+        },
+        "forms": {
+            "urlLabel": "Website URL",
+            "urlPlaceholder": "https://example.com",
+            "textLabel": "Plain Text",
+            "textPlaceholder": "Enter your text here...",
+            "recipient": "Recipient",
+            "recipientPlaceholder": "hello@example.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Meeting inquiry",
+            "body": "Body",
+            "bodyPlaceholder": "Message content...",
+            "ssid": "Network Name (SSID)",
+            "ssidPlaceholder": "MyWiFi",
+            "password": "Password",
+            "passwordPlaceholder": "secret123",
+            "encryption": "Encryption",
+            "encryptions": {
+                "wpa": "WPA/WPA2",
+                "wep": "WEP",
+                "none": "No Encryption"
+            },
+            "fullName": "Full Name",
+            "namePlaceholder": "John Doe",
+            "phone": "Phone",
+            "phonePlaceholder": "+123456789",
+            "email": "Email",
+            "emailPlaceholder": "john@example.com"
+        },
+        "appearance": {
+            "title": "Appearance Options",
+            "fgColor": "Foreground Color",
+            "bgColor": "Background Color",
+            "size": "Size: {{size}}px",
+            "errorCorrection": "Error Correction",
+            "levels": {
+                "L": "Low (7%)",
+                "M": "Medium (15%)",
+                "Q": "Quartile (25%)",
+                "H": "High (30%)"
+            }
+        },
+        "preview": {
+            "title": "Live Preview",
+            "empty": "Enter data to generate",
+            "download": "Download PNG"
+        }
+    },
+    "two-factor-gen": {
         "title": "2FA Code Generator",
-        "desc": "Generate two-factor authentication codes for your accounts."
+        "desc": "Generate two-factor authentication codes for your accounts.",
+        "headerDesc": "Generate TOTP codes for your accounts directly in your browser.",
+        "form": {
+            "title": "Add New Account",
+            "nameLabel": "Account Name",
+            "namePlaceholder": "e.g. Google, GitHub",
+            "secretLabel": "Secret Key",
+            "secretPlaceholder": "JBSWY3DPEHPK3PXP",
+            "base32Note": "Base32 secret provided by the service.",
+            "submit": "Add Account",
+            "privacy": "<strong>Privacy Note:</strong> Your secret keys are stored only in your browser's local storage and are never sent to any server."
+        },
+        "errors": {
+            "fillAll": "Please fill in all fields",
+            "invalidSecret": "Invalid Secret Key. Base32 keys only contain letters A-Z and numbers 2-7.",
+            "invalidFormat": "Invalid Secret Key format."
+        },
+        "list": {
+            "emptyTitle": "No Accounts Added Yet",
+            "emptyDesc": "Add an account using your secret key to start generating codes.",
+            "deleteConfirm": "Are you sure you want to delete this account?",
+            "deleteTooltip": "Delete Account",
+            "copyTooltip": "Copy Code"
+        }
     },
     "extension-rename": {
         "title": "File Extension Renamer",

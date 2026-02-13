@@ -4,8 +4,10 @@ import { Palette, Copy, Check, Lock, Unlock, Download, RefreshCw, Plus, Minus } 
 import chroma from 'chroma-js';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function PaletteGenerator() {
+    const { t } = useTranslation();
     const [baseColor, setBaseColor] = useState('#3b82f6');
     const [method, setMethod] = useState('monochromatic');
     const [palette, setPalette] = useState([]);
@@ -14,23 +16,16 @@ export default function PaletteGenerator() {
     const [copied, setCopied] = useState(null);
 
     const methods = [
-        { id: 'monochromatic', name: 'Monochromatic' },
-        { id: 'analogous', name: 'Analogous' },
-        { id: 'complementary', name: 'Complementary' },
-        { id: 'triadic', name: 'Triadic' },
-        { id: 'split-complementary', name: 'Split Comp.' },
-        { id: 'tetradic', name: 'Tetradic' },
-        { id: 'random', name: 'Random Blend' }
+        { id: 'monochromatic', name: t('tools.palette-gen.methods.monochromatic') },
+        { id: 'analogous', name: t('tools.palette-gen.methods.analogous') },
+        { id: 'complementary', name: t('tools.palette-gen.methods.complementary') },
+        { id: 'triadic', name: t('tools.palette-gen.methods.triadic') },
+        { id: 'split-complementary', name: t('tools.palette-gen.methods.split-complementary') },
+        { id: 'tetradic', name: t('tools.palette-gen.methods.tetradic') },
+        { id: 'random', name: t('tools.palette-gen.methods.random') }
     ];
 
     const generatePalette = (isRegenerateButton = false) => {
-        // If Regenerate button clicked and not locked, let's randomize base color for "random" inputs
-        // Or if we want to just regenerate variations.
-        // The user says "when click generate nothing happen".
-        // Let's make "Regenerate" pick a random Base Color if manual input wasn't changed
-        // OR simply tweak the input slightly.
-        // Better yet: If "Regenerate" is clicked, let's pick a random base color to ensure something happens.
-        
         let currentBase = baseColor;
         if (isRegenerateButton) {
             currentBase = chroma.random().hex();
@@ -43,31 +38,23 @@ export default function PaletteGenerator() {
         try {
             switch (method) {
                 case 'monochromatic':
-                    // Spread from dark to bright
                     colors = chroma.scale([base.darken(2), base, base.brighten(2)]).colors(colorCount);
                     break;
                 case 'analogous':
-                    // hue shift
-                    // For variable count, distribute uniformly around -30 to +30 or wider
                     const h = base.get('hsl.h');
                     const step = 60 / (colorCount > 1 ? colorCount - 1 : 1);
                     colors = Array.from({length: colorCount}, (_, i) => {
-                         // start from -30
                          const offset = -30 + (i * step);
                          return base.set('hsl.h', (h + offset) % 360).hex();
                     });
                     break;
                 case 'complementary':
-                    // If more than 2 colors, interpolate between them or adding variations
                     const comp = base.set('hsl.h', (base.get('hsl.h') + 180) % 360);
                     colors = chroma.scale([base, comp]).mode('lch').colors(colorCount);
                     break;
                 case 'triadic':
                 case 'split-complementary': 
                 case 'tetradic':
-                     // These have fixed number of "key" colors (3 or 4)
-                     // If count > key colors, we interpolate or add varying brightness/saturation
-                     // Simple approach: Create a scale involving the key colors
                      let keyColors = [base.hex()];
                      if (method === 'triadic') {
                          keyColors.push(base.set('hsl.h', (base.get('hsl.h') + 120) % 360).hex());
@@ -80,11 +67,6 @@ export default function PaletteGenerator() {
                          keyColors.push(base.set('hsl.h', (base.get('hsl.h') + 180) % 360).hex());
                          keyColors.push(base.set('hsl.h', (base.get('hsl.h') + 270) % 360).hex());
                      }
-                     
-                     // Create scale through these key colors
-                     // If count matches key colors length, use key colors directly (if exact match wanted)
-                     // But usually palettes are nicer if they form a gradient or related set.
-                     // Let's use chroma.scale using the key colors as stops.
                      colors = chroma.scale(keyColors).mode('lch').colors(colorCount);
                      break;
                 case 'random':
@@ -98,14 +80,8 @@ export default function PaletteGenerator() {
             colors = chroma.scale([base, '#000']).colors(colorCount);
         }
 
-        // Apply locks
         setPalette(prev => {
             if (prev.length === 0) return colors;
-            // Map previous locked colors by index?
-            // If count changed, indices change meaning...
-            // User usually locks "position 0" or specific color?
-            // "locked" state is by index {0: true, 2: true}
-            // If we reduce count, we lose upper locks.
             return colors.map((c, i) => (locked[i] && prev[i]) ? prev[i] : c);
         });
     };
@@ -126,21 +102,17 @@ export default function PaletteGenerator() {
 
     const downloadPalette = () => {
         const canvas = document.createElement('canvas');
-        // Width depends on count
         const swatchWidth = 150;
         const width = swatchWidth * palette.length;
-        const height = 250; // Taller to fit text
+        const height = 250;
         canvas.width = width;
         canvas.height = height;
         const ctx = canvas.getContext('2d');
         
         palette.forEach((color, i) => {
-            // Draw Color
             ctx.fillStyle = color;
             ctx.fillRect(i * swatchWidth, 0, swatchWidth, height);
             
-            // Draw Hex Text
-            // Calculate contrast for text color
             const luminance = chroma(color).luminance();
             ctx.fillStyle = luminance > 0.5 ? '#000000' : '#ffffff';
             ctx.font = 'bold 20px monospace';
@@ -165,8 +137,8 @@ export default function PaletteGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Color Palette Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create beautiful, harmonious color schemes for your projects." />
+                <title>{t('tools.palette-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.palette-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -175,8 +147,8 @@ export default function PaletteGenerator() {
                         <Palette size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Color Palette Generator</h1>
-                        <p className="text-slate-500">Create harmonious color schemes based on color theory.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.palette-gen.title')}</h1>
+                        <p className="text-slate-500">{t('tools.palette-gen.subtitle')}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
@@ -184,19 +156,19 @@ export default function PaletteGenerator() {
                         onClick={() => setLocked({})}
                         className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
                     >
-                        Reset Locks
+                        {t('tools.palette-gen.actions.resetLocks')}
                     </button>
                     <button 
                         onClick={() => generatePalette(true)}
                         className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg shadow-blue-200"
                     >
-                        <RefreshCw size={16} /> Randomize
+                        <RefreshCw size={16} /> {t('tools.palette-gen.actions.randomize')}
                     </button>
                     <button 
                         onClick={downloadPalette}
                         className="px-4 py-2 text-sm font-medium text-purple-600 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors flex items-center gap-2"
                     >
-                        <Download size={16} /> Export
+                        <Download size={16} /> {t('tools.palette-gen.actions.export')}
                     </button>
                 </div>
             </div>
@@ -205,7 +177,7 @@ export default function PaletteGenerator() {
                 {/* Controls */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 h-fit space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Base Color</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.palette-gen.labels.baseColor')}</label>
                         <div className="flex gap-2">
                             <input 
                                 type="color" 
@@ -223,7 +195,7 @@ export default function PaletteGenerator() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Harmony Rule</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.palette-gen.labels.harmonyRule')}</label>
                         <div className="space-y-2">
                             {methods.map(m => (
                                 <button
@@ -242,7 +214,7 @@ export default function PaletteGenerator() {
                     </div>
 
                     <div>
-                         <label className="block text-sm font-medium text-slate-700 mb-2">Palette Size (Max 9)</label>
+                         <label className="block text-sm font-medium text-slate-700 mb-2">{t('tools.palette-gen.labels.paletteSize')} (Max 9)</label>
                          <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-xl border border-slate-200 justify-between">
                             <button 
                                 onClick={() => adjustCount(-1)}
@@ -290,7 +262,6 @@ export default function PaletteGenerator() {
                                     </button>
                                 </div>
                                 
-                                {/* Always visible hex label at bottom */}
                                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/20 text-white px-3 py-1 rounded-lg backdrop-blur-md text-xs font-mono font-bold tracking-wider opacity-0 lg:opacity-100 md:opacity-100 group-hover:opacity-0 transition-opacity whitespace-nowrap">
                                     {color.toUpperCase()}
                                 </div>

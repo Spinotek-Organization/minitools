@@ -4,15 +4,17 @@ import { LineChart, BarChart, AreaChart, ScatterChart, Line, Bar, Area, Scatter,
 import { LineChart as LineChartIcon, Save, Plus, Trash2, Settings, BarChart as BarChartIcon, ScatterChart as ScatterChartIcon, AreaChart as AreaChartIcon } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 const CHART_TYPES = [
-    { id: 'line', name: 'Line Chart', icon: LineChartIcon },
-    { id: 'bar', name: 'Bar Chart', icon: BarChartIcon },
-    { id: 'area', name: 'Area Chart', icon: AreaChartIcon },
-    { id: 'scatter', name: 'Scatter Plot', icon: ScatterChartIcon },
+    { id: 'line', icon: LineChartIcon },
+    { id: 'bar', icon: BarChartIcon },
+    { id: 'area', icon: AreaChartIcon },
+    { id: 'scatter', icon: ScatterChartIcon },
 ];
 
 export default function GraphPlotter() {
+    const { t } = useTranslation();
     const [data, setData] = useState([
         { x: 'A', y: 10 },
         { x: 'B', y: 25 },
@@ -57,13 +59,6 @@ export default function GraphPlotter() {
     const downloadChart = () => {
         try {
             // Find the SVG element in the current DOM
-            // Since Recharts renders SVG, we assume it's inside our container.
-            // We can search by class or tag.
-            // A more robust way is to use a ref on the container div, but Recharts ref points to the chart instance.
-            // The ResponsiveContainer renders a div.
-            
-            // Let's try to find the SVG by query selector within the document for simplicity, 
-            // or better, wrap the Chart in a div with an ID.
             const chartContainer = document.getElementById('recharts-container');
             if (!chartContainer) return;
             
@@ -171,8 +166,8 @@ export default function GraphPlotter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Simple Graph Plotter | MiniTools by Spinotek</title>
-                <meta name="description" content="Visualize your data with simple bar, line, area, or scatter graphs." />
+                <title>{t('tools.graph-plotter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.graph-plotter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -181,8 +176,8 @@ export default function GraphPlotter() {
                         <LineChartIcon size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Simple Graph Plotter</h1>
-                        <p className="text-slate-500 text-sm">Create and download customized graphs instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.graph-plotter.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.graph-plotter.desc')}</p>
                     </div>
                 </div>
                 
@@ -191,7 +186,7 @@ export default function GraphPlotter() {
                     className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors shadow-lg shadow-slate-200"
                 >
                     <Save size={18} />
-                    Download PNG
+                    {t('tools.graph-plotter.download')}
                 </button>
             </div>
 
@@ -205,17 +200,17 @@ export default function GraphPlotter() {
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="font-bold text-slate-700 flex items-center gap-2">
                                 <Plus size={18} className="text-violet-600" />
-                                Data Points
+                                {t('tools.graph-plotter.dataPoints.title')}
                             </h3>
                             <button onClick={addRow} className="p-2 hover:bg-slate-50 rounded-lg text-violet-600 font-medium text-sm transition-colors">
-                                + Add Row
+                                {t('tools.graph-plotter.dataPoints.addRow')}
                             </button>
                         </div>
                         
                         <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                             <div className="grid grid-cols-6 gap-2 text-xs font-bold text-slate-400 uppercase mb-1">
-                                <div className="col-span-3">X Value</div>
-                                <div className="col-span-2">Y Value</div>
+                                <div className="col-span-3">{t('tools.graph-plotter.dataPoints.xValue')}</div>
+                                <div className="col-span-2">{t('tools.graph-plotter.dataPoints.yValue')}</div>
                                 <div className="col-span-1"></div>
                             </div>
                             {data.map((row, index) => (
@@ -250,12 +245,12 @@ export default function GraphPlotter() {
                     <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
                         <h3 className="font-bold text-slate-700 flex items-center gap-2 mb-4">
                             <Settings size={18} className="text-violet-600" />
-                            Configuration
+                            {t('tools.graph-plotter.config.title')}
                         </h3>
 
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Chart Type</label>
+                                <label className="block text-xs font-bold text-slate-400 uppercase mb-2">{t('tools.graph-plotter.config.chartType')}</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     {CHART_TYPES.map(type => (
                                         <button
@@ -267,14 +262,14 @@ export default function GraphPlotter() {
                                                     : 'bg-white border-slate-100 text-slate-500 hover:bg-slate-50'}`}
                                         >
                                             <type.icon size={16} />
-                                            {type.name}
+                                            {t(`tools.graph-plotter.config.types.${type.id}`)}
                                         </button>
                                     ))}
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Axes Labels</label>
+                                <label className="block text-xs font-bold text-slate-400 uppercase mb-2">{t('tools.graph-plotter.config.axesLabels')}</label>
                                 <div className="grid grid-cols-2 gap-3">
                                     <input 
                                         type="text" 
@@ -295,7 +290,7 @@ export default function GraphPlotter() {
                             
                             <div className="flex items-center gap-4">
                                 <div className="flex-1">
-                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Color Theme</label>
+                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">{t('tools.graph-plotter.config.colorTheme')}</label>
                                     <input 
                                         type="color" 
                                         value={options.color} 
@@ -311,7 +306,7 @@ export default function GraphPlotter() {
                                             onChange={(e) => setOptions({...options, showGrid: e.target.checked})}
                                             className="w-5 h-5 rounded border-slate-300 text-violet-600 focus:ring-violet-500 cursor-pointer"
                                         />
-                                        <span className="text-sm font-medium text-slate-600">Show Grid</span>
+                                        <span className="text-sm font-medium text-slate-600">{t('tools.graph-plotter.config.showGrid')}</span>
                                     </label>
                                 </div>
                             </div>
@@ -329,7 +324,7 @@ export default function GraphPlotter() {
                         </div>
                         {chartType === 'scatter' && (
                              <p className="text-xs text-center text-slate-400 mt-4">
-                                Note: For Scatter plots, X values must be numeric. Non-numeric values will default to 0.
+                                {t('tools.graph-plotter.scatterNote')}
                              </p>
                         )}
                     </div>

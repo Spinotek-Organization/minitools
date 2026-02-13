@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Timer, Play, Pause, RotateCcw, Coffee, Zap, Settings, Volume2, VolumeX, BellRing } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function PomodoroTimer() {
+    const { t } = useTranslation();
     const [mode, setMode] = useState('work'); // 'work', 'short', 'long'
     const [timeLeft, setTimeLeft] = useState(25 * 60);
     const [isActive, setIsActive] = useState(false);
@@ -58,7 +60,7 @@ export default function PomodoroTimer() {
 
     const MODES = {
         work: {
-            label: 'Work Time',
+            label: t('tools.pomodoro.modes.work'),
             time: (workTime.m * 60) + workTime.s,
             color: 'text-red-600',
             bg: 'bg-red-50',
@@ -66,7 +68,7 @@ export default function PomodoroTimer() {
             icon: Zap
         },
         short: {
-            label: 'Short Break',
+            label: t('tools.pomodoro.modes.short'),
             time: (shortBreakTime.m * 60) + shortBreakTime.s,
             color: 'text-emerald-600',
             bg: 'bg-emerald-50',
@@ -74,7 +76,7 @@ export default function PomodoroTimer() {
             icon: Coffee
         },
         long: {
-            label: 'Long Break',
+            label: t('tools.pomodoro.modes.long'),
             time: (longBreakTime.m * 60) + longBreakTime.s,
             color: 'text-blue-600',
             bg: 'bg-blue-50',
@@ -116,15 +118,15 @@ export default function PomodoroTimer() {
         const mins = Math.floor(timeLeft / 60);
         const secs = timeLeft % 60; 
         if (isAlarming) {
-            document.title = "🔔 TIME IS UP! - Pomodoro";
+            document.title = t('tools.pomodoro.documentTitle.timeUp');
         } else {
             document.title = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')} - ${MODES[mode].label}`;
         }
         
         return () => {
-             document.title = 'Pomodoro Timer | MiniTools by Spinotek';
+             document.title = `${t('tools.pomodoro.title')} | MiniTools by Spinotek`;
         }
-    }, [timeLeft, mode, isAlarming]);
+    }, [timeLeft, mode, isAlarming, t, MODES]);
 
     const stopAlarm = () => {
         setIsAlarming(false);
@@ -176,8 +178,8 @@ export default function PomodoroTimer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Pomodoro Timer | MiniTools by Spinotek</title>
-                <meta name="description" content="Stay focused with customizable work and break intervals." />
+                <title>{t('tools.pomodoro.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.pomodoro.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -186,8 +188,8 @@ export default function PomodoroTimer() {
                         <Timer size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Pomodoro Timer</h1>
-                        <p className="text-slate-500 text-sm">Stay focused with customizable work and break intervals.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.pomodoro.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.pomodoro.desc')}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
@@ -211,14 +213,14 @@ export default function PomodoroTimer() {
             {/* Settings Modal */}
             {showSettings && (
                 <div className="mb-8 bg-white rounded-3xl border border-slate-200 p-6 animate-fade-in-down">
-                     <h3 className="font-bold text-lg mb-4 text-slate-800">Timer Settings</h3>
+                     <h3 className="font-bold text-lg mb-4 text-slate-800">{t('tools.pomodoro.settings.title')}</h3>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         {/* Work Settings */}
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <label className="block text-sm font-bold text-red-600 mb-2 uppercase tracking-wide">Work Time</label>
+                            <label className="block text-sm font-bold text-red-600 mb-2 uppercase tracking-wide">{t('tools.pomodoro.modes.work')}</label>
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">MIN</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.min')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -228,7 +230,7 @@ export default function PomodoroTimer() {
                                     />
                                 </div>
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">SEC</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.sec')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -243,10 +245,10 @@ export default function PomodoroTimer() {
 
                         {/* Short Break Settings */}
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <label className="block text-sm font-bold text-emerald-600 mb-2 uppercase tracking-wide">Short Break</label>
+                            <label className="block text-sm font-bold text-emerald-600 mb-2 uppercase tracking-wide">{t('tools.pomodoro.modes.short')}</label>
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">MIN</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.min')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -256,7 +258,7 @@ export default function PomodoroTimer() {
                                     />
                                 </div>
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">SEC</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.sec')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -271,10 +273,10 @@ export default function PomodoroTimer() {
 
                         {/* Long Break Settings */}
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <label className="block text-sm font-bold text-blue-600 mb-2 uppercase tracking-wide">Long Break</label>
+                            <label className="block text-sm font-bold text-blue-600 mb-2 uppercase tracking-wide">{t('tools.pomodoro.modes.long')}</label>
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">MIN</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.min')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -284,7 +286,7 @@ export default function PomodoroTimer() {
                                     />
                                 </div>
                                 <div className="flex-1">
-                                    <span className="text-xs text-slate-400 font-bold ml-1">SEC</span>
+                                    <span className="text-xs text-slate-400 font-bold ml-1">{t('tools.pomodoro.settings.sec')}</span>
                                     <input 
                                         type="number" 
                                         min="0"
@@ -302,7 +304,7 @@ export default function PomodoroTimer() {
                             onClick={handleSaveSettings}
                             className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-slate-300 hover:bg-slate-800 transition-all hover:scale-105"
                         >
-                            Save Settings
+                            {t('tools.pomodoro.settings.save')}
                         </button>
                      </div>
                 </div>
@@ -318,7 +320,7 @@ export default function PomodoroTimer() {
                                 mode === 'work' ? 'bg-red-100 text-red-700 ring-2 ring-red-500 ring-offset-2' : 'hover:bg-slate-50 text-slate-600'
                             }`}
                         >
-                            Work
+                            {t('tools.pomodoro.modes.work')}
                         </button>
                         <button 
                             onClick={() => changeMode('short')}
@@ -326,7 +328,7 @@ export default function PomodoroTimer() {
                                 mode === 'short' ? 'bg-emerald-100 text-emerald-700 ring-2 ring-emerald-500 ring-offset-2' : 'hover:bg-slate-50 text-slate-600'
                             }`}
                         >
-                            Short Break
+                            {t('tools.pomodoro.modes.short')}
                         </button>
                         <button 
                             onClick={() => changeMode('long')}
@@ -334,7 +336,7 @@ export default function PomodoroTimer() {
                                 mode === 'long' ? 'bg-blue-100 text-blue-700 ring-2 ring-blue-500 ring-offset-2' : 'hover:bg-slate-50 text-slate-600'
                             }`}
                         >
-                            Long Break
+                            {t('tools.pomodoro.modes.long')}
                         </button>
                     </div>
                 )}
@@ -343,7 +345,7 @@ export default function PomodoroTimer() {
                 <div 
                     onClick={() => !isActive && setShowSettings(true)}
                     className={`relative w-80 h-80 mx-auto rounded-full flex items-center justify-center mb-12 transition-colors ${MODES[mode].bg} ${isAlarming ? 'animate-pulse' : 'cursor-pointer hover:bg-opacity-80'}`}
-                    title="Click to Edit Time"
+                    title={t('tools.pomodoro.status.clickEdit')}
                 >
                     <div className={`absolute inset-0 rounded-full border-8 opacity-20 ${MODES[mode].color.replace('text', 'border')}`}></div>
                     <div className="text-center z-10">
@@ -352,11 +354,11 @@ export default function PomodoroTimer() {
                         </div>
                         <div className="flex items-center justify-center gap-2 text-slate-500 uppercase tracking-widest font-semibold text-sm">
                             <CurrentIcon size={16} />
-                            {isAlarming ? "TIME IS UP!" : MODES[mode].label}
+                            {isAlarming ? t('tools.pomodoro.status.timeUp') : MODES[mode].label}
                         </div>
                         {!isActive && !isAlarming && (
                             <div className="text-xs text-slate-400 font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                Click to Edit
+                                {t('tools.pomodoro.status.clickEdit')}
                             </div>
                         )}
                     </div>
@@ -369,7 +371,7 @@ export default function PomodoroTimer() {
                         className="w-full max-w-sm mx-auto py-4 rounded-2xl bg-red-600 hover:bg-red-700 text-white font-black text-xl shadow-lg shadow-red-200 animate-bounce flex items-center justify-center gap-2"
                     >
                         <BellRing size={28} />
-                        STOP ALARM
+                        {t('tools.pomodoro.controls.stopAlarm')}
                     </button>
                 ) : (
                     <div className="flex items-center justify-center gap-4">

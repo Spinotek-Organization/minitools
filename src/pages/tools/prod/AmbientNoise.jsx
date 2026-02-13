@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Waves, CloudRain, CloudLightning, Wind, Volume2, StopCircle, Fan, Moon, Plane, Droplets } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation, Trans } from 'react-i18next';
 
 // Audio Context Helper
 const getAudioContext = () => {
@@ -10,7 +11,8 @@ const getAudioContext = () => {
     return new AudioContext();
 };
 
-const NoiseCard = ({ id, label, icon: Icon, color, isPlaying, volume, config, onToggle, onVolumeChange, ctxRef }) => {
+const NoiseCard = ({ id, labelKey, icon: Icon, color, isPlaying, volume, config, onToggle, onVolumeChange, ctxRef }) => {
+    const { t } = useTranslation();
     const nodeRef = useRef(null);
     const gainRef = useRef(null);
 
@@ -98,6 +100,7 @@ const NoiseCard = ({ id, label, icon: Icon, color, isPlaying, volume, config, on
                 nodeRef.current = null;
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPlaying, config, ctxRef.current]);
 
     // Update volume
@@ -105,7 +108,7 @@ const NoiseCard = ({ id, label, icon: Icon, color, isPlaying, volume, config, on
         if (gainRef.current && ctxRef.current) {
             gainRef.current.gain.setTargetAtTime(volume, ctxRef.current.currentTime, 0.1);
         }
-    }, [volume]);
+    }, [volume, ctxRef]);
 
     return (
         <div className={`p-6 rounded-3xl border transition-all ${isPlaying ? `bg-${color}-50 border-${color}-200` : 'bg-white border-slate-100 hover:border-slate-200'}`}>
@@ -117,13 +120,13 @@ const NoiseCard = ({ id, label, icon: Icon, color, isPlaying, volume, config, on
                     onClick={() => onToggle(id)}
                     className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${isPlaying ? `bg-${color}-100 text-${color}-700` : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
                 >
-                    {isPlaying ? 'Playing' : 'Play'}
+                    {isPlaying ? t('tools.ambient-noise.controls.playing') : t('tools.ambient-noise.controls.play')}
                 </button>
             </div>
             
             <div className="space-y-2">
                 <div className="flex justify-between text-xs font-medium text-slate-500">
-                    <span>Volume</span>
+                    <span>{t('tools.ambient-noise.controls.volume')}</span>
                     <span>{Math.round(volume * 100)}%</span>
                 </div>
                 <input 
@@ -138,21 +141,22 @@ const NoiseCard = ({ id, label, icon: Icon, color, isPlaying, volume, config, on
                 />
             </div>
             
-            <h3 className="mt-4 font-bold text-slate-900">{label}</h3>
+            <h3 className="mt-4 font-bold text-slate-900">{t(`tools.ambient-noise.noises.${labelKey}`)}</h3>
         </div>
     );
 };
 
 export default function AmbientNoise() {
+    const { t } = useTranslation();
     const [sounds, setSounds] = useState([
-        { id: 1, label: 'Soft Rain', icon: CloudRain, color: 'sky', isPlaying: false, volume: 0.5, config: { noise: 'pink', filter: 'lowpass', freq: 600 } },
-        { id: 2, label: 'Deep Thunder', icon: CloudLightning, color: 'indigo', isPlaying: false, volume: 0.6, config: { noise: 'brown', filter: 'lowpass', freq: 150 } },
-        { id: 3, label: 'White Noise', icon: Waves, color: 'slate', isPlaying: false, volume: 0.3, config: { noise: 'white', filter: 'allpass' } },
-        { id: 4, label: 'Windy Forest', icon: Wind, color: 'emerald', isPlaying: false, volume: 0.4, config: { noise: 'pink', filter: 'highpass', freq: 800 } },
-        { id: 5, label: 'Box Fan', icon: Fan, color: 'orange', isPlaying: false, volume: 0.5, config: { noise: 'brown', filter: 'lowpass', freq: 300 } },
-        { id: 6, label: 'Night Ambience', icon: Moon, color: 'violet', isPlaying: false, volume: 0.4, config: { noise: 'white', filter: 'highpass', freq: 2000 } },
-        { id: 7, label: 'Running Stream', icon: Droplets, color: 'cyan', isPlaying: false, volume: 0.5, config: { noise: 'pink', filter: 'bandpass', freq: 600, Q: 0.5 } },
-        { id: 8, label: 'Airplane Cabin', icon: Plane, color: 'zinc', isPlaying: false, volume: 0.6, config: { noise: 'brown', filter: 'lowpass', freq: 120 } }
+        { id: 1, labelKey: 'rain', icon: CloudRain, color: 'sky', isPlaying: false, volume: 0.5, config: { noise: 'pink', filter: 'lowpass', freq: 600 } },
+        { id: 2, labelKey: 'thunder', icon: CloudLightning, color: 'indigo', isPlaying: false, volume: 0.6, config: { noise: 'brown', filter: 'lowpass', freq: 150 } },
+        { id: 3, labelKey: 'white', icon: Waves, color: 'slate', isPlaying: false, volume: 0.3, config: { noise: 'white', filter: 'allpass' } },
+        { id: 4, labelKey: 'forest', icon: Wind, color: 'emerald', isPlaying: false, volume: 0.4, config: { noise: 'pink', filter: 'highpass', freq: 800 } },
+        { id: 5, labelKey: 'fan', icon: Fan, color: 'orange', isPlaying: false, volume: 0.5, config: { noise: 'brown', filter: 'lowpass', freq: 300 } },
+        { id: 6, labelKey: 'night', icon: Moon, color: 'violet', isPlaying: false, volume: 0.4, config: { noise: 'white', filter: 'highpass', freq: 2000 } },
+        { id: 7, labelKey: 'stream', icon: Droplets, color: 'cyan', isPlaying: false, volume: 0.5, config: { noise: 'pink', filter: 'bandpass', freq: 600, Q: 0.5 } },
+        { id: 8, labelKey: 'cabin', icon: Plane, color: 'zinc', isPlaying: false, volume: 0.6, config: { noise: 'brown', filter: 'lowpass', freq: 120 } }
     ]);
     
     const ctxRef = useRef(null);
@@ -183,8 +187,8 @@ export default function AmbientNoise() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Ambient Noise Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Focus with soothing sounds like rain, coffee shop, and more." />
+                <title>{t('tools.ambient-noise.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.ambient-noise.metaDesc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -193,8 +197,8 @@ export default function AmbientNoise() {
                         <Waves size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Ambient Noise Generator</h1>
-                        <p className="text-slate-500 text-sm">Focus with soothing sounds like rain, coffee shop, and more.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.ambient-noise.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.ambient-noise.desc')}</p>
                     </div>
                 </div>
                 
@@ -204,7 +208,7 @@ export default function AmbientNoise() {
                         className="flex items-center gap-2 px-4 py-2 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-100 transition-colors font-medium"
                     >
                         <StopCircle size={18} />
-                        Stop All
+                        {t('tools.ambient-noise.controls.stopAll')}
                     </button>
                 )}
             </div>
@@ -224,9 +228,11 @@ export default function AmbientNoise() {
             <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-100 text-blue-800 text-sm">
                 <h4 className="font-bold flex items-center gap-2 mb-2">
                     <Volume2 size={16} />
-                    Pro Tip
+                    {t('tools.ambient-noise.tip.title')}
                 </h4>
-                <p>You can mix multiple sounds together! Try combining <strong>Soft Rain</strong> and <strong>Deep Thunder</strong> for a cozy storm atmosphere.</p>
+                <p>
+                    <Trans i18nKey="tools.ambient-noise.tip.content" components={{ strong: <strong /> }} />
+                </p>
             </div>
 
             <RelatedTools currentToolId="ambient-noise" categoryId="productivity" />

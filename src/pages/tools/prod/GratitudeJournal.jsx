@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Heart, Save, BookOpen, Calendar, Download } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function GratitudeJournal() {
+    const { t } = useTranslation();
     const [entries, setEntries] = useState(() => {
         const saved = localStorage.getItem('minitools-gratitude');
         return saved ? JSON.parse(saved) : [];
@@ -58,8 +60,8 @@ export default function GratitudeJournal() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Gratitude Journal | MiniTools by Spinotek</title>
-                <meta name="description" content="Improve your well-being by reflecting on positive moments." />
+                <title>{t('tools.gratitude-journal.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.gratitude-journal.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -68,8 +70,8 @@ export default function GratitudeJournal() {
                         <Heart size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Gratitude Journal</h1>
-                        <p className="text-slate-500 text-sm">Improve your well-being by reflecting on positive moments.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.gratitude-journal.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.gratitude-journal.desc')}</p>
                     </div>
                 </div>
                 <div className="bg-slate-100 p-1 rounded-xl flex">
@@ -77,13 +79,13 @@ export default function GratitudeJournal() {
                         onClick={() => setActiveTab('write')}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'write' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        Write Entry
+                        {t('tools.gratitude-journal.tabs.write')}
                     </button>
                     <button 
                          onClick={() => setActiveTab('history')}
                          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'history' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        History ({entries.length})
+                        {t('tools.gratitude-journal.tabs.history')} ({entries.length})
                     </button>
                 </div>
             </div>
@@ -92,7 +94,7 @@ export default function GratitudeJournal() {
                 <div className="max-w-3xl mx-auto">
                     <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
                         <div className="text-center mb-8">
-                            <span className="bg-pink-50 text-pink-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Daily Check-in</span>
+                            <span className="bg-pink-50 text-pink-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{t('tools.gratitude-journal.checkIn')}</span>
                             <h2 className="text-xl font-bold mt-2 text-slate-800">
                                 {new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
                             </h2>
@@ -100,31 +102,31 @@ export default function GratitudeJournal() {
 
                         <form onSubmit={handleSave} className="space-y-8">
                             <div>
-                                <label className="block text-slate-900 font-semibold mb-2">1. I am grateful for...</label>
+                                <label className="block text-slate-900 font-semibold mb-2">{t('tools.gratitude-journal.questions.q1')}</label>
                                 <textarea 
                                     value={q1}
                                     onChange={(e) => setQ1(e.target.value)}
-                                    placeholder="List three things you are thankful for today..."
+                                    placeholder={t('tools.gratitude-journal.placeholders.q1')}
                                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-500 min-h-[100px]"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-slate-900 font-semibold mb-2">2. What would make today great?</label>
+                                <label className="block text-slate-900 font-semibold mb-2">{t('tools.gratitude-journal.questions.q2')}</label>
                                 <textarea 
                                     value={q2}
                                     onChange={(e) => setQ2(e.target.value)}
-                                    placeholder="Mention small wins or goals..."
+                                    placeholder={t('tools.gratitude-journal.placeholders.q2')}
                                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-500 min-h-[100px]"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-slate-900 font-semibold mb-2">3. Daily Affirmation</label>
+                                <label className="block text-slate-900 font-semibold mb-2">{t('tools.gratitude-journal.questions.q3')}</label>
                                 <textarea 
                                     value={q3}
                                     onChange={(e) => setQ3(e.target.value)}
-                                    placeholder="I am..."
+                                    placeholder={t('tools.gratitude-journal.placeholders.q3')}
                                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-500 min-h-[100px]"
                                 />
                             </div>
@@ -134,7 +136,7 @@ export default function GratitudeJournal() {
                                 className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-bold text-lg shadow-lg shadow-pink-200 transition-all flex items-center justify-center gap-2"
                             >
                                 <Save size={20} />
-                                Save Entry
+                                {t('tools.gratitude-journal.controls.save')}
                             </button>
                         </form>
                     </div>
@@ -148,7 +150,7 @@ export default function GratitudeJournal() {
                                 className="flex items-center gap-2 text-pink-600 hover:text-pink-700 font-medium bg-pink-50 hover:bg-pink-100 px-4 py-2 rounded-xl transition-colors"
                             >
                                 <Download size={18} />
-                                Download Journal (TXT)
+                                {t('tools.gratitude-journal.controls.download')}
                             </button>
                          </div>
                     )}
@@ -156,9 +158,9 @@ export default function GratitudeJournal() {
                     {entries.length === 0 ? (
                         <div className="text-center py-12 bg-white rounded-3xl border border-slate-100">
                              <BookOpen size={48} className="mx-auto text-slate-300 mb-4" />
-                             <p className="text-slate-500">No entries yet. Start writing your first one!</p>
+                             <p className="text-slate-500">{t('tools.gratitude-journal.empty')}</p>
                              <button onClick={() => setActiveTab('write')} className="mt-4 text-pink-600 font-bold hover:underline">
-                                Write Now
+                                {t('tools.gratitude-journal.controls.writeNow')}
                              </button>
                         </div>
                     ) : (
@@ -171,19 +173,19 @@ export default function GratitudeJournal() {
                                 <div className="space-y-6">
                                     {entry.q1 && (
                                         <div>
-                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">I am grateful for...</h4>
+                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('tools.gratitude-journal.history.q1')}</h4>
                                             <p className="text-slate-700 whitespace-pre-wrap">{entry.q1}</p>
                                         </div>
                                     )}
                                     {entry.q2 && (
                                         <div>
-                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Make today great</h4>
+                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('tools.gratitude-journal.history.q2')}</h4>
                                             <p className="text-slate-700 whitespace-pre-wrap">{entry.q2}</p>
                                         </div>
                                     )}
                                     {entry.q3 && (
                                         <div>
-                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Affirmation</h4>
+                                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('tools.gratitude-journal.history.q3')}</h4>
                                             <p className="text-slate-700 whitespace-pre-wrap">{entry.q3}</p>
                                         </div>
                                     )}

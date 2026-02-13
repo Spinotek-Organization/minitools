@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Shuffle, Plus, ArrowRight, Trash2, Check, RotateCcw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function DecisionMatrix() {
+    const { t } = useTranslation();
     const [step, setStep] = useState(1);
     const [options, setOptions] = useState([{ id: 1, name: '' }, { id: 2, name: '' }]);
     const [criteria, setCriteria] = useState([{ id: 1, name: 'Cost', weight: 5 }, { id: 2, name: 'Impact', weight: 3 }]);
@@ -57,14 +59,14 @@ export default function DecisionMatrix() {
         if (step === 1) {
             setOptions(options.filter(o => o.name.trim() !== ''));
             if (options.filter(o => o.name.trim() !== '').length < 2) {
-                alert("Please add at least 2 options.");
+                alert(t('tools.decision-matrix.step1.alert'));
                 return;
             }
         }
         if (step === 2) {
              setCriteria(criteria.filter(c => c.name.trim() !== ''));
              if (criteria.filter(c => c.name.trim() !== '').length < 1) {
-                 alert("Please add at least 1 criterion.");
+                 alert(t('tools.decision-matrix.step2.alert'));
                  return;
              }
         }
@@ -74,8 +76,8 @@ export default function DecisionMatrix() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Decision Matrix (Pick for me) | MiniTools by Spinotek</title>
-                <meta name="description" content="Stuck? Let the logic help you decide what to do next." />
+                <title>{t('tools.decision-matrix.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.decision-matrix.metaDesc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -84,14 +86,14 @@ export default function DecisionMatrix() {
                         <Shuffle size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Decision Matrix</h1>
-                        <p className="text-slate-500 text-sm">Mathematically determine the best choice based on weighted criteria.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.decision-matrix.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.decision-matrix.desc')}</p>
                     </div>
                 </div>
                 {step === 4 && (
                      <button onClick={reset} className="flex items-center gap-2 text-slate-500 hover:text-orange-600 transition-colors">
                         <RotateCcw size={18} />
-                        Start Over
+                        {t('tools.decision-matrix.controls.startOver')}
                      </button>
                 )}
             </div>
@@ -100,28 +102,28 @@ export default function DecisionMatrix() {
             <div className="flex items-center justify-center mb-12 gap-4 text-sm font-bold text-slate-400">
                 <div className={`flex items-center gap-2 ${step >= 1 ? 'text-orange-600' : ''}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-orange-100' : 'bg-slate-100'}`}>1</div>
-                    Options
+                    {t('tools.decision-matrix.steps.options')}
                 </div>
                 <div className="w-8 h-1 bg-slate-100 rounded-full">
                     <div className={`h-full bg-orange-500 rounded-full transition-all ${step > 1 ? 'w-full' : 'w-0'}`}></div>
                 </div>
                 <div className={`flex items-center gap-2 ${step >= 2 ? 'text-orange-600' : ''}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-orange-100' : 'bg-slate-100'}`}>2</div>
-                    Criteria
+                    {t('tools.decision-matrix.steps.criteria')}
                 </div>
                 <div className="w-8 h-1 bg-slate-100 rounded-full">
                     <div className={`h-full bg-orange-500 rounded-full transition-all ${step > 2 ? 'w-full' : 'w-0'}`}></div>
                 </div>
                  <div className={`flex items-center gap-2 ${step >= 3 ? 'text-orange-600' : ''}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? 'bg-orange-100' : 'bg-slate-100'}`}>3</div>
-                    Rate
+                    {t('tools.decision-matrix.steps.rate')}
                 </div>
                  <div className="w-8 h-1 bg-slate-100 rounded-full">
                     <div className={`h-full bg-orange-500 rounded-full transition-all ${step > 3 ? 'w-full' : 'w-0'}`}></div>
                 </div>
                  <div className={`flex items-center gap-2 ${step >= 4 ? 'text-orange-600' : ''}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 4 ? 'bg-orange-100' : 'bg-slate-100'}`}>4</div>
-                    Result
+                    {t('tools.decision-matrix.steps.result')}
                 </div>
             </div>
 
@@ -130,7 +132,7 @@ export default function DecisionMatrix() {
                 {/* Step 1: Options */}
                 {step === 1 && (
                     <div className="max-w-xl mx-auto">
-                        <h2 className="text-xl font-bold mb-6 text-center">What options are you considering?</h2>
+                        <h2 className="text-xl font-bold mb-6 text-center">{t('tools.decision-matrix.step1.title')}</h2>
                         <div className="space-y-4 mb-8">
                             {options.map((opt, idx) => (
                                 <div key={opt.id} className="flex gap-2">
@@ -138,7 +140,7 @@ export default function DecisionMatrix() {
                                         type="text" 
                                         value={opt.name}
                                         onChange={(e) => updateOption(opt.id, e.target.value)}
-                                        placeholder={`Option ${idx + 1} (e.g. "Buy Honda Civic")`}
+                                        placeholder={t('tools.decision-matrix.step1.placeholder', { count: idx + 1 })}
                                         className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         autoFocus={idx === 0}
                                     />
@@ -150,12 +152,12 @@ export default function DecisionMatrix() {
                                 </div>
                             ))}
                             <button onClick={addOption} className="w-full py-3 border-2 border-dashed border-slate-200 rounded-xl text-slate-500 hover:border-orange-500 hover:text-orange-500 font-medium flex items-center justify-center gap-2 transition-all">
-                                <Plus size={20} /> Add Another Option
+                                <Plus size={20} /> {t('tools.decision-matrix.controls.addOption')}
                             </button>
                         </div>
                         <div className="flex justify-end">
                             <button onClick={nextStep} className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors">
-                                Next Step <ArrowRight size={20} />
+                                {t('tools.decision-matrix.controls.nextStep')} <ArrowRight size={20} />
                             </button>
                         </div>
                     </div>
@@ -164,8 +166,8 @@ export default function DecisionMatrix() {
                 {/* Step 2: Criteria */}
                 {step === 2 && (
                     <div className="max-w-2xl mx-auto">
-                        <h2 className="text-xl font-bold mb-2 text-center">Define your criteria</h2>
-                        <p className="text-center text-slate-500 mb-8">Weight is 1-5 (1 = Low Importance, 5 = High Importance)</p>
+                        <h2 className="text-xl font-bold mb-2 text-center">{t('tools.decision-matrix.step2.title')}</h2>
+                        <p className="text-center text-slate-500 mb-8">{t('tools.decision-matrix.step2.desc')}</p>
                         
                         <div className="space-y-4 mb-8">
                             {criteria.map((crit, idx) => (
@@ -174,7 +176,7 @@ export default function DecisionMatrix() {
                                         type="text" 
                                         value={crit.name}
                                         onChange={(e) => updateCriteria(crit.id, 'name', e.target.value)}
-                                        placeholder={`Criterion ${idx + 1}`}
+                                        placeholder={t('tools.decision-matrix.step2.placeholder', { count: idx + 1 })}
                                         className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500"
                                     />
                                     <select 
@@ -192,13 +194,13 @@ export default function DecisionMatrix() {
                                 </div>
                             ))}
                              <button onClick={addCriteria} className="w-full py-3 border-2 border-dashed border-slate-200 rounded-xl text-slate-500 hover:border-orange-500 hover:text-orange-500 font-medium flex items-center justify-center gap-2 transition-all">
-                                <Plus size={20} /> Add Criterion
+                                <Plus size={20} /> {t('tools.decision-matrix.controls.addCriteria')}
                             </button>
                         </div>
                         <div className="flex justify-between">
-                            <button onClick={() => setStep(1)} className="text-slate-500 font-medium hover:underline">Back</button>
+                            <button onClick={() => setStep(1)} className="text-slate-500 font-medium hover:underline">{t('tools.decision-matrix.controls.back')}</button>
                             <button onClick={nextStep} className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors">
-                                Start Rating <ArrowRight size={20} />
+                                {t('tools.decision-matrix.controls.startRating')} <ArrowRight size={20} />
                             </button>
                         </div>
                     </div>
@@ -207,13 +209,13 @@ export default function DecisionMatrix() {
                 {/* Step 3: Rating */}
                 {step === 3 && (
                     <div className="overflow-x-auto">
-                        <h2 className="text-xl font-bold mb-2 text-center">Rate each option (1-10)</h2>
-                        <p className="text-center text-slate-500 mb-8">1 = Poor, 10 = Excellent</p>
+                        <h2 className="text-xl font-bold mb-2 text-center">{t('tools.decision-matrix.step3.title')}</h2>
+                        <p className="text-center text-slate-500 mb-8">{t('tools.decision-matrix.step3.desc')}</p>
 
                         <table className="w-full min-w-[600px] border-collapse mb-8">
                             <thead>
                                 <tr>
-                                    <th className="text-left p-4 text-slate-400 font-medium">Criteria</th>
+                                    <th className="text-left p-4 text-slate-400 font-medium">{t('tools.decision-matrix.steps.criteria')}</th>
                                     {options.map(opt => (
                                         <th key={opt.id} className="p-4 text-center text-slate-900 font-bold bg-slate-50 rounded-t-xl border-x-4 border-white">{opt.name}</th>
                                     ))}
@@ -223,7 +225,7 @@ export default function DecisionMatrix() {
                                 {criteria.map(crit => (
                                     <tr key={crit.id} className="border-b border-slate-50">
                                         <td className="p-4 font-medium text-slate-700">
-                                            {crit.name} <span className="text-xs text-slate-400 block font-normal">Weight: {crit.weight}</span>
+                                            {crit.name} <span className="text-xs text-slate-400 block font-normal">{t('tools.decision-matrix.step3.weight')}: {crit.weight}</span>
                                         </td>
                                         {options.map(opt => (
                                             <td key={opt.id} className="p-4 text-center border-x border-slate-50">
@@ -244,9 +246,9 @@ export default function DecisionMatrix() {
                         </table>
 
                         <div className="flex justify-between">
-                            <button onClick={() => setStep(2)} className="text-slate-500 font-medium hover:underline">Back</button>
+                            <button onClick={() => setStep(2)} className="text-slate-500 font-medium hover:underline">{t('tools.decision-matrix.controls.back')}</button>
                             <button onClick={nextStep} className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors">
-                                Calculate Results <ArrowRight size={20} />
+                                {t('tools.decision-matrix.controls.calcResults')} <ArrowRight size={20} />
                             </button>
                         </div>
                     </div>
@@ -255,7 +257,7 @@ export default function DecisionMatrix() {
                 {/* Step 4: Results */}
                 {step === 4 && (
                     <div className="max-w-2xl mx-auto">
-                        <h2 className="text-2xl font-black mb-8 text-center">The Winner Is...</h2>
+                        <h2 className="text-2xl font-black mb-8 text-center">{t('tools.decision-matrix.result.title')}</h2>
                         
                         <div className="grid gap-6 mb-12">
                             {options.map(opt => ({...opt, score: calculateScore(opt.id)})).sort((a,b) => b.score - a.score).map((opt, idx) => {
@@ -268,7 +270,7 @@ export default function DecisionMatrix() {
                                             </div>
                                             <div>
                                                 <h3 className={`font-bold text-lg ${isWinner ? 'text-slate-900' : 'text-slate-700'}`}>{opt.name}</h3>
-                                                {isWinner && <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">Best Choice</span>}
+                                                {isWinner && <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">{t('tools.decision-matrix.result.bestChoice')}</span>}
                                             </div>
                                         </div>
                                         <div className={`text-4xl font-black ${isWinner ? 'text-orange-500' : 'text-slate-300'}`}>

@@ -3,18 +3,22 @@ import { Helmet } from 'react-helmet-async';
 import { BarChart2, Calculator, List, Activity, ArrowRight, Grid } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function StatsCalc() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [stats, setStats] = useState(null);
 
     useEffect(() => {
         // Parse numbers
-        const numbers = input.split(/[\s,]+/)
+        const parts = input.split(/[\s,]+/);
+        const numbers = parts
             .map(n => parseFloat(n))
             .filter(n => !isNaN(n))
             .sort((a, b) => a - b);
-
+        
+        // Only set stats if we have numbers
         if (numbers.length === 0) {
             setStats(null);
             return;
@@ -37,12 +41,22 @@ export default function StatsCalc() {
             frequency[n] = (frequency[n] || 0) + 1;
             if (frequency[n] > maxFreq) maxFreq = frequency[n];
         });
-        const modes = Object.keys(frequency)
-            .filter(k => frequency[k] === maxFreq)
-            .map(Number)
-            .sort((a, b) => a - b);
         
-        const mode = modes.length === count ? 'None' : modes.join(', ');
+        // If all numbers appear once, there is no mode (or all are modes, depending on definition, but usually "None" for unique set)
+        // If maxFreq is 1, return None
+        let mode = t('tools.stats-calc.results.none');
+        
+        if (maxFreq > 1) {
+            const modes = Object.keys(frequency)
+                .filter(k => frequency[k] === maxFreq)
+                .map(Number)
+                .sort((a, b) => a - b);
+            
+            mode = modes.length === count ? t('tools.stats-calc.results.none') : modes.join(', ');
+        } else {
+             mode = t('tools.stats-calc.results.none');
+        }
+
 
         // Range
         const min = numbers[0];
@@ -65,10 +79,10 @@ export default function StatsCalc() {
             stdDev
         });
 
-    }, [input]);
+    }, [input, t]);
 
-    const StatCard = ({ label, value, icon: Icon, color = "bg-slate-50 text-slate-800" }) => (
-        <div className={`p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between ${color}`}>
+    const StatCard = ({ label, value, icon: Icon, color = "bg-white text-slate-800" }) => (
+        <div className={`p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between ${color === "bg-white text-slate-800" ? "bg-white text-slate-800" : color}`}>
             <div>
                 <div className="text-xs font-bold uppercase tracking-wider opacity-60 mb-1">{label}</div>
                 <div className="text-2xl font-black">{value}</div>
@@ -76,12 +90,18 @@ export default function StatsCalc() {
             {Icon && <Icon size={24} className="opacity-20" />}
         </div>
     );
+    
+    // Helper to format numbers prettily
+    const fmt = (n) => {
+        if (typeof n !== 'number') return n;
+        return Number.isInteger(n) ? n : parseFloat(n.toFixed(4));
+    };
 
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Mean/Median/Mode Calc | MiniTools by Spinotek</title>
-                <meta name="description" content="Find the average, middle, and most common values in a set." />
+                <title>{t('tools.stats-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.stats-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -90,8 +110,8 @@ export default function StatsCalc() {
                         <BarChart2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Mean/Median/Mode Calc</h1>
-                        <p className="text-slate-500 text-sm">Calculate comprehensive statistics for any dataset.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.stats-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.stats-calc.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -101,20 +121,21 @@ export default function StatsCalc() {
                 {/* Input Area */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm h-full">
-                        <label className="block text-slate-700 font-bold mb-4">Input Dataset</label>
+                        <label className="block text-slate-700 font-bold mb-4">{t('tools.stats-calc.input.label')}</label>
                          <div className="relative h-[calc(100%-3rem)]">
                             <textarea
                                 value={input}
                                 onChange={(e) => {
                                     // Allow numbers, commas, spaces, dashes (negative), dots (decimal), and newlines
-                                    const val = e.target.value.replace(/[^0-9.,\-\s\n]/g, '');
+                                    const val = e.target.value; 
+                                    // Simplified validation in onChange can be annoying, better to just let them type and parse in effect
                                     setInput(val);
                                 }}
                                 className="w-full h-64 lg:h-full p-4 border-2 border-slate-200 rounded-xl focus:border-indigo-500 outline-none font-mono text-sm resize-none transition-colors"
-                                placeholder="Enter numbers separated by commas or spaces...&#10;Example:&#10;12, 15, 18, 22&#10;10 5 8 9"
+                                placeholder={t('tools.stats-calc.input.placeholder')}
                             ></textarea>
                             <div className="absolute bottom-4 right-4 text-xs font-bold bg-slate-100 text-slate-500 px-2 py-1 rounded">
-                                {stats ? stats.count : 0} items
+                                {t('tools.stats-calc.input.items', { count: stats ? stats.count : 0 })}
                             </div>
                          </div>
                     </div>
@@ -125,20 +146,20 @@ export default function StatsCalc() {
                     {stats ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="sm:col-span-2">
-                                <StatCard label="Mean (Average)" value={Number.isInteger(stats.mean) ? stats.mean : stats.mean.toFixed(4)} icon={Calculator} color="bg-indigo-600 text-white" />
+                                <StatCard label={t('tools.stats-calc.results.mean')} value={fmt(stats.mean)} icon={Calculator} color="bg-indigo-600 text-white" />
                             </div>
-                            <StatCard label="Median (Middle)" value={stats.median} icon={List} />
-                            <StatCard label="Mode (Most Common)" value={stats.mode} icon={Activity} />
-                            <StatCard label="Sum" value={stats.sum} />
-                            <StatCard label="Range" value={stats.range} />
-                             <StatCard label="Minimum" value={stats.min} />
-                            <StatCard label="Maximum" value={stats.max} />
-                            <StatCard label="Standard Deviation" value={stats.stdDev.toFixed(4)} icon={Grid} />
+                            <StatCard label={t('tools.stats-calc.results.median')} value={fmt(stats.median)} icon={List} />
+                            <StatCard label={t('tools.stats-calc.results.mode')} value={stats.mode} icon={Activity} />
+                            <StatCard label={t('tools.stats-calc.results.sum')} value={fmt(stats.sum)} />
+                            <StatCard label={t('tools.stats-calc.results.range')} value={fmt(stats.range)} />
+                             <StatCard label={t('tools.stats-calc.results.min')} value={fmt(stats.min)} />
+                            <StatCard label={t('tools.stats-calc.results.max')} value={fmt(stats.max)} />
+                            <StatCard label={t('tools.stats-calc.results.stdDev')} value={fmt(stats.stdDev)} icon={Grid} />
                         </div>
                     ) : (
                         <div className="bg-white rounded-3xl border border-slate-100 p-12 text-center h-full flex flex-col items-center justify-center text-slate-400">
                              <Calculator size={48} className="mb-4 opacity-20" />
-                            <p className="font-medium">Enter numbers to see statistics.</p>
+                            <p className="font-medium">{t('tools.stats-calc.emptyState')}</p>
                         </div>
                     )}
                 </div>

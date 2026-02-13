@@ -3,37 +3,33 @@ import { Helmet } from 'react-helmet-async';
 import { BookOpen, Shuffle, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const PROMPTS = [
-    "What is one small win you had today?",
-    "What is something you learned today?",
-    "How did you help someone today?",
-    "What is something you could have done better?",
-    "What are you looking forward to tomorrow?",
-    "Who are you grateful for today and why?",
-    "What was the most challenging part of your day?",
-    "Did you take enough time for yourself today?",
-    "What is one goal you want to focus on this week?",
-    "How are you feeling right now, really?",
-    "What gave you energy today? What drained it?",
-    "What is a new habit you want to start?",
-    "If you could relive one moment from today, what would it be?",
-];
+import { useTranslation } from 'react-i18next';
 
 export default function DailyReflection() {
-    const [currentPrompt, setCurrentPrompt] = useState(PROMPTS[0]);
+    const { t } = useTranslation();
+    
+    // We fetch prompts from translations.
+    // However, t returns a string or an array depending on config and key.
+    // Better to use t to get array if supported or just keys.
+    // Since returnObjects: true is not default, usage: t('key', { returnObjects: true })
+    const PROMPTS = t('tools.daily-reflection.prompts', { returnObjects: true });
+
+    // Since PROMPTS comes from a hook, we should probably use useEffect or similar?
+    // But hooks shouldn't change order.
+    // Safe way: Initialize state with index instead of string.
+    const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
     const [answer, setAnswer] = useState('');
     const [copied, setCopied] = useState(false);
 
     const getNewPrompt = () => {
         const randomIndex = Math.floor(Math.random() * PROMPTS.length);
-        setCurrentPrompt(PROMPTS[randomIndex]);
+        setCurrentPromptIndex(randomIndex);
         setAnswer('');
     };
 
     const copyToClipboard = () => {
         if (!answer.trim()) return;
-        const text = `Daily Reflection:\n\nQ: ${currentPrompt}\nA: ${answer}`;
+        const text = `Daily Reflection:\n\nQ: ${PROMPTS[currentPromptIndex]}\nA: ${answer}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -42,8 +38,8 @@ export default function DailyReflection() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Daily Reflection Prompt | MiniTools by Spinotek</title>
-                <meta name="description" content="Thoughtful prompts for personal growth and awareness." />
+                <title>{t('tools.daily-reflection.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.daily-reflection.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -52,8 +48,8 @@ export default function DailyReflection() {
                         <BookOpen size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Daily Reflection Prompt</h1>
-                        <p className="text-slate-500 text-sm">Thoughtful prompts for personal growth and awareness.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.daily-reflection.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.daily-reflection.desc')}</p>
                     </div>
                 </div>
                 <button 
@@ -61,23 +57,23 @@ export default function DailyReflection() {
                     className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-600 font-medium transition-colors"
                 >
                     <Shuffle size={18} />
-                    New Prompt
+                    {t('tools.daily-reflection.controls.newPrompt')}
                 </button>
             </div>
 
             <div className="max-w-2xl mx-auto">
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm relative">
                     <div className="mb-6">
-                         <span className="text-cyan-600 font-bold uppercase tracking-wider text-xs mb-2 block">Today's Question</span>
+                         <span className="text-cyan-600 font-bold uppercase tracking-wider text-xs mb-2 block">{t('tools.daily-reflection.todayQuestion')}</span>
                          <h2 className="text-2xl font-bold text-slate-800 leading-tight">
-                            {currentPrompt}
+                            {PROMPTS[currentPromptIndex]}
                          </h2>
                     </div>
 
                     <textarea
                         value={answer}
                         onChange={(e) => setAnswer(e.target.value)}
-                        placeholder="Write your thoughts here..."
+                        placeholder={t('tools.daily-reflection.placeholder')}
                         className="w-full h-48 p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none font-medium text-slate-600"
                     ></textarea>
 
@@ -92,7 +88,7 @@ export default function DailyReflection() {
                             }`}
                         >
                             {copied ? <Check size={20} /> : <Copy size={20} />}
-                            {copied ? 'Copied!' : 'Copy to Clipboard'}
+                            {copied ? t('tools.daily-reflection.controls.copied') : t('tools.daily-reflection.controls.copy')}
                         </button>
                     </div>
                 </div>

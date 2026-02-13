@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { CheckCircle2, Plus, Flame, Trash2, ChevronLeft, ChevronRight, Trophy, Calendar, Layout, Star, X } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function HabitTracker() {
+    const { t, i18n } = useTranslation();
     const [habits, setHabits] = useState(() => {
         const saved = localStorage.getItem('minitools-habits');
         return saved ? JSON.parse(saved) : [
@@ -28,14 +30,19 @@ export default function HabitTracker() {
     const todayStr = today.toISOString().split('T')[0];
 
     // Week View Helpers
+    // Start week on Monday. 
+    // Note: getDay() returns 0 for Sunday.
     const getWeekDays = (offset) => {
         const d = new Date(today);
-        d.setDate(today.getDate() - today.getDay() + 1 + (offset * 7)); // Start on Monday
+        const day = d.getDay();
+        const diff = d.getDate() - day + (day === 0 ? -6 : 1) + (offset * 7); // adjust when day is sunday
+        d.setDate(diff);
+        
         const days = [];
         for (let i = 0; i < 7; i++) {
-            const day = new Date(d);
-            day.setDate(d.getDate() + i);
-            days.push(day);
+            const current = new Date(d);
+            current.setDate(d.getDate() + i);
+            days.push(current);
         }
         return days;
     };
@@ -44,7 +51,7 @@ export default function HabitTracker() {
     // Calendar View Helpers
     const getMonthDays = (offset) => {
         const d = new Date(today.getFullYear(), today.getMonth() + offset, 1);
-        const monthName = d.toLocaleDateString('default', { month: 'long', year: 'numeric' });
+        const monthName = d.toLocaleDateString(i18n.language, { month: 'long', year: 'numeric' });
         const startDay = d.getDay() === 0 ? 6 : d.getDay() - 1; // 0=Mon, 6=Sun (adjusting JS 0=Sun)
         const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
         
@@ -80,7 +87,7 @@ export default function HabitTracker() {
     };
 
     const deleteHabit = (id) => {
-        if(window.confirm('Delete this habit?')) {
+        if(window.confirm(t('tools.habit-tracker.weekView.deleteConfirm'))) {
             setHabits(habits.filter(h => h.id !== id));
         }
     };
@@ -96,17 +103,7 @@ export default function HabitTracker() {
 
             // Calculate current streak
             let streak = 0;
-            let d = new Date(today);
-            const dTodayStr = d.toISOString().split('T')[0];
-
-            // Check if done today to include in streak
-            // Or if done yesterday to extend streak
-            
-            // Re-check simple logic: iterate backwards from today
-            // If today is NOT done, streak is active if yesterday was done? 
-            // Standard rule: Streak is unbroken if you did it today OR yesterday (and not missed today yet, i.e. still have time).
-            // But simplify: walk back from today. If today is not done, check yesterday. If yesterday not done -> streak 0.
-            
+            // logic same as before...
             let currentCheckDate = new Date(today);
             let broken = false;
             
@@ -115,8 +112,6 @@ export default function HabitTracker() {
                 streak++;
             } else {
                 // Today not done. Check yesterday.
-                // If yesterday is NOT done, streak is 0.
-                // If yesterday IS done, streak continues from yesterday.
                 currentCheckDate.setDate(currentCheckDate.getDate() - 1);
                 if (!h.days[currentCheckDate.toISOString().split('T')[0]]) {
                     broken = true;
@@ -140,10 +135,6 @@ export default function HabitTracker() {
             return { ...h, streak };
         });
 
-        // Level Calc: Level = sqrt(XP) roughly scaling
-        // Let's make it easy: Level 1 starts at 0. Level 2 at 10. Level 3 at 30.
-        // Formula: 10 * Level^2 maybe too hard? 
-        // Let's use simpler: Level = floor(XP / 20) + 1
         const level = Math.floor(totalXP / 20) + 1;
         const currentLevelXP = (level - 1) * 20;
         const nextLevelXP = level * 20;
@@ -152,11 +143,13 @@ export default function HabitTracker() {
         return { totalXP, level, nextLevelXP, progressToNext, processedHabits };
     }, [habits]);
 
+    const calendarHeaderDays = t('tools.habit-tracker.calendarView.days', { returnObjects: true });
+
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Daily Habit Tracker | MiniTools by Spinotek</title>
-                <meta name="description" content="Track and build better daily routines and habits." />
+                <title>{t('tools.habit-tracker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.habit-tracker.desc')} />
             </Helmet>
 
             {/* Header & Gamification Bar */}
@@ -166,8 +159,8 @@ export default function HabitTracker() {
                         <CheckCircle2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Habit Tracker</h1>
-                        <p className="text-slate-500 text-sm">Gamify your daily routines.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.habit-tracker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.habit-tracker.subtitle')}</p>
                     </div>
                 </div>
 
@@ -178,13 +171,13 @@ export default function HabitTracker() {
                             {stats.level}
                          </div>
                          <div className="absolute -bottom-2 -right-1 bg-emerald-500 text-[10px] font-bold px-1.5 py-0.5 rounded text-slate-900 border-2 border-slate-900">
-                            LVL
+                            {t('tools.habit-tracker.stats.lvl')}
                          </div>
                     </div>
                     <div className="flex-1 min-w-0">
                         <div className="flex justify-between text-xs font-bold mb-1 text-slate-400">
-                            <span>TOTAL XP: {stats.totalXP}</span>
-                            <span>GOAL: {stats.nextLevelXP}</span>
+                            <span>{t('tools.habit-tracker.stats.xp')}: {stats.totalXP}</span>
+                            <span>{t('tools.habit-tracker.stats.goal')}: {stats.nextLevelXP}</span>
                         </div>
                         <div className="h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
                             <div 
@@ -204,7 +197,7 @@ export default function HabitTracker() {
                         type="text" 
                         value={newHabit}
                         onChange={(e) => setNewHabit(e.target.value)}
-                        placeholder="Add new... (e.g. Read 30m)" 
+                        placeholder={t('tools.habit-tracker.placeholder')} 
                         className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm font-medium text-slate-700"
                     />
                     <button 
@@ -221,13 +214,13 @@ export default function HabitTracker() {
                         onClick={() => setViewMode('week')}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${viewMode === 'week' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        <Layout size={16} /> Week
+                        <Layout size={16} /> {t('tools.habit-tracker.views.week')}
                     </button>
                     <button 
                          onClick={() => setViewMode('calendar')}
                          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${viewMode === 'calendar' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
                     >
-                        <Calendar size={16} /> Calendar
+                        <Calendar size={16} /> {t('tools.habit-tracker.views.calendar')}
                     </button>
                 </div>
             </div>
@@ -238,17 +231,17 @@ export default function HabitTracker() {
                     <div className="flex items-center justify-between p-4 border-b border-slate-100 bg-slate-50/50">
                         <button onClick={() => setWeekOffset(weekOffset - 1)} className="p-2 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 transition-colors"><ChevronLeft size={20} /></button>
                         <span className="font-bold text-slate-700 text-sm md:text-base">
-                            {weekDays[0].toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} - {weekDays[6].toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                            {weekDays[0].toLocaleDateString(i18n.language, { month: 'short', day: 'numeric' })} - {weekDays[6].toLocaleDateString(i18n.language, { month: 'short', day: 'numeric' })}
                         </span>
                         <button onClick={() => setWeekOffset(weekOffset + 1)} className="p-2 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 transition-colors"><ChevronRight size={20} /></button>
                     </div>
 
                     <div className="grid grid-cols-[1.5fr_repeat(7,1fr)_40px] md:grid-cols-[2fr_repeat(7,1fr)_60px] gap-1 p-4 border-b border-slate-100 bg-slate-50 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider text-center items-center">
-                        <div className="text-left pl-2">Task</div>
+                        <div className="text-left pl-2">{t('tools.habit-tracker.weekView.task')}</div>
                         {weekDays.map(d => (
                             <div key={d.toString()} className={d.toISOString().split('T')[0] === todayStr ? 'text-emerald-600 bg-emerald-50 rounded py-1' : ''}>
-                                <span className="md:hidden">{d.toLocaleDateString(undefined, { weekday: 'narrow' })}</span>
-                                <span className="hidden md:inline">{d.toLocaleDateString(undefined, { weekday: 'short' })}</span>
+                                <span className="md:hidden">{d.toLocaleDateString(i18n.language, { weekday: 'narrow' })}</span>
+                                <span className="hidden md:inline">{d.toLocaleDateString(i18n.language, { weekday: 'short' })}</span>
                             </div>
                         ))}
                         <div><Flame size={16} className="mx-auto text-orange-400" /></div>
@@ -258,7 +251,7 @@ export default function HabitTracker() {
                         {stats.processedHabits.length === 0 ? (
                             <div className="p-12 text-center text-slate-400">
                                 <Trophy size={48} className="mx-auto mb-4 opacity-20" />
-                                <p>No habits yet. Start by adding one!</p>
+                                <p>{t('tools.habit-tracker.weekView.empty')}</p>
                             </div>
                         ) : (
                             stats.processedHabits.map(habit => (
@@ -312,7 +305,7 @@ export default function HabitTracker() {
                     </div>
 
                     <div className="grid grid-cols-7 gap-2 md:gap-4 mb-4">
-                        {['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(day => (
+                        {Array.isArray(calendarHeaderDays) && calendarHeaderDays.map(day => (
                             <div key={day} className="text-center text-xs font-bold text-slate-400 uppercase">{day}</div>
                         ))}
                         {monthDays.map((d, i) => {
@@ -362,7 +355,7 @@ export default function HabitTracker() {
                             );
                         })}
                     </div>
-                    <p className="text-center text-xs text-slate-400 mt-4 font-medium">Click on a day to view and edit habits</p>
+                    <p className="text-center text-xs text-slate-400 mt-4 font-medium">{t('tools.habit-tracker.calendarView.hint')}</p>
                 </div>
             )}
 
@@ -379,9 +372,9 @@ export default function HabitTracker() {
                         <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
                             <div>
                                 <h3 className="text-lg font-black text-slate-800">
-                                    {selectedDay.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
+                                    {selectedDay.toLocaleDateString(i18n.language, { weekday: 'long', month: 'long', day: 'numeric' })}
                                 </h3>
-                                <p className="text-slate-500 text-sm font-medium">Daily Progress</p>
+                                <p className="text-slate-500 text-sm font-medium">{t('tools.habit-tracker.modal.title')}</p>
                             </div>
                             <button 
                                 onClick={() => setSelectedDay(null)} 
@@ -392,7 +385,7 @@ export default function HabitTracker() {
                         </div>
                         
                         <div className="space-y-3 mb-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-                            {habits.length === 0 && <p className="text-center text-slate-400 py-4">No habits defined.</p>}
+                            {habits.length === 0 && <p className="text-center text-slate-400 py-4">{t('tools.habit-tracker.modal.empty')}</p>}
                             {habits.map(h => {
                                 const dStr = selectedDay.toISOString().split('T')[0];
                                 const isDone = h.days[dStr];
@@ -422,7 +415,7 @@ export default function HabitTracker() {
                             onClick={() => setSelectedDay(null)} 
                             className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold transition-colors shadow-lg shadow-slate-200"
                         >
-                            Done
+                            {t('tools.habit-tracker.modal.done')}
                         </button>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Terminal, Search, Shield, Server, AlertTriangle, Loader, Globe, Database, Info } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
@@ -24,6 +25,7 @@ const PORT_SERVICES = {
 };
 
 export default function PortScanner() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
@@ -46,11 +48,11 @@ export default function PortScanner() {
                 const dnsData = await dnsRes.json();
                 
                 if (!dnsData.Answer || dnsData.Answer.length === 0) {
-                    throw new Error('Could not find an IP address for this domain.');
+                    throw new Error(t('tools.port-scanner.errors.noIp'));
                 }
                 
                 const aRecord = dnsData.Answer.find(r => r.type === 1);
-                if (!aRecord) throw new Error('No IP address found.');
+                if (!aRecord) throw new Error(t('tools.port-scanner.errors.ipNotFound'));
                 ip = aRecord.data;
             }
 
@@ -59,16 +61,16 @@ export default function PortScanner() {
             
             if (!shodanRes.ok) {
                 if (shodanRes.status === 404) {
-                    throw new Error(`No open ports found for ${ip}. The host might be down or fully firewalled.`);
+                    throw new Error(t('tools.port-scanner.errors.noOpenPorts', { ip }));
                 }
-                throw new Error('Could not fetch port data. Please try again.');
+                throw new Error(t('tools.port-scanner.errors.fetchFailed'));
             }
 
             const data = await shodanRes.json();
             setResult({ ...data, query_ip: ip });
 
         } catch (err) {
-            setError(err.message || 'An error occurred.');
+            setError(err.message || t('tools.port-scanner.errors.general'));
         } finally {
             setLoading(false);
         }
@@ -81,8 +83,8 @@ export default function PortScanner() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Port Scanner | MiniTools by Spinotek</title>
-                <meta name="description" content="Check for open ports on a specific IP or domain." />
+                <title>{t('tools.port-scanner.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.port-scanner.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -91,8 +93,8 @@ export default function PortScanner() {
                         <Terminal size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Port Scanner</h1>
-                        <p className="text-slate-500 text-sm">Check for open ports on a specific IP or domain.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.port-scanner.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.port-scanner.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -101,12 +103,12 @@ export default function PortScanner() {
                 {/* Input Section */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <label className="block text-slate-700 font-bold mb-2">Target Address</label>
+                        <label className="block text-slate-700 font-bold mb-2">{t('tools.port-scanner.form.label')}</label>
                         <div className="relative mb-4">
                             <Search className="absolute left-3 top-3.5 text-slate-400" size={20} />
                             <input
                                 type="text"
-                                placeholder="google.com" // Example needed
+                                placeholder={t('tools.port-scanner.form.placeholder')} // Example needed
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
@@ -124,7 +126,7 @@ export default function PortScanner() {
                             }`}
                         >
                             {loading ? <Loader className="animate-spin" size={20} /> : <Search size={20} />}
-                            {loading ? 'Scanning...' : 'Scan Now'}
+                            {loading ? t('tools.port-scanner.form.scanning') : t('tools.port-scanner.form.submit')}
                         </button>
 
                    
@@ -137,7 +139,7 @@ export default function PortScanner() {
                         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
                             <h3 className="font-bold text-slate-800 flex items-center gap-2">
                                 <Server size={20} className="text-slate-400" />
-                                Scan Results
+                                {t('tools.port-scanner.results.title')}
                             </h3>
                             {result && (
                                 <span className="bg-slate-200 text-slate-700 text-xs font-mono font-bold px-3 py-1 rounded-full">
@@ -150,8 +152,8 @@ export default function PortScanner() {
                             {!result && !loading && !error && (
                                 <div className="text-center text-slate-400 py-20 px-6">
                                     <Globe size={48} className="mx-auto mb-4 opacity-20" />
-                                    <p className="font-medium">Enter a domain or IP (e.g. <code>google.com</code>) to scan.</p>
-                                    <p className="text-sm mt-2 opacity-70">We'll check a public database to see what's open.</p>
+                                    <p className="font-medium">{t('tools.port-scanner.empty.title')}</p>
+                                    <p className="text-sm mt-2 opacity-70">{t('tools.port-scanner.empty.desc')}</p>
                                 </div>
                             )}
 
@@ -160,7 +162,7 @@ export default function PortScanner() {
                                     <div className="flex justify-center mb-6">
                                         <Loader className="animate-spin text-blue-500" size={32} />
                                     </div>
-                                    <p className="text-center text-slate-500 font-medium">Checking public records...</p>
+                                    <p className="text-center text-slate-500 font-medium">{t('tools.port-scanner.loading')}</p>
                                 </div>
                             )}
 
@@ -169,7 +171,7 @@ export default function PortScanner() {
                                     <div className="bg-red-50 text-red-600 p-6 rounded-2xl flex items-start gap-4">
                                         <AlertTriangle size={24} className="flex-shrink-0" />
                                         <div>
-                                            <h4 className="font-bold mb-1">Scan Failed</h4>
+                                            <h4 className="font-bold mb-1">{t('tools.port-scanner.errors.failed')}</h4>
                                             <p className="text-sm">{error}</p>
                                         </div>
                                     </div>
@@ -182,10 +184,10 @@ export default function PortScanner() {
                                     <div className="bg-emerald-50/50 p-6 border-b border-slate-100">
                                         <div className="flex items-center gap-2 text-emerald-700 font-bold mb-1">
                                             <Shield size={18} />
-                                            Found {result.ports ? result.ports.length : 0} Open Ports
+                                            {t('tools.port-scanner.results.found', { count: result.ports ? result.ports.length : 0 })}
                                         </div>
                                         <p className="text-sm text-slate-600">
-                                            These services are publicly accessible on the internet.
+                                            {t('tools.port-scanner.results.foundDesc')}
                                         </p>
                                     </div>
 
@@ -200,21 +202,21 @@ export default function PortScanner() {
                                                         </div>
                                                         <div>
                                                             <div className="font-bold text-slate-800">
-                                                                {PORT_SERVICES[port] || 'Unknown Service'}
+                                                                {t(`tools.port-scanner.services.${port}`, { defaultValue: t('tools.port-scanner.results.unknownService') })}
                                                             </div>
                                                             <div className="text-xs text-slate-500">
-                                                                TCP Protocol
+                                                                {t('tools.port-scanner.results.tcp')}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full">
-                                                        Open
+                                                        {t('tools.port-scanner.results.open')}
                                                     </div>
                                                 </div>
                                             ))
                                         ) : (
                                             <div className="p-8 text-center text-slate-500">
-                                                No common open ports found. This is good!
+                                                {t('tools.port-scanner.results.noPorts')}
                                             </div>
                                         )}
                                     </div>
@@ -222,7 +224,7 @@ export default function PortScanner() {
                                     {/* Extra Info */}
                                     {result.hostnames && result.hostnames.length > 0 && (
                                         <div className="p-6 bg-slate-50 border-t border-slate-100">
-                                            <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Associated Hostnames</h4>
+                                            <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{t('tools.port-scanner.results.hostnames')}</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {result.hostnames.map(host => (
                                                     <span key={host} className="bg-white border border-slate-200 px-2 py-1 rounded text-xs text-slate-600 break-all">

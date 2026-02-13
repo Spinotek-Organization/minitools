@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Clock, Play, Pause, RotateCcw, Flag } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function Stopwatch() {
+    const { t } = useTranslation();
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const [laps, setLaps] = useState([]);
@@ -64,8 +66,8 @@ export default function Stopwatch() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Simple Stopwatch | MiniTools by Spinotek</title>
-                <meta name="description" content="A simple and clean interface for timing anything." />
+                <title>{t('tools.stopwatch.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.stopwatch.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -74,8 +76,8 @@ export default function Stopwatch() {
                         <Clock size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Simple Stopwatch</h1>
-                        <p className="text-slate-500 text-sm">A simple and clean interface for timing anything.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.stopwatch.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.stopwatch.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -122,10 +124,10 @@ export default function Stopwatch() {
                     <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-50">
                         <h3 className="font-bold text-slate-900 flex items-center gap-2">
                             <Flag size={20} className="text-rose-500" />
-                            Laps
+                            {t('tools.stopwatch.laps.title')}
                         </h3>
                         <span className="text-xs font-bold bg-slate-100 text-slate-500 px-2 py-1 rounded-lg">
-                            {laps.length} Total
+                            {laps.length} {t('tools.stopwatch.laps.total')}
                         </span>
                     </div>
                     
@@ -133,7 +135,7 @@ export default function Stopwatch() {
                         {laps.length === 0 ? (
                             <div className="text-center text-slate-400 py-12">
                                 <Clock size={48} className="mx-auto mb-4 opacity-20" />
-                                <p>No laps recorded.</p>
+                                <p>{t('tools.stopwatch.laps.empty')}</p>
                             </div>
                         ) : (
                             [...laps].reverse().map((lapTime, index) => {

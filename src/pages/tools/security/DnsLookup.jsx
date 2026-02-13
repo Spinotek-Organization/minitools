@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Search, Globe, Server, Activity, AlertCircle, Clock, Database, ArrowRight } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
@@ -25,6 +26,7 @@ const DNS_TYPE_MAP = {
 };
 
 export default function DnsLookup() {
+    const { t } = useTranslation();
     const [domain, setDomain] = useState('');
     const [recordType, setRecordType] = useState('A');
     const [results, setResults] = useState(null);
@@ -46,12 +48,12 @@ export default function DnsLookup() {
 
             if (data.Status !== 0 && data.Status !== 3) {
                 // 0 = No Error, 3 = NXDOMAIN (not found)
-                 throw new Error(`DNS Error: Status Code ${data.Status}`);
+                 throw new Error(t('tools.dns-lookup.form.errorStatus', { status: data.Status }));
             }
 
             setResults(data);
         } catch (err) {
-            setError(err.message || 'Failed to fetch DNS records.');
+            setError(err.message || t('tools.dns-lookup.results.fetchError'));
         } finally {
             setLoading(false);
         }
@@ -60,8 +62,8 @@ export default function DnsLookup() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>DNS Lookup | MiniTools by Spinotek</title>
-                <meta name="description" content="Find DNS records for any domain name quickly." />
+                <title>{t('tools.dns-lookup.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.dns-lookup.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -70,8 +72,8 @@ export default function DnsLookup() {
                         <Search size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">DNS Lookup</h1>
-                        <p className="text-slate-500 text-sm">Find DNS records for any domain name quickly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.dns-lookup.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.dns-lookup.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -81,7 +83,7 @@ export default function DnsLookup() {
                 {/* Search Box */}
                 <div className="lg:col-span-1 space-y-6">
                     <form onSubmit={handleSearch} className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <label className="block text-slate-700 font-bold mb-4">Target Domain</label>
+                        <label className="block text-slate-700 font-bold mb-4">{t('tools.dns-lookup.form.domainLabel')}</label>
                         
                         <div className="space-y-4">
                             <div className="relative">
@@ -90,14 +92,14 @@ export default function DnsLookup() {
                                     type="text"
                                     value={domain}
                                     onChange={(e) => setDomain(e.target.value)}
-                                    placeholder="example.com"
+                                    placeholder={t('tools.dns-lookup.form.domainPlaceholder')}
                                     className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-cyan-500 font-medium transition-colors"
                                     autoComplete="off"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Record Type</label>
+                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.dns-lookup.form.typeLabel')}</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     {RECORD_TYPES.map((type) => (
                                         <button
@@ -110,7 +112,7 @@ export default function DnsLookup() {
                                                     : 'border-slate-100 text-slate-500 hover:border-slate-200'
                                             }`}
                                         >
-                                            {type.value}
+                                            {t(`tools.dns-lookup.types.${type.value}`)}
                                         </button>
                                     ))}
                                 </div>
@@ -122,7 +124,7 @@ export default function DnsLookup() {
                                 className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? <Activity className="animate-spin" size={20} /> : <Search size={20} />}
-                                {loading ? 'Querying...' : 'Lookup Records'}
+                                {loading ? t('tools.dns-lookup.form.querying') : t('tools.dns-lookup.form.submit')}
                             </button>
                         </div>
                     </form>
@@ -130,10 +132,10 @@ export default function DnsLookup() {
                     <div className="bg-cyan-50 border border-cyan-100 rounded-3xl p-6 text-cyan-900 text-sm">
                         <h4 className="font-bold flex items-center gap-2 mb-2">
                             <Server size={16} />
-                            How it works
+                            {t('tools.dns-lookup.howItWorks.title')}
                         </h4>
                         <p className="opacity-80 leading-relaxed">
-                            This tool queries Google's Public DNS (8.8.8.8) directly via HTTPS to fetch the authoritative records for the domain.
+                            {t('tools.dns-lookup.howItWorks.text')}
                         </p>
                     </div>
                 </div>
@@ -143,14 +145,14 @@ export default function DnsLookup() {
                     {!results && !error && !loading && (
                         <div className="bg-white rounded-3xl border border-slate-100 p-12 text-center text-slate-400">
                             <Database size={48} className="mx-auto mb-4 opacity-20" />
-                            <p className="font-medium">Enter a domain and select a record type to start.</p>
+                            <p className="font-medium">{t('tools.dns-lookup.results.empty')}</p>
                         </div>
                     )}
 
                     {error && (
                         <div className="bg-red-50 text-red-600 p-8 rounded-3xl text-center border border-red-100">
                             <AlertCircle size={48} className="mx-auto mb-4 opacity-50" />
-                            <h3 className="text-xl font-bold mb-2">Lookup Failed</h3>
+                            <h3 className="text-xl font-bold mb-2">{t('tools.dns-lookup.results.failed')}</h3>
                             <p>{error}</p>
                         </div>
                     )}
@@ -160,10 +162,10 @@ export default function DnsLookup() {
                             <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex justify-between items-center">
                                 <h3 className="font-bold text-slate-800 flex items-center gap-2">
                                     <Globe size={18} className="text-slate-400" />
-                                    Results for {results.Question?.[0]?.name?.replace(/\.$/, '')}
+                                    {t('tools.dns-lookup.results.title', { domain: results.Question?.[0]?.name?.replace(/\.$/, '') })}
                                 </h3>
                                 <div className="text-xs font-bold px-2 py-1 bg-white border border-slate-200 rounded text-slate-500">
-                                    TYPE: {recordType}
+                                    {t('tools.dns-lookup.results.type', { type: recordType })}
                                 </div>
                             </div>
 
@@ -199,14 +201,14 @@ export default function DnsLookup() {
                                     <div className="bg-amber-50 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                                         <AlertCircle size={32} />
                                     </div>
-                                    <h3 className="text-lg font-bold text-slate-800 mb-1">No Records Found</h3>
+                                    <h3 className="text-lg font-bold text-slate-800 mb-1">{t('tools.dns-lookup.results.noRecords')}</h3>
                                     <p className="text-slate-500 text-sm">
-                                        No <strong>{recordType}</strong> records were returned for this domain.
+                                        {t('tools.dns-lookup.results.noRecordsDesc', { type: recordType })}
                                     </p>
                                     {/* Suggestion based on status */}
                                     {results.Status === 3 && (
                                         <p className="text-red-500 text-xs mt-2 font-bold bg-red-50 inline-block px-3 py-1 rounded-full">
-                                            Error: NXDOMAIN (Domain does not exist)
+                                            {t('tools.dns-lookup.results.nxdomain')}
                                         </p>
                                     )}
                                 </div>

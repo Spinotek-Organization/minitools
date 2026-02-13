@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Coffee, Play, Pause, RotateCcw, Volume2, VolumeX, BellRing } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function BreakTimer() {
+    const { t } = useTranslation();
     const [timeLeft, setTimeLeft] = useState(0);
     const [initialTime, setInitialTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
@@ -22,10 +24,10 @@ export default function BreakTimer() {
     const PRESETS = [5, 10, 15, 30];
 
     const SOUNDS = {
-        chime: { name: 'Chill Chime', duration: 2000 },
-        digital: { name: 'Digital Beep', duration: 1000 },
-        bell: { name: 'Simple Bell', duration: 1500 },
-        gong: { name: 'Deep Gong', duration: 3000 },
+        chime: { labelKey: 'chime', duration: 2000 },
+        digital: { labelKey: 'digital', duration: 1000 },
+        bell: { labelKey: 'bell', duration: 1500 },
+        gong: { labelKey: 'gong', duration: 3000 },
     };
 
     useEffect(() => {
@@ -57,7 +59,7 @@ export default function BreakTimer() {
         }
 
         return () => clearInterval(alarmLoopRef.current);
-    }, [isAlarming, selectedSound, soundEnabled]);
+    }, [isAlarming, selectedSound, soundEnabled, SOUNDS]);
 
     useEffect(() => {
         if (timeLeft > 0) {
@@ -65,11 +67,11 @@ export default function BreakTimer() {
             const secs = timeLeft % 60;
             document.title = `${mins}:${secs.toString().padStart(2, '0')} - Break`;
         } else if (isAlarming) {
-            document.title = '🔔 Time is Up! - Break Timer';
+            document.title = t('tools.break-timer.timeUp');
         } else {
-             document.title = 'Break Timer | MiniTools by Spinotek';
+             document.title = t('tools.break-timer.documentTitle');
         }
-    }, [timeLeft, isAlarming]);
+    }, [timeLeft, isAlarming, t]);
 
     const playAlarm = (soundType = selectedSound) => {
         // Even if sound is disabled, we might want to respect that check here too, 
@@ -179,8 +181,8 @@ export default function BreakTimer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Break Timer | MiniTools by Spinotek</title>
-                <meta name="description" content="Smart reminders to step away and recharge your energy." />
+                <title>{t('tools.break-timer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.break-timer.metaDesc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -189,8 +191,8 @@ export default function BreakTimer() {
                         <Coffee size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Break Timer</h1>
-                        <p className="text-slate-500 text-sm">Take a quick power nap or coffee break.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.break-timer.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.break-timer.desc')}</p>
                     </div>
                 </div>
                 <button 
@@ -230,7 +232,7 @@ export default function BreakTimer() {
                         className="w-full max-w-sm mx-auto py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xl shadow-lg shadow-amber-200 animate-bounce flex items-center justify-center gap-2"
                     >
                         <BellRing size={28} />
-                        STOP ALARM
+                        {t('tools.break-timer.stopAlarm')}
                     </button>
                 ) : (
                     <>
@@ -261,7 +263,7 @@ export default function BreakTimer() {
                                     onChange={(e) => setCustomMin(e.target.value)}
                                     className="w-12 bg-transparent text-center font-bold text-slate-700 outline-none placeholder-slate-300"
                                   />
-                                  <span className="text-sm font-bold text-slate-400">min</span>
+                                  <span className="text-sm font-bold text-slate-400">{t('tools.break-timer.min')}</span>
                                </div>
                                <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2 border border-slate-200 focus-within:ring-2 focus-within:ring-amber-500 transition-all">
                                   <input 
@@ -273,7 +275,7 @@ export default function BreakTimer() {
                                     onChange={(e) => setCustomSec(e.target.value)}
                                     className="w-12 bg-transparent text-center font-bold text-slate-700 outline-none placeholder-slate-300"
                                   />
-                                  <span className="text-sm font-bold text-slate-400">sec</span>
+                                  <span className="text-sm font-bold text-slate-400">{t('tools.break-timer.sec')}</span>
                                </div>
                                <button 
                                     onClick={handleCustomStart}
@@ -286,7 +288,7 @@ export default function BreakTimer() {
 
                            {/* Sound Selector */}
                            <div className="flex items-center justify-center gap-2">
-                                <label className="text-sm font-bold text-slate-400">Sound:</label>
+                                <label className="text-sm font-bold text-slate-400">{t('tools.break-timer.sound')}:</label>
                                 <select 
                                     value={selectedSound} 
                                     onChange={(e) => {
@@ -296,7 +298,7 @@ export default function BreakTimer() {
                                     className="bg-slate-50 border border-slate-200 text-slate-700 text-sm font-bold rounded-xl focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none cursor-pointer hover:bg-slate-100 transition-colors"
                                 >
                                     {Object.keys(SOUNDS).map(key => (
-                                        <option key={key} value={key}>{SOUNDS[key].name}</option>
+                                        <option key={key} value={key}>{t(`tools.break-timer.sounds.${SOUNDS[key].labelKey}`)}</option>
                                     ))}
                                 </select>
                            </div>

@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Maximize, RefreshCw, X } from 'lucide-react';
+import { Maximize, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function AspectRatioCalc() {
+    const { t } = useTranslation();
     const [width, setWidth] = useState(1920);
     const [height, setHeight] = useState(1080);
     const [ratio, setRatio] = useState(16/9);
     const [customRatio, setCustomRatio] = useState('16:9');
-    const [locked, setLocked] = useState('width'); // 'width' or 'height' - which one drives changes? Actually easier: calculate the other when one changes.
 
     // Ratios
     const presets = [
-        { label: '16:9 (HD)', value: 16/9, s: '16:9' },
-        { label: '4:3 (SD)', value: 4/3, s: '4:3' },
-        { label: '1:1 (Square)', value: 1, s: '1:1' },
-        { label: '21:9 (Ultrawide)', value: 21/9, s: '21:9' },
-        { label: '9:16 (Mobile)', value: 9/16, s: '9:16' },
-        { label: '1.618 (Golden)', value: 1.618, s: '1.618:1' },
+        { label: t('tools.aspect-calc.presets.hd'), value: 16/9, s: '16:9' },
+        { label: t('tools.aspect-calc.presets.sd'), value: 4/3, s: '4:3' },
+        { label: t('tools.aspect-calc.presets.square'), value: 1, s: '1:1' },
+        { label: t('tools.aspect-calc.presets.ultrawide'), value: 21/9, s: '21:9' },
+        { label: t('tools.aspect-calc.presets.mobile'), value: 9/16, s: '9:16' },
+        { label: t('tools.aspect-calc.presets.golden'), value: 1.618, s: '1.618:1' },
     ];
 
     const handleWidthChange = (val) => {
@@ -49,8 +50,8 @@ export default function AspectRatioCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Aspect Ratio Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate dimensions and ratios for images, video, and design layouts." />
+                <title>{t('tools.aspect-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.aspect-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -59,8 +60,8 @@ export default function AspectRatioCalc() {
                         <Maximize size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Aspect Ratio Calculator</h1>
-                        <p className="text-slate-500 text-sm">Calculate dimensions and ratios for various displays.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.aspect-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.aspect-calc.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -69,7 +70,7 @@ export default function AspectRatioCalc() {
                 {/* Controls */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-8 h-fit">
                     <div>
-                        <h3 className="font-bold text-slate-700 mb-4">Common Ratios</h3>
+                        <h3 className="font-bold text-slate-700 mb-4">{t('tools.aspect-calc.headings.common')}</h3>
                         <div className="grid grid-cols-2 gap-2">
                             {presets.map(p => (
                                 <button
@@ -88,9 +89,9 @@ export default function AspectRatioCalc() {
                     </div>
 
                     <div className="space-y-4">
-                         <h3 className="font-bold text-slate-700">Dimensions (px)</h3>
+                         <h3 className="font-bold text-slate-700">{t('tools.aspect-calc.headings.dimensions')}</h3>
                          <div>
-                            <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Width</label>
+                            <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.aspect-calc.labels.width')}</label>
                             <input 
                                 type="number" 
                                 value={width} 
@@ -102,7 +103,7 @@ export default function AspectRatioCalc() {
                              <RefreshCw size={16} className="mx-auto" />
                          </div>
                          <div>
-                            <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Height</label>
+                            <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.aspect-calc.labels.height')}</label>
                             <input 
                                 type="number" 
                                 value={height} 

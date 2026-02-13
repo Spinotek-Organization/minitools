@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Hash, Plus, Minus, X, Divide, ChevronRight, Calculator } from 'lucide-react';
+import { Hash, X, ChevronRight, Calculator } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 // --- Fraction Logic ---
 
@@ -50,6 +51,8 @@ class Fraction {
 }
 
 export default function FractionCalc() {
+    const { t } = useTranslation();
+
     // State for Fraction A
     const [f1Whole, setF1Whole] = useState('');
     const [f1Num, setF1Num] = useState('');
@@ -89,7 +92,7 @@ export default function FractionCalc() {
             const v2Denom = f2Denom === '' ? 1 : parseInt(f2Denom);
 
             if (v1Denom === 0 || v2Denom === 0) {
-                setError("Denominator cannot be zero.");
+                setError(t('tools.fraction-calc.errors.denomZero'));
                 return;
             }
 
@@ -103,60 +106,60 @@ export default function FractionCalc() {
             const n2 = frac2.improperNumerator;
             const d2 = frac2.improperDenominator;
 
-            stepLog.push(`Convert operands to improper fractions:`);
-            stepLog.push(`Fraction 1: ${v1Whole ? `${v1Whole} ` : ''}${v1Num}/${v1Denom} = ${n1}/${d1}`);
-            stepLog.push(`Fraction 2: ${v2Whole ? `${v2Whole} ` : ''}${v2Num}/${v2Denom} = ${n2}/${d2}`);
+            stepLog.push(t('tools.fraction-calc.steps.convertImproper'));
+            stepLog.push(t('tools.fraction-calc.steps.frac1', { val1: `${v1Whole ? `${v1Whole} ` : ''}${v1Num}/${v1Denom}`, val2: `${n1}/${d1}` }));
+            stepLog.push(t('tools.fraction-calc.steps.frac2', { val1: `${v2Whole ? `${v2Whole} ` : ''}${v2Num}/${v2Denom}`, val2: `${n2}/${d2}` }));
 
             if (operator === '+') {
                 const commonDenom = lcm(d1, d2);
                 const adjN1 = n1 * (commonDenom / d1);
                 const adjN2 = n2 * (commonDenom / d2);
                 
-                stepLog.push(`Find Least Common Multiple (LCM) of denominators (${d1}, ${d2}): ${commonDenom}`);
-                stepLog.push(`Adjust fractions: ${n1}/${d1} -> ${adjN1}/${commonDenom} and ${n2}/${d2} -> ${adjN2}/${commonDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.lcm', { d1, d2, lcm: commonDenom }));
+                stepLog.push(t('tools.fraction-calc.steps.adjust', { v1: `${n1}/${d1}`, a1: `${adjN1}/${commonDenom}`, v2: `${n2}/${d2}`, a2: `${adjN2}/${commonDenom}` }));
                 
                 resNum = adjN1 + adjN2;
                 resDenom = commonDenom;
-                stepLog.push(`Add numerators: ${adjN1} + ${adjN2} = ${resNum}`);
-                stepLog.push(`Result: ${resNum}/${resDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.addNum', { v1: adjN1, v2: adjN2, res: resNum }));
+                stepLog.push(t('tools.fraction-calc.steps.res', { res: `${resNum}/${resDenom}` }));
 
             } else if (operator === '-') {
                 const commonDenom = lcm(d1, d2);
                 const adjN1 = n1 * (commonDenom / d1);
                 const adjN2 = n2 * (commonDenom / d2);
 
-                stepLog.push(`Find Least Common Multiple (LCM) of denominators (${d1}, ${d2}): ${commonDenom}`);
-                stepLog.push(`Adjust fractions: ${n1}/${d1} -> ${adjN1}/${commonDenom} and ${n2}/${d2} -> ${adjN2}/${commonDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.lcm', { d1, d2, lcm: commonDenom }));
+                stepLog.push(t('tools.fraction-calc.steps.adjust', { v1: `${n1}/${d1}`, a1: `${adjN1}/${commonDenom}`, v2: `${n2}/${d2}`, a2: `${adjN2}/${commonDenom}` }));
 
                 resNum = adjN1 - adjN2;
                 resDenom = commonDenom;
-                stepLog.push(`Subtract numerators: ${adjN1} - ${adjN2} = ${resNum}`);
-                stepLog.push(`Result: ${resNum}/${resDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.subNum', { v1: adjN1, v2: adjN2, res: resNum }));
+                stepLog.push(t('tools.fraction-calc.steps.res', { res: `${resNum}/${resDenom}` }));
 
             } else if (operator === '*') {
                 resNum = n1 * n2;
                 resDenom = d1 * d2;
-                stepLog.push(`Multiply numerators: ${n1} * ${n2} = ${resNum}`);
-                stepLog.push(`Multiply denominators: ${d1} * ${d2} = ${resDenom}`);
-                stepLog.push(`Result: ${resNum}/${resDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.mulNum', { v1: n1, v2: n2, res: resNum }));
+                stepLog.push(t('tools.fraction-calc.steps.mulDen', { d1, d2, res: resDenom }));
+                stepLog.push(t('tools.fraction-calc.steps.res', { res: `${resNum}/${resDenom}` }));
 
             } else if (operator === '/') {
                 resNum = n1 * d2;
                 resDenom = d1 * n2;
-                stepLog.push(`Multiply by reciprocal of second fraction: ${n1}/${d1} * ${d2}/${n2}`);
-                stepLog.push(`Result: ${n1*d2}/${d1*n2} = ${resNum}/${resDenom}`);
+                stepLog.push(t('tools.fraction-calc.steps.mulRecip', { v1: `${n1}/${d1}`, v2: `${d2}/${n2}` }));
+                stepLog.push(t('tools.fraction-calc.steps.res', { res: `${n1*d2}/${d1*n2} = ${resNum}/${resDenom}` }));
             }
 
-            // Create result fraction
+            // Create result result fraction
             const resFrac = new Fraction(0, resNum, resDenom);
             const simplified = resFrac.simplify();
             const mixed = resFrac.toMixed();
             
             if (simplified.denominator !== resDenom) {
-                 stepLog.push(`Simplify: ${resNum}/${resDenom} -> ${simplified.numerator}/${simplified.denominator}`);
+                 stepLog.push(t('tools.fraction-calc.steps.simplify', { v1: `${resNum}/${resDenom}`, v2: `${simplified.numerator}/${simplified.denominator}` }));
             }
             if (mixed.whole !== 0 && mixed.numerator !== 0) {
-                 stepLog.push(`Convert to mixed number: ${mixed.whole} ${Math.abs(mixed.numerator)}/${mixed.denominator}`);
+                 stepLog.push(t('tools.fraction-calc.steps.mixed', { mixed: `${mixed.whole} ${Math.abs(mixed.numerator)}/${mixed.denominator}` }));
             }
 
             setResult({
@@ -175,8 +178,8 @@ export default function FractionCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Fraction Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Add, subtract, and multiply complex fractions easily." />
+                <title>{t('tools.fraction-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.fraction-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -185,8 +188,8 @@ export default function FractionCalc() {
                         <Hash size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Fraction Calculator</h1>
-                        <p className="text-slate-500 text-sm">Add, subtract, and multiply complex fractions.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.fraction-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.fraction-calc.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -200,7 +203,7 @@ export default function FractionCalc() {
                     <div className="flex items-center gap-2">
                         <input 
                             type="number" 
-                            placeholder="Whole" 
+                            placeholder={t('tools.fraction-calc.inputs.whole')} 
                             className="w-16 p-3 text-center bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500"
                             value={f1Whole}
                             onChange={(e) => setF1Whole(e.target.value)}
@@ -208,7 +211,7 @@ export default function FractionCalc() {
                         <div className="flex flex-col gap-2">
                              <input 
                                 type="number" 
-                                placeholder="Num" 
+                                placeholder={t('tools.fraction-calc.inputs.num')} 
                                 className="w-16 p-2 text-center bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                                 value={f1Num}
                                 onChange={(e) => setF1Num(e.target.value)}
@@ -216,7 +219,7 @@ export default function FractionCalc() {
                             <div className="h-0.5 bg-slate-300 w-full"></div>
                              <input 
                                 type="number" 
-                                placeholder="Den" 
+                                placeholder={t('tools.fraction-calc.inputs.den')} 
                                 className="w-16 p-2 text-center bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                                 value={f1Denom}
                                 onChange={(e) => setF1Denom(e.target.value)}
@@ -242,7 +245,7 @@ export default function FractionCalc() {
                     <div className="flex items-center gap-2">
                         <input 
                             type="number" 
-                            placeholder="Whole" 
+                            placeholder={t('tools.fraction-calc.inputs.whole')} 
                             className="w-16 p-3 text-center bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500"
                             value={f2Whole}
                             onChange={(e) => setF2Whole(e.target.value)}
@@ -250,7 +253,7 @@ export default function FractionCalc() {
                         <div className="flex flex-col gap-2">
                              <input 
                                 type="number" 
-                                placeholder="Num" 
+                                placeholder={t('tools.fraction-calc.inputs.num')} 
                                 className="w-16 p-2 text-center bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                                 value={f2Num}
                                 onChange={(e) => setF2Num(e.target.value)}
@@ -258,7 +261,7 @@ export default function FractionCalc() {
                             <div className="h-0.5 bg-slate-300 w-full"></div>
                              <input 
                                 type="number" 
-                                placeholder="Den" 
+                                placeholder={t('tools.fraction-calc.inputs.den')} 
                                 className="w-16 p-2 text-center bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                                 value={f2Denom}
                                 onChange={(e) => setF2Denom(e.target.value)}
@@ -272,7 +275,7 @@ export default function FractionCalc() {
                         className="w-full md:w-auto p-4 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-md active:scale-95"
                     >
                         <Calculator size={20} />
-                        Calculate
+                        {t('tools.fraction-calc.calculate')}
                     </button>
                 </div>
 
@@ -288,31 +291,31 @@ export default function FractionCalc() {
                     <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 animate-fade-in">
                         <h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2">
                             <ChevronRight className="text-cyan-600" />
-                            Result
+                            {t('tools.fraction-calc.result.title')}
                         </h3>
                         
                         <div className="flex flex-wrap items-center gap-8 mb-6">
                             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 min-w-[120px] text-center">
-                                <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">Fraction</span>
+                                <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">{t('tools.fraction-calc.result.fraction')}</span>
                                 <span className="text-2xl font-black text-slate-800">{result.fraction}</span>
                             </div>
 
                             {!result.isWhole && (
                                 <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 min-w-[120px] text-center">
-                                    <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">Mixed</span>
+                                    <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">{t('tools.fraction-calc.result.mixed')}</span>
                                     <span className="text-2xl font-black text-cyan-600">{result.mixed}</span>
                                 </div>
                             )}
 
                             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 min-w-[120px] text-center">
-                                <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">Decimal</span>
+                                <span className="text-slate-400 text-xs uppercase font-bold tracking-wider block mb-1">{t('tools.fraction-calc.result.decimal')}</span>
                                 <span className="text-2xl font-black text-violet-600">{parseFloat(result.decimal.toFixed(4))}</span>
                             </div>
                         </div>
 
                         {/* Steps */}
                         <div className="mt-6">
-                            <h4 className="font-bold text-slate-900 mb-3">Calculation Steps:</h4>
+                            <h4 className="font-bold text-slate-900 mb-3">{t('tools.fraction-calc.result.steps')}</h4>
                             <div className="space-y-2">
                                 {steps.map((step, index) => (
                                     <div key={index} className="flex items-start gap-3 text-slate-600">

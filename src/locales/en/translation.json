@@ -1047,24 +1047,6 @@
                 "flat": "Flat Lay"
             }
         },
-        "qr-gen": {
-            "title": "QR Code Generator",
-            "desc": "Create customized QR codes for any purpose.",
-            "page": {
-                "settings_title": "QR Settings",
-                "content_label": "Content / URL",
-                "content_ph": "https://example.com or plain text",
-                "color_label": "Color",
-                "bg_color_label": "Background",
-                "size_label": "Size",
-                "logo_label": "Center Logo (Optional)",
-                "upload_logo": "Upload Logo",
-                "remove_logo": "Remove Logo",
-                "preview_title": "QR Code",
-                "download_png": "Download PNG",
-                "download_svg": "Download SVG"
-            }
-        },
         "short-link": {
             "title": "Link Tracker & Shortener",
             "desc": "Build trackable URLs and prepare them for sharing.",
@@ -1089,6 +1071,1600 @@
                 "copied_clipboard": "Copied to Clipboard!",
                 "copied": "Copied!",
                 "shorten_service": "Shorten with external service:"
+            }
+        },
+        "two-factor-gen": {
+            "title": "2FA Code Generator",
+            "desc": "Generate two-factor authentication codes for your accounts.",
+            "headerDesc": "Generate TOTP codes for your accounts directly in your browser.",
+            "form": {
+                "title": "Add New Account",
+                "nameLabel": "Account Name",
+                "namePlaceholder": "e.g. Google, GitHub",
+                "secretLabel": "Secret Key",
+                "secretPlaceholder": "JBSWY3DPEHPK3PXP",
+                "base32Note": "Base32 secret provided by the service.",
+                "submit": "Add Account",
+                "privacy": "<strong>Privacy Note:</strong> Your secret keys are stored only in your browser's local storage and are never sent to any server."
+            },
+            "errors": {
+                "fillAll": "Please fill in all fields",
+                "invalidSecret": "Invalid Secret Key. Base32 keys only contain letters A-Z and numbers 2-7.",
+                "invalidFormat": "Invalid Secret Key format."
+            },
+            "list": {
+                "emptyTitle": "No Accounts Added Yet",
+                "emptyDesc": "Add an account using your secret key to start generating codes.",
+                "deleteConfirm": "Are you sure you want to delete this account?",
+                "deleteTooltip": "Delete Account",
+                "copyTooltip": "Copy Code"
+            }
+        },
+        "password-gen": {
+            "title": "Strong Password Generator",
+            "desc": "Create secure, random passwords using cryptographic randomness.",
+            "length": "Password Length",
+            "options": {
+                "uppercase": "Uppercase (A-Z)",
+                "lowercase": "Lowercase (a-z)",
+                "numbers": "Numbers (0-9)",
+                "symbols": "Symbols (!@#)",
+                "ambiguous": "Avoid Ambiguous Characters",
+                "ambiguousHint": "(e.g. i, l, 1, L, o, 0, O)"
+            },
+            "history": {
+                "title": "History (Last 5)",
+                "empty": "Generated passwords will appear here.",
+                "clickToCopy": "Click to copy"
+            },
+            "actions": {
+                "regenerate": "Regenerate",
+                "copy": "Copy Password",
+                "copied": "Copied!"
+            }
+        },
+        "password-strength": {
+            "title": "Password Strength Checker",
+            "desc": "Analyze your password's resistance to hacking attempts.",
+            "inputLabel": "My Password",
+            "placeholder": "Type a password...",
+            "strength": "Strength",
+            "scores": {
+                "0": "Very Weak",
+                "1": "Weak",
+                "2": "So-so",
+                "3": "Good",
+                "4": "Strong",
+                "empty": "Enter Password"
+            },
+            "composition": {
+                "title": "Composition Check",
+                "length": "At least 12 characters",
+                "uppercase": "Contains uppercase",
+                "lowercase": "Contains lowercase",
+                "number": "Contains number",
+                "symbol": "Contains symbol"
+            },
+            "analysis": {
+                "crackTime": "Time to Crack",
+                "entropy": "{{bits}} Bits of Entropy",
+                "online": "Online Attack",
+                "onlineScenario": "Scenario: Attacker guessing via a login form (throttled).",
+                "offline": "Offline Attack",
+                "offlineScenario": "Scenario: Attacker has your database hash and a GPU farm.",
+                "weakness": "Weakness Analysis",
+                "critical": "Critical Weakness",
+                "suggestions": "Improvement Suggestions:",
+                "excellent": "Excellent Password",
+                "excellentDesc": "No common patterns found. This password is cryptographically strong.",
+                "generic": "Consider adding more random words or characters to increase entropy."
+            },
+            "empty": {
+                "title": "Enter a password to see its analysis.",
+                "subtitle": "All checking is done locally in your browser. No data is sent anywhere."
+            }
+        },
+        "fake-identity": {
+            "title": "Fake Identity Generator",
+            "desc": "Generate random profiles for software testing and privacy.",
+            "config": "Configuration",
+            "gender": {
+                "label": "Gender",
+                "random": "Random",
+                "male": "Male",
+                "female": "Female"
+            },
+            "generate": "Generate New Identity",
+            "generating": "Generating...",
+            "usage": {
+                "title": "Usage Note",
+                "text": "These identities are completely fictional and generated algorithmically. Do not use for illegal activities."
+            },
+            "copy": "Copy as JSON",
+            "personal": {
+                "title": "Personal Details",
+                "dob": "Date of Birth",
+                "gender": "Gender",
+                "email": "Email Address",
+                "phone": "Phone Number"
+            },
+            "location": {
+                "title": "Location"
+            },
+            "online": {
+                "title": "Online Profile",
+                "username": "Username",
+                "uuid": "UUID"
+            }
+        },
+        "temp-email": {
+            "title": "Disposable Email Linker",
+            "desc": "Quick links to top temporary email services for privacy.",
+            "providers": {
+                "temp-mail": {
+                    "desc": "Most popular temporary email service. Simple and fast.",
+                    "lifespan": "Until browser closed (or manual delete)"
+                },
+                "10-min": {
+                    "desc": "Classic disposable email. Gives you 10 minutes, extendable.",
+                    "lifespan": "10 Minutes (Extendable)"
+                },
+                "guerrilla": {
+                    "desc": "Feature-rich, customizable addresses. No registration.",
+                    "lifespan": "Emails kept for 1 hour"
+                },
+                "emailondeck": {
+                    "desc": "Secure and private. Good for strict spam filters.",
+                    "lifespan": "Variable (usually hours)"
+                },
+                "maildrop": {
+                    "desc": "Open inbox system. Great for quick signups.",
+                    "lifespan": "Files < 100k, cleared inactive"
+                },
+                "burner": {
+                    "desc": "Forward emails to your real inbox privately.",
+                    "lifespan": "Requires Extension/Signup"
+                }
+            },
+            "warnings": {
+                "title": "Important Warnings",
+                "list": [
+                    "Do not use these emails for banking, government services, or sensitive accounts.",
+                    "Anyone who guesses the address (for open inboxes) can read your emails.",
+                    "Once expired, you cannot recover the emails or the address."
+                ]
+            },
+            "info": {
+                "title": "Why use disposable email?",
+                "p1": "When you sign up for a service just to test it or get a freebie, they often sell your email or spam you.",
+                "p2": "Using a disposable address keeps your real inbox clean and protects your identity."
+            }
+        },
+        "secret-note": {
+            "title": "Secret Note",
+            "desc": "Create encrypted notes that self-destruct after being read.",
+            "modes": {
+                "encrypt": "Encrypt Mode",
+                "decrypt": "Decrypt Mode"
+            },
+            "form": {
+                "messageLabel": "Message to Encrypt",
+                "encryptedLabel": "Encrypted Text",
+                "messagePlaceholder": "Type your secret message here...",
+                "encryptedPlaceholder": "Paste the encrypted text string here...",
+                "passwordLabel": "Password / Key",
+                "passwordPlaceholder": "Enter a strong password",
+                "encryptBtn": "Encrypt Message",
+                "decryptBtn": "Decrypt Message"
+            },
+            "results": {
+                "encryptedLabel": "Encrypted Result (Share this)",
+                "decryptedLabel": "Decrypted Message",
+                "copy": "Copy to Clipboard"
+            },
+            "messages": {
+                "errorInput": "Please enter both a message and a password.",
+                "errorDecryptInput": "Please enter the encrypted text and password.",
+                "successEncrypt": "Message encrypted successfully!",
+                "errorEncrypt": "Encryption failed. Please try again.",
+                "successDecrypt": "Message decrypted successfully!",
+                "errorDecrypt": "Decryption failed. Wrong password or corrupted data.",
+                "copySuccess": "Copied to clipboard!"
+            }
+        },
+        "ip-checker": {
+            "title": "IP Address Checker",
+            "desc": "Find your public IP address and approximate location.",
+            "refresh": "Refresh Data",
+            "checking": "Checking...",
+            "unknown": "Unknown",
+            "errors": {
+                "failed": "Check Failed",
+                "tryAgain": "Try Again",
+                "fetchIp": "Failed to fetch IP address",
+                "general": "Unable to determine IP information."
+            },
+            "results": {
+                "ipv4": "Your IPv4 Address",
+                "visible": "Publicly Visible",
+                "isp": "Internet Provider (ISP)",
+                "location": "Location",
+                "timezone": "Timezone",
+                "coordinates": "Coordinates",
+                "map": "View Exact Location on Google Maps"
+            },
+            "accuracy": {
+                "title": "Location Not Accurate?",
+                "text": "IP-based location is an estimate. It often points to your Internet Provider's (ISP) data center, which can be in a different city or 50+ miles away from your actual home.",
+                "note": "This is normal for all IP tools."
+            }
+        },
+        "browser-fingerprint": {
+            "title": "Browser Fingerprint",
+            "desc": "See what information your browser reveals to websites.",
+            "unknown": "Unknown",
+            "canvas": {
+                "title": "Your Canvas Fingerprint ID",
+                "desc": "This ID is generated by asking your browser to draw an invisible image. Because every device renders graphics slightly differently (due to drivers, GPU, etc.), this ID can uniquely identify you across different websites even without cookies."
+            },
+            "hardware": {
+                "title": "Hardware & System",
+                "screen": "Screen Resolution",
+                "pixel": "Pixel Ratio",
+                "color": "Color Depth",
+                "cores": "CPU Cores",
+                "memory": "Device Memory",
+                "platform": "Platform"
+            },
+            "location": {
+                "title": "Location & Localization",
+                "language": "Language",
+                "timezone": "Timezone",
+                "cookies": "Cookies Enabled",
+                "yes": "Yes",
+                "no": "No"
+            },
+            "ua": "Full User Agent String"
+        },
+        "dns-lookup": {
+            "title": "DNS Lookup",
+            "desc": "Find DNS records for any domain name quickly.",
+            "form": {
+                "domainLabel": "Target Domain",
+                "domainPlaceholder": "example.com",
+                "typeLabel": "Record Type",
+                "submit": "Lookup Records",
+                "querying": "Querying...",
+                "errorStatus": "DNS Error: Status Code {{status}}"
+            },
+            "types": {
+                "A": "A (IPv4 Address)",
+                "AAAA": "AAAA (IPv6 Address)",
+                "MX": "MX (Mail Server)",
+                "NS": "NS (Name Server)",
+                "TXT": "TXT (Text Records)",
+                "CNAME": "CNAME (Alias)",
+                "SOA": "SOA (Start of Authority)"
+            },
+            "howItWorks": {
+                "title": "How it works",
+                "text": "This tool queries Google's Public DNS (8.8.8.8) directly via HTTPS to fetch the authoritative records for the domain."
+            },
+            "results": {
+                "empty": "Enter a domain and select a record type to start.",
+                "failed": "Lookup Failed",
+                "fetchError": "Failed to fetch DNS records.",
+                "title": "Results for {{domain}}",
+                "type": "TYPE: {{type}}",
+                "noRecords": "No Records Found",
+                "noRecordsDesc": "No {{type}} records were returned for this domain.",
+                "nxdomain": "Error: NXDOMAIN (Domain does not exist)"
+            }
+        },
+        "ssl-checker": {
+            "title": "SSL Certificate Checker",
+            "desc": "Verify the validity and details of a websites SSL certificate.",
+            "headerDesc": "Analyze your SSL configuration and find security issues.",
+            "inputLabel": "Enter Domain to Analyze",
+            "placeholder": "example.com",
+            "hint": "Enter a domain (e.g. google.com) to enable the analysis tools below.",
+            "alert": "Please enter a domain name first.",
+            "analyzeBtn": "Analyze",
+            "tools": {
+                "ssllabs": {
+                    "name": "Qualys SSL Labs",
+                    "desc": "Deep server configuration analysis. Gives you a grade (A+ to F)."
+                },
+                "digicert": {
+                    "name": "DigiCert SSL Helper",
+                    "desc": "Checks for common installation issues and intermediate chain validity."
+                },
+                "crtsh": {
+                    "name": "crt.sh (Log Search)",
+                    "desc": "Search Certificate Transparency logs for all certificates issued to this domain."
+                },
+                "whynopadlock": {
+                    "name": "Why No Padlock?",
+                    "desc": "Identify mixed content errors (http resources on https pages)."
+                },
+                "sslshopper": {
+                    "name": "SSL Shopper",
+                    "desc": "Quick visual check of certificate expiration and server support."
+                }
+            }
+        },
+        "port-scanner": {
+            "title": "Port Scanner",
+            "desc": "Check for open ports on a specific IP or domain.",
+            "services": {
+                "21": "FTP (File Transfer)",
+                "22": "SSH (Secure Shell)",
+                "23": "Telnet (Unencrypted Text)",
+                "25": "SMTP (Email Sending)",
+                "53": "DNS (Domain Name System)",
+                "80": "HTTP (Web Server)",
+                "110": "POP3 (Email Receiving)",
+                "143": "IMAP (Email Receiving)",
+                "443": "HTTPS (Secure Web)",
+                "3306": "MySQL (Database)",
+                "3389": "RDP (Remote Desktop)",
+                "5432": "PostgreSQL (Database)",
+                "6379": "Redis (Data Store)",
+                "8080": "HTTP Proxy (Alt Web)",
+                "27017": "MongoDB (Database)"
+            },
+            "form": {
+                "label": "Target Address",
+                "placeholder": "google.com",
+                "submit": "Scan Now",
+                "scanning": "Scanning..."
+            },
+            "errors": {
+                "noIp": "Could not find an IP address for this domain.",
+                "ipNotFound": "No IP address found.",
+                "noOpenPorts": "No open ports found for {{ip}}. The host might be down or fully firewalled.",
+                "fetchFailed": "Could not fetch port data. Please try again.",
+                "general": "An error occurred.",
+                "failed": "Scan Failed"
+            },
+            "results": {
+                "title": "Scan Results",
+                "found": "Found {{count}} Open Ports",
+                "foundDesc": "These services are publicly accessible on the internet.",
+                "unknownService": "Unknown Service",
+                "tcp": "TCP Protocol",
+                "open": "Open",
+                "noPorts": "No common open ports found. This is good!",
+                "hostnames": "Associated Hostnames"
+            },
+            "empty": {
+                "title": "Enter a domain or IP (e.g. google.com) to scan.",
+                "desc": "We'll check a public database to see what's open."
+            },
+            "loading": "Checking public records..."
+        },
+        "qr-gen": {
+            "title": "QR Code Generator",
+            "desc": "Generate QR codes for URLs, text, or contact information.",
+            "tabs": {
+                "url": "URL",
+                "text": "Text",
+                "email": "Email",
+                "wifi": "WiFi",
+                "vcard": "Contact"
+            },
+            "forms": {
+                "urlLabel": "Website URL",
+                "urlPlaceholder": "https://example.com",
+                "textLabel": "Plain Text",
+                "textPlaceholder": "Enter your text here...",
+                "recipient": "Recipient",
+                "recipientPlaceholder": "hello@example.com",
+                "subject": "Subject",
+                "subjectPlaceholder": "Meeting inquiry",
+                "body": "Body",
+                "bodyPlaceholder": "Message content...",
+                "ssid": "Network Name (SSID)",
+                "ssidPlaceholder": "MyWiFi",
+                "password": "Password",
+                "passwordPlaceholder": "secret123",
+                "encryption": "Encryption",
+                "encryptions": {
+                    "wpa": "WPA/WPA2",
+                    "wep": "WEP",
+                    "none": "No Encryption"
+                },
+                "fullName": "Full Name",
+                "namePlaceholder": "John Doe",
+                "phone": "Phone",
+                "phonePlaceholder": "+123456789",
+                "email": "Email",
+                "emailPlaceholder": "john@example.com"
+            },
+            "appearance": {
+                "title": "Appearance Options",
+                "fgColor": "Foreground Color",
+                "bgColor": "Background Color",
+                "size": "Size: {{size}}px",
+                "errorCorrection": "Error Correction",
+                "levels": {
+                    "L": "Low (7%)",
+                    "M": "Medium (15%)",
+                    "Q": "Quartile (25%)",
+                    "H": "High (30%)"
+                }
+            },
+            "preview": {
+                "title": "Live Preview",
+                "empty": "Enter data to generate",
+                "download": "Download PNG"
+            }
+        },
+        "extension-rename": {
+            "title": "File Extension Renamer",
+            "desc": "Batch change file extensions easily and safely."
+        },
+        "binary-converter": {
+            "title": "Binary to Decimal",
+            "desc": "Convert numbers between binary, decimal, and hex easily.",
+            "bases": {
+                "bin": "Binary (Base 2)",
+                "oct": "Octal (Base 8)",
+                "dec": "Decimal (Base 10)",
+                "hex": "Hexadecimal (Base 16)"
+            },
+            "sidebar": {
+                "title": "Quick Reference",
+                "decimal": "Decimal",
+                "binary": "Binary",
+                "hex": "Hex",
+                "octal": "Octal",
+                "info": {
+                    "decimal": "<strong>Decimal (Base 10)</strong> is what humans use daily.",
+                    "binary": "<strong>Binary (Base 2)</strong> is the language of computers (0s and 1s).",
+                    "hex": "<strong>Hexadecimal (Base 16)</strong> is used in web colors and memory addresses."
+                }
+            }
+        },
+        "citation-gen": {
+            "title": "Citation Generator",
+            "desc": "Create accurate references for your bibliography.",
+            "styles": "Style",
+            "sourceType": "Source Type",
+            "forms": {
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "pageTitle": "Page Title",
+                "title": "Title",
+                "websiteName": "Website Name",
+                "publisher": "Publisher",
+                "url": "URL",
+                "year": "Year",
+                "month": "Month",
+                "day": "Day"
+            },
+            "preview": {
+                "title": "Preview",
+                "disclaimer": "Always double-check against your institution's specific guidelines. Automated tools can make mistakes."
+            }
+        },
+        "date-diff": {
+            "title": "Date Difference Calc",
+            "desc": "Calculate the exact number of days between two dates.",
+            "form": {
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "includeEnd": "Include End Date (+1 day)"
+            },
+            "results": {
+                "totalDuration": "Total Duration",
+                "days": "days",
+                "summary": "Or {{weeks}} weeks and {{days}} days",
+                "breakdown": "Detailed Breakdown",
+                "years": "Years",
+                "months": "Months",
+                "fullBreakdown": "{{years}} years, {{months}} months, {{days}} days"
+            }
+        },
+        "equation-solver": {
+            "title": "Equation Solver",
+            "desc": "Solve basic linear and quadratic equations step-by-step.",
+            "types": {
+                "linear": "Linear",
+                "quadratic": "Quadratic"
+            },
+            "inputs": {
+                "a_squared": "Coefficient a (x²)",
+                "a_linear": "Coefficient a (x)",
+                "b_linear": "Coefficient b (x)",
+                "b_const": "Constant b",
+                "c_const": "Constant c"
+            },
+            "preview": "Equation Preview",
+            "solution": {
+                "title": "Solution",
+                "finalAnswer": "Final Answer",
+                "steps": "Steps"
+            },
+            "steps": {
+                "eq": "Equation: {{eq}}",
+                "sub": "Subtract {{val}} from both sides: {{res}}",
+                "div": "Divide by {{val}}: {{res}}",
+                "discriminant": "Discriminant (Δ) = b² - 4ac",
+                "deltaCalc": "Δ = ({{b}})² - 4({{a}})({{c}})",
+                "deltaRes": "Δ = {{b2}} - {{ac4}} = {{delta}}",
+                "twoRoots": "Δ > 0, so there are two distinct real roots.",
+                "oneRoot": "Δ = 0, so there is exactly one real root.",
+                "complexRoots": "Δ < 0, so there are two complex roots.",
+                "quadFormula": "x = (-b ± √Δ) / 2a"
+            },
+            "errors": {
+                "linearA": "Coefficient \"a\" cannot be zero for a linear equation.",
+                "quadraticA": "Coefficient \"a\" cannot be zero for a quadratic equation. Switch to Linear."
+            }
+        },
+        "fraction-calc": {
+            "title": "Fraction Calculator",
+            "desc": "Add, subtract, and multiply complex fractions easily.",
+            "inputs": {
+                "whole": "Whole",
+                "num": "Num",
+                "den": "Den"
+            },
+            "calculate": "Calculate",
+            "result": {
+                "title": "Result",
+                "fraction": "Fraction",
+                "mixed": "Mixed",
+                "decimal": "Decimal",
+                "steps": "Calculation Steps"
+            },
+            "steps": {
+                "convertImproper": "Convert operands to improper fractions:",
+                "frac1": "Fraction 1: {{val1}} = {{val2}}",
+                "frac2": "Fraction 2: {{val1}} = {{val2}}",
+                "lcm": "Find Least Common Multiple (LCM) of denominators ({{d1}}, {{d2}}): {{lcm}}",
+                "adjust": "Adjust fractions: {{v1}} -> {{a1}} and {{v2}} -> {{a2}}",
+                "addNum": "Add numerators: {{v1}} + {{v2}} = {{res}}",
+                "subNum": "Subtract numerators: {{v1}} - {{v2}} = {{res}}",
+                "mulNum": "Multiply numerators: {{v1}} * {{v2}} = {{res}}",
+                "mulDen": "Multiply denominators: {{d1}} * {{d2}} = {{res}}",
+                "mulRecip": "Multiply by reciprocal of second fraction: {{v1}} * {{v2}}",
+                "res": "Result: {{res}}",
+                "simplify": "Simplify: {{v1}} -> {{v2}}",
+                "mixed": "Convert to mixed number: {{mixed}}"
+            },
+            "errors": {
+                "denomZero": "Denominator cannot be zero."
+            }
+        },
+        "graph-plotter": {
+            "title": "Simple Graph Plotter",
+            "desc": "Visualize your data with simple bar, line, area, or scatter graphs.",
+            "download": "Download PNG",
+            "dataPoints": {
+                "title": "Data Points",
+                "addRow": "+ Add Row",
+                "xValue": "X Value",
+                "yValue": "Y Value"
+            },
+            "config": {
+                "title": "Configuration",
+                "chartType": "Chart Type",
+                "types": {
+                    "line": "Line Chart",
+                    "bar": "Bar Chart",
+                    "area": "Area Chart",
+                    "scatter": "Scatter Plot"
+                },
+                "axesLabels": "Axes Labels",
+                "colorTheme": "Color Theme",
+                "showGrid": "Show Grid"
+            },
+            "scatterNote": "Note: For Scatter plots, X values must be numeric. Non-numeric values will default to 0."
+        },
+        "percentage-calc": {
+            "title": "Percentage Calculator",
+            "desc": "Quickly calculate increases, decreases, and percentages.",
+            "modes": {
+                "what_is": "What is X% of Y?",
+                "is_what": "X is what % of Y?",
+                "change": "Percentage Change"
+            },
+            "inputs": {
+                "x": "X",
+                "y": "Y",
+                "start": "Start",
+                "end": "End"
+            },
+            "text": {
+                "what_is": "What is",
+                "of": "% of",
+                "is_what": "is what % of",
+                "from": "From",
+                "to": "to",
+                "is_a": "is a..."
+            },
+            "result": "Result",
+            "explanation": "Explanation",
+            "directions": {
+                "increase": "Increase",
+                "decrease": "Decrease",
+                "noChange": "No Change"
+            },
+            "explanations": {
+                "what_is": "{{v1}}% of {{v2}} = ({{v1}} / 100) × {{v2}}",
+                "is_what": "{{v1}} is what % of {{v2}}? = ({{v1}} / {{v2}}) × 100",
+                "change": "{{direction}} from {{v1}} to {{v2}} = (({{v2}} - {{v1}}) / {{v1}}) × 100"
+            },
+            "errors": {
+                "zeroChange": "Cannot calculate change from zero"
+            }
+        },
+        "plagiarism-checker": {
+            "title": "Plagiarism Checker",
+            "desc": "Analyze content and verify originality via smart search.",
+            "analyzer": {
+                "title": "Content Analyzer",
+                "desc": "Paste your text below. We will break it down into checkable segments to help you find plagiarized content across the web.",
+                "placeholder": "Paste the text you want to check here (min 20 characters)...",
+                "analyzeBtn": "Analyze Text",
+                "processing": "Processing..."
+            },
+            "results": {
+                "title": "Analysis Results",
+                "checkAnother": "Check Another Text",
+                "howToCheck": "<strong>How to check:</strong> We've isolated {{count}} key phrases. Click \"Search Match\" to see if these exact sentences appear elsewhere on the internet.",
+                "searchMatch": "Check for Plagiarism",
+                "noPhrases": "No long phrases detected to check. Text might be too short or fragmented."
+            }
+        },
+        "scientific-calc": {
+            "title": "Scientific Calculator",
+            "desc": "Professional grade scientific calculator with trigonometry, algebra, and memory functions.",
+            "history": {
+                "title": "Calculation Tape",
+                "empty": "History is empty"
+            },
+            "toggles": {
+                "hide": "Hide Scientific",
+                "show": "Show Scientific"
+            }
+        },
+        "sorting-visualizer": {
+            "title": "Sorting Visualizer",
+            "desc": "Visualise sorting algorithms step-by-step with code and variable updates.",
+            "algorithms": {
+                "bubble": {
+                    "name": "Bubble Sort",
+                    "desc": "Repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order."
+                },
+                "selection": {
+                    "name": "Selection Sort",
+                    "desc": "Repeatedly finds the minimum element from the unsorted part and puts it at the beginning."
+                },
+                "insertion": {
+                    "name": "Insertion Sort",
+                    "desc": "Builds the final sorted array one item at a time."
+                },
+                "merge": {
+                    "name": "Merge Sort",
+                    "desc": "Divides the array into halves, sorts them and merges them back together."
+                },
+                "quick": {
+                    "name": "Quick Sort",
+                    "desc": "Picks a pivot and partitions the array around it."
+                }
+            },
+            "pseudocode": "Pseudocode",
+            "controls": {
+                "edit": "Edit",
+                "save": "Save",
+                "start": "Start",
+                "timeline": "Timeline",
+                "end": "End",
+                "speed": "Speed",
+                "items": "Items"
+            },
+            "legend": {
+                "title": "Legend",
+                "unsorted": "Unsorted",
+                "sorted": "Sorted",
+                "compare": "Compare",
+                "swap": "Swap",
+                "pivot": "Pivot"
+            },
+            "step": "Step",
+            "status": {
+                "ready": "Ready",
+                "sorted": "Sorted!"
+            }
+        },
+        "stats-calc": {
+            "title": "Mean/Median/Mode Calc",
+            "desc": "Calculate comprehensive statistics for any dataset.",
+            "input": {
+                "label": "Input Dataset",
+                "placeholder": "Enter numbers separated by commas or spaces...\nExample:\n12, 15, 18, 22\n10 5 8 9",
+                "items": "{{count}} items"
+            },
+            "emptyState": "Enter numbers to see statistics.",
+            "results": {
+                "mean": "Mean (Average)",
+                "median": "Median (Middle)",
+                "mode": "Mode (Most Common)",
+                "sum": "Sum",
+                "range": "Range",
+                "min": "Minimum",
+                "max": "Maximum",
+                "stdDev": "Standard Deviation",
+                "none": "None",
+                "explanation": "Explanation"
+            }
+        },
+        "unit-converter": {
+            "title": "Unit Converter",
+            "desc": "Convert between metric and imperial units easily.",
+            "categories": {
+                "length": "Length",
+                "mass": "Mass",
+                "volume": "Volume",
+                "temp": "Temperature",
+                "data": "Data"
+            },
+            "from": "From",
+            "to": "To"
+        },
+        "ambient-noise": {
+            "title": "Ambient Noise Generator",
+            "desc": "Focus with soothing sounds like rain, coffee shop, and more.",
+            "metaDesc": "Focus with soothing sounds like rain, coffee shop, and more.",
+            "controls": {
+                "stopAll": "Stop All",
+                "volume": "Volume",
+                "playing": "Playing",
+                "play": "Play"
+            },
+            "noises": {
+                "rain": "Soft Rain",
+                "thunder": "Deep Thunder",
+                "white": "White Noise",
+                "forest": "Windy Forest",
+                "fan": "Box Fan",
+                "night": "Night Ambience",
+                "stream": "Running Stream",
+                "cabin": "Airplane Cabin"
+            },
+            "tip": {
+                "title": "Pro Tip",
+                "content": "You can mix multiple sounds together! Try combining <strong>Soft Rain</strong> and <strong>Deep Thunder</strong> for a cozy storm atmosphere."
+            }
+        },
+        "break-timer": {
+            "title": "Break Timer",
+            "desc": "Take a quick power nap or coffee break.",
+            "metaDesc": "Smart reminders to step away and recharge your energy.",
+            "stopAlarm": "STOP ALARM",
+            "timeUp": "🔔 Time is Up! - Break Timer",
+            "documentTitle": "Break Timer | MiniTools by Spinotek",
+            "sound": "Sound",
+            "min": "min",
+            "sec": "sec",
+            "sounds": {
+                "chime": "Chill Chime",
+                "digital": "Digital Beep",
+                "bell": "Simple Bell",
+                "gong": "Deep Gong"
+            }
+        },
+        "daily-reflection": {
+            "title": "Daily Reflection Prompt",
+            "desc": "Thoughtful prompts for personal growth and awareness.",
+            "controls": {
+                "newPrompt": "New Prompt",
+                "copy": "Copy to Clipboard",
+                "copied": "Copied!"
+            },
+            "todayQuestion": "Today's Question",
+            "placeholder": "Write your thoughts here...",
+            "prompts": [
+                "What is one small win you had today?",
+                "What is something you learned today?",
+                "How did you help someone today?",
+                "What is something you could have done better?",
+                "What are you looking forward to tomorrow?",
+                "Who are you grateful for today and why?",
+                "What was the most challenging part of your day?",
+                "Did you take enough time for yourself today?",
+                "What is one goal you want to focus on this week?",
+                "How are you feeling right now, really?",
+                "What gave you energy today? What drained it?",
+                "What is a new habit you want to start?",
+                "If you could relive one moment from today, what would it be?"
+            ]
+        },
+        "decision-matrix": {
+            "title": "Decision Matrix (Pick for me)",
+            "desc": "Mathematically determine the best choice based on weighted criteria.",
+            "metaDesc": "Stuck? Let the logic help you decide what to do next.",
+            "steps": {
+                "options": "Options",
+                "criteria": "Criteria",
+                "rate": "Rate",
+                "result": "Result"
+            },
+            "controls": {
+                "startOver": "Start Over",
+                "addOption": "Add Another Option",
+                "nextStep": "Next Step",
+                "addCriteria": "Add Criterion",
+                "startRating": "Start Rating",
+                "calcResults": "Calculate Results",
+                "back": "Back"
+            },
+            "step1": {
+                "title": "What options are you considering?",
+                "placeholder": "Option {{count}} (e.g. \"Buy Honda Civic\")",
+                "alert": "Please add at least 2 options."
+            },
+            "step2": {
+                "title": "Define your criteria",
+                "desc": "Weight is 1-5 (1 = Low Importance, 5 = High Importance)",
+                "placeholder": "Criterion {{count}}",
+                "alert": "Please add at least 1 criterion."
+            },
+            "step3": {
+                "title": "Rate each option (1-10)",
+                "desc": "1 = Poor, 10 = Excellent",
+                "weight": "Weight"
+            },
+            "result": {
+                "title": "The Winner Is...",
+                "bestChoice": "Best Choice"
+            }
+        },
+        "eye-break": {
+            "title": "Eye Break Timer",
+            "desc": "Protect your eyes using the 20-20-20 break rule.",
+            "subtitle": "Follow the 20-20-20 rule: Every 20 mins, look 20 feet away for 20 seconds.",
+            "status": {
+                "work": "Screen Time",
+                "break": "Look Away Now!"
+            },
+            "message": {
+                "work": "Focus on your work. We'll remind you when to rest.",
+                "break": "Look at something 20 feet away to relax your eyes."
+            },
+            "documentTitle": {
+                "default": "Eye Break Timer | MiniTools by Spinotek",
+                "work": "Work",
+                "break": "Look Away!"
+            }
+        },
+        "gratitude-journal": {
+            "title": "Gratitude Journal",
+            "desc": "Improve your well-being by reflecting on positive moments.",
+            "tabs": {
+                "write": "Write Entry",
+                "history": "History"
+            },
+            "checkIn": "Daily Check-in",
+            "questions": {
+                "q1": "1. I am grateful for...",
+                "q2": "2. What would make today great?",
+                "q3": "3. Daily Affirmation"
+            },
+            "placeholders": {
+                "q1": "List three things you are thankful for today...",
+                "q2": "Mention small wins or goals...",
+                "q3": "I am..."
+            },
+            "controls": {
+                "save": "Save Entry",
+                "download": "Download Journal (TXT)",
+                "writeNow": "Write Now"
+            },
+            "empty": "No entries yet. Start writing your first one!",
+            "history": {
+                "q1": "I am grateful for...",
+                "q2": "Make today great",
+                "q3": "Affirmation"
+            }
+        },
+        "habit-tracker": {
+            "title": "Daily Habit Tracker",
+            "desc": "Track and build better daily routines and habits.",
+            "subtitle": "Gamify your daily routines.",
+            "stats": {
+                "xp": "TOTAL XP",
+                "goal": "GOAL",
+                "lvl": "LVL"
+            },
+            "placeholder": "Add new... (e.g. Read 30m)",
+            "views": {
+                "week": "Week",
+                "calendar": "Calendar"
+            },
+            "weekView": {
+                "task": "Task",
+                "empty": "No habits yet. Start by adding one!",
+                "deleteConfirm": "Delete this habit?"
+            },
+            "calendarView": {
+                "hint": "Click on a day to view and edit habits",
+                "days": [
+                    "Mon",
+                    "Tue",
+                    "Wed",
+                    "Thu",
+                    "Fri",
+                    "Sat",
+                    "Sun"
+                ]
+            },
+            "modal": {
+                "title": "Daily Progress",
+                "empty": "No habits defined.",
+                "done": "Done"
+            }
+        },
+        "pomodoro": {
+            "title": "Pomodoro Timer",
+            "desc": "Stay focused with customizable work and break intervals.",
+            "modes": {
+                "work": "Work Time",
+                "short": "Short Break",
+                "long": "Long Break"
+            },
+            "settings": {
+                "title": "Timer Settings",
+                "min": "MIN",
+                "sec": "SEC",
+                "save": "Save Settings"
+            },
+            "status": {
+                "timeUp": "TIME IS UP!",
+                "clickEdit": "Click to Edit"
+            },
+            "controls": {
+                "stopAlarm": "STOP ALARM"
+            },
+            "documentTitle": {
+                "timeUp": "🔔 TIME IS UP! - Pomodoro"
+            }
+        },
+        "stopwatch": {
+            "title": "Simple Stopwatch",
+            "desc": "A simple and clean interface for timing anything.",
+            "laps": {
+                "title": "Laps",
+                "total": "Total",
+                "empty": "No laps recorded."
+            }
+        },
+        "time-boxing": {
+            "title": "Time Boxing Planner",
+            "desc": "Plan your day by assigning tasks to specific time blocks.",
+            "confirmClear": "Clear current plan?",
+            "buttons": {
+                "clear": "Clear",
+                "print": "Print"
+            },
+            "print": {
+                "header": "Daily Plan",
+                "subheader": "Time Boxing Method",
+                "footer": "Printed from MiniTools by Spinotek"
+            },
+            "sections": {
+                "priorities": "Top Priorities",
+                "brainDump": "Brain Dump",
+                "schedule": "Schedule"
+            },
+            "placeholders": {
+                "priority": "Priority",
+                "brainDump": "Jot down tasks, ideas, and reminders..."
+            }
+        },
+        "todo-list": {
+            "title": "Minimalist To-Do List",
+            "desc": "Keep your tasks simple and organized for the day.",
+            "placeholder": "What needs to be done?",
+            "filters": {
+                "all": "All",
+                "active": "Active",
+                "completed": "Completed"
+            },
+            "status": {
+                "itemLeft": "item left",
+                "itemsLeft": "items left",
+                "empty": "No tasks found."
+            },
+            "actions": {
+                "clearCompleted": "Clear Completed"
+            },
+            "examples": {
+                "welcome": "Welcome to your new Todo list!",
+                "check": "Try checking this item off"
+            }
+        },
+        "water-reminder": {
+            "title": "Water Intake Reminder",
+            "desc": "Track your daily hydration goal.",
+            "goal": "Goal",
+            "actions": {
+                "reset": "Reset Day",
+                "confirmReset": "Are you sure you want to reset your progress for today?"
+            },
+            "status": {
+                "reached": "Goal Reached!",
+                "history": "Today's History",
+                "empty": "No water logged yet today."
+            }
+        },
+        "base64-enc": {
+            "title": "Base64 Encoder/Decoder",
+            "desc": "Securely encode and decode strings to and from Base64 format instantly.",
+            "encoder": "Encoder",
+            "decoder": "Decoder",
+            "subtitle": "Convert text to Base64 and vice versa with ease.",
+            "actions": {
+                "clear": "Clear",
+                "switch": "Switch to",
+                "process": "Process",
+                "copy": "Copy",
+                "copied": "Copied!"
+            },
+            "labels": {
+                "plainInput": "Plain Text Input",
+                "base64Input": "Base64 Input",
+                "base64Result": "Base64 Result",
+                "plainResult": "Plain Text Result",
+                "error": "Error",
+                "about": "About Base64",
+                "aboutDesc": "Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format. It is commonly used when there is a need to encode binary data that needs to be stored and transferred over media that are designed to deal with textual data."
+            },
+            "placeholders": {
+                "encode": "Type or paste text to encode...",
+                "decode": "Paste Base64 string to decode...",
+                "result": "Result will appear here..."
+            },
+            "errors": {
+                "invalid": "Invalid Base64 string"
+            }
+        },
+        "cron-guru": {
+            "title": "Crontab Guru",
+            "desc": "Visualize and edit cron schedule expressions easily.",
+            "subtitle": "Visualize and edit cron schedule expressions.",
+            "actions": {
+                "copy": "Copy Expression",
+                "copied": "Copied"
+            },
+            "labels": {
+                "minute": "Minute",
+                "hour": "Hour",
+                "dayMonth": "Day (Month)",
+                "month": "Month",
+                "dayWeek": "Day (Week)",
+                "common": "Common Examples"
+            },
+            "ranges": {
+                "minute": "0 - 59",
+                "hour": "0 - 23",
+                "dayMonth": "1 - 31",
+                "month": "1 - 12",
+                "dayWeek": "0 - 6 (Sun-Sat)"
+            },
+            "examples": {
+                "everyMinute": "Every minute",
+                "everyHour": "Every hour",
+                "midnight": "Midnight",
+                "noon": "Noon",
+                "everyMonday": "Every Monday",
+                "firstOfMonth": "First of month"
+            },
+            "generated": {
+                "at": "At",
+                "everyMinute": "Every minute",
+                "minutePast": "Minute {{minute}} past every hour",
+                "onDayMonth": "on day of month {{day}}",
+                "inMonth": "in month {{month}}",
+                "onDayWeek": "on day of week {{day}}",
+                "invalid": "Invalid Format",
+                "error": "Invalid Cron Expression"
+            }
+        },
+        "diff-checker": {
+            "title": "Diff Checker",
+            "desc": "Compare and find differences between two text sets.",
+            "subtitle": "Compare and find differences between two text sets.",
+            "actions": {
+                "compare": "Compare"
+            },
+            "labels": {
+                "original": "Original Text",
+                "modified": "Modified Text",
+                "result": "Comparison Result"
+            },
+            "placeholders": {
+                "original": "Paste original text...",
+                "modified": "Paste modified text..."
+            }
+        },
+        "hash-gen": {
+            "title": "MD5/SHA256 Hasher",
+            "desc": "Generate secure cryptographic hashes for your data.",
+            "subtitle": "Generate secure cryptographic hashes for your data.",
+            "inputLabel": "Input Text",
+            "placeholder": "Type to generate hashes..."
+        },
+        "html-enc": {
+            "title": "HTML Entity Encoder & Decoder",
+            "desc": "Convert characters to HTML entities and vice-versa for secure web development.",
+            "encoder": "Encoder",
+            "decoder": "Decoder",
+            "subtitle": "Escape or unescape HTML tags and special characters.",
+            "actions": {
+                "clear": "Clear",
+                "switch": "Switch to",
+                "process": "Process",
+                "copy": "Copy",
+                "copied": "Copied!"
+            },
+            "labels": {
+                "textInput": "Text Input",
+                "encodedInput": "Encoded Input",
+                "result": "Result",
+                "error": "Error",
+                "about": "Why use HTML Encoding?",
+                "aboutDesc": "HTML encoding is crucial for preventing XSS (Cross-Site Scripting) attacks by converting special characters like < and > into their entity equivalents. This ensures the browser treats them as text rather than active code."
+            },
+            "placeholders": {
+                "encode": "Type or paste code to escape...",
+                "decode": "Paste escaped HTML to unescape...",
+                "result": "Result will appear here..."
+            }
+        },
+        "jwt-debug": {
+            "title": "JWT Debugger",
+            "desc": "Decode and inspect JSON Web Tokens safely.",
+            "subtitle": "Decode and inspect JSON Web Tokens safely.",
+            "placeholder": "Paste your JWT here (e.g. eyJhbGciOi...)",
+            "sections": {
+                "header": "Header",
+                "payload": "Payload",
+                "signature": "Signature"
+            },
+            "errors": {
+                "format": "Invalid JWT format (must have 3 parts).",
+                "invalid": "Invalid token. Could not decode."
+            }
+        },
+        "js-minifier": {
+            "title": "Javascript Minifier",
+            "desc": "Compress and optimize your Javascript code using Terser.",
+            "subtitle": "Professional compression using Terser engine.",
+            "actions": {
+                "minify": "Minify Code",
+                "minifying": "Minifying..."
+            },
+            "labels": {
+                "input": "Input Javascript",
+                "output": "Minified Output",
+                "saved": "Saved {{savings}}% ({{original}}b → {{minified}}b)",
+                "failed": "Minification Failed"
+            },
+            "placeholders": {
+                "input": "// Paste your JS code here...",
+                "output": "Minified code result..."
+            },
+            "errors": {
+                "failed": "Minification failed. Check your syntax."
+            }
+        },
+        "json-fmt": {
+            "title": "JSON Formatter",
+            "desc": "Clean and validate your JSON data instantly.",
+            "subtitle": "Clean and validate your JSON data instantly.",
+            "actions": {
+                "format": "Format JSON",
+                "clear": "Clear",
+                "copy": "Copy",
+                "copied": "Copied!"
+            },
+            "labels": {
+                "raw": "Raw Input",
+                "formatted": "Formatted Result",
+                "invalid": "Invalid JSON"
+            },
+            "placeholders": {
+                "input": "Paste your JSON here (e.g., {\"name\":\"John\", \"age\":30})",
+                "output": "Formatted output will appear here..."
+            }
+        },
+        "regex-tester": {
+            "title": "Regex Tester",
+            "desc": "Test and debug your JavaScript regular expressions with real-time highlighting and match grouping.",
+            "subtitle": "Real-time regular expression debugger.",
+            "previewActive": "Live Preview Active",
+            "labels": {
+                "regex": "Regular Expression",
+                "invalid": "(Invalid Pattern)",
+                "testString": "Test String",
+                "matches": "Matches",
+                "flags": "Flags",
+                "preview": "Live Highlight Preview",
+                "error": "Regex Error",
+                "common": "Common Tokens"
+            },
+            "placeholders": {
+                "pattern": "Enter pattern...",
+                "testString": "Enter text to test your regex against...",
+                "empty": "Test string will appear here..."
+            }
+        },
+        "sql-fmt": {
+            "title": "SQL Formatter",
+            "desc": "Beautify and format your SQL queries instantly.",
+            "subtitle": "Beautify and format your SQL queries instantly.",
+            "actions": {
+                "format": "Format SQL"
+            },
+            "labels": {
+                "input": "Input SQL",
+                "output": "Formatted Output"
+            },
+            "placeholders": {
+                "input": "SELECT * FROM users WHERE id = 1...",
+                "output": "Formatted query will appear here..."
+            }
+        },
+        "url-enc": {
+            "title": "URL Encoder & Decoder",
+            "desc": "Properly encode or decode URLs for web compatibility instantly.",
+            "encoder": "Encoder",
+            "decoder": "Decoder",
+            "subtitle": "Safe URL formatting for web developers.",
+            "actions": {
+                "clear": "Clear",
+                "switch": "Switch to",
+                "process": "Process",
+                "copy": "Copy",
+                "copied": "Copied!"
+            },
+            "labels": {
+                "rawInput": "Raw URL Input",
+                "encodedInput": "Encoded URL Input",
+                "encodedResult": "Encoded Result",
+                "decodedResult": "Decoded Result",
+                "error": "Error",
+                "tip": "Usage Tip",
+                "tipDesc": "URL encoding converts characters into a format that can be transmitted over the Internet. Characters like space, ampersand, and question marks have special meanings and need to be encoded if they are part of a query string parameter."
+            },
+            "placeholders": {
+                "encode": "Type or paste URL to encode...",
+                "decode": "Paste encoded URL to decode...",
+                "result": "Result will appear here..."
+            }
+        },
+        "uuid-gen": {
+            "title": "UUID Generator",
+            "desc": "Generate unique identifiers (UUID v4) for your applications.",
+            "subtitle": "Generate random UUID v4 identifiers.",
+            "labels": {
+                "quantity": "Quantity"
+            },
+            "actions": {
+                "regenerate": "Regenerate",
+                "copyAll": "Copy All",
+                "copied": "Copied!"
+            }
+        },
+        "aspect-calc": {
+            "title": "Aspect Ratio Calculator",
+            "desc": "Calculate dimensions and ratios for images, video, and design layouts.",
+            "subtitle": "Calculate dimensions and ratios for various displays.",
+            "headings": {
+                "common": "Common Ratios",
+                "dimensions": "Dimensions (px)"
+            },
+            "labels": {
+                "width": "Width",
+                "height": "Height"
+            },
+            "presets": {
+                "hd": "16:9 (HD)",
+                "sd": "4:3 (SD)",
+                "square": "1:1 (Square)",
+                "ultrawide": "21:9 (Ultrawide)",
+                "mobile": "9:16 (Mobile)",
+                "golden": "1.618 (Golden)"
+            }
+        },
+        "contrast-check": {
+            "title": "Contrast Ratio Checker",
+            "desc": "Ensure your design is accessible with our WCAG AA/AAA contrast checker.",
+            "subtitle": "Check WCAG compliance for text accessibility.",
+            "labels": {
+                "textColor": "Text Color",
+                "bgColor": "Background Color",
+                "scores": "WCAG Scores",
+                "ratio": "Contrast Ratio",
+                "normal": "NORMAL TEXT",
+                "large": "LARGE TEXT"
+            },
+            "actions": {
+                "swap": "Swap Colors"
+            },
+            "status": {
+                "pass": "PASS",
+                "fail": "FAIL"
+            },
+            "suggestions": {
+                "fail": "Try increasing the contrast by using a darker background or lighter text.",
+                "pass": "Great contrast! Your text is accessible."
+            },
+            "preview": {
+                "heading": "Designed for Everyone.",
+                "desc": "Good contrast ensures that your content is readable by everyone, regardless of their visual capabilities.",
+                "primary": "Primary Action",
+                "secondary": "Secondary",
+                "small": "This is a sample of small text (12px)."
+            }
+        },
+        "favicon-gen": {
+            "title": "Favicon Generator",
+            "desc": "Create professional favicons from text, emoji, or images instantly.",
+            "subtitle": "Generate icons for all platforms and browsers.",
+            "actions": {
+                "download": "Download Package",
+                "textMode": "Text",
+                "imageMode": "Image",
+                "upload": "Upload Image"
+            },
+            "labels": {
+                "textEmoji": "Text / Emoji",
+                "fontFamily": "Font Family",
+                "shape": "Shape",
+                "background": "Background",
+                "textColor": "Text Color",
+                "preview": "Preview (512px)",
+                "appIcon": "App Icon",
+                "browserTab": "Browser Tab"
+            }
+        },
+        "font-pairer": {
+            "title": "Font Pairing Suggestions",
+            "desc": "Find the perfect Google Font combinations for your next project.",
+            "subtitle": "Curated Google Font combinations.",
+            "actions": {
+                "getCss": "Get CSS Code",
+                "copied": "Copied Code"
+            },
+            "headings": {
+                "presets": "Preset Themes",
+                "custom": "Custom Mix"
+            },
+            "labels": {
+                "headingFont": "Heading Font",
+                "bodyFont": "Body Font",
+                "preview": "Preview"
+            },
+            "themes": {
+                "modern": "Clean & Modern",
+                "classic": "Classic Elegance",
+                "contrast": "High Contrast",
+                "tech": "Tech & Code",
+                "fun": "Playful & Fun",
+                "minimal": "Minimalist",
+                "editorial": "Editorial",
+                "corporate": "Corporate Trust",
+                "geometric": "Geometric",
+                "luxury": "Luxury Brand",
+                "friendly": "Friendly App",
+                "retro": "Retro Poster",
+                "display": "Bold Display",
+                "handwritten": "Handwritten"
+            },
+            "previewText": {
+                "heading": "The Quick Brown Fox Jumps Over The Lazy Dog.",
+                "subheading": "A harmonious pairing of typography.",
+                "body": "Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing, and adjusting the space between pairs of letters.",
+                "primary": "Primary Button",
+                "secondary": "Secondary"
+            }
+        },
+        "gradient-maker": {
+            "title": "CSS Gradient Maker",
+            "desc": "Design beautiful linear, radial, and conic gradients with our visual CSS generator.",
+            "subtitle": "Create complex gradients visually and export CSS.",
+            "actions": {
+                "copy": "Copy CSS",
+                "copied": "Copied!",
+                "add": "Add Color"
+            },
+            "labels": {
+                "type": "Gradient Type",
+                "angle": "Angle",
+                "shape": "Shape",
+                "position": "Center Position",
+                "stops": "Color Stops",
+                "stopPosition": "Position",
+                "preview": "PREVIEW"
+            },
+            "types": {
+                "linear": "Linear",
+                "radial": "Radial",
+                "conic": "Conic",
+                "repeating-linear": "Repeating Linear",
+                "repeating-radial": "Repeating Radial"
+            },
+            "shapes": {
+                "circle": "Circle",
+                "ellipse": "Ellipse"
+            },
+            "positions": {
+                "center": "Center",
+                "top": "Top",
+                "bottom": "Bottom",
+                "left": "Left",
+                "right": "Right",
+                "top-left": "Top Left",
+                "top-right": "Top Right",
+                "bottom-left": "Bottom Left",
+                "bottom-right": "Bottom Right"
+            }
+        },
+        "icon-viewer": {
+            "title": "SVG Icon Viewer & Editor",
+            "desc": "View, edit colors, and optimize SVG icons directly in the browser.",
+            "subtitle": "Inspect, recolor, and optimize SVG files.",
+            "actions": {
+                "copy": "Copy Code",
+                "copied": "Copied",
+                "download": "Download",
+                "set": "Set",
+                "none": "None"
+            },
+            "labels": {
+                "upload": "Upload SVG",
+                "fill": "Fill Color",
+                "stroke": "Stroke Color",
+                "width": "Stroke Width",
+                "optimize": "Optimize (Minify)",
+                "placeholder": "Upload an SVG to start editing"
+            }
+        },
+        "image-filters": {
+            "title": "Image Filters & Effects",
+            "desc": "Apply professional filters and effects to your photos instantly.",
+            "subtitle": "Enhance your photos with CSS-powered filters.",
+            "actions": {
+                "reset": "Reset",
+                "compare": "Hold to Compare",
+                "download": "Download"
+            },
+            "labels": {
+                "upload": "Upload Photo",
+                "presets": "Presets",
+                "adjustments": "Adjustments",
+                "original": "ORIGINAL",
+                "noImage": "No image uploaded"
+            },
+            "presets": {
+                "vintage": "Vintage",
+                "grayscale": "Grayscale",
+                "warm": "Warm",
+                "cool": "Cool",
+                "dramatic": "Dramatic"
+            },
+            "filters": {
+                "brightness": "Brightness",
+                "contrast": "Contrast",
+                "saturate": "Saturate",
+                "blur": "Blur",
+                "hueRotate": "Hue Rotate",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia"
+            }
+        },
+        "palette-gen": {
+            "title": "Color Palette Generator",
+            "desc": "Create beautiful, harmonious color schemes for your projects.",
+            "subtitle": "Create harmonious color schemes based on color theory.",
+            "actions": {
+                "resetLocks": "Reset Locks",
+                "randomize": "Randomize",
+                "export": "Export"
+            },
+            "labels": {
+                "baseColor": "Base Color",
+                "harmonyRule": "Harmony Rule",
+                "paletteSize": "Palette Size"
+            },
+            "methods": {
+                "monochromatic": "Monochromatic",
+                "analogous": "Analogous",
+                "complementary": "Complementary",
+                "triadic": "Triadic",
+                "split-complementary": "Split Comp.",
+                "tetradic": "Tetradic",
+                "random": "Random Blend"
+            }
+        },
+        "pixel-rem": {
+            "title": "Pixel to REM Converter",
+            "desc": "Convert pixels to REM units for responsive web design.",
+            "subtitle": "Convert pixels to REM for modern responsive CSS.",
+            "labels": {
+                "baseSize": "Base Font Size (px)",
+                "baseSizeHelp": "Default browser font size is usually 16px.",
+                "pixels": "Pixels (px)",
+                "rem": "REM",
+                "result": "Based on a root font-size of {{baseSize}}px.",
+                "quickRef": "Quick Reference"
+            }
+        },
+        "shadow-maker": {
+            "title": "CSS Shadow Maker",
+            "desc": "Create complex, layered box-shadows visually and export CSS instantly.",
+            "subtitle": "Design realistic shadows with multiple layers.",
+            "actions": {
+                "clear": "Clear All",
+                "copy": "Copy CSS",
+                "copied": "Copied!",
+                "add": "Add Shadow"
+            },
+            "labels": {
+                "layers": "Layers",
+                "noShadows": "No shadows yet. Add one!",
+                "xOffset": "X Offset",
+                "yOffset": "Y Offset",
+                "blur": "Blur",
+                "spread": "Spread",
+                "color": "Color",
+                "inset": "Inset",
+                "boxColor": "Box Color",
+                "bgColor": "Bg Color",
+                "previewBox": "Preview Box"
+            }
+        },
+        "svg-placeholder": {
+            "title": "SVG Placeholder Generator",
+            "desc": "Generate custom SVG placeholder images for your prototypes.",
+            "subtitle": "Create lightweight SVG placeholders for layouts.",
+            "actions": {
+                "copyDataUri": "Copy Data URI",
+                "copiedDataUri": "Copied Data URI",
+                "downloadSvg": "Download SVG"
+            },
+            "labels": {
+                "width": "Width",
+                "height": "Height",
+                "textContent": "Text Content",
+                "background": "Background",
+                "textColor": "Text Color",
+                "fontSize": "Font Size (px)",
+                "preview": "Preview",
+                "svgSource": "SVG Source"
+            }
+        },
+        "webp-conv": {
+            "title": "Image to WebP Converter",
+            "desc": "Convert JPG and PNG images to high-performance WebP format instantly in your browser.",
+            "subtitle": "Convert your images to high-performance WebP format.",
+            "actions": {
+                "upload": "Click or Drag Files Here",
+                "downloadAll": "Download All (ZIP)",
+                "convert": "Convert to WebP",
+                "converting": "Converting..."
+            },
+            "labels": {
+                "quality": "Quality",
+                "results": "Results",
+                "error": "Error Processing",
+                "placeholder": "Converted files will appear here",
+                "supports": "Supports JPG, PNG"
             }
         }
     }

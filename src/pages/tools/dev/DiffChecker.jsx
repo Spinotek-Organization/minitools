@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Combine, ArrowRightLeft } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function DiffChecker() {
+    const { t } = useTranslation();
     const [original, setOriginal] = useState('');
     const [modified, setModified] = useState('');
     const [diffResult, setDiffResult] = useState([]);
@@ -77,8 +79,8 @@ export default function DiffChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Diff Checker | MiniTools by Spinotek</title>
-                <meta name="description" content="Compare and find differences between two text sets." />
+                <title>{t('tools.diff-checker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.diff-checker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -87,35 +89,35 @@ export default function DiffChecker() {
                         <Combine size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Diff Checker</h1>
-                        <p className="text-slate-500 text-sm">Compare and find differences between two text sets.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.diff-checker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.diff-checker.subtitle')}</p>
                     </div>
                 </div>
                 <button 
                     onClick={computeDiff}
                     className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-colors shadow-lg shadow-rose-200"
                 >
-                    <ArrowRightLeft size={20} /> Compare
+                    <ArrowRightLeft size={20} /> {t('tools.diff-checker.actions.compare')}
                 </button>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 ml-2">Original Text</label>
+                    <label className="text-sm font-bold text-slate-500 ml-2">{t('tools.diff-checker.labels.original')}</label>
                     <textarea 
                         value={original}
                         onChange={(e) => setOriginal(e.target.value)}
                         className="w-full h-64 p-4 bg-white border border-slate-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
-                        placeholder="Paste original text..."
+                        placeholder={t('tools.diff-checker.placeholders.original')}
                     />
                 </div>
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 ml-2">Modified Text</label>
+                    <label className="text-sm font-bold text-slate-500 ml-2">{t('tools.diff-checker.labels.modified')}</label>
                     <textarea 
                         value={modified}
                         onChange={(e) => setModified(e.target.value)}
                         className="w-full h-64 p-4 bg-white border border-slate-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
-                        placeholder="Paste modified text..."
+                        placeholder={t('tools.diff-checker.placeholders.modified')}
                     />
                 </div>
             </div>
@@ -123,7 +125,7 @@ export default function DiffChecker() {
             {diffResult.length > 0 && (
                 <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm mb-8">
                     <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
-                        <h3 className="font-bold text-slate-900">Comparison Result</h3>
+                        <h3 className="font-bold text-slate-900">{t('tools.diff-checker.labels.result')}</h3>
                     </div>
                     <div className="p-0 font-mono text-sm overflow-x-auto">
                         <table className="w-full border-collapse">

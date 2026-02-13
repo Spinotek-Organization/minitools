@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Image as ImageIcon, Copy, Download, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function SvgPlaceholder() {
+    const { t } = useTranslation();
     const [width, setWidth] = useState(300);
     const [height, setHeight] = useState(150);
     const [text, setText] = useState('300x150');
@@ -43,8 +45,8 @@ export default function SvgPlaceholder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>SVG Placeholder Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate custom SVG placeholder images for your prototypes." />
+                <title>{t('tools.svg-placeholder.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.svg-placeholder.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -53,8 +55,8 @@ export default function SvgPlaceholder() {
                         <ImageIcon size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">SVG Placeholder Generator</h1>
-                        <p className="text-slate-500">Create lightweight SVG placeholders for layouts.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.svg-placeholder.title')}</h1>
+                        <p className="text-slate-500">{t('tools.svg-placeholder.subtitle')}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
@@ -63,13 +65,13 @@ export default function SvgPlaceholder() {
                         className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2"
                     >
                         {copied ? <Check size={16} className="text-green-600"/> : <Copy size={16} />}
-                        {copied ? 'Copied Data URI' : 'Copy Data URI'}
+                        {copied ? t('tools.svg-placeholder.actions.copiedDataUri') : t('tools.svg-placeholder.actions.copyDataUri')}
                     </button>
                     <button 
                         onClick={downloadSvg}
                         className="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-xl hover:bg-emerald-700 transition-colors flex items-center gap-2 shadow-lg shadow-emerald-200"
                     >
-                        <Download size={16} /> Download SVG
+                        <Download size={16} /> {t('tools.svg-placeholder.actions.downloadSvg')}
                     </button>
                 </div>
             </div>
@@ -79,7 +81,7 @@ export default function SvgPlaceholder() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-6 h-fit">
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Width</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.width')}</label>
                             <input 
                                 type="number" 
                                 value={width}
@@ -88,7 +90,7 @@ export default function SvgPlaceholder() {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Height</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.height')}</label>
                             <input 
                                 type="number" 
                                 value={height}
@@ -99,7 +101,7 @@ export default function SvgPlaceholder() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Text Content</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.textContent')}</label>
                         <input 
                             type="text" 
                             value={text}
@@ -111,7 +113,7 @@ export default function SvgPlaceholder() {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Background</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.background')}</label>
                             <div className="flex gap-2">
                                 <input 
                                     type="color" 
@@ -128,7 +130,7 @@ export default function SvgPlaceholder() {
                             </div>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Text Color</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.textColor')}</label>
                             <div className="flex gap-2">
                                 <input 
                                     type="color" 
@@ -147,7 +149,7 @@ export default function SvgPlaceholder() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Font Size (px)</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.svg-placeholder.labels.fontSize')}</label>
                         <input 
                             type="range" 
                             min="10" 
@@ -173,7 +175,7 @@ export default function SvgPlaceholder() {
                             className="w-full h-32 bg-slate-900 text-emerald-300 font-mono text-xs p-4 rounded-xl resize-none focus:outline-none"
                         />
                         <div className="absolute top-2 right-2 text-xs text-slate-500 font-mono bg-slate-800 px-2 py-1 rounded">
-                            SVG Source
+                            {t('tools.svg-placeholder.labels.svgSource')}
                         </div>
                     </div>
                 </div>

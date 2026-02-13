@@ -4,8 +4,10 @@ import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function RegexTester() {
+    const { t } = useTranslation();
     const [regex, setRegex] = useState('');
     const [flags, setFlags] = useState('g');
     const [testText, setTestText] = useState('');
@@ -39,7 +41,7 @@ export default function RegexTester() {
     }, [regex, flags, testText]);
 
     const highlightMatches = () => {
-        if (!testText) return <span className="text-slate-500 italic">Test string will appear here...</span>;
+        if (!testText) return <span className="text-slate-500 italic">{t('tools.regex-tester.placeholders.empty')}</span>;
         if (!regex || error) return testText;
 
         const parts = [];
@@ -65,8 +67,8 @@ export default function RegexTester() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Regex Tester | MiniTools by Spinotek</title>
-                <meta name="description" content="Test and debug your JavaScript regular expressions with real-time highlighting and match grouping." />
+                <title>{t('tools.regex-tester.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.regex-tester.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -75,14 +77,14 @@ export default function RegexTester() {
                         <SearchCode size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Regex Tester</h1>
-                        <p className="text-slate-500 text-sm">Real-time regular expression debugger.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.regex-tester.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.regex-tester.subtitle')}</p>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-3 px-4 py-2 bg-blue-50 rounded-xl border border-blue-100 text-blue-700 text-xs font-bold">
                     <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                    Live Preview Active
+                    {t('tools.regex-tester.previewActive')}
                 </div>
             </div>
 
@@ -94,15 +96,15 @@ export default function RegexTester() {
                             {/* Regex Input */}
                             <div className="space-y-3">
                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 flex items-center gap-2">
-                                    Regular Expression
-                                    {error && <span className="text-red-500 italic normal-case tracking-normal">(Invalid Pattern)</span>}
+                                    {t('tools.regex-tester.labels.regex')}
+                                    {error && <span className="text-red-500 italic normal-case tracking-normal">{t('tools.regex-tester.labels.invalid')}</span>}
                                 </label>
                                 <div className="relative group">
                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 font-mono text-lg">/</span>
                                     <input
                                         type="text"
                                         className={`w-full pl-8 pr-20 py-4 bg-slate-50 border ${error ? 'border-red-200' : 'border-slate-100'} rounded-2xl font-mono text-sm outline-none focus:ring-0 transition-all`}
-                                        placeholder="Enter pattern..."
+                                        placeholder={t('tools.regex-tester.placeholders.pattern')}
                                         value={regex}
                                         onChange={(e) => setRegex(e.target.value)}
                                     />
@@ -121,10 +123,10 @@ export default function RegexTester() {
 
                             {/* Test Text Input */}
                             <div className="space-y-3">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Test String</label>
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{t('tools.regex-tester.labels.testString')}</label>
                                 <textarea
                                     className="w-full h-48 p-6 bg-slate-50 border border-slate-100 rounded-3xl font-mono text-sm resize-none outline-none focus:ring-0 transition-all"
-                                    placeholder="Enter text to test your regex against..."
+                                    placeholder={t('tools.regex-tester.placeholders.testString')}
                                     value={testText}
                                     onChange={(e) => setTestText(e.target.value)}
                                 />
@@ -140,7 +142,7 @@ export default function RegexTester() {
                             </div>
                             <div>
                                 <div className="text-xl font-black text-slate-900">{matches.length}</div>
-                                <div className="text-[10px] font-bold text-slate-400 uppercase leading-none">Matches</div>
+                                <div className="text-[10px] font-bold text-slate-400 uppercase leading-none">{t('tools.regex-tester.labels.matches')}</div>
                             </div>
                         </Card>
                         <Card className="flex items-center gap-4">
@@ -149,7 +151,7 @@ export default function RegexTester() {
                             </div>
                             <div>
                                 <div className="text-xs font-bold text-slate-900 capitalize">{flags || 'none'}</div>
-                                <div className="text-[10px] font-bold text-slate-400 uppercase leading-none">Flags</div>
+                                <div className="text-[10px] font-bold text-slate-400 uppercase leading-none">{t('tools.regex-tester.labels.flags')}</div>
                             </div>
                         </Card>
                     </div>
@@ -160,7 +162,7 @@ export default function RegexTester() {
                     <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-800/30">
                         <div className="flex items-center gap-3">
                             <div className="w-2 h-2 rounded-full bg-blue-500" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Live Highlight Preview</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t('tools.regex-tester.labels.preview')}</span>
                         </div>
                     </div>
 
@@ -171,7 +173,7 @@ export default function RegexTester() {
                                     <AlertCircle size={24} />
                                 </div>
                                 <div className="max-w-[300px]">
-                                    <p className="text-red-400 font-black uppercase tracking-widest text-[10px] mb-2">Regex Error</p>
+                                    <p className="text-red-400 font-black uppercase tracking-widest text-[10px] mb-2">{t('tools.regex-tester.labels.error')}</p>
                                     <p className="text-slate-500 text-xs">{error}</p>
                                 </div>
                             </div>
@@ -183,7 +185,7 @@ export default function RegexTester() {
                     </div>
 
                     <div className="p-6 bg-slate-800/30 border-t border-slate-800">
-                        <div className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4">Common Tokens</div>
+                        <div className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4">{t('tools.regex-tester.labels.common')}</div>
                         <div className="flex flex-wrap gap-2">
                             {['\\w', '\\d', '\\s', '^', '$', '.*'].map(token => (
                                 <code key={token} className="px-2 py-1 bg-slate-800 rounded text-blue-400 text-xs border border-slate-700 cursor-help" title="Click to learn more">

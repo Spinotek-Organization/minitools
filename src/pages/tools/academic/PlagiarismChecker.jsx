@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { FileSearch, Search, ExternalLink, RefreshCw, AlertTriangle, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function PlagiarismChecker() {
+    const { t } = useTranslation();
     const [text, setText] = useState('');
     const [analysis, setAnalysis] = useState(null);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -41,8 +43,8 @@ export default function PlagiarismChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Plagiarism Checker | MiniTools by Spinotek</title>
-                <meta name="description" content="Analyze text and check for plagiarism using smart search patterns." />
+                <title>{t('tools.plagiarism-checker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.plagiarism-checker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -51,8 +53,8 @@ export default function PlagiarismChecker() {
                         <FileSearch size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Plagiarism Checker</h1>
-                        <p className="text-slate-500 text-sm">Analyze content and verify originality via smart search.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.plagiarism-checker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.plagiarism-checker.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -67,15 +69,15 @@ export default function PlagiarismChecker() {
                             <>
                                 <h2 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                                     <RefreshCw size={20} className="text-sky-600"/>
-                                    Content Analyzer
+                                    {t('tools.plagiarism-checker.analyzer.title')}
                                 </h2>
                                 <p className="text-sm text-slate-500 mb-6">
-                                    Paste your text below. We will break it down into checkable segments to help you find plagiarized content across the web.
+                                    {t('tools.plagiarism-checker.analyzer.desc')}
                                 </p>
                                 
                                 <textarea 
                                     className="w-full h-64 p-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm resize-none mb-4 font-medium text-slate-700"
-                                    placeholder="Paste the text you want to check here (min 20 characters)..."
+                                    placeholder={t('tools.plagiarism-checker.analyzer.placeholder')}
                                     value={text}
                                     onChange={(e) => setText(e.target.value)}
                                 ></textarea>
@@ -89,11 +91,11 @@ export default function PlagiarismChecker() {
                                     `}
                                 >
                                     {isAnalyzing ? (
-                                        <>Processing...</>
+                                        <>{t('tools.plagiarism-checker.analyzer.processing')}</>
                                     ) : (
                                         <>
                                             <Search size={20} />
-                                            Analyze Text
+                                            {t('tools.plagiarism-checker.analyzer.analyzeBtn')}
                                         </>
                                     )}
                                 </button>
@@ -103,20 +105,24 @@ export default function PlagiarismChecker() {
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="font-bold text-slate-800 flex items-center gap-2">
                                         <FileSearch size={20} className="text-sky-600"/>
-                                        Analysis Results
+                                        {t('tools.plagiarism-checker.results.title')}
                                     </h2>
                                     <button 
                                         onClick={() => setAnalysis(null)}
                                         className="text-sm font-bold text-slate-500 hover:text-sky-600 transition-colors"
                                     >
-                                        Check Another Text
+                                        {t('tools.plagiarism-checker.results.checkAnother')}
                                     </button>
                                 </div>
 
                                 <div className="bg-sky-50 border border-sky-100 rounded-xl p-4 mb-6 flex items-start gap-3">
                                     <AlertTriangle className="text-sky-600 flex-shrink-0 mt-0.5" size={20} />
                                     <div className="text-sm text-sky-900">
-                                        <span className="font-bold">How to check:</span> We've isolated {analysis.length} key phrases. Click "Search Match" to see if these exact sentences appear elsewhere on the internet.
+                                        <Trans 
+                                            i18nKey="tools.plagiarism-checker.results.howToCheck" 
+                                            count={analysis.length}
+                                            components={{ strong: <strong /> }}
+                                        />
                                     </div>
                                 </div>
 
@@ -132,7 +138,7 @@ export default function PlagiarismChecker() {
                                                     className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-white border border-slate-200 hover:border-sky-200 text-slate-600 hover:text-sky-700 rounded-lg text-xs font-bold transition-all"
                                                 >
                                                     <ExternalLink size={14} />
-                                                    Check for Plagiarism
+                                                    {t('tools.plagiarism-checker.results.searchMatch')}
                                                 </button>
                                             </div>
                                         </div>
@@ -141,7 +147,7 @@ export default function PlagiarismChecker() {
                                     {analysis.length === 0 && (
                                         <div className="text-center py-10 text-slate-400">
                                             <Check className="mx-auto mb-2 text-green-500" size={32} />
-                                            No long phrases detected to check. Text might be too short or fragmented.
+                                            {t('tools.plagiarism-checker.results.noPhrases')}
                                         </div>
                                     )}
                                 </div>
@@ -152,8 +158,7 @@ export default function PlagiarismChecker() {
                 </div>
             </div>
 
-            <RelatedTools currentToolId="plagiarism-linker" categoryId="academic" />
+            <RelatedTools currentToolId="plagiarism-checker" categoryId="academic" />
         </ToolPageLayout>
     );    
 }
-

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, Plus, Trash2, Copy, RefreshCw, KeyRound } from 'lucide-react';
 import * as OTPAuth from 'otpauth';
@@ -6,6 +7,7 @@ import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function TwoFactorGenerator() {
+    const { t } = useTranslation();
     const [accounts, setAccounts] = useState(() => {
         const saved = localStorage.getItem('minitools_2fa_accounts');
         return saved ? JSON.parse(saved) : [];
@@ -66,14 +68,14 @@ export default function TwoFactorGenerator() {
         setError('');
 
         if (!newAccount.trim() || !newSecret.trim()) {
-            setError('Please fill in all fields');
+            setError(t('tools.two-factor-gen.errors.fillAll'));
             return;
         }
 
         // Basic Base32 validation
         const cleanSecret = newSecret.replace(/\s/g, '').toUpperCase();
         if (!/^[A-Z2-7]+$/.test(cleanSecret)) {
-            setError('Invalid Secret Key. Base32 keys only contain letters A-Z and numbers 2-7.');
+            setError(t('tools.two-factor-gen.errors.invalidSecret'));
             return;
         }
 
@@ -86,12 +88,12 @@ export default function TwoFactorGenerator() {
             setNewAccount('');
             setNewSecret('');
         } catch (err) {
-            setError('Invalid Secret Key format.');
+            setError(t('tools.two-factor-gen.errors.invalidFormat'));
         }
     };
 
     const handleDelete = (id) => {
-        if (window.confirm('Are you sure you want to delete this account?')) {
+        if (window.confirm(t('tools.two-factor-gen.list.deleteConfirm'))) {
             setAccounts(accounts.filter(acc => acc.id !== id));
         }
     };
@@ -103,8 +105,8 @@ export default function TwoFactorGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>2FA Code Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate two-factor authentication codes for your accounts securely in your browser." />
+                <title>{t('tools.two-factor-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.two-factor-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -113,8 +115,8 @@ export default function TwoFactorGenerator() {
                         <ShieldCheck size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">2FA Code Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate TOTP codes for your accounts directly in your browser.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.two-factor-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.two-factor-gen.headerDesc')}</p>
                     </div>
                 </div>
             </div>
@@ -127,34 +129,34 @@ export default function TwoFactorGenerator() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 sticky top-24">
                         <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                             <Plus size={20} className="text-blue-600" />
-                            Add New Account
+                            {t('tools.two-factor-gen.form.title')}
                         </h2>
                         
                         <form onSubmit={handleAddAccount} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Account Name</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.two-factor-gen.form.nameLabel')}</label>
                                 <input
                                     type="text"
                                     value={newAccount}
                                     onChange={(e) => setNewAccount(e.target.value)}
-                                    placeholder="e.g. Google, GitHub"
+                                    placeholder={t('tools.two-factor-gen.form.namePlaceholder')}
                                     className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                                 />
                             </div>
                             
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Secret Key</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t('tools.two-factor-gen.form.secretLabel')}</label>
                                 <div className="relative">
                                     <input
                                         type="text"
                                         value={newSecret}
                                         onChange={(e) => setNewSecret(e.target.value)}
-                                        placeholder="JBSWY3DPEHPK3PXP"
+                                        placeholder={t('tools.two-factor-gen.form.secretPlaceholder')}
                                         className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono uppercase"
                                     />
                                     <KeyRound size={16} className="absolute left-3 top-2.5 text-slate-400" />
                                 </div>
-                                <p className="text-xs text-slate-400 mt-1">Base32 secret provided by the service.</p>
+                                <p className="text-xs text-slate-400 mt-1">{t('tools.two-factor-gen.form.base32Note')}</p>
                             </div>
 
                             {error && (
@@ -168,12 +170,12 @@ export default function TwoFactorGenerator() {
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
                             >
                                 <Plus size={16} />
-                                Add Account
+                                {t('tools.two-factor-gen.form.submit')}
                             </button>
                         </form>
 
                         <div className="mt-6 pt-6 border-t border-slate-100 text-xs text-slate-400">
-                            <strong>Privacy Note:</strong> Your secret keys are stored only in your browser's local storage and are never sent to any server.
+                            <Trans i18nKey="tools.two-factor-gen.form.privacy" components={{ strong: <strong /> }} />
                         </div>
                     </div>
                 </div>
@@ -183,8 +185,8 @@ export default function TwoFactorGenerator() {
                     {accounts.length === 0 ? (
                         <div className="bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 p-12 text-center">
                             <ShieldCheck size={48} className="mx-auto text-slate-300 mb-4" />
-                            <h3 className="text-slate-900 font-medium mb-1">No Accounts Added Yet</h3>
-                            <p className="text-slate-500 text-sm">Add an account using your secret key to start generating codes.</p>
+                            <h3 className="text-slate-900 font-medium mb-1">{t('tools.two-factor-gen.list.emptyTitle')}</h3>
+                            <p className="text-slate-500 text-sm">{t('tools.two-factor-gen.list.emptyDesc')}</p>
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -203,7 +205,7 @@ export default function TwoFactorGenerator() {
                                         <button 
                                             onClick={() => handleDelete(account.id)}
                                             className="text-slate-300 hover:text-red-500 transition-colors p-1"
-                                            title="Delete Account"
+                                            title={t('tools.two-factor-gen.list.deleteTooltip')}
                                         >
                                             <Trash2 size={16} />
                                         </button>
@@ -223,7 +225,7 @@ export default function TwoFactorGenerator() {
                                         <button 
                                             onClick={() => handleCopy(tokens[account.id])}
                                             className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                                            title="Copy Code"
+                                            title={t('tools.two-factor-gen.list.copyTooltip')}
                                         >
                                             <Copy size={20} />
                                         </button>

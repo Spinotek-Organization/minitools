@@ -4,8 +4,10 @@ import { Globe, Type, Image as ImageIcon, Download, RefreshCw } from 'lucide-rea
 import JSZip from 'jszip';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function FaviconGenerator() {
+    const { t } = useTranslation();
     const [mode, setMode] = useState('text'); // 'text', 'image', 'emoji'
     const [text, setText] = useState('S');
     const [bgColor, setBgColor] = useState('#3b82f6');
@@ -75,15 +77,6 @@ export default function FaviconGenerator() {
             // Adjust y slightly for visual center
             ctx.fillText(text, size/2, size/2 + size * 0.05);
         } else if (mode === 'image' && uploadedImage) {
-            // Draw image contained or cropped?
-            // Let's draw it cover but within shape if we want shape?
-            // Usually favicon generators just resize input image if image mode.
-            // But let's allow background shape + image if requested?
-            // For simplicity: If image mode, just draw image.
-            // If user wants shape, they should upload image with transparent bg?
-            // Let's support shape + image centering if they want.
-            // Actually standard behavior: Image mode = straightforward resize.
-            // But let's use the shape mask!
             
             ctx.save();
             ctx.beginPath();
@@ -121,9 +114,6 @@ export default function FaviconGenerator() {
             
             const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
             const name = s === 16 ? 'favicon.ico' : (s === 180 ? 'apple-touch-icon.png' : `favicon-${s}x${s}.png`);
-            // Note: true .ico is different format, usually just 16x16 or 32x32 png works in modern browsers, 
-            // but strict ICO requires header. Browsers rename png to ico fine usually.
-            // For proper ICO we need a library, but let's stick to PNGs mostly and name one favicon.ico (modern browsers handle png with ico ext or just png)
             zip.file(name, blob);
         }
         
@@ -148,8 +138,8 @@ export default function FaviconGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Favicon Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Create professional favicons from text, emoji, or images instantly." />
+                <title>{t('tools.favicon-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.favicon-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -158,15 +148,15 @@ export default function FaviconGenerator() {
                         <Globe size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Favicon Generator</h1>
-                        <p className="text-slate-500">Generate icons for all platforms and browsers.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.favicon-gen.title')}</h1>
+                        <p className="text-slate-500">{t('tools.favicon-gen.subtitle')}</p>
                     </div>
                 </div>
                 <button 
                     onClick={downloadPackage}
                     className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg shadow-indigo-200"
                 >
-                    <Download size={20} /> Download Package
+                    <Download size={20} /> {t('tools.favicon-gen.actions.download')}
                 </button>
             </div>
 
@@ -179,20 +169,20 @@ export default function FaviconGenerator() {
                                 onClick={() => setMode('text')} 
                                 className={`flex-1 flex justify-center items-center gap-2 py-2 rounded-lg font-bold text-sm transition-all ${mode === 'text' ? 'bg-white shadow text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
                             >
-                                <Type size={16} /> Text
+                                <Type size={16} /> {t('tools.favicon-gen.actions.textMode')}
                             </button>
                             <button 
                                 onClick={() => setMode('image')} 
                                 className={`flex-1 flex justify-center items-center gap-2 py-2 rounded-lg font-bold text-sm transition-all ${mode === 'image' ? 'bg-white shadow text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
                             >
-                                <ImageIcon size={16} /> Image
+                                <ImageIcon size={16} /> {t('tools.favicon-gen.actions.imageMode')}
                             </button>
                         </div>
 
                         {mode === 'text' && (
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Text / Emoji</label>
+                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.favicon-gen.labels.textEmoji')}</label>
                                     <input 
                                         type="text" 
                                         maxLength={2}
@@ -202,7 +192,7 @@ export default function FaviconGenerator() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Font Family</label>
+                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.favicon-gen.labels.fontFamily')}</label>
                                     <select 
                                         value={font} 
                                         onChange={(e) => setFont(e.target.value)}
@@ -223,12 +213,12 @@ export default function FaviconGenerator() {
                                     className="absolute inset-0 opacity-0 cursor-pointer"
                                 />
                                 <ImageIcon className="mx-auto text-indigo-500 mb-2" size={32} />
-                                <p className="text-sm font-bold text-slate-700">Upload Image</p>
+                                <p className="text-sm font-bold text-slate-700">{t('tools.favicon-gen.actions.upload')}</p>
                             </div>
                         )}
 
                         <div>
-                             <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">Shape</label>
+                             <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">{t('tools.favicon-gen.labels.shape')}</label>
                              <div className="flex gap-2">
                                 <button onClick={() => setShape('square')} className={`flex-1 h-10 border-2 rounded transition-colors ${shape === 'square' ? 'border-indigo-600 bg-indigo-50' : 'border-slate-200'}`}></button>
                                 <button onClick={() => setShape('rounded')} className={`flex-1 h-10 border-2 rounded-xl transition-colors ${shape === 'rounded' ? 'border-indigo-600 bg-indigo-50' : 'border-slate-200'}`}></button>
@@ -238,7 +228,7 @@ export default function FaviconGenerator() {
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Background</label>
+                                <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.favicon-gen.labels.background')}</label>
                                 <div className="flex gap-2">
                                     <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} className="w-8 h-8 rounded border-0 p-0 cursor-pointer"/>
                                     <input type="text" value={bgColor} onChange={e => setBgColor(e.target.value)} className="flex-1 text-sm border-slate-200 rounded-lg"/>
@@ -246,7 +236,7 @@ export default function FaviconGenerator() {
                             </div>
                             {mode === 'text' && (
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">Text Color</label>
+                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase">{t('tools.favicon-gen.labels.textColor')}</label>
                                      <div className="flex gap-2">
                                         <input type="color" value={textColor} onChange={e => setTextColor(e.target.value)} className="w-8 h-8 rounded border-0 p-0 cursor-pointer"/>
                                     </div>
@@ -259,7 +249,7 @@ export default function FaviconGenerator() {
                 {/* Preview */}
                 <div className="lg:col-span-2 space-y-6">
                     <div className="bg-slate-50 border border-slate-200 rounded-3xl p-12 flex flex-col items-center justify-center min-h-[400px]">
-                        <div className="mb-4 text-slate-400 font-bold uppercase text-xs tracking-wider">Preview (512px)</div>
+                        <div className="mb-4 text-slate-400 font-bold uppercase text-xs tracking-wider">{t('tools.favicon-gen.labels.preview')}</div>
                         <img src={previewUrl} alt="Favicon Preview" className="w-32 h-32 shadow-2xl mb-8" />
                         
                         <div className="grid grid-cols-4 gap-8">
@@ -275,14 +265,14 @@ export default function FaviconGenerator() {
                                 <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center">
                                     <img src={previewUrl} alt="App Icon" className="w-8 h-8 rounded" />
                                 </div>
-                                <span className="text-xs text-slate-400">App Icon</span>
+                                <span className="text-xs text-slate-400">{t('tools.favicon-gen.labels.appIcon')}</span>
                             </div>
                             <div className="flex flex-col items-center gap-2">
                                 <div className="w-16 h-8 bg-white border border-slate-200 rounded-t-lg flex items-center px-2 gap-2 mt-4">
                                     <img src={previewUrl} alt="Tab" className="w-4 h-4" />
                                     <div className="h-2 w-8 bg-slate-200 rounded-full"></div>
                                 </div>
-                                <span className="text-xs text-slate-400">Browser Tab</span>
+                                <span className="text-xs text-slate-400">{t('tools.favicon-gen.labels.browserTab')}</span>
                             </div>
                         </div>
                     </div>

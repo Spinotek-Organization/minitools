@@ -4,8 +4,10 @@ import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function Base64Codec() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [mode, setMode] = useState('encode'); // 'encode' or 'decode'
@@ -27,7 +29,7 @@ export default function Base64Codec() {
             }
             setError(null);
         } catch (e) {
-            setError(mode === 'decode' ? 'Invalid Base64 string' : e.message);
+            setError(mode === 'decode' ? t('tools.base64-enc.errors.invalid') : e.message);
             setOutput('');
         }
     };
@@ -54,8 +56,8 @@ export default function Base64Codec() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Base64 Encoder & Decoder | MiniTools by Spinotek</title>
-                <meta name="description" content="Securely encode and decode strings to and from Base64 format instantly." />
+                <title>{t('tools.base64-enc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.base64-enc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -64,8 +66,10 @@ export default function Base64Codec() {
                         <Binary size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Base64 {mode === 'encode' ? 'Encoder' : 'Decoder'}</h1>
-                        <p className="text-slate-500 text-sm">Convert text to Base64 and vice versa with ease.</p>
+                        <h1 className="text-2xl font-black text-slate-900">
+                            Base64 {mode === 'encode' ? t('tools.base64-enc.encoder') : t('tools.base64-enc.decoder')}
+                        </h1>
+                        <p className="text-slate-500 text-sm">{t('tools.base64-enc.subtitle')}</p>
                     </div>
                 </div>
 
@@ -75,20 +79,20 @@ export default function Base64Codec() {
                         className="flex items-center gap-2 px-4 py-2 text-slate-400 font-bold hover:text-slate-600 transition-colors"
                     >
                         <Trash2 size={18} />
-                        Clear
+                        {t('tools.base64-enc.actions.clear')}
                     </button>
                     <button
                         onClick={toggleMode}
                         className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-all"
                     >
                         <RefreshCw size={18} className={mode === 'decode' ? 'rotate-180 transition-transform' : ''} />
-                        Switch to {mode === 'encode' ? 'Decode' : 'Encode'}
+                        {t('tools.base64-enc.actions.switch')} {mode === 'encode' ? t('tools.base64-enc.decoder') : t('tools.base64-enc.encoder')}
                     </button>
                     <button
                         onClick={handleProcess}
                         className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
                     >
-                        Process
+                        {t('tools.base64-enc.actions.process')}
                     </button>
                 </div>
             </div>
@@ -98,12 +102,12 @@ export default function Base64Codec() {
                 <Card noPadding className="flex flex-col">
                     <div className="px-6 py-3 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                            {mode === 'encode' ? 'Plain Text Input' : 'Base64 Input'}
+                            {mode === 'encode' ? t('tools.base64-enc.labels.plainInput') : t('tools.base64-enc.labels.base64Input')}
                         </span>
                     </div>
                     <textarea
                         className="flex-grow p-6 font-mono text-sm resize-none focus:ring-0 outline-none text-slate-700 bg-transparent"
-                        placeholder={mode === 'encode' ? 'Type or paste text to encode...' : 'Paste Base64 string to decode...'}
+                        placeholder={mode === 'encode' ? t('tools.base64-enc.placeholders.encode') : t('tools.base64-enc.placeholders.decode')}
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
@@ -113,7 +117,7 @@ export default function Base64Codec() {
                 <Card dark noPadding className="flex flex-col relative">
                     <div className="px-6 py-3 border-b border-slate-800 flex justify-between items-center bg-slate-800/30">
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-                            {mode === 'encode' ? 'Base64 Result' : 'Plain Text Result'}
+                            {mode === 'encode' ? t('tools.base64-enc.labels.base64Result') : t('tools.base64-enc.labels.plainResult')}
                         </span>
                         {output && (
                             <button
@@ -121,7 +125,7 @@ export default function Base64Codec() {
                                 className={`flex items-center gap-2 text-xs font-bold transition-colors ${copied ? 'text-green-400' : 'text-slate-400 hover:text-white'}`}
                             >
                                 {copied ? <CheckCircle size={14} /> : <Copy size={14} />}
-                                {copied ? 'Copied!' : 'Copy'}
+                                {copied ? t('tools.base64-enc.actions.copied') : t('tools.base64-enc.actions.copy')}
                             </button>
                         )}
                     </div>
@@ -133,7 +137,7 @@ export default function Base64Codec() {
                                     <AlertCircle size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">Error</p>
+                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">{t('tools.base64-enc.labels.error')}</p>
                                     <p className="text-slate-400 text-xs max-w-[250px]">{error}</p>
                                 </div>
                             </div>
@@ -141,7 +145,7 @@ export default function Base64Codec() {
                             <pre className="whitespace-pre-wrap break-all leading-relaxed">{output}</pre>
                         ) : (
                             <div className="flex items-center justify-center h-full text-slate-700 italic text-xs">
-                                Result will appear here...
+                                {t('tools.base64-enc.placeholders.result')}
                             </div>
                         )}
                     </div>
@@ -150,11 +154,9 @@ export default function Base64Codec() {
 
             <div className="mt-8">
                 <Card className="bg-blue-50/50 border-blue-100">
-                    <h3 className="text-sm font-bold text-blue-900 mb-2">About Base64</h3>
+                    <h3 className="text-sm font-bold text-blue-900 mb-2">{t('tools.base64-enc.labels.about')}</h3>
                     <p className="text-xs text-blue-700 leading-relaxed">
-                        Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format.
-                        It is commonly used when there is a need to encode binary data that needs to be stored and transferred
-                        over media that are designed to deal with textual data.
+                        {t('tools.base64-enc.labels.aboutDesc')}
                     </p>
                 </Card>
             </div>

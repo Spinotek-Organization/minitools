@@ -30,9 +30,12 @@ export default function Breadcrumbs() {
                     let displayName = value;
                     let to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
-                    if (value === 'category' || value === 'category') return null; // Skip 'category' segment
+                    if (value === 'category') return null; // Skip 'category' segment
 
-                    const category = CATEGORIES.find(c => c.id === value);
+                    // Handle aliases for categories (e.g., prod -> productivity)
+                    const categoryId = value === 'prod' ? 'productivity' : value;
+
+                    const category = CATEGORIES.find(c => c.id === categoryId);
                     const tool = TOOLS.find(t => t.path.endsWith(value) || t.id === value);
 
                     if (value === 'tools') {

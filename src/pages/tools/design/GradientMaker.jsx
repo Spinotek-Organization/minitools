@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Layers, Copy, Trash2, Plus, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function GradientMaker() {
+    const { t } = useTranslation();
     const [type, setType] = useState('linear');
     const [angle, setAngle] = useState(90);
     const [position, setPosition] = useState('center');
@@ -17,16 +19,23 @@ export default function GradientMaker() {
     const [copied, setCopied] = useState(false);
 
     const types = [
-        { id: 'linear', label: 'Linear' },
-        { id: 'radial', label: 'Radial' },
-        { id: 'conic', label: 'Conic' },
-        { id: 'repeating-linear', label: 'Repeating Linear' },
-        { id: 'repeating-radial', label: 'Repeating Radial' }
+        { id: 'linear', label: t('tools.gradient-maker.types.linear') },
+        { id: 'radial', label: t('tools.gradient-maker.types.radial') },
+        { id: 'conic', label: t('tools.gradient-maker.types.conic') },
+        { id: 'repeating-linear', label: t('tools.gradient-maker.types.repeating-linear') },
+        { id: 'repeating-radial', label: t('tools.gradient-maker.types.repeating-radial') }
     ];
 
     const positions = [
-        'center', 'top', 'bottom', 'left', 'right', 
-        'top left', 'top right', 'bottom left', 'bottom right'
+        { value: 'center', label: t('tools.gradient-maker.positions.center') },
+        { value: 'top', label: t('tools.gradient-maker.positions.top') },
+        { value: 'bottom', label: t('tools.gradient-maker.positions.bottom') },
+        { value: 'left', label: t('tools.gradient-maker.positions.left') },
+        { value: 'right', label: t('tools.gradient-maker.positions.right') },
+        { value: 'top left', label: t('tools.gradient-maker.positions.top-left') },
+        { value: 'top right', label: t('tools.gradient-maker.positions.top-right') },
+        { value: 'bottom left', label: t('tools.gradient-maker.positions.bottom-left') },
+        { value: 'bottom right', label: t('tools.gradient-maker.positions.bottom-right') }
     ];
 
     useEffect(() => {
@@ -79,8 +88,8 @@ export default function GradientMaker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>CSS Gradient Maker | MiniTools by Spinotek</title>
-                <meta name="description" content="Design beautiful linear, radial, and conic gradients with our visual CSS generator." />
+                <title>{t('tools.gradient-maker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.gradient-maker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -89,8 +98,8 @@ export default function GradientMaker() {
                         <Layers size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">CSS Gradient Maker</h1>
-                        <p className="text-slate-500">Create complex gradients visually and export CSS.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.gradient-maker.title')}</h1>
+                        <p className="text-slate-500">{t('tools.gradient-maker.subtitle')}</p>
                     </div>
                 </div>
                 <button 
@@ -98,7 +107,7 @@ export default function GradientMaker() {
                     className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors flex items-center gap-2 shadow-lg shadow-indigo-200"
                 >
                     {copied ? <Check size={20} /> : <Copy size={20} />}
-                    {copied ? 'Copied!' : 'Copy CSS'}
+                    {copied ? t('tools.gradient-maker.actions.copied') : t('tools.gradient-maker.actions.copy')}
                 </button>
             </div>
 
@@ -109,7 +118,7 @@ export default function GradientMaker() {
                         
                         {/* Type Selector */}
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Gradient Type</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.gradient-maker.labels.type')}</label>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                                 {types.map(t => (
                                     <button 
@@ -133,7 +142,7 @@ export default function GradientMaker() {
                             {(type.includes('linear') || type === 'conic') && (
                                 <div className="col-span-2">
                                     <label className="block text-xs font-bold text-slate-500 uppercase mb-2">
-                                        Angle ({angle}°)
+                                        {t('tools.gradient-maker.labels.angle')} ({angle}°)
                                     </label>
                                     <input 
                                         type="range" 
@@ -153,14 +162,14 @@ export default function GradientMaker() {
                             {/* Shape - for Radial */}
                             {(type.includes('radial')) && (
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Shape</label>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.gradient-maker.labels.shape')}</label>
                                     <select 
                                         value={shape} 
                                         onChange={(e) => setShape(e.target.value)}
                                         className="w-full rounded-xl border-slate-200 focus:border-indigo-500"
                                     >
-                                        <option value="circle">Circle</option>
-                                        <option value="ellipse">Ellipse</option>
+                                        <option value="circle">{t('tools.gradient-maker.shapes.circle')}</option>
+                                        <option value="ellipse">{t('tools.gradient-maker.shapes.ellipse')}</option>
                                     </select>
                                 </div>
                             )}
@@ -168,14 +177,14 @@ export default function GradientMaker() {
                             {/* Position - for Radial & Conic */}
                             {(type.includes('radial') || type === 'conic') && (
                                 <div className={type === 'conic' ? 'col-span-2' : ''}>
-                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Center Position</label>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{t('tools.gradient-maker.labels.position')}</label>
                                     <select 
                                         value={position} 
                                         onChange={(e) => setPosition(e.target.value)}
                                         className="w-full rounded-xl border-slate-200 focus:border-indigo-500"
                                     >
                                         {positions.map(p => (
-                                            <option key={p} value={p}>{p.charAt(0).toUpperCase() + p.slice(1)}</option>
+                                            <option key={p.value} value={p.value}>{p.label}</option>
                                         ))}
                                     </select>
                                 </div>
@@ -185,12 +194,12 @@ export default function GradientMaker() {
                         {/* Color Stops */}
                         <div className="space-y-4 pt-4 border-t border-slate-100">
                             <div className="flex justify-between items-center">
-                                <label className="text-sm font-bold text-slate-700">Color Stops</label>
+                                <label className="text-sm font-bold text-slate-700">{t('tools.gradient-maker.labels.stops')}</label>
                                 <button 
                                     onClick={addStop} 
                                     className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 bg-indigo-50 px-2 py-1 rounded-lg transition-colors"
                                 >
-                                    <Plus size={14} /> Add Color
+                                    <Plus size={14} /> {t('tools.gradient-maker.actions.add')}
                                 </button>
                             </div>
                             
@@ -205,7 +214,7 @@ export default function GradientMaker() {
                                         />
                                         <div className="flex-1">
                                             <div className="flex justify-between text-xs font-bold text-slate-500 mb-1">
-                                                <span>Position</span>
+                                                <span>{t('tools.gradient-maker.labels.stopPosition')}</span>
                                                 <span>{stop.position}%</span>
                                             </div>
                                             <input 
@@ -250,7 +259,7 @@ export default function GradientMaker() {
                         style={{ background: css.replace('background: ', '').replace(';', '') }}
                     >
                         <div className="text-white/90 font-black text-4xl opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm bg-black/20 px-6 py-4 rounded-3xl">
-                            PREVIEW
+                            {t('tools.gradient-maker.labels.preview')}
                         </div>
                     </div>
                 </div>

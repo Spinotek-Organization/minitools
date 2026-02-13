@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { LayoutGrid, Printer, Trash2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function TimeBoxing() {
+    const { t } = useTranslation();
     const HOURS = [
         "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
         "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30",
@@ -42,7 +44,7 @@ export default function TimeBoxing() {
     };
 
     const clearAll = () => {
-        if(confirm("Clear current plan?")) {
+        if(confirm(t('tools.time-boxing.confirmClear'))) {
             setSchedule({});
             setPriorities(['', '', '']);
             setBrainDump('');
@@ -56,8 +58,8 @@ export default function TimeBoxing() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Time Boxing Planner | MiniTools by Spinotek</title>
-                <meta name="description" content="Plan your day by assigning tasks to specific time blocks." />
+                <title>{t('tools.time-boxing.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.time-boxing.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4 print:hidden">
@@ -66,8 +68,8 @@ export default function TimeBoxing() {
                         <LayoutGrid size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Time Boxing Planner</h1>
-                        <p className="text-slate-500 text-sm">Plan your day by assigning tasks to specific time blocks.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.time-boxing.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.time-boxing.desc')}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
@@ -76,14 +78,14 @@ export default function TimeBoxing() {
                         className="flex items-center gap-2 px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl font-medium transition-colors"
                     >
                         <Trash2 size={18} />
-                        Clear
+                        {t('tools.time-boxing.buttons.clear')}
                     </button>
                     <button 
                         onClick={handlePrint}
                         className="flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-medium transition-colors shadow-lg shadow-rose-200"
                     >
                         <Printer size={18} />
-                        Print
+                        {t('tools.time-boxing.buttons.print')}
                     </button>
                 </div>
             </div>
@@ -92,8 +94,8 @@ export default function TimeBoxing() {
                 
                 {/* Header for Print */}
                 <div className="hidden print:block text-center mb-8 border-b border-slate-900 pb-4">
-                    <h1 className="text-3xl font-black text-slate-900 uppercase tracking-widest">Daily Plan</h1>
-                    <p className="text-slate-500 mt-2">Time Boxing Method</p>
+                    <h1 className="text-3xl font-black text-slate-900 uppercase tracking-widest">{t('tools.time-boxing.print.header')}</h1>
+                    <p className="text-slate-500 mt-2">{t('tools.time-boxing.print.subheader')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 print:grid-cols-2 print:gap-8">
@@ -103,7 +105,7 @@ export default function TimeBoxing() {
                         {/* Top Priorities */}
                         <div className="bg-slate-50 print:bg-transparent rounded-2xl p-6 print:p-0 print:border print:border-slate-300">
                             <h2 className="text-lg font-black text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                <span className="text-rose-500 print:text-slate-800">#</span> Top Priorities
+                                <span className="text-rose-500 print:text-slate-800">#</span> {t('tools.time-boxing.sections.priorities')}
                             </h2>
                             <div className="space-y-3">
                                 {priorities.map((p, i) => (
@@ -113,7 +115,7 @@ export default function TimeBoxing() {
                                             type="text" 
                                             value={p} 
                                             onChange={(e) => updatePriority(i, e.target.value)}
-                                            placeholder={`Priority ${i + 1}`}
+                                            placeholder={`${t('tools.time-boxing.placeholders.priority')} ${i + 1}`}
                                             className="flex-1 bg-white print:bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-700 font-medium focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
                                         />
                                     </div>
@@ -124,12 +126,12 @@ export default function TimeBoxing() {
                         {/* Brain Dump */}
                         <div className="bg-slate-50 print:bg-transparent rounded-2xl p-6 print:p-0 print:border print:border-slate-300 flex-1 flex flex-col h-[500px] print:h-auto">
                             <h2 className="text-lg font-black text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                <span className="text-rose-500 print:text-slate-800">@</span> Brain Dump
+                                <span className="text-rose-500 print:text-slate-800">@</span> {t('tools.time-boxing.sections.brainDump')}
                             </h2>
                             <textarea 
                                 value={brainDump}
                                 onChange={(e) => setBrainDump(e.target.value)}
-                                placeholder="Jot down tasks, ideas, and reminders..."
+                                placeholder={t('tools.time-boxing.placeholders.brainDump')}
                                 className="flex-1 w-full bg-white print:bg-slate-50 border border-slate-200 rounded-lg p-4 text-slate-700 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 resize-none leading-relaxed"
                             ></textarea>
                         </div>
@@ -138,7 +140,7 @@ export default function TimeBoxing() {
                     {/* Right Column: Schedule */}
                     <div className="bg-slate-50 print:bg-transparent rounded-2xl p-6 print:p-0 print:border print:border-slate-300">
                          <h2 className="text-lg font-black text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2">
-                            <span className="text-rose-500 print:text-slate-800">L</span> Schedule
+                            <span className="text-rose-500 print:text-slate-800">L</span> {t('tools.time-boxing.sections.schedule')}
                         </h2>
                         <div className="space-y-1">
                             {HOURS.map((time, i) => {
@@ -163,7 +165,7 @@ export default function TimeBoxing() {
                 </div>
 
                 <div className="mt-8 text-center text-slate-400 text-xs hidden print:block">
-                    Printed from MiniTools by Spinotek
+                    {t('tools.time-boxing.print.footer')}
                 </div>
             </div>
 

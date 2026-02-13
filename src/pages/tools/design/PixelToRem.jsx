@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Ruler, RefreshCw, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function PixelToRem() {
+    const { t } = useTranslation();
     const [baseSize, setBaseSize] = useState(16);
     const [pixels, setPixels] = useState(16);
     const [rem, setRem] = useState(1);
@@ -32,8 +34,8 @@ export default function PixelToRem() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Pixel to REM Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert pixels to REM units for responsive web design." />
+                <title>{t('tools.pixel-rem.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.pixel-rem.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -42,8 +44,8 @@ export default function PixelToRem() {
                         <Ruler size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Pixel to REM Converter</h1>
-                        <p className="text-slate-500 text-sm">Convert pixels to REM for modern responsive CSS.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.pixel-rem.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.pixel-rem.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -53,19 +55,19 @@ export default function PixelToRem() {
                 <div className="lg:col-span-2 space-y-8">
                     <div className="bg-white rounded-3xl border border-slate-100 p-8 space-y-8">
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">Base Font Size (px)</label>
+                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">{t('tools.pixel-rem.labels.baseSize')}</label>
                             <input 
                                 type="number" 
                                 value={baseSize} 
                                 onChange={(e) => setBaseSize(Number(e.target.value))}
                                 className="w-32 text-center font-bold p-2 rounded-xl border-slate-200 focus:border-teal-500 focus:ring-teal-500"
                             />
-                            <p className="text-xs text-slate-400 mt-2">Default browser font size is usually 16px.</p>
+                            <p className="text-xs text-slate-400 mt-2">{t('tools.pixel-rem.labels.baseSizeHelp')}</p>
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center gap-8">
                             <div className="flex-1 w-full">
-                                <label className="block text-sm font-bold text-slate-700 mb-2">Pixels (px)</label>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.pixel-rem.labels.pixels')}</label>
                                 <div className="relative">
                                     <input 
                                         type="number" 
@@ -87,7 +89,7 @@ export default function PixelToRem() {
                             </div>
 
                             <div className="flex-1 w-full">
-                                <label className="block text-sm font-bold text-slate-700 mb-2">REM</label>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.pixel-rem.labels.rem')}</label>
                                 <div className="relative">
                                     <input 
                                         type="number" 
@@ -112,7 +114,7 @@ export default function PixelToRem() {
                             {pixels}px = {rem}rem
                         </p>
                         <p className="text-teal-600/70 text-sm">
-                            Based on a root font-size of {baseSize}px.
+                            {t('tools.pixel-rem.labels.result', { baseSize })}
                         </p>
                     </div>
                 </div>
@@ -121,7 +123,7 @@ export default function PixelToRem() {
                 <div className="lg:col-span-1">
                     <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden">
                         <div className="bg-slate-50 p-4 border-b border-slate-100">
-                            <h3 className="font-bold text-slate-700">Quick Reference</h3>
+                            <h3 className="font-bold text-slate-700">{t('tools.pixel-rem.labels.quickRef')}</h3>
                         </div>
                         <div className="divide-y divide-slate-100">
                             {tableValues.map(px => (

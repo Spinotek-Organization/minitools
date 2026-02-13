@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Fingerprint, RefreshCw, Copy, CheckCircle2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function UuidGenerator() {
+    const { t } = useTranslation();
     const [count, setCount] = useState(5);
     const [uuids, setUuids] = useState([]);
     const [copied, setCopied] = useState(false);
@@ -32,8 +34,8 @@ export default function UuidGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>UUID Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate unique identifiers (UUID v4) for your applications." />
+                <title>{t('tools.uuid-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.uuid-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -42,8 +44,8 @@ export default function UuidGenerator() {
                         <Fingerprint size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">UUID Generator</h1>
-                        <p className="text-slate-500 text-sm">Generate random UUID v4 identifiers.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.uuid-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.uuid-gen.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@ export default function UuidGenerator() {
             <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm mb-8">
                 <div className="flex flex-col md:flex-row gap-4 items-end mb-6">
                     <div className="flex-1 w-full">
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Quantity ({count})</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.uuid-gen.labels.quantity')} ({count})</label>
                         <input 
                             type="range" 
                             min="1" 
@@ -66,14 +68,14 @@ export default function UuidGenerator() {
                             onClick={generateUUIDs}
                             className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl transition-colors"
                         >
-                            <RefreshCw size={18} /> Regenerate
+                            <RefreshCw size={18} /> {t('tools.uuid-gen.actions.regenerate')}
                         </button>
                         <button 
                             onClick={copyAll}
                             className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold px-6 py-3 rounded-xl transition-colors"
                         >
                             {copied ? <CheckCircle2 size={18} /> : <Copy size={18} />}
-                            {copied ? 'Copied!' : 'Copy All'}
+                            {copied ? t('tools.uuid-gen.actions.copied') : t('tools.uuid-gen.actions.copyAll')}
                         </button>
                     </div>
                 </div>

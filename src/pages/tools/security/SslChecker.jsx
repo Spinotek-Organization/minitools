@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Lock, Search, ExternalLink, ShieldCheck, History, AlertTriangle, Key } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
@@ -53,6 +54,7 @@ const TOOLS = [
 ];
 
 export default function SslChecker() {
+    const { t } = useTranslation();
     const [domain, setDomain] = useState('');
     
     const handleDomainChange = (e) => {
@@ -64,7 +66,7 @@ export default function SslChecker() {
 
     const openTool = (template) => {
         if (!domain) {
-            alert("Please enter a domain name first.");
+            alert(t('tools.ssl-checker.alert'));
             return;
         }
         window.open(template(domain), '_blank');
@@ -73,8 +75,8 @@ export default function SslChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>SSL Certificate Checker | MiniTools by Spinotek</title>
-                <meta name="description" content="Verify your website's SSL certificate installation, validity, and security score using top industry tools." />
+                <title>{t('tools.ssl-checker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.ssl-checker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -83,8 +85,8 @@ export default function SslChecker() {
                         <Lock size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">SSL Certificate Checker</h1>
-                        <p className="text-slate-500 text-sm">Analyze your SSL configuration and find security issues.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.ssl-checker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.ssl-checker.headerDesc')}</p>
                     </div>
                 </div>
             </div>
@@ -92,14 +94,14 @@ export default function SslChecker() {
             {/* Input Section */}
             <div className="bg-white rounded-3xl border border-slate-100 p-8 mb-8 text-center shadow-sm">
                 <label htmlFor="domain-input" className="block text-slate-900 font-bold mb-4 text-lg">
-                    Enter Domain to Analyze
+                    {t('tools.ssl-checker.inputLabel')}
                 </label>
                 <div className="max-w-xl mx-auto relative flex items-center">
                     <Search className="absolute left-4 text-slate-400" size={20} />
                     <input
                         id="domain-input"
                         type="text"
-                        placeholder="example.com"
+                        placeholder={t('tools.ssl-checker.placeholder')}
                         value={domain}
                         onChange={handleDomainChange}
                         className="w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-2xl text-lg outline-none focus:border-teal-500 transition-colors"
@@ -107,7 +109,7 @@ export default function SslChecker() {
                 </div>
                 {!domain && (
                     <p className="text-slate-400 text-sm mt-3">
-                        Enter a domain (e.g. google.com) to enable the analysis tools below.
+                        {t('tools.ssl-checker.hint')}
                     </p>
                 )}
             </div>
@@ -124,8 +126,8 @@ export default function SslChecker() {
                                 <tool.icon size={24} />
                             </div>
                             <div>
-                                <h3 className="font-bold text-slate-900 text-lg">{tool.name}</h3>
-                                <p className="text-slate-500 text-sm">{tool.desc}</p>
+                                <h3 className="font-bold text-slate-900 text-lg">{t(`tools.ssl-checker.tools.${tool.id}.name`)}</h3>
+                                <p className="text-slate-500 text-sm">{t(`tools.ssl-checker.tools.${tool.id}.desc`)}</p>
                             </div>
                         </div>
                         
@@ -138,7 +140,7 @@ export default function SslChecker() {
                                     : 'bg-slate-100 text-slate-400 cursor-not-allowed'
                             }`}
                         >
-                            Analyze
+                            {t('tools.ssl-checker.analyzeBtn')}
                             <ExternalLink size={16} />
                         </button>
                     </div>

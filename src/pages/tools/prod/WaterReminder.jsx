@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Droplets, Plus, Minus, History, Trash2, Trophy } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function WaterReminder() {
+    const { t } = useTranslation();
     const [goal, setGoal] = useState(2500);
     const [intake, setIntake] = useState(0);
     const [history, setHistory] = useState([]);
@@ -43,7 +45,7 @@ export default function WaterReminder() {
     };
 
     const resetDay = () => {
-        if (window.confirm('Are you sure you want to reset your progress for today?')) {
+        if (window.confirm(t('tools.water-reminder.actions.confirmReset'))) {
             setIntake(0);
             setHistory([]);
         }
@@ -54,8 +56,8 @@ export default function WaterReminder() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Water Intake Reminder | MiniTools by Spinotek</title>
-                <meta name="description" content="Stay hydrated with smart reminders throughout the day." />
+                <title>{t('tools.water-reminder.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.water-reminder.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -64,12 +66,12 @@ export default function WaterReminder() {
                         <Droplets size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Water Intake Reminder</h1>
-                        <p className="text-slate-500 text-sm">Track your daily hydration goal.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.water-reminder.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.water-reminder.desc')}</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-slate-500">Goal:</span>
+                    <span className="text-sm font-medium text-slate-500">{t('tools.water-reminder.goal')}:</span>
                     <input 
                         type="number" 
                         value={goal}
@@ -99,7 +101,7 @@ export default function WaterReminder() {
                         {percentage >= 100 && (
                             <div className="mb-6 animate-bounce bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full font-bold flex items-center gap-2 justify-center">
                                 <Trophy size={20} />
-                                Goal Reached!
+                                {t('tools.water-reminder.status.reached')}
                             </div>
                         )}
 
@@ -125,7 +127,7 @@ export default function WaterReminder() {
                                 +100ml
                              </button>
                              <button onClick={resetDay} className="px-4 py-2 text-sm text-rose-500 hover:bg-rose-50 rounded-xl font-medium transition-colors">
-                                Reset Day
+                                {t('tools.water-reminder.actions.reset')}
                              </button>
                         </div>
                      </div>
@@ -135,14 +137,14 @@ export default function WaterReminder() {
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 flex flex-col h-full">
                     <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
                         <History size={20} className="text-slate-400" />
-                        Today's History
+                        {t('tools.water-reminder.status.history')}
                     </h3>
                     
                     <div className="flex-1 overflow-y-auto max-h-[400px] pr-2 space-y-3 custom-scrollbar">
                         {history.length === 0 ? (
                             <div className="text-center text-slate-400 py-12">
                                 <Droplets size={48} className="mx-auto mb-4 opacity-20" />
-                                <p>No water logged yet today.</p>
+                                <p>{t('tools.water-reminder.status.empty')}</p>
                             </div>
                         ) : (
                             history.map((item, index) => (

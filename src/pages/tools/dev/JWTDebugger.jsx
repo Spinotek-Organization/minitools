@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, AlertCircle, CheckCircle2, Copy } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function JWTDebugger() {
+    const { t } = useTranslation();
     const [token, setToken] = useState('');
     const [header, setHeader] = useState(null);
     const [payload, setPayload] = useState(null);
@@ -24,7 +26,7 @@ export default function JWTDebugger() {
         try {
             const parts = token.split('.');
             if (parts.length !== 3) {
-                throw new Error('Invalid JWT format (must have 3 parts).');
+                throw new Error(t('tools.jwt-debug.errors.format'));
             }
 
             const decodePart = (part) => {
@@ -44,12 +46,12 @@ export default function JWTDebugger() {
             setError(null);
         } catch (err) {
             console.error(err);
-            setError('Invalid token. Could not decode.');
+            setError(t('tools.jwt-debug.errors.invalid'));
             setHeader(null);
             setPayload(null);
             setSignature(null);
         }
-    }, [token]);
+    }, [token, t]);
 
     const copyToClipboard = (text, type) => {
         if(!text) return;
@@ -61,8 +63,8 @@ export default function JWTDebugger() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>JWT Debugger | MiniTools by Spinotek</title>
-                <meta name="description" content="Decode and inspect JSON Web Tokens safely." />
+                <title>{t('tools.jwt-debug.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.jwt-debug.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -71,8 +73,8 @@ export default function JWTDebugger() {
                         <ShieldCheck size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">JWT Debugger</h1>
-                        <p className="text-slate-500 text-sm">Decode and inspect JSON Web Tokens safely.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.jwt-debug.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.jwt-debug.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +82,7 @@ export default function JWTDebugger() {
             <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm mb-8">
                 <textarea 
                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" 
-                    placeholder="Paste your JWT here (e.g. eyJhbGciOi...)"
+                    placeholder={t('tools.jwt-debug.placeholder')}
                     value={token}
                     onChange={(e) => setToken(e.target.value)}
                 />
@@ -96,7 +98,7 @@ export default function JWTDebugger() {
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                     <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
                         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-                            <h3 className="font-bold text-slate-900">Header</h3>
+                            <h3 className="font-bold text-slate-900">{t('tools.jwt-debug.sections.header')}</h3>
                             <button onClick={() => copyToClipboard(header, 'header')} className="text-slate-400 hover:text-violet-600 transition-colors">
                                 {copied === 'header' ? <CheckCircle2 size={18} /> : <Copy size={18} />}
                             </button>
@@ -106,7 +108,7 @@ export default function JWTDebugger() {
 
                     <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
                         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-                            <h3 className="font-bold text-slate-900">Payload</h3>
+                            <h3 className="font-bold text-slate-900">{t('tools.jwt-debug.sections.payload')}</h3>
                             <button onClick={() => copyToClipboard(payload, 'payload')} className="text-slate-400 hover:text-violet-600 transition-colors">
                                 {copied === 'payload' ? <CheckCircle2 size={18} /> : <Copy size={18} />}
                             </button>
@@ -119,7 +121,7 @@ export default function JWTDebugger() {
             {(signature) && (
                 <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm mb-8">
                     <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
-                        <h3 className="font-bold text-slate-900">Signature</h3>
+                        <h3 className="font-bold text-slate-900">{t('tools.jwt-debug.sections.signature')}</h3>
                     </div>
                     <div className="p-6 break-all font-mono text-xs md:text-sm text-violet-600 bg-violet-50">
                         {signature}

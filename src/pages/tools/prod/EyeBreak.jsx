@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Eye, Play, Pause, RotateCcw, Monitor } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function EyeBreak() {
+    const { t } = useTranslation();
     const [isActive, setIsActive] = useState(false);
     const [isWorkMode, setIsWorkMode] = useState(true);
     const [timeLeft, setTimeLeft] = useState(20 * 60);
@@ -42,11 +44,11 @@ export default function EyeBreak() {
         // Title update
         const mins = Math.floor(timeLeft / 60);
         const secs = timeLeft % 60;
-        const modeLabel = isWorkMode ? 'Work' : 'Look Away!';
+        const modeLabel = isWorkMode ? t('tools.eye-break.documentTitle.work') : t('tools.eye-break.documentTitle.break');
         document.title = `${mins}:${secs.toString().padStart(2, '0')} - ${modeLabel}`;
         
-        return () => { document.title = 'Eye Break Timer | MiniTools by Spinotek'; }
-    }, [timeLeft, isWorkMode]);
+        return () => { document.title = t('tools.eye-break.documentTitle.default'); }
+    }, [timeLeft, isWorkMode, t]);
 
     const toggleTimer = () => setIsActive(!isActive);
     
@@ -85,8 +87,8 @@ export default function EyeBreak() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Eye Break Timer | MiniTools by Spinotek</title>
-                <meta name="description" content="Protect your eyes using the 20-20-20 break rule." />
+                <title>{t('tools.eye-break.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.eye-break.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -95,8 +97,8 @@ export default function EyeBreak() {
                         <Eye size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Eye Break Timer</h1>
-                        <p className="text-slate-500 text-sm">Follow the 20-20-20 rule: Every 20 mins, look 20 feet away for 20 seconds.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.eye-break.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.eye-break.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -113,7 +115,7 @@ export default function EyeBreak() {
                 <div className="relative z-10 p-12 text-center">
                     <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold uppercase tracking-wider text-sm mb-8 ${isWorkMode ? 'bg-violet-50 text-violet-600' : 'bg-emerald-800 text-emerald-100'}`}>
                         {isWorkMode ? <Monitor size={16} /> : <Eye size={16} />}
-                        {isWorkMode ? 'Screen Time' : 'Look Away Now!'}
+                        {isWorkMode ? t('tools.eye-break.status.work') : t('tools.eye-break.status.break')}
                     </div>
 
                     <div className={`text-9xl font-black mb-4 tabular-nums tracking-tighter ${isWorkMode ? 'text-slate-900' : 'text-emerald-50'}`}>
@@ -122,8 +124,8 @@ export default function EyeBreak() {
 
                     <p className={`text-xl mb-12 ${isWorkMode ? 'text-slate-500' : 'text-emerald-200'}`}>
                         {isWorkMode 
-                            ? "Focus on your work. We'll remind you when to rest." 
-                            : "Look at something 20 feet away to relax your eyes."}
+                            ? t('tools.eye-break.message.work')
+                            : t('tools.eye-break.message.break')}
                     </p>
 
                     <div className="flex items-center justify-center gap-4">

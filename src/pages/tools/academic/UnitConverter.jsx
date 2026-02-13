@@ -3,16 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeftRight, Ruler, Scale, Beaker, Thermometer, Database, Variable } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 // Conversion Definitions
-const CATEGORIES = [
-    { id: 'length', label: 'Length', icon: Ruler },
-    { id: 'mass', label: 'Mass', icon: Scale },
-    { id: 'volume', label: 'Volume', icon: Beaker },
-    { id: 'temp', label: 'Temperature', icon: Thermometer },
-    { id: 'data', label: 'Data', icon: Database },
-];
-
 const UNITS = {
     length: {
         m: 1,
@@ -52,11 +45,21 @@ const UNITS = {
 };
 
 export default function UnitConverter() {
+    const { t } = useTranslation();
     const [category, setCategory] = useState('length');
     const [val1, setVal1] = useState('1');
     const [unit1, setUnit1] = useState('m');
     const [val2, setVal2] = useState('');
     const [unit2, setUnit2] = useState('ft');
+    
+    // Define Categories inside or translate on fly
+    const CATEGORIES = [
+        { id: 'length', label: t('tools.unit-converter.categories.length'), icon: Ruler },
+        { id: 'mass', label: t('tools.unit-converter.categories.mass'), icon: Scale },
+        { id: 'volume', label: t('tools.unit-converter.categories.volume'), icon: Beaker },
+        { id: 'temp', label: t('tools.unit-converter.categories.temp'), icon: Thermometer },
+        { id: 'data', label: t('tools.unit-converter.categories.data'), icon: Database },
+    ];
 
     // Reset units when category changes
     useEffect(() => {
@@ -110,8 +113,8 @@ export default function UnitConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Unit Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert between metric and imperial units easily." />
+                <title>{t('tools.unit-converter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.unit-converter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -120,8 +123,8 @@ export default function UnitConverter() {
                         <ArrowLeftRight size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Unit Converter</h1>
-                        <p className="text-slate-500 text-sm">Convert between metric and imperial units easily.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.unit-converter.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.unit-converter.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -153,7 +156,7 @@ export default function UnitConverter() {
                         
                         {/* Input 1 */}
                         <div className="flex-1 w-full">
-                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">From</label>
+                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.unit-converter.from')}</label>
                             <div className="relative">
                                 <input
                                     type="number"
@@ -186,7 +189,7 @@ export default function UnitConverter() {
 
                          {/* Input 2 (Read Only / Output) */}
                          <div className="flex-1 w-full">
-                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">To</label>
+                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.unit-converter.to')}</label>
                             <div className="relative">
                                 <input
                                     type="text"

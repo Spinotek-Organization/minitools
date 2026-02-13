@@ -4,8 +4,10 @@ import Card from '../../../components/shared/Card';
 import { Helmet } from 'react-helmet-async';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function UrlCodec() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [mode, setMode] = useState('encode'); // 'encode' or 'decode'
@@ -54,8 +56,8 @@ export default function UrlCodec() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>URL Encoder & Decoder | MiniTools by Spinotek</title>
-                <meta name="description" content="Properly encode or decode URLs for web compatibility instantly." />
+                <title>{t('tools.url-enc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.url-enc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -64,8 +66,10 @@ export default function UrlCodec() {
                         <Globe size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">URL {mode === 'encode' ? 'Encoder' : 'Decoder'}</h1>
-                        <p className="text-slate-500 text-sm">Safe URL formatting for web developers.</p>
+                        <h1 className="text-2xl font-black text-slate-900">
+                            URL {mode === 'encode' ? t('tools.url-enc.encoder') : t('tools.url-enc.decoder')}
+                        </h1>
+                        <p className="text-slate-500 text-sm">{t('tools.url-enc.subtitle')}</p>
                     </div>
                 </div>
 
@@ -75,20 +79,20 @@ export default function UrlCodec() {
                         className="flex items-center gap-2 px-4 py-2 text-slate-400 font-bold hover:text-slate-600 transition-colors"
                     >
                         <Trash2 size={18} />
-                        Clear
+                        {t('tools.url-enc.actions.clear')}
                     </button>
                     <button
                         onClick={toggleMode}
                         className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-all"
                     >
                         <RefreshCw size={18} className={mode === 'decode' ? 'rotate-180 transition-transform' : ''} />
-                        Switch to {mode === 'encode' ? 'Decode' : 'Encode'}
+                        {t('tools.url-enc.actions.switch')} {mode === 'encode' ? t('tools.url-enc.decoder') : t('tools.url-enc.encoder')}
                     </button>
                     <button
                         onClick={handleProcess}
                         className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
                     >
-                        Process
+                        {t('tools.url-enc.actions.process')}
                     </button>
                 </div>
             </div>
@@ -98,12 +102,12 @@ export default function UrlCodec() {
                 <Card noPadding className="flex flex-col">
                     <div className="px-6 py-3 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                            {mode === 'encode' ? 'Raw URL Input' : 'Encoded URL Input'}
+                            {mode === 'encode' ? t('tools.url-enc.labels.rawInput') : t('tools.url-enc.labels.encodedInput')}
                         </span>
                     </div>
                     <textarea
                         className="flex-grow p-6 font-mono text-sm resize-none focus:ring-0 outline-none text-slate-700 bg-transparent"
-                        placeholder={mode === 'encode' ? 'Type or paste URL to encode...' : 'Paste encoded URL to decode...'}
+                        placeholder={mode === 'encode' ? t('tools.url-enc.placeholders.encode') : t('tools.url-enc.placeholders.decode')}
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
@@ -113,7 +117,7 @@ export default function UrlCodec() {
                 <Card dark noPadding className="flex flex-col relative">
                     <div className="px-6 py-3 border-b border-slate-800 flex justify-between items-center bg-slate-800/30">
                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-                            {mode === 'encode' ? 'Encoded Result' : 'Decoded Result'}
+                            {mode === 'encode' ? t('tools.url-enc.labels.encodedResult') : t('tools.url-enc.labels.decodedResult')}
                         </span>
                         {output && (
                             <button
@@ -121,7 +125,7 @@ export default function UrlCodec() {
                                 className={`flex items-center gap-2 text-xs font-bold transition-colors ${copied ? 'text-green-400' : 'text-slate-400 hover:text-white'}`}
                             >
                                 {copied ? <CheckCircle size={14} /> : <Copy size={14} />}
-                                {copied ? 'Copied!' : 'Copy'}
+                                {copied ? t('tools.url-enc.actions.copied') : t('tools.url-enc.actions.copy')}
                             </button>
                         )}
                     </div>
@@ -133,7 +137,7 @@ export default function UrlCodec() {
                                     <AlertCircle size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">Error</p>
+                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">{t('tools.url-enc.labels.error')}</p>
                                     <p className="text-slate-400 text-xs max-w-[250px]">{error}</p>
                                 </div>
                             </div>
@@ -141,7 +145,7 @@ export default function UrlCodec() {
                             <pre className="whitespace-pre-wrap break-all leading-relaxed">{output}</pre>
                         ) : (
                             <div className="flex items-center justify-center h-full text-slate-700 italic text-xs">
-                                Result will appear here...
+                                {t('tools.url-enc.placeholders.result')}
                             </div>
                         )}
                     </div>
@@ -150,11 +154,9 @@ export default function UrlCodec() {
 
             <div className="mt-8">
                 <Card className="bg-blue-50/50 border-blue-100">
-                    <h3 className="text-sm font-bold text-blue-900 mb-2">Usage Tip</h3>
+                    <h3 className="text-sm font-bold text-blue-900 mb-2">{t('tools.url-enc.labels.tip')}</h3>
                     <p className="text-xs text-blue-700 leading-relaxed">
-                        URL encoding converts characters into a format that can be transmitted over the Internet.
-                        Characters like space, ampersand, and question marks have special meanings and need to be encoded
-                        if they are part of a query string parameter.
+                        {t('tools.url-enc.labels.tipDesc')}
                     </p>
                 </Card>
             </div>

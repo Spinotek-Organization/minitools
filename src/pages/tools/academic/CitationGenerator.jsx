@@ -1,61 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Quote, Copy, BookOpen, Globe, Check } from 'lucide-react';
+import { Quote, BookOpen, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const CITATION_STYLES = ['APA 7', 'MLA 9', 'Chicago', 'Harvard', 'IEEE'];
-const SOURCES = ['Website', 'Book', 'Journal'];
+import { useTranslation } from 'react-i18next';
 
 export default function CitationGenerator() {
-    const [style, setStyle] = useState('APA 7');
-    const [sourceType, setSourceType] = useState('Website');
-    const [data, setData] = useState({
+    const { t } = useTranslation();
+    const [style, setStyle] = useState('apa'); // apa, mla, chicago
+    const [sourceType, setSourceType] = useState('website'); // website, book, journal
+    
+    const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
-        title: '',
-        publisher: '', // or Website Name / Container
+        title: '', // Article/Chapter title
+        sourceTitle: '', // Website name / Book title / Journal name
+        publisher: '',
         url: '',
-        year: new Date().getFullYear().toString(),
+        year: '',
         month: '',
         day: '',
-        accessDate: new Date().toISOString().split('T')[0]
+        volume: '',
+        issue: '',
+        pages: ''
     });
+
     const [citation, setCitation] = useState('');
     const [copied, setCopied] = useState(false);
 
-    // Format Logic
-    useEffect(() => {
-        const { firstName, lastName, title, publisher, url, year, month, day, accessDate } = data;
-        const author = lastName ? `${lastName}, ${firstName ? firstName[0] + '.' : ''}` : (publisher || 'Anonymous');
-        const authorFull = lastName ? `${lastName}, ${firstName}` : (publisher || 'Anonymous');
-        
-        let text = '';
+    const generateCitation = () => {
+        const { firstName, lastName, title, sourceTitle, publisher, url, year, month, day } = formData;
+        // Simple mock logic for demonstration
+        let result = '';
 
-        if (style === 'APA 7') {
-            // APA: Author, A. A. (Year, Month Day). Title of page. Site Name. URL
-            const dateStr = [year, month, day].filter(Boolean).join(', ');
-            text = `${author} (${dateStr || 'n.d.'}). ${title ? title + '.' : ''} ${publisher ? publisher + '.' : ''} ${url}`;
-        } else if (style === 'MLA 9') {
-            // MLA: Author. "Title." Container, Publisher, Publication Date, URL. Accessed Date.
-            text = `${authorFull}. "${title}." ${publisher}, ${year || 'n.d.'}, ${url}. Accessed ${accessDate}.`;
-        } else if (style === 'Chicago') {
-             // Chicago: Author. "Title." Publisher, Year. URL.
-             text = `${authorFull}. "${title}." ${publisher}, ${year}. ${url}.`;
-        } else if (style === 'Harvard') {
-            // Harvard: Author (Year) 'Title', Publisher, Year. Available at: URL [Accessed Date]
-            text = `${author} (${year || 'n.d.'}) '${title}', ${publisher}. Available at: ${url} [Accessed ${accessDate}].`;
-        } else if (style === 'IEEE') {
-            // IEEE: [1] F. Last, "Title," Publisher, Year. [Online]. Available: URL. [Accessed: Date].
-            const ieeeAuthor = firstName && lastName ? `${firstName[0]}. ${lastName}` : (publisher || 'Anonymous');
-            text = `[1] ${ieeeAuthor}, "${title}," ${publisher}, ${year}. [Online]. Available: ${url}. [Accessed: ${accessDate}].`;
+        const author = lastName && firstName ? `${lastName}, ${firstName[0]}.` : (sourceTitle || 'Unknown');
+        const date = year ? `(${year}${month ? ', ' + month : ''}${day ? ' ' + day : ''})` : '(n.d.)';
+
+        if (style === 'apa') {
+            // LastName, F. (Year). Title. Source. URL
+            result = `${author} ${date}. ${title}. ${sourceTitle}. ${url}`;
+        } else if (style === 'mla') {
+            // LastName, FirstName. "Title." SourceTitle, Publisher, Day Month Year, URL.
+            result = `${lastName}, ${firstName}. "${title}." ${sourceTitle}, ${publisher}, ${day} ${month} ${year}, ${url}.`;
+        } else if (style === 'chicago') {
+             // LastName, FirstName. "Title." SourceTitle. Month Day, Year. URL.
+             result = `${lastName}, ${firstName}. "${title}." ${sourceTitle}. ${month} ${day}, ${year}. ${url}.`;
         }
-
-        setCitation(text);
-    }, [data, style, sourceType]);
-
-    const handleChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value });
+        
+        setCitation(result);
     };
 
     const handleCopy = () => {
@@ -67,139 +59,144 @@ export default function CitationGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Citation Generator | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate citations in APA, MLA, and Chicago formats easily." />
+                <title>{t('tools.citation-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.citation-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
+                    <div className="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                         <Quote size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Citation Generator</h1>
-                        <p className="text-slate-500 text-sm">Create accurate references for your bibliography.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.citation-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.citation-gen.desc')}</p>
                     </div>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                {/* Input Form */}
+                {/* Form Area */}
                 <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
+                    
+                    {/* Style & Type Selector */}
+                    <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm flex flex-col md:flex-row gap-6">
+                        <div className="flex-1">
+                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.citation-gen.styles')}</label>
+                            <div className="flex bg-slate-100 p-1 rounded-xl">
+                                {['apa', 'mla', 'chicago'].map(s => (
+                                    <button 
+                                        key={s} 
+                                        onClick={() => setStyle(s)}
+                                        className={`flex-1 py-2 text-sm font-bold rounded-lg uppercase transition-all ${style === s ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                                    >
+                                        {s.toUpperCase()}
+                                    </button>
+                                ))}
+                            </div> 
+                        </div>
+                        <div className="flex-1">
+                            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.citation-gen.sourceType')}</label>
+                             <div className="flex bg-slate-100 p-1 rounded-xl">
+                                {['website', 'book'].map(s => (
+                                    <button 
+                                        key={s} 
+                                        onClick={() => setSourceType(s)}
+                                        className={`flex-1 py-2 text-sm font-bold rounded-lg capitalize transition-all ${sourceType === s ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                                    >
+                                        {s}
+                                    </button>
+                                ))}
+                            </div> 
+                        </div>
+                    </div>
+
+                    {/* Input Fields */}
+                    <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm space-y-6">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.firstName')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.firstName} onChange={e => setFormData({...formData, firstName: e.target.value})} />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.lastName')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.lastName} onChange={e => setFormData({...formData, lastName: e.target.value})} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{sourceType === 'website' ? t('tools.citation-gen.forms.pageTitle') : t('tools.citation-gen.forms.title')}</label>
+                            <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{sourceType === 'website' ? t('tools.citation-gen.forms.websiteName') : t('tools.citation-gen.forms.publisher')}</label>
+                            <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.sourceTitle} onChange={e => setFormData({...formData, sourceTitle: e.target.value})} />
+                        </div>
                         
-                        {/* Type/Style Selectors */}
-                        <div className="flex flex-wrap gap-4 mb-6 pb-6 border-b border-slate-100">
-                             <div className="flex-1 min-w-[140px]">
-                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Style</label>
-                                <div className="flex bg-slate-100 p-1 rounded-xl">
-                                    {CITATION_STYLES.map(s => (
-                                        <button
-                                            key={s}
-                                            onClick={() => setStyle(s)}
-                                            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all ${style === s ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
-                                        >
-                                            {s}
-                                        </button>
-                                    ))}
-                                </div>
-                             </div>
-                             <div className="flex-1 min-w-[140px]">
-                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Source Type</label>
-                                <div className="flex bg-slate-100 p-1 rounded-xl">
-                                    {SOURCES.map(s => (
-                                        <button
-                                            key={s}
-                                            onClick={() => setSourceType(s)}
-                                            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all ${sourceType === s ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
-                                        >
-                                            {s}
-                                        </button>
-                                    ))}
-                                </div>
-                             </div>
-                        </div>
-
-                        {/* Fields */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-1">First Name</label>
-                                    <input name="firstName" value={data.firstName} onChange={handleChange} className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none transition-colors" placeholder="John" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-1">Last Name</label>
-                                    <input name="lastName" value={data.lastName} onChange={handleChange} className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none transition-colors" placeholder="Doe" />
-                                </div>
-                                <div className="md:col-span-2">
-                                     <label className="block text-sm font-bold text-slate-700 mb-1">
-                                        {sourceType === 'Website' ? 'Page Title' : 'Title'}
-                                     </label>
-                                    <input name="title" value={data.title} onChange={handleChange} className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none transition-colors" placeholder="e.g. How to Cite Sources" />
-                                </div>
+                        {sourceType === 'website' && (
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.url')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.url} onChange={e => setFormData({...formData, url: e.target.value})} />
                             </div>
-                            
-                            <div className="space-y-4">
-                                <div className="md:col-span-2">
-                                     <label className="block text-sm font-bold text-slate-700 mb-1">
-                                         {sourceType === 'Website' ? 'Website Name' : 'Publisher'}
-                                     </label>
-                                    <input name="publisher" value={data.publisher} onChange={handleChange} className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none transition-colors" placeholder="e.g. Wikipedia / Penguin Books" />
-                                </div>
-                                {sourceType === 'Website' && (
-                                    <div className="md:col-span-2">
-                                        <label className="block text-sm font-bold text-slate-700 mb-1">URL</label>
-                                        <input name="url" value={data.url} onChange={handleChange} className="w-full px-4 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none transition-colors" placeholder="https://..." />
-                                    </div>
-                                )}
-                                <div className="grid grid-cols-3 gap-2">
-                                    <div>
-                                        <label className="block text-xs font-bold text-slate-500 mb-1">Year</label>
-                                        <input name="year" value={data.year} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none text-sm" placeholder="2024" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-bold text-slate-500 mb-1">Month</label>
-                                        <input name="month" value={data.month} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none text-sm" placeholder="May" />
-                                    </div>
-                                      <div>
-                                        <label className="block text-xs font-bold text-slate-500 mb-1">Day</label>
-                                        <input name="day" value={data.day} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:border-blue-500 outline-none text-sm" placeholder="15" />
-                                    </div>
-                                </div>
+                        )}
+
+                        <div className="grid grid-cols-3 gap-4">
+                             <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.day')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.day} onChange={e => setFormData({...formData, day: e.target.value})} placeholder="DD" />
+                            </div>
+                             <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.month')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.month} onChange={e => setFormData({...formData, month: e.target.value})} placeholder="Month" />
+                            </div>
+                             <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.citation-gen.forms.year')}</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-purple-500" value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} placeholder="YYYY" />
                             </div>
                         </div>
 
+                        <button onClick={generateCitation} className="w-full py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-purple-200 active:scale-95">
+                            {t('tools.citation-gen.title')}
+                        </button>
                     </div>
                 </div>
 
-                {/* Preview Card */}
+                {/* Preview Sidebar */}
                 <div className="lg:col-span-1 space-y-6">
-                    <div className="bg-slate-900 text-white rounded-3xl p-6 shadow-xl sticky top-6">
-                        <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-700">
-                            <h3 className="font-bold flex items-center gap-2">
-                                <BookOpen size={18} className="text-blue-400" />
-                                Preview ({style})
-                            </h3>
-                            <button
-                                onClick={handleCopy}
-                                className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-300 hover:text-white"
-                                title="Copy to Clipboard"
-                            >
-                                {copied ? <Check size={18} className="text-emerald-400" /> : <Copy size={18} />}
-                            </button>
-                        </div>
-
-                        <div className="bg-white/5 rounded-xl p-4 font-serif text-lg leading-relaxed border border-slate-700 break-words min-h-[120px]">
-                            {citation}
-                        </div>
+                    <div className={`bg-white rounded-3xl p-6 border-2 transition-all ${citation ? 'border-purple-500 shadow-xl' : 'border-slate-100 border-dashed opacity-70'}`}>
+                        <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                             <BookOpen size={20} className="text-purple-600" />
+                             {t('tools.citation-gen.preview.title')} ({style.toUpperCase()})
+                        </h3>
                         
-                        <div className="mt-4 text-xs text-slate-400 flex items-start gap-2">
-                            <Globe size={14} className="mt-0.5 flex-shrink-0" />
-                            <p>Always double-check against your institution's specific guidelines. Automated tools can make mistakes.</p>
-                        </div>
+                        {citation ? (
+                            <div className="bg-purple-50 rounded-xl p-4 text-slate-800 font-serif leading-relaxed text-lg mb-4 break-words">
+                                {citation}
+                            </div>
+                        ) : (
+                            <div className="text-center py-10 text-slate-400 text-sm">
+                                Fill in the details to see your citation here.
+                            </div>
+                        )}
+
+                        {citation && (
+                            <button 
+                                onClick={handleCopy}
+                                className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors"
+                            >
+                                {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                                {copied ? 'Copied!' : 'Copy Citation'}
+                            </button>
+                        )}
+                    </div>
+                    
+                    <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 text-xs text-amber-900 leading-relaxed">
+                        <strong>Disclaimer:</strong> {t('tools.citation-gen.preview.disclaimer')}
                     </div>
                 </div>
+
             </div>
 
             <RelatedTools currentToolId="citation-gen" categoryId="academic" />

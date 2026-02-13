@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Wand2, Upload, Download, Eye, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ImageFilters() {
+    const { t } = useTranslation();
     const [image, setImage] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
     const [filters, setFilters] = useState({
@@ -103,8 +105,8 @@ export default function ImageFilters() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Image Filters & Effects | MiniTools by Spinotek</title>
-                <meta name="description" content="Apply professional filters and effects to your photos instantly." />
+                <title>{t('tools.image-filters.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.image-filters.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -113,8 +115,8 @@ export default function ImageFilters() {
                         <Wand2 size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Image Filters</h1>
-                        <p className="text-slate-500">Enhance your photos with CSS-powered filters.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.image-filters.title')}</h1>
+                        <p className="text-slate-500">{t('tools.image-filters.subtitle')}</p>
                     </div>
                 </div>
                 {image && (
@@ -123,7 +125,7 @@ export default function ImageFilters() {
                             onClick={resetFilters}
                             className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2"
                          >
-                             <RefreshCw size={16} /> Reset
+                             <RefreshCw size={16} /> {t('tools.image-filters.actions.reset')}
                          </button>
                          <button 
                             onMouseDown={() => setShowOriginal(true)}
@@ -133,13 +135,13 @@ export default function ImageFilters() {
                             onTouchEnd={() => setShowOriginal(false)}
                             className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2 select-none"
                          >
-                             <Eye size={16} /> Hold to Compare
+                             <Eye size={16} /> {t('tools.image-filters.actions.compare')}
                          </button>
                          <button 
                             onClick={downloadImage}
                             className="px-4 py-2 text-sm font-medium text-white bg-pink-600 rounded-xl hover:bg-pink-700 transition-colors flex items-center gap-2 shadow-lg shadow-pink-200"
                          >
-                             <Download size={16} /> Download
+                             <Download size={16} /> {t('tools.image-filters.actions.download')}
                          </button>
                      </div>
                 )}
@@ -157,14 +159,14 @@ export default function ImageFilters() {
                                 className="absolute inset-0 opacity-0 cursor-pointer"
                             />
                             <Upload className="mx-auto text-pink-500 mb-4" size={48} />
-                            <p className="font-bold text-slate-700">Upload Photo</p>
+                            <p className="font-bold text-slate-700">{t('tools.image-filters.labels.upload')}</p>
                         </div>
                     )}
 
                     {image && (
                         <>
                             <div>
-                                <h3 className="font-bold text-slate-700 mb-4">Presets</h3>
+                                <h3 className="font-bold text-slate-700 mb-4">{t('tools.image-filters.labels.presets')}</h3>
                                 <div className="grid grid-cols-3 gap-2">
                                     {Object.keys(presets).map(name => (
                                         <button 
@@ -172,19 +174,19 @@ export default function ImageFilters() {
                                             onClick={() => applyPreset(name)}
                                             className="px-2 py-2 text-xs font-bold bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 rounded-lg transition-colors border border-slate-200 hover:border-pink-200"
                                         >
-                                            {name}
+                                            {t(`tools.image-filters.presets.${name.toLowerCase()}`)}
                                         </button>
                                     ))}
                                 </div>
                             </div>
 
                             <div className="space-y-6">
-                                <h3 className="font-bold text-slate-700">Adjustments</h3>
+                                <h3 className="font-bold text-slate-700">{t('tools.image-filters.labels.adjustments')}</h3>
                                 
                                 {Object.entries(filters).map(([key, value]) => (
                                     <div key={key}>
                                         <div className="flex justify-between text-xs font-bold text-slate-500 mb-2 uppercase">
-                                            <span>{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                                            <span>{t(`tools.image-filters.filters.${key}`)}</span>
                                             <span>{value}{key === 'blur' ? 'px' : (key === 'hueRotate' ? 'deg' : '%')}</span>
                                         </div>
                                         <input 
@@ -206,7 +208,7 @@ export default function ImageFilters() {
                 <div className="lg:col-span-2">
                     <div className="bg-slate-900 rounded-3xl overflow-hidden flex items-center justify-center min-h-[500px] relative shadow-2xl">
                         {!image ? (
-                             <div className="text-slate-500">No image uploaded</div>
+                             <div className="text-slate-500">{t('tools.image-filters.labels.noImage')}</div>
                         ) : (
                              <img 
                                 src={showOriginal ? image.src : previewUrl} 
@@ -216,7 +218,7 @@ export default function ImageFilters() {
                         )}
                         {showOriginal && (
                             <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-lg text-xs font-bold backdrop-blur-sm">
-                                ORIGINAL
+                                {t('tools.image-filters.labels.original')}
                             </div>
                         )}
                     </div>

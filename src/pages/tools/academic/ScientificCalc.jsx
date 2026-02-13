@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Calculator, History, ChevronDown, Trash2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function ScientificCalc() {
+    const { t } = useTranslation();
     const [display, setDisplay] = useState('');
     const [result, setResult] = useState('');
     const [history, setHistory] = useState([]);
@@ -236,8 +238,8 @@ export default function ScientificCalc() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Scientific Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Professional grade scientific calculator with trigonometry, algebra, and memory functions." />
+                <title>{t('tools.scientific-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.scientific-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -246,8 +248,8 @@ export default function ScientificCalc() {
                         <Calculator size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Scientific Calculator</h1>
-                        <p className="text-slate-500 text-sm">Professional grade calculator with trigonometry and history.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.scientific-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.scientific-calc.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -339,7 +341,7 @@ export default function ScientificCalc() {
                                 className="w-full py-2 text-slate-400 text-xs font-bold md:hidden flex items-center justify-center gap-1"
                             >
                                 <ChevronDown size={14} className={showAdvanced ? 'rotate-180' : ''} />
-                                {showAdvanced ? 'Hide Scientific' : 'Show Scientific'}
+                                {showAdvanced ? t('tools.scientific-calc.toggles.hide') : t('tools.scientific-calc.toggles.show')}
                             </button>
                         </div>
                     </div>
@@ -351,7 +353,7 @@ export default function ScientificCalc() {
                         <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
                             <h3 className="font-bold text-slate-700 flex items-center gap-2">
                                 <History size={18} />
-                                Calculation Tape
+                                {t('tools.scientific-calc.history.title')}
                             </h3>
                             <button onClick={() => setHistory([])} className="p-2 text-slate-300 hover:text-red-500 transition-colors">
                                 <Trash2 size={16} />
@@ -362,7 +364,7 @@ export default function ScientificCalc() {
                             {history.length === 0 ? (
                                 <div className="text-center py-10 opacity-40">
                                     <Calculator size={48} className="mx-auto mb-2" />
-                                    <p className="text-sm">History is empty</p>
+                                    <p className="text-sm">{t('tools.scientific-calc.history.empty')}</p>
                                 </div>
                             ) : (
                                 history.map((item, i) => (
@@ -384,7 +386,7 @@ export default function ScientificCalc() {
 
             </div>
             
-            <RelatedTools currentToolId="sci-calc" categoryId="academic" />
+            <RelatedTools currentToolId="scientific-calc" categoryId="academic" />
         </ToolPageLayout>
     );    
 }

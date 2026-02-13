@@ -3,8 +3,10 @@ import { Copy, Trash2, CheckCircle, FileJson, AlertCircle } from 'lucide-react';
 import Card from '../../../components/shared/Card';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function JsonFormatter() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [error, setError] = useState(null);
@@ -43,8 +45,8 @@ export default function JsonFormatter() {
                         <FileJson size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">JSON Formatter</h1>
-                        <p className="text-slate-500 text-sm">Clean and validate your JSON data instantly.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.json-fmt.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.json-fmt.subtitle')}</p>
                     </div>
                 </div>
 
@@ -54,13 +56,13 @@ export default function JsonFormatter() {
                         className="flex items-center gap-2 px-4 py-2 text-slate-600 font-bold hover:bg-slate-100 rounded-xl transition-colors"
                     >
                         <Trash2 size={18} />
-                        Clear
+                        {t('tools.json-fmt.actions.clear')}
                     </button>
                     <button
                         onClick={formatJson}
                         className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
                     >
-                        Format JSON
+                        {t('tools.json-fmt.actions.format')}
                     </button>
                 </div>
             </div>
@@ -69,11 +71,11 @@ export default function JsonFormatter() {
                 {/* Input Area */}
                 <Card noPadding className="flex flex-col">
                     <div className="px-6 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-                        <span className="text-xs font-black uppercase tracking-widest text-slate-400">Raw Input</span>
+                        <span className="text-xs font-black uppercase tracking-widest text-slate-400">{t('tools.json-fmt.labels.raw')}</span>
                     </div>
                     <textarea
                         className="flex-grow p-6 font-mono text-sm resize-none focus:ring-0 outline-none text-slate-700 bg-transparent"
-                        placeholder='Paste your JSON here (e.g., {"name":"John", "age":30})'
+                        placeholder={t('tools.json-fmt.placeholders.input')}
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
@@ -82,14 +84,14 @@ export default function JsonFormatter() {
                 {/* Output Area */}
                 <Card dark noPadding className="flex flex-col relative">
                     <div className="px-6 py-3 border-b border-slate-800 flex justify-between items-center bg-slate-800/50">
-                        <span className="text-xs font-black uppercase tracking-widest text-slate-500">Formatted Result</span>
+                        <span className="text-xs font-black uppercase tracking-widest text-slate-500">{t('tools.json-fmt.labels.formatted')}</span>
                         {output && (
                             <button
                                 onClick={copyToClipboard}
                                 className={`flex items-center gap-2 text-xs font-bold transition-colors ${copied ? 'text-green-400' : 'text-slate-400 hover:text-white'}`}
                             >
                                 {copied ? <CheckCircle size={14} /> : <Copy size={14} />}
-                                {copied ? 'Copied!' : 'Copy'}
+                                {copied ? t('tools.json-fmt.actions.copied') : t('tools.json-fmt.actions.copy')}
                             </button>
                         )}
                     </div>
@@ -101,7 +103,7 @@ export default function JsonFormatter() {
                                     <AlertCircle size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">Invalid JSON</p>
+                                    <p className="text-red-400 font-bold uppercase tracking-widest text-[10px] mb-1">{t('tools.json-fmt.labels.invalid')}</p>
                                     <p className="text-slate-400 text-xs max-w-[250px]">{error}</p>
                                 </div>
                             </div>
@@ -109,7 +111,7 @@ export default function JsonFormatter() {
                             <pre className="whitespace-pre-wrap leading-relaxed">{output}</pre>
                         ) : (
                             <div className="flex items-center justify-center h-full text-slate-600 italic">
-                                Formatted output will appear here...
+                                {t('tools.json-fmt.placeholders.output')}
                             </div>
                         )}
                     </div>

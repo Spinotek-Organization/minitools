@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Hash, Copy, CheckCircle2 } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function HashGenerator() {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [hashes, setHashes] = useState({ sha1: '', sha256: '', sha512: '' });
     const [copied, setCopied] = useState(null);
@@ -46,8 +48,8 @@ export default function HashGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>MD5/SHA256 Hasher | MiniTools by Spinotek</title>
-                <meta name="description" content="Generate secure cryptographic hashes for your data." />
+                <title>{t('tools.hash-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.hash-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -56,18 +58,18 @@ export default function HashGenerator() {
                         <Hash size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">MD5/SHA256 Hasher</h1>
-                        <p className="text-slate-500 text-sm">Generate secure cryptographic hashes for your data.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.hash-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.hash-gen.subtitle')}</p>
                     </div>
                 </div>
             </div>
 
             <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm mb-8">
-                <label className="block text-sm font-bold text-slate-700 mb-2">Input Text</label>
+                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.hash-gen.inputLabel')}</label>
                 <textarea 
                     value={input}
                     onChange={handleInput}
-                    placeholder="Type to generate hashes..."
+                    placeholder={t('tools.hash-gen.placeholder')}
                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 mb-6"
                 />
 

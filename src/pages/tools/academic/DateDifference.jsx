@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Calendar, Clock, Briefcase, ArrowRight } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function DateDifference() {
+    const { t } = useTranslation();
     const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
     const [endDate, setEndDate] = useState(new Date(Date.now() + 86400000 * 7).toISOString().split('T')[0]); // +7 days
     const [includeEnd, setIncludeEnd] = useState(false);
@@ -79,8 +81,8 @@ export default function DateDifference() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Date Difference Calc | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate the exact number of days between two dates." />
+                <title>{t('tools.date-diff.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.date-diff.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -89,8 +91,8 @@ export default function DateDifference() {
                         <Calendar size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Date Difference Calc</h1>
-                        <p className="text-slate-500 text-sm">Calculate the exact number of days between two dates.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.date-diff.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.date-diff.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +105,7 @@ export default function DateDifference() {
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">Start Date</label>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.date-diff.form.startDate')}</label>
                                 <input 
                                     type="date" 
                                     value={startDate} 
@@ -117,7 +119,7 @@ export default function DateDifference() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">End Date</label>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.date-diff.form.endDate')}</label>
                                 <input 
                                     type="date" 
                                     value={endDate} 
@@ -131,7 +133,7 @@ export default function DateDifference() {
                                     <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-colors ${includeEnd ? 'bg-pink-600 border-pink-600 text-white' : 'border-slate-300 group-hover:border-pink-400'}`}>
                                         {includeEnd && <ArrowRight size={14} className="rotate-45" />}
                                     </div>
-                                    <span className="text-sm font-medium text-slate-600">Include End Date (+1 day)</span>
+                                    <span className="text-sm font-medium text-slate-600">{t('tools.date-diff.form.includeEnd')}</span>
                                     <input type="checkbox" className="hidden" checked={includeEnd} onChange={e => setIncludeEnd(e.target.checked)} />
                                 </label>
                             </div>
@@ -148,12 +150,12 @@ export default function DateDifference() {
                             {/* Primary Result */}
                             <div className="sm:col-span-2 bg-pink-600 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden">
                                 <div className="relative z-10">
-                                    <div className="text-pink-200 text-sm font-bold uppercase tracking-wider mb-2">Total Duration</div>
+                                    <div className="text-pink-200 text-sm font-bold uppercase tracking-wider mb-2">{t('tools.date-diff.results.totalDuration')}</div>
                                     <div className="text-5xl md:text-6xl font-black mb-4">
-                                        {result.totalDays} <span className="text-2xl md:text-3xl font-bold opacity-60">days</span>
+                                        {result.totalDays} <span className="text-2xl md:text-3xl font-bold opacity-60">{t('tools.date-diff.results.days')}</span>
                                     </div>
                                     <div className="bg-white/20 inline-block px-4 py-2 rounded-lg font-medium">
-                                        Or {result.weeks} weeks and {result.remainingDays} days
+                                        {t('tools.date-diff.results.summary', { weeks: result.weeks, days: result.remainingDays })}
                                     </div>
                                 </div>
                                 <Calendar className="absolute -right-8 -bottom-8 w-48 h-48 opacity-10 rotate-12" />
@@ -163,23 +165,23 @@ export default function DateDifference() {
                             <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                                 <h3 className="font-bold text-slate-700 mb-4 flex items-center gap-2">
                                     <Clock size={18} className="text-pink-500" />
-                                    Detailed Breakdown
+                                    {t('tools.date-diff.results.breakdown')}
                                 </h3>
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center pb-2 border-b border-slate-50">
-                                        <span className="text-slate-500">Years</span>
+                                        <span className="text-slate-500">{t('tools.date-diff.results.years')}</span>
                                         <span className="font-bold text-lg">{result.years}</span>
                                     </div>
                                     <div className="flex justify-between items-center pb-2 border-b border-slate-50">
-                                        <span className="text-slate-500">Months</span>
+                                        <span className="text-slate-500">{t('tools.date-diff.results.months')}</span>
                                         <span className="font-bold text-lg">{result.months}</span>
                                     </div>
                                     <div className="flex justify-between items-center pb-2 border-b border-slate-50">
-                                        <span className="text-slate-500">Days</span>
+                                        <span className="text-slate-500 capitalize">{t('tools.date-diff.results.days')}</span>
                                         <span className="font-bold text-lg">{result.daysBreakdown}</span>
                                     </div>
                                     <div className="pt-2 text-xs text-slate-400 text-center">
-                                        {result.years} years, {result.months} months, {result.daysBreakdown} days
+                                        {t('tools.date-diff.results.fullBreakdown', { years: result.years, months: result.months, days: result.daysBreakdown })}
                                     </div>
                                 </div>
                             </div>

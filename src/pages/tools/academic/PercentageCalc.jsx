@@ -3,19 +3,21 @@ import { Helmet } from 'react-helmet-async';
 import { Percent, ArrowRight, Calculator, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
-
-const MODES = [
-    { id: 'what_is', label: 'What is X% of Y?' },
-    { id: 'is_what', label: 'X is what % of Y?' },
-    { id: 'change', label: 'Percentage Change' }
-];
+import { useTranslation } from 'react-i18next';
 
 export default function PercentageCalc() {
+    const { t } = useTranslation();
     const [mode, setMode] = useState('what_is');
     const [val1, setVal1] = useState('');
     const [val2, setVal2] = useState('');
     const [result, setResult] = useState(null);
     const [explanation, setExplanation] = useState('');
+
+    const MODES = [
+        { id: 'what_is', label: t('tools.percentage-calc.modes.what_is') },
+        { id: 'is_what', label: t('tools.percentage-calc.modes.is_what') },
+        { id: 'change', label: t('tools.percentage-calc.modes.change') }
+    ];
 
     useEffect(() => {
         const v1 = parseFloat(val1);
@@ -33,35 +35,37 @@ export default function PercentageCalc() {
         if (mode === 'what_is') {
             // What is X% of Y?
             res = (v1 / 100) * v2;
-            expl = `${v1}% of ${v2} = (${v1} / 100) × ${v2}`;
+            expl = t('tools.percentage-calc.explanations.what_is', { v1, v2 });
         } else if (mode === 'is_what') {
             // X is what % of Y?
             res = (v1 / v2) * 100;
-            expl = `${v1} is what % of ${v2}? = (${v1} / ${v2}) × 100`;
+            expl = t('tools.percentage-calc.explanations.is_what', { v1, v2 });
         } else if (mode === 'change') {
             // % Change from X to Y
             // ((V2 - V1) / V1) * 100
             if (v1 === 0) {
                  setResult(null); 
-                 setExplanation('Cannot calculate change from zero');
+                 setExplanation(t('tools.percentage-calc.errors.zeroChange'));
                  return;
             }
             res = ((v2 - v1) / v1) * 100;
-            const direction = res > 0 ? 'Increase' : res < 0 ? 'Decrease' : 'No Change';
-            expl = `${direction} from ${v1} to ${v2} = ((${v2} - ${v1}) / ${v1}) × 100`;
+            const directionKey = res > 0 ? 'increase' : res < 0 ? 'decrease' : 'noChange';
+            const direction = t(`tools.percentage-calc.directions.${directionKey}`);
+            
+            expl = t('tools.percentage-calc.explanations.change', { direction, v1, v2 });
         }
 
         // Round to 2 decimals if needed
         setResult(Number.isInteger(res) ? res : res.toFixed(2));
         setExplanation(expl);
 
-    }, [val1, val2, mode]);
+    }, [val1, val2, mode, t]);
 
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Percentage Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Quickly calculate increases, decreases, and percentages." />
+                <title>{t('tools.percentage-calc.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.percentage-calc.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -70,8 +74,8 @@ export default function PercentageCalc() {
                         <Percent size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Percentage Calculator</h1>
-                        <p className="text-slate-500 text-sm">Quickly calculate increases, decreases, and percentages.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.percentage-calc.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.percentage-calc.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -99,30 +103,30 @@ export default function PercentageCalc() {
                         
                         {mode === 'what_is' && (
                             <>
-                                <span>What is</span>
-                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="X" />
-                                <span>% of</span>
-                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-32 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="Y" />
+                                <span>{t('tools.percentage-calc.text.what_is')}</span>
+                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.x')} />
+                                <span>{t('tools.percentage-calc.text.of')}</span>
+                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-32 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.y')} />
                                 <span>?</span>
                             </>
                         )}
 
                         {mode === 'is_what' && (
                             <>
-                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="X" />
-                                <span>is what % of</span>
-                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-32 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="Y" />
+                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.x')} />
+                                <span>{t('tools.percentage-calc.text.is_what')}</span>
+                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-32 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.y')} />
                                 <span>?</span>
                             </>
                         )}
 
                         {mode === 'change' && (
                             <>
-                                <span>From</span>
-                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="Start" />
-                                <span>to</span>
-                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder="End" />
-                                <span>is a...</span>
+                                <span>{t('tools.percentage-calc.text.from')}</span>
+                                <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.start')} />
+                                <span>{t('tools.percentage-calc.text.to')}</span>
+                                <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="w-24 text-center px-4 py-2 border-2 border-emerald-100 rounded-xl focus:border-emerald-500 outline-none font-bold text-emerald-900" placeholder={t('tools.percentage-calc.inputs.end')} />
+                                <span>{t('tools.percentage-calc.text.is_a')}</span>
                             </>
                         )}
                         
@@ -132,7 +136,7 @@ export default function PercentageCalc() {
                 {/* Results Sidebar */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className={`rounded-3xl p-8 text-center transition-all ${result !== null ? 'bg-emerald-600 text-white shadow-xl scale-105' : 'bg-slate-50 text-slate-400 border border-slate-100'}`}>
-                        <div className="text-sm uppercase font-bold tracking-widest opacity-80 mb-2">Result</div>
+                        <div className="text-sm uppercase font-bold tracking-widest opacity-80 mb-2">{t('tools.percentage-calc.result')}</div>
                         <div className="text-5xl font-black mb-2">
                              {result !== null ? result + (mode !== 'what_is' ? '%' : '') : '-'}
                         </div>
@@ -142,7 +146,7 @@ export default function PercentageCalc() {
                          <div className="bg-emerald-50 border border-emerald-100 rounded-3xl p-6 text-emerald-900 text-sm">
                             <h4 className="font-bold mb-2 flex items-center gap-2">
                                 <Calculator size={16} />
-                                Explanation
+                                {t('tools.percentage-calc.explanation')}
                             </h4>
                             <p className="font-mono bg-white/50 p-3 rounded-lg border border-emerald-100/50 break-all">
                                 {explanation}

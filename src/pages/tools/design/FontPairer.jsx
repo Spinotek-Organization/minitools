@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Type, Check, Copy, RefreshCw, Eye } from 'lucide-react';
+import { Type, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 const GOOGLE_FONTS_API = "https://fonts.googleapis.com/css2?display=swap";
 
 const PAIRINGS = {
-    modern: { h: 'Montserrat', b: 'Open Sans', label: 'Clean & Modern' },
-    classic: { h: 'Playfair Display', b: 'Lato', label: 'Classic Elegance' },
-    contrast: { h: 'Oswald', b: 'Merriweather', label: 'High Contrast' },
-    tech: { h: 'Space Mono', b: 'Roboto', label: 'Tech & Code' },
-    fun: { h: 'Pacifico', b: 'Quicksand', label: 'Playful & Fun' },
-    minimal: { h: 'Raleway', b: 'Inter', label: 'Minimalist' },
-    editorial: { h: 'Lora', b: 'Roboto', label: 'Editorial' },
-    corporate: { h: 'Titillium Web', b: 'Open Sans', label: 'Corporate Trust' },
-    geometric: { h: 'Josefin Sans', b: 'Lato', label: 'Geometric' },
-    luxury: { h: 'Cinzel', b: 'Fauna One', label: 'Luxury Brand' },
-    friendly: { h: 'Nunito', b: 'Rubik', label: 'Friendly App' },
-    retro: { h: 'Abril Fatface', b: 'Poppins', label: 'Retro Poster' },
-    display: { h: 'Bebas Neue', b: 'Montserrat', label: 'Bold Display' },
-    handwritten: { h: 'Dancing Script', b: 'Josefin Sans', label: 'Handwritten' }
+    modern: { h: 'Montserrat', b: 'Open Sans', labelKey: 'modern' },
+    classic: { h: 'Playfair Display', b: 'Lato', labelKey: 'classic' },
+    contrast: { h: 'Oswald', b: 'Merriweather', labelKey: 'contrast' },
+    tech: { h: 'Space Mono', b: 'Roboto', labelKey: 'tech' },
+    fun: { h: 'Pacifico', b: 'Quicksand', labelKey: 'fun' },
+    minimal: { h: 'Raleway', b: 'Inter', labelKey: 'minimal' },
+    editorial: { h: 'Lora', b: 'Roboto', labelKey: 'editorial' },
+    corporate: { h: 'Titillium Web', b: 'Open Sans', labelKey: 'corporate' },
+    geometric: { h: 'Josefin Sans', b: 'Lato', labelKey: 'geometric' },
+    luxury: { h: 'Cinzel', b: 'Fauna One', labelKey: 'luxury' },
+    friendly: { h: 'Nunito', b: 'Rubik', labelKey: 'friendly' },
+    retro: { h: 'Abril Fatface', b: 'Poppins', labelKey: 'retro' },
+    display: { h: 'Bebas Neue', b: 'Montserrat', labelKey: 'display' },
+    handwritten: { h: 'Dancing Script', b: 'Josefin Sans', labelKey: 'handwritten' }
 };
 
 const FONTS = [
@@ -36,6 +37,7 @@ const FONTS = [
 ].sort();
 
 export default function FontPairer() {
+    const { t } = useTranslation();
     const [headingFont, setHeadingFont] = useState('Montserrat');
     const [bodyFont, setBodyFont] = useState('Open Sans');
     const [theme, setTheme] = useState('modern');
@@ -69,8 +71,8 @@ export default function FontPairer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Font Pairing Suggestions | MiniTools by Spinotek</title>
-                <meta name="description" content="Find the perfect Google Font combinations for your next project." />
+                <title>{t('tools.font-pairer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.font-pairer.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -79,8 +81,8 @@ export default function FontPairer() {
                         <Type size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Font Pairer</h1>
-                        <p className="text-slate-500">Curated Google Font combinations.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.font-pairer.title')}</h1>
+                        <p className="text-slate-500">{t('tools.font-pairer.subtitle')}</p>
                     </div>
                 </div>
                 <button 
@@ -88,7 +90,7 @@ export default function FontPairer() {
                     className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-colors flex items-center gap-2 shadow-lg shadow-slate-200"
                 >
                     {copied ? <Check size={20} /> : <CodeIcon size={20} />}
-                    {copied ? 'Copied Code' : 'Get CSS Code'}
+                    {copied ? t('tools.font-pairer.actions.copied') : t('tools.font-pairer.actions.getCss')}
                 </button>
             </div>
 
@@ -96,7 +98,7 @@ export default function FontPairer() {
                 {/* Sidebar Controls */}
                 <div className="lg:col-span-4 space-y-8">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-6">
-                        <h3 className="font-bold text-slate-700">Preset Themes</h3>
+                        <h3 className="font-bold text-slate-700">{t('tools.font-pairer.headings.presets')}</h3>
                         <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
                             {Object.keys(PAIRINGS).map(key => (
                                 <button
@@ -108,7 +110,7 @@ export default function FontPairer() {
                                             : 'border-slate-200 hover:border-orange-300 hover:bg-orange-50/50'
                                     }`}
                                 >
-                                    <span className="font-medium">{PAIRINGS[key].label}</span>
+                                    <span className="font-medium">{t(`tools.font-pairer.themes.${PAIRINGS[key].labelKey}`)}</span>
                                     <div className="text-xs text-slate-400 group-hover:text-orange-500">
                                         {PAIRINGS[key].h} + {PAIRINGS[key].b}
                                     </div>
@@ -118,9 +120,9 @@ export default function FontPairer() {
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-6">
-                        <h3 className="font-bold text-slate-700">Custom Mix</h3>
+                        <h3 className="font-bold text-slate-700">{t('tools.font-pairer.headings.custom')}</h3>
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">Heading Font</label>
+                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">{t('tools.font-pairer.labels.headingFont')}</label>
                             <select 
                                 value={headingFont}
                                 onChange={(e) => {
@@ -133,7 +135,7 @@ export default function FontPairer() {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">Body Font</label>
+                            <label className="block text-xs font-bold text-slate-500 mb-2 uppercase">{t('tools.font-pairer.labels.bodyFont')}</label>
                             <select 
                                 value={bodyFont}
                                 onChange={(e) => {
@@ -156,7 +158,7 @@ export default function FontPairer() {
                             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                             <div className="w-3 h-3 rounded-full bg-green-400"></div>
                             <div className="ml-4 bg-white px-3 py-1 rounded text-xs text-slate-400 border border-slate-200 flex-1 text-center">
-                                Preview
+                                {t('tools.font-pairer.labels.preview')}
                             </div>
                         </div>
                         <div className="p-12 flex-1 flex flex-col justify-center gap-8">
@@ -164,32 +166,32 @@ export default function FontPairer() {
                                 className="text-5xl md:text-6xl font-black text-slate-900 leading-tight"
                                 style={{ fontFamily: headingFont }}
                             >
-                                The Quick Brown Fox Jumps Over The Lazy Dog.
+                                {t('tools.font-pairer.previewText.heading')}
                             </h1>
                             <h2 
                                 className="text-2xl md:text-3xl font-bold text-slate-700"
                                 style={{ fontFamily: headingFont }}
                             >
-                                A harmonious pairing of typography.
+                                {t('tools.font-pairer.previewText.subheading')}
                             </h2>
                             <p 
                                 className="text-lg text-slate-600 leading-relaxed max-w-2xl"
                                 style={{ fontFamily: bodyFont }}
                             >
-                                Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing, and adjusting the space between pairs of letters.
+                                {t('tools.font-pairer.previewText.body')}
                             </p>
                             <div className="flex gap-4 pt-4">
                                 <button 
                                     className="px-8 py-3 bg-slate-900 text-white rounded-full font-bold transition-transform active:scale-95"
                                     style={{ fontFamily: bodyFont }}
                                 >
-                                    Primary Button
+                                    {t('tools.font-pairer.previewText.primary')}
                                 </button>
                                 <button 
                                     className="px-8 py-3 border-2 border-slate-200 text-slate-700 rounded-full font-bold transition-transform active:scale-95 hover:border-slate-900"
                                     style={{ fontFamily: bodyFont }}
                                 >
-                                    Secondary
+                                    {t('tools.font-pairer.previewText.secondary')}
                                 </button>
                             </div>
                         </div>

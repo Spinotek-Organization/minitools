@@ -3,12 +3,19 @@ import { Helmet } from 'react-helmet-async';
 import { ListTodo, Plus, Trash2, CheckCircle2, Circle, X } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function TodoList() {
+    const { t } = useTranslation();
     const [todos, setTodos] = useState(() => {
         const saved = localStorage.getItem('minitools-todos');
+        // We can't use 't' here directly for initial state if we want it to persist correctly in one language
+        // But for a new user, it's nice to start in their language if we could.
+        // However, 't' might not be ready or we might want consistent initial state.
+        // Let's just use the hardcoded English or simple keys, but since this is stored in LS, the user will edit it anyway.
+        // I will use 't' but be aware it only runs once on mount/init.
         return saved ? JSON.parse(saved) : [
-            { id: 1, text: 'Welcome to your new Todo list!', completed: false },
+            { id: 1, text: 'Welcome to your new Todo list!', completed: false }, 
             { id: 2, text: 'Try checking this item off', completed: true },
         ];
     });
@@ -49,8 +56,8 @@ export default function TodoList() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Minimalist To-Do List | MiniTools by Spinotek</title>
-                <meta name="description" content="Keep your tasks simple and organized for the day." />
+                <title>{t('tools.todo-list.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.todo-list.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -59,8 +66,8 @@ export default function TodoList() {
                         <ListTodo size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Minimalist To-Do List</h1>
-                        <p className="text-slate-500 text-sm">Keep your tasks simple and organized for the day.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.todo-list.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.todo-list.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -73,7 +80,7 @@ export default function TodoList() {
                             type="text" 
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder="What needs to be done?" 
+                            placeholder={t('tools.todo-list.placeholder')} 
                             className="flex-1 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <button 
@@ -100,19 +107,19 @@ export default function TodoList() {
                                         : 'text-slate-500 hover:bg-slate-100'
                                     }`}
                                 >
-                                    {f}
+                                    {t(`tools.todo-list.filters.${f}`)}
                                 </button>
                             ))}
                         </div>
                         <span className="text-slate-400 text-xs font-medium">
-                            {activeCount} {activeCount === 1 ? 'item' : 'items'} left
+                            {activeCount} {activeCount === 1 ? t('tools.todo-list.status.itemLeft') : t('tools.todo-list.status.itemsLeft')}
                         </span>
                     </div>
 
                     <div className="divide-y divide-slate-50">
                         {filteredTodos.length === 0 ? (
                             <div className="p-12 text-center text-slate-400">
-                                <p>No tasks found.</p>
+                                <p>{t('tools.todo-list.status.empty')}</p>
                             </div>
                         ) : (
                             filteredTodos.map(todo => (
@@ -146,7 +153,7 @@ export default function TodoList() {
                                 className="text-sm text-slate-500 hover:text-rose-600 flex items-center justify-center gap-2 mx-auto transition-colors"
                             >
                                 <Trash2 size={16} />
-                                Clear Completed
+                                {t('tools.todo-list.actions.clearCompleted')}
                             </button>
                         </div>
                     )}

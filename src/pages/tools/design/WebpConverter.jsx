@@ -4,8 +4,10 @@ import { FileOutput, Upload, Download, Check, X, FileImage } from 'lucide-react'
 import JSZip from 'jszip';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function WebpConverter() {
+    const { t } = useTranslation();
     const [files, setFiles] = useState([]);
     const [quality, setQuality] = useState(0.8);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -100,8 +102,8 @@ export default function WebpConverter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Image to WebP Converter | MiniTools by Spinotek</title>
-                <meta name="description" content="Convert JPG and PNG images to high-performance WebP format instantly in your browser." />
+                <title>{t('tools.webp-conv.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.webp-conv.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -110,8 +112,8 @@ export default function WebpConverter() {
                         <FileOutput size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Image-to-WebP Converter</h1>
-                        <p className="text-slate-500 text-sm">Convert your images to high-performance WebP format.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.webp-conv.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('tools.webp-conv.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -128,14 +130,14 @@ export default function WebpConverter() {
                                 className="absolute inset-0 opacity-0 cursor-pointer"
                             />
                             <Upload className="mx-auto text-sky-500 mb-4" size={48} />
-                            <p className="font-bold text-slate-700">Click or Drag Files Here</p>
-                            <p className="text-sm text-slate-400 mt-2">Supports JPG, PNG</p>
+                            <p className="font-bold text-slate-700">{t('tools.webp-conv.actions.upload')}</p>
+                            <p className="text-sm text-slate-400 mt-2">{t('tools.webp-conv.labels.supports')}</p>
                         </div>
 
                         {files.length > 0 && (
                             <div>
                                 <div className="flex justify-between text-sm font-bold text-slate-700 mb-2">
-                                    <span>Quality: {Math.round(quality * 100)}%</span>
+                                    <span>{t('tools.webp-conv.labels.quality')}: {Math.round(quality * 100)}%</span>
                                 </div>
                                 <input 
                                     type="range" 
@@ -158,7 +160,7 @@ export default function WebpConverter() {
                                     : 'bg-slate-100 text-slate-400 cursor-not-allowed'
                             }`}
                         >
-                            {isProcessing ? 'Converting...' : 'Convert to WebP'}
+                            {isProcessing ? t('tools.webp-conv.actions.converting') : t('tools.webp-conv.actions.convert')}
                         </button>
                     </div>
 
@@ -169,12 +171,12 @@ export default function WebpConverter() {
                      {processedFiles.length > 0 ? (
                         <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden">
                             <div className="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
-                                <h3 className="font-bold text-slate-700">Results ({processedFiles.length})</h3>
+                                <h3 className="font-bold text-slate-700">{t('tools.webp-conv.labels.results')} ({processedFiles.length})</h3>
                                 <button 
                                     onClick={downloadAll}
                                     className="text-sm font-bold text-sky-600 hover:text-sky-700 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm transition-colors"
                                 >
-                                    <Download size={14} /> Download All (ZIP)
+                                    <Download size={14} /> {t('tools.webp-conv.actions.downloadAll')}
                                 </button>
                             </div>
                             <div className="divide-y divide-slate-100 max-h-[500px] overflow-y-auto">
@@ -186,7 +188,7 @@ export default function WebpConverter() {
                                         <div className="flex-1 min-w-0">
                                             <p className="font-bold text-slate-700 truncate">{item.original.name}</p>
                                             {item.error ? (
-                                                <span className="text-red-500 text-xs font-bold">Error Processing</span>
+                                                <span className="text-red-500 text-xs font-bold">{t('tools.webp-conv.labels.error')}</span>
                                             ) : (
                                                 <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
                                                     <span className="line-through">{(item.original.size / 1024).toFixed(1)} KB</span>
@@ -211,7 +213,7 @@ export default function WebpConverter() {
                      ) : (
                         <div className="h-full flex flex-col items-center justify-center text-slate-300 min-h-[300px] border-2 border-dashed border-slate-100 rounded-3xl">
                             <FileImage size={48} className="mb-4 opacity-50" />
-                            <p>Converted files will appear here</p>
+                            <p>{t('tools.webp-conv.labels.placeholder')}</p>
                         </div>
                      )}
                 </div>

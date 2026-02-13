@@ -512,10 +512,6 @@
         "title": "Generator Ide CTA",
         "desc": "Ide call-to-action menarik untuk konversi yang lebih tinggi."
     },
-    "qr-gen": {
-        "title": "Generator Kode QR",
-        "desc": "Buat kode QR yang dapat diskalakan untuk tautan, teks, atau vCard."
-    },
     "biz-card-mockup": {
         "title": "Mockup Kartu Nama",
         "desc": "Visualisasikan desain kartu nama Anda dalam mockup realistis."
@@ -1042,47 +1038,431 @@
     },
     "password-gen": {
         "title": "Generator Kata Sandi Kuat",
-        "desc": "Buat kata sandi acak yang aman untuk melindungi akun Anda."
+        "desc": "Buat kata sandi acak yang aman menggunakan keacakan kriptografis.",
+        "length": "Panjang Kata Sandi",
+        "options": {
+            "uppercase": "Huruf Besar (A-Z)",
+            "lowercase": "Huruf Kecil (a-z)",
+            "numbers": "Angka (0-9)",
+            "symbols": "Simbol (!@#)",
+            "ambiguous": "Hindari Karakter Ambigu",
+            "ambiguousHint": "(contoh: i, l, 1, L, o, 0, O)"
+        },
+        "history": {
+            "title": "Riwayat (5 Terakhir)",
+            "empty": "Kata sandi yang dibuat akan muncul di sini.",
+            "clickToCopy": "Klik untuk menyalin"
+        },
+        "actions": {
+            "regenerate": "Regenerasikan",
+            "copy": "Salin Kata Sandi",
+            "copied": "Disalin!"
+        }
     },
     "password-strength": {
         "title": "Pemeriksa Kekuatan Kata Sandi",
-        "desc": "Uji seberapa aman kata sandi Anda terhadap serangan brute-force."
+        "desc": "Analisa ketahanan kata sandi Anda terhadap upaya peretasan.",
+        "inputLabel": "Kata Sandi Saya",
+        "placeholder": "Ketik kata sandi...",
+        "strength": "Kekuatan",
+        "scores": {
+            "0": "Sangat Lemah",
+            "1": "Lemah",
+            "2": "Lumayan",
+            "3": "Bagus",
+            "4": "Kuat",
+            "empty": "Masukkan Kata Sandi"
+        },
+        "composition": {
+            "title": "Cek Komposisi",
+            "length": "Minimal 12 karakter",
+            "uppercase": "Mengandung huruf besar",
+            "lowercase": "Mengandung huruf kecil",
+            "number": "Mengandung angka",
+            "symbol": "Mengandung simbol"
+        },
+        "analysis": {
+            "crackTime": "Waktu untuk Meretas",
+            "entropy": "{{bits}} Bit Entropi",
+            "online": "Serangan Online",
+            "onlineScenario": "Skenario: Penyerang menebak melalui formulir login (dibatasi).",
+            "offline": "Serangan Offline",
+            "offlineScenario": "Skenario: Penyerang memiliki hash database dan farm GPU.",
+            "weakness": "Analisa Kelemahan",
+            "critical": "Kelemahan Kritis",
+            "suggestions": "Saran Perbaikan:",
+            "excellent": "Kata Sandi Sempurna",
+            "excellentDesc": "Tidak ditemukan pola umum. Kata sandi ini kuat secara kriptografis.",
+            "generic": "Pertimbangkan menambahkan lebih banyak kata atau karakter acak untuk meningkatkan entropi."
+        },
+        "empty": {
+            "title": "Masukkan kata sandi untuk melihat analisanya.",
+            "subtitle": "Semua pemeriksaan dilakukan secara lokal di browser Anda. Tidak ada data yang dikirim ke mana pun."
+        }
     },
     "fake-identity": {
         "title": "Generator Identitas Palsu",
-        "desc": "Hasilkan profil acak untuk pengujian perangkat lunak dan privasi."
+        "desc": "Hasilkan profil acak untuk pengujian perangkat lunak dan privasi.",
+        "config": "Konfigurasi",
+        "gender": {
+            "label": "Jenis Kelamin",
+            "random": "Acak",
+            "male": "Pria",
+            "female": "Wanita"
+        },
+        "generate": "Buat Identitas Baru",
+        "generating": "Sedang Membuat...",
+        "usage": {
+            "title": "Catatan Penggunaan",
+            "text": "Identitas ini sepenuhnya fiktif dan dibuat secara algoritmik. Jangan gunakan untuk kegiatan ilegal."
+        },
+        "copy": "Salin sebagai JSON",
+        "personal": {
+            "title": "Detail Pribadi",
+            "dob": "Tanggal Lahir",
+            "gender": "Jenis Kelamin",
+            "email": "Alamat Email",
+            "phone": "Nomor Telepon"
+        },
+        "location": {
+            "title": "Lokasi"
+        },
+        "online": {
+            "title": "Profil Online",
+            "username": "Username",
+            "uuid": "UUID"
+        }
     },
     "temp-email": {
-        "title": "Tautan Email Sementara",
-        "desc": "Tautan cepat ke layanan email sementara teratas untuk privasi."
+        "title": "Penghubung Email Sekali Pakai",
+        "desc": "Tautan cepat ke layanan email sementara teratas untuk privasi.",
+        "providers": {
+            "temp-mail": {
+                "desc": "Layanan email sementara paling populer. Sederhana dan cepat.",
+                "lifespan": "Sampai browser ditutup (atau hapus manual)"
+            },
+            "10-min": {
+                "desc": "Email sekali pakai klasik. Memberi Anda 10 menit, dapat diperpanjang.",
+                "lifespan": "10 Menit (Dapat Diperpanjang)"
+            },
+            "guerrilla": {
+                "desc": "Alamat kaya fitur dan dapat disesuaikan. Tanpa pendaftaran.",
+                "lifespan": "Email disimpan selama 1 jam"
+            },
+            "emailondeck": {
+                "desc": "Aman dan pribadi. Bagus untuk filter spam yang ketat.",
+                "lifespan": "Bervariasi (biasanya jam)"
+            },
+            "maildrop": {
+                "desc": "Sistem kotak masuk terbuka. Bagus untuk pendaftaran cepat.",
+                "lifespan": "File < 100k, dibersihkan jika tidak aktif"
+            },
+            "burner": {
+                "desc": "Teruskan email ke kotak masuk asli Anda secara pribadi.",
+                "lifespan": "Membutuhkan Ekstensi/Pendaftaran"
+            }
+        },
+        "warnings": {
+            "title": "Peringatan Penting",
+            "list": [
+                "Jangan gunakan email ini untuk perbankan, layanan pemerintah, atau akun sensitif.",
+                "Siapapun yang menebak alamat (untuk kotak masuk terbuka) dapat membaca email Anda.",
+                "Setelah kedaluwarsa, Anda tidak dapat memulihkan email atau alamat."
+            ]
+        },
+        "info": {
+            "title": "Mengapa menggunakan email sekali pakai?",
+            "p1": "Saat Anda mendaftar layanan hanya untuk mencobanya atau mendapatkan gratisan, mereka sering menjual email Anda atau mengirim spam.",
+            "p2": "Menggunakan alamat sekali pakai menjaga kotak masuk asli Anda tetap bersih dan melindungi identitas Anda."
+        }
     },
     "secret-note": {
         "title": "Catatan Rahasia",
-        "desc": "Buat catatan terenkripsi yang hancur sendiri setelah dibaca."
+        "desc": "Buat catatan terenkripsi yang hancur sendiri setelah dibaca.",
+        "modes": {
+            "encrypt": "Mode Enkripsi",
+            "decrypt": "Mode Dekripsi"
+        },
+        "form": {
+            "messageLabel": "Pesan untuk Dienkripsi",
+            "encryptedLabel": "Teks Terenkripsi",
+            "messagePlaceholder": "Ketik pesan rahasia Anda di sini...",
+            "encryptedPlaceholder": "Tempel string teks terenkripsi di sini...",
+            "passwordLabel": "Kata Sandi / Kunci",
+            "passwordPlaceholder": "Masukkan kata sandi yang kuat",
+            "encryptBtn": "Enkripsi Pesan",
+            "decryptBtn": "Dekripsi Pesan"
+        },
+        "results": {
+            "encryptedLabel": "Hasil Terenkripsi (Bagikan ini)",
+            "decryptedLabel": "Pesan Terdekripsi",
+            "copy": "Salin ke Papan Klip"
+        },
+        "messages": {
+            "errorInput": "Harap masukkan pesan dan kata sandi.",
+            "errorDecryptInput": "Harap masukkan teks terenkripsi dan kata sandi.",
+            "successEncrypt": "Pesan berhasil dienkripsi!",
+            "errorEncrypt": "Enkripsi gagal. Silakan coba lagi.",
+            "successDecrypt": "Pesan berhasil didekripsi!",
+            "errorDecrypt": "Dekripsi gagal. Kata sandi salah atau data rusak.",
+            "copySuccess": "Disalin ke papan klip!"
+        }
     },
     "ip-checker": {
         "title": "Pemeriksa Alamat IP",
-        "desc": "Temukan alamat IP publik dan perkiraan lokasi Anda."
+        "desc": "Temukan alamat IP publik dan perkiraan lokasi Anda.",
+        "refresh": "Segarkan Data",
+        "checking": "Memeriksa...",
+        "unknown": "Tidak Diketahui",
+        "errors": {
+            "failed": "Pemeriksaan Gagal",
+            "tryAgain": "Coba Lagi",
+            "fetchIp": "Gagal mengambil alamat IP",
+            "general": "Tidak dapat menentukan informasi IP."
+        },
+        "results": {
+            "ipv4": "Alamat IPv4 Anda",
+            "visible": "Terlihat Secara Publik",
+            "isp": "Penyedia Internet (ISP)",
+            "location": "Lokasi",
+            "timezone": "Zona Waktu",
+            "coordinates": "Koordinat",
+            "map": "Lihat Lokasi Tepat di Google Maps"
+        },
+        "accuracy": {
+            "title": "Lokasi Tidak Akurat?",
+            "text": "Lokasi berbasis IP adalah perkiraan. Seringkali menunjuk ke pusat data Penyedia Internet (ISP) Anda, yang bisa berada di kota yang berbeda atau jauh dari rumah Anda yang sebenarnya.",
+            "note": "Ini normal untuk semua alat IP."
+        }
     },
     "browser-fingerprint": {
         "title": "Sidik Jari Browser",
-        "desc": "Lihat informasi apa yang diungkapkan browser Anda ke situs web."
+        "desc": "Lihat informasi apa yang diungkapkan browser Anda ke situs web.",
+        "unknown": "Tidak Diketahui",
+        "canvas": {
+            "title": "ID Sidik Jari Canvas Anda",
+            "desc": "ID ini dibuat dengan meminta browser Anda menggambar gambar tak terlihat. Karena setiap perangkat merender grafik sedikit berbeda (karena driver, GPU, dll.), ID ini dapat secara unik mengidentifikasi Anda di berbagai situs web bahkan tanpa cookie."
+        },
+        "hardware": {
+            "title": "Perangkat Keras & Sistem",
+            "screen": "Resolusi Layar",
+            "pixel": "Rasio Piksel",
+            "color": "Kedalaman Warna",
+            "cores": "Core CPU",
+            "memory": "Memori Perangkat",
+            "platform": "Platform"
+        },
+        "location": {
+            "title": "Lokasi & Lokalisasi",
+            "language": "Bahasa",
+            "timezone": "Zona Waktu",
+            "cookies": "Cookie Diaktifkan",
+            "yes": "Ya",
+            "no": "Tidak"
+        },
+        "ua": "String Agen Pengguna Lengkap"
     },
     "dns-lookup": {
         "title": "Pencarian DNS",
-        "desc": "Temukan catatan DNS untuk nama domain apa pun dengan cepat."
+        "desc": "Temukan catatan DNS untuk nama domain apa pun dengan cepat.",
+        "form": {
+            "domainLabel": "Domain Target",
+            "domainPlaceholder": "contoh.com",
+            "typeLabel": "Tipe Catatan",
+            "submit": "Cari Catatan",
+            "querying": "Sedang Mencari...",
+            "errorStatus": "Error DNS: Kode Status {{status}}"
+        },
+        "types": {
+            "A": "A (Alamat IPv4)",
+            "AAAA": "AAAA (Alamat IPv6)",
+            "MX": "MX (Server Email)",
+            "NS": "NS (Name Server)",
+            "TXT": "TXT (Catatan Teks)",
+            "CNAME": "CNAME (Alias)",
+            "SOA": "SOA (Otoritas Awal)"
+        },
+        "howItWorks": {
+            "title": "Cara Kerja",
+            "text": "Alat ini menanyakan Google Public DNS (8.8.8.8) secara langsung melalui HTTPS untuk mengambil catatan otoritatif domain tersebut."
+        },
+        "results": {
+            "empty": "Masukkan domain dan pilih tipe catatan untuk memulai.",
+            "failed": "Pencarian Gagal",
+            "fetchError": "Gagal mengambil catatan DNS.",
+            "title": "Hasil untuk {{domain}}",
+            "type": "TIPE: {{type}}",
+            "noRecords": "Tidak Ada Catatan Ditemukan",
+            "noRecordsDesc": "Tidak ada catatan {{type}} yang dikembalikan untuk domain ini.",
+            "nxdomain": "Error: NXDOMAIN (Domain tidak ada)"
+        }
     },
     "ssl-checker": {
         "title": "Pemeriksa Sertifikat SSL",
-        "desc": "Verifikasi validitas dan detail sertifikat SSL situs web."
+        "desc": "Verifikasi validitas dan detail sertifikat SSL situs web",
+        "headerDesc": "Analisa konfigurasi SSL Anda dan temukan masalah keamanan.",
+        "inputLabel": "Masukkan Domain untuk Dianalisa",
+        "placeholder": "contoh.com",
+        "hint": "Masukkan domain (mis. google.com) untuk mengaktifkan alat analisa di bawah ini.",
+        "alert": "Harap masukkan nama domain terlebih dahulu.",
+        "analyzeBtn": "Analisa",
+        "tools": {
+            "ssllabs": {
+                "name": "Qualys SSL Labs",
+                "desc": "Analisa konfigurasi server mendalam. Memberi Anda nilai (A+ hingga F)."
+            },
+            "digicert": {
+                "name": "DigiCert SSL Helper",
+                "desc": "Memeriksa masalah instalasi umum dan validitas rantai perantara."
+            },
+            "crtsh": {
+                "name": "crt.sh (Pencarian Log)",
+                "desc": "Cari log Transparansi Sertifikat untuk semua sertifikat yang diterbitkan untuk domain ini."
+            },
+            "whynopadlock": {
+                "name": "Why No Padlock?",
+                "desc": "Identifikasi kesalahan konten campuran (sumber daya http di halaman https)."
+            },
+            "sslshopper": {
+                "name": "SSL Shopper",
+                "desc": "Pemeriksaan visual cepat kedaluwarsa sertifikat dan dukungan server."
+            }
+        }
     },
     "port-scanner": {
         "title": "Pemindai Port",
-        "desc": "Periksa port terbuka pada IP atau domain tertentu."
+        "desc": "Periksa port terbuka pada IP atau domain tertentu.",
+        "services": {
+            "21": "FTP (Transfer File)",
+            "22": "SSH (Secure Shell)",
+            "23": "Telnet (Teks Tidak Terenkripsi)",
+            "25": "SMTP (Pengiriman Email)",
+            "53": "DNS (Sistem Nama Domain)",
+            "80": "HTTP (Server Web)",
+            "110": "POP3 (Penerimaan Email)",
+            "143": "IMAP (Penerimaan Email)",
+            "443": "HTTPS (Web Aman)",
+            "3306": "MySQL (Database)",
+            "3389": "RDP (Remote Desktop)",
+            "5432": "PostgreSQL (Database)",
+            "6379": "Redis (Data Store)",
+            "8080": "HTTP Proxy (Web Alt)",
+            "27017": "MongoDB (Database)"
+        },
+        "form": {
+            "label": "Alamat Target",
+            "placeholder": "google.com",
+            "submit": "Pindai Sekarang",
+            "scanning": "Memindai...",
+            "errorStatus": "Error: Status {{status}}"
+        },
+        "errors": {
+            "noIp": "Tidak dapat menemukan alamat IP untuk domain ini.",
+            "ipNotFound": "Tidak ada alamat IP ditemukan.",
+            "noOpenPorts": "Tidak ada port terbuka ditemukan untuk {{ip}}. Host mungkin mati atau sepenuhnya di-firewall.",
+            "fetchFailed": "Tidak dapat mengambil data port. Silakan coba lagi.",
+            "general": "Terjadi kesalahan.",
+            "failed": "Pemindaian Gagal"
+        },
+        "results": {
+            "title": "Hasil Pemindaian",
+            "found": "Ditemukan {{count}} Port Terbuka",
+            "foundDesc": "Layanan ini dapat diakses secara publik di internet.",
+            "unknownService": "Layanan Tidak Diketahui",
+            "tcp": "Protokol TCP",
+            "open": "Terbuka",
+            "noPorts": "Tidak ditemukan port terbuka umum. Ini bagus!",
+            "hostnames": "Hostname Terkait"
+        },
+        "empty": {
+            "title": "Masukkan domain atau IP (e.g. google.com) untuk memindai.",
+            "desc": "Kami akan memeriksa catatan publik untuk melihat apa yang terbuka."
+        },
+        "loading": "Memeriksa catatan publik..."
     },
-    "2fa-gen": {
+    "qr-gen": {
+        "title": "Generator Kode QR",
+        "desc": "Hasilkan kode QR untuk URL, teks, atau informasi kontak.",
+        "tabs": {
+            "url": "URL",
+            "text": "Teks",
+            "email": "Email",
+            "wifi": "WiFi",
+            "vcard": "Kontak"
+        },
+        "forms": {
+            "urlLabel": "URL Situs Web",
+            "urlPlaceholder": "https://contoh.com",
+            "textLabel": "Teks Biasa",
+            "textPlaceholder": "Masukkan teks Anda di sini...",
+            "recipient": "Penerima",
+            "recipientPlaceholder": "halo@contoh.com",
+            "subject": "Subjek",
+            "subjectPlaceholder": "Pertanyaan pertemuan",
+            "body": "Isi Pesan",
+            "bodyPlaceholder": "Konten pesan...",
+            "ssid": "Nama Jaringan (SSID)",
+            "ssidPlaceholder": "WiFiSaya",
+            "password": "Kata Sandi",
+            "passwordPlaceholder": "rahasia123",
+            "encryption": "Enkripsi",
+            "encryptions": {
+                "wpa": "WPA/WPA2",
+                "wep": "WEP",
+                "none": "Tanpa Enkripsi"
+            },
+            "fullName": "Nama Lengkap",
+            "namePlaceholder": "John Doe",
+            "phone": "Telepon",
+            "phonePlaceholder": "+628123456789",
+            "email": "Email",
+            "emailPlaceholder": "john@contoh.com"
+        },
+        "appearance": {
+            "title": "Opsi Tampilan",
+            "fgColor": "Warna Depan",
+            "bgColor": "Warna Latar",
+            "size": "Ukuran: {{size}}px",
+            "errorCorrection": "Koreksi Kesalahan",
+            "levels": {
+                "L": "Rendah (7%)",
+                "M": "Sedang (15%)",
+                "Q": "Kuartil (25%)",
+                "H": "Tinggi (30%)"
+            }
+        },
+        "preview": {
+            "title": "Pratinjau Langsung",
+            "empty": "Masukkan data untuk menghasilkan",
+            "download": "Unduh PNG"
+        }
+    },
+    "two-factor-gen": {
         "title": "Generator Kode 2FA",
-        "desc": "Hasilkan kode otentikasi dua faktor untuk akun Anda."
+        "desc": "Hasilkan kode otentikasi dua faktor untuk akun Anda.",
+        "headerDesc": "Hasilkan kode TOTP untuk akun Anda langsung di browser Anda.",
+        "form": {
+            "title": "Tambah Akun Baru",
+            "nameLabel": "Nama Akun",
+            "namePlaceholder": "contoh: Google, GitHub",
+            "secretLabel": "Kunci Rahasia",
+            "secretPlaceholder": "JBSWY3DPEHPK3PXP",
+            "base32Note": "Rahasia Base32 disediakan oleh layanan.",
+            "submit": "Tambah Akun",
+            "privacy": "<strong>Catatan Privasi:</strong> Kunci rahasia Anda hanya disimpan di penyimpanan lokal browser Anda dan tidak pernah dikirim ke server mana pun."
+        },
+        "errors": {
+            "fillAll": "Harap isi semua bidang",
+            "invalidSecret": "Kunci Rahasia Tidak Valid. Kunci Base32 hanya berisi huruf A-Z dan angka 2-7.",
+            "invalidFormat": "Format Kunci Rahasia tidak valid."
+        },
+        "list": {
+            "emptyTitle": "Belum Ada Akun",
+            "emptyDesc": "Tambahkan akun menggunakan kunci rahasia Anda untuk mulai menghasilkan kode.",
+            "deleteConfirm": "Apakah Anda yakin ingin menghapus akun ini?",
+            "deleteTooltip": "Hapus Akun",
+            "copyTooltip": "Salin Kode"
+        }
     },
     "extension-rename": {
         "title": "Pengubah Ekstensi File",

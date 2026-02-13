@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Layers, Play, Pause, RotateCcw, SkipBack, SkipForward, ChevronRight, Code } from 'lucide-react';
+import { Layers, Play, Pause, RotateCcw, SkipBack, SkipForward, Code } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
-// --- Algorithm Logic & Pseudocode ---
+// Logic helpers (kept outside to avoid recreation, but strings will be handled inside)
+// We need to return structured info from run, or pass t, or just accept English code trace.
+// Let's keep logic outside but move descriptions inside.
 
-const ALGORITHMS = {
+const generateAlgorithms = () => ({
     bubble: {
-        name: 'Bubble Sort',
-        description: 'Repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.',
         complexity: 'O(n²)',
         code: [
             'do',
@@ -47,13 +48,11 @@ const ALGORITHMS = {
                 trace.push({ type: 'loop_end', array: [...a], group: [], line: 6 });
             } while (swapped);
 
-            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'Sorted!' });
+            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'SORTED' });
             return trace;
         }
     },
     selection: {
-        name: 'Selection Sort',
-        description: 'Repeatedly finds the minimum element from the unsorted part and puts it at the beginning.',
         complexity: 'O(n²)',
         code: [
             'for i = 0 to n-1',
@@ -89,13 +88,11 @@ const ALGORITHMS = {
                     a[min] = temp;
                 }
             }
-            trace.push({ type: 'done', array: [...a], group: [], sorted: Array.from({length: n}, (_, k) => k), line: -1, vars: 'Sorted!' });
+            trace.push({ type: 'done', array: [...a], group: [], sorted: Array.from({length: n}, (_, k) => k), line: -1, vars: 'SORTED' });
             return trace;
         }
     },
     insertion: {
-        name: 'Insertion Sort',
-        description: 'Builds the final sorted array one item at a time.',
         complexity: 'O(n²)',
         code: [
             'for i = 1 to n',
@@ -125,13 +122,11 @@ const ALGORITHMS = {
                 a[j + 1] = key;
                 trace.push({ type: 'insert', array: [...a], group: [j+1], line: 6, vars: `insert ${key} at ${j+1}` });
             }
-            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'Sorted!' });
+            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'SORTED' });
             return trace;
         }
     },
     merge: {
-        name: 'Merge Sort',
-        description: 'Divides the array into halves, sorts them and merges them back together.',
         complexity: 'O(n log n)',
         code: [
             'mergeSort(arr, left, right)',
@@ -151,7 +146,7 @@ const ALGORITHMS = {
                 
                 trace.push({ type: 'merge_start', array: [...a], group: [], range: [start, end], line: 5, vars: `merging ${start}-${mid} and ${mid+1}-${end}` });
 
-                let i = 0, j = 0, k = start;
+                let i = 0, j = 0;
                 // Simplified visualization: Just show the result of merge step by step
                 const merged = [];
                 
@@ -186,13 +181,11 @@ const ALGORITHMS = {
             };
 
             sort(0, a.length - 1);
-            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'Sorted!' });
+            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'SORTED' });
             return trace;
         }
     },
     quick: {
-        name: 'Quick Sort',
-        description: 'Picks a pivot and partitions the array around it.',
         complexity: 'O(n log n)',
         code: [
             'quickSort(arr, low, high)',
@@ -236,13 +229,14 @@ const ALGORITHMS = {
             };
 
             sort(0, a.length - 1);
-            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'Sorted!' });
+            trace.push({ type: 'done', array: [...a], group: [], line: -1, vars: 'SORTED' });
             return trace;
         }
     }
-};
+});
 
 export default function SortingVisualizer() {
+    const { t } = useTranslation();
     const [algorithm, setAlgorithm] = useState('bubble');
     const [arraySize, setArraySize] = useState(15);
     const [speed, setSpeed] = useState(50);
@@ -252,6 +246,16 @@ export default function SortingVisualizer() {
     const [step, setStep] = useState(0);
     const [playing, setPlaying] = useState(false);
     
+    const ALGORITHMS = useMemo(() => {
+        const algos = generateAlgorithms();
+        // Inject names and descriptions from translation
+        Object.keys(algos).forEach(key => {
+            algos[key].name = t(`tools.sorting-visualizer.algorithms.${key}.name`);
+            algos[key].description = t(`tools.sorting-visualizer.algorithms.${key}.desc`);
+        });
+        return algos;
+    }, [t]);
+
     // Code Editor State
     const [codeLines, setCodeLines] = useState(ALGORITHMS['bubble'].code);
     const [isEditing, setIsEditing] = useState(false);
@@ -266,7 +270,7 @@ export default function SortingVisualizer() {
         setEditValue(ALGORITHMS[algorithm].code.join('\n'));
         setIsEditing(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [arraySize, algorithm]);
+    }, [arraySize, algorithm, ALGORITHMS]);
 
     // Playback loop
     useEffect(() => {
@@ -296,13 +300,14 @@ export default function SortingVisualizer() {
         setPlaying(false);
     };
 
-    const currentFrame = trace[step] || { array: [], line: -1, vars: 'Ready' };
+    const currentFrame = trace[step] || { array: [], line: -1, vars: t('tools.sorting-visualizer.status.ready') };
+    const displayVars = currentFrame.vars === 'SORTED' ? t('tools.sorting-visualizer.status.sorted') : currentFrame.vars;
 
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Sorting Visualizer | MiniTools</title>
-                <meta name="description" content="Visualise sorting algorithms step-by-step with code and variable updates." />
+                <title>{t('tools.sorting-visualizer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tools.sorting-visualizer.desc')} />
             </Helmet>
 
             <div className="flex flex-col gap-6">
@@ -314,7 +319,7 @@ export default function SortingVisualizer() {
                             <Layers size={24} />
                         </div>
                         <div>
-                            <h1 className="text-xl font-bold text-slate-800">Sorting Visualizer</h1>
+                            <h1 className="text-xl font-bold text-slate-800">{t('tools.sorting-visualizer.title')}</h1>
                             <p className="text-xs text-slate-500 font-medium">{ALGORITHMS[algorithm].name} - {ALGORITHMS[algorithm].complexity}</p>
                         </div>
                     </div>
@@ -328,7 +333,7 @@ export default function SortingVisualizer() {
                                     algorithm === key ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'
                                 }`}
                             >
-                                {key}
+                                {ALGORITHMS[key].name}
                             </button>
                         ))}
                     </div>
@@ -373,8 +378,8 @@ export default function SortingVisualizer() {
                         
                         {/* Status Bar Overlay */}
                         <div className="mt-6 flex items-center justify-between text-white/50 text-xs font-mono bg-black/20 p-3 rounded-xl backdrop-blur-sm">
-                            <span>Step {step + 1} / {trace.length}</span>
-                            <span className="text-white">{currentFrame.vars}</span>
+                            <span>{t('tools.sorting-visualizer.step')} {step + 1} / {trace.length}</span>
+                            <span className="text-white">{displayVars}</span>
                         </div>
                     </div>
 
@@ -382,7 +387,7 @@ export default function SortingVisualizer() {
                     <div className="bg-slate-900 rounded-[2rem] p-6 flex flex-col shadow-xl border border-slate-800 h-full overflow-hidden">
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-wider">
-                                <Code size={14} /> Pseudocode
+                                <Code size={14} /> {t('tools.sorting-visualizer.pseudocode')}
                             </div>
                             <button 
                                 onClick={() => {
@@ -395,7 +400,7 @@ export default function SortingVisualizer() {
                                 }}
                                 className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-slate-800 text-slate-400 hover:text-white transition-colors"
                             >
-                                {isEditing ? 'Save' : 'Edit'}
+                                {isEditing ? t('tools.sorting-visualizer.controls.save') : t('tools.sorting-visualizer.controls.edit')}
                             </button>
                         </div>
                         
@@ -424,13 +429,13 @@ export default function SortingVisualizer() {
                         </div>
 
                         <div className="bg-black/30 p-4 rounded-xl border border-slate-700/50">
-                            <h4 className="text-slate-400 text-xs font-bold mb-2 uppercase">Legend</h4>
+                            <h4 className="text-slate-400 text-xs font-bold mb-2 uppercase">{t('tools.sorting-visualizer.legend.title')}</h4>
                             <div className="grid grid-cols-2 gap-2 text-[10px] font-medium text-slate-400">
-                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-slate-400"></span> Unsorted</span>
-                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span> Sorted</span>
-                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-amber-500"></span> Compare</span>
-                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-red-500"></span> Swap</span>
-                                {algorithm === 'quick' && <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-500"></span> Pivot</span>}
+                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-slate-400"></span> {t('tools.sorting-visualizer.legend.unsorted')}</span>
+                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span> {t('tools.sorting-visualizer.legend.sorted')}</span>
+                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-amber-500"></span> {t('tools.sorting-visualizer.legend.compare')}</span>
+                                <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-red-500"></span> {t('tools.sorting-visualizer.legend.swap')}</span>
+                                {algorithm === 'quick' && <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-500"></span> {t('tools.sorting-visualizer.legend.pivot')}</span>}
                             </div>
                         </div>
                     </div>
@@ -473,20 +478,20 @@ export default function SortingVisualizer() {
                                 className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-slate-800 hover:accent-amber-500 transition-colors"
                             />
                             <div className="flex justify-between mt-2 text-xs font-bold text-slate-300 uppercase tracking-widest">
-                                <span>Start</span>
-                                <span>Timeline</span>
-                                <span>End</span>
+                                <span>{t('tools.sorting-visualizer.controls.start')}</span>
+                                <span>{t('tools.sorting-visualizer.controls.timeline')}</span>
+                                <span>{t('tools.sorting-visualizer.controls.end')}</span>
                             </div>
                         </div>
 
                          {/* Config */}
                          <div className="flex items-center gap-4 w-full md:w-auto min-w-[200px] border-l border-slate-100 pl-6 border-dashed">
                              <div className="flex-1">
-                                <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Speed</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">{t('tools.sorting-visualizer.controls.speed')}</label>
                                 <input type="range" min="1" max="100" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-800" />
                              </div>
                              <div className="flex-1">
-                                <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Items: {arraySize}</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">{t('tools.sorting-visualizer.controls.items')}: {arraySize}</label>
                                 <input type="range" min="5" max="50" value={arraySize} onChange={(e) => setArraySize(Number(e.target.value))} className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-800" />
                              </div>
                          </div>
