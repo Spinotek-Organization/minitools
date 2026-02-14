@@ -4,8 +4,10 @@ import EmojiPickerReact from 'emoji-picker-react';
 import { Smile, Copy, Check } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function EmojiPicker() {
+    const { t } = useTranslation();
     const [selectedEmoji, setSelectedEmoji] = useState(null);
     const [copied, setCopied] = useState(false);
 
@@ -29,8 +31,8 @@ export default function EmojiPicker() {
                         <Smile size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Emoji Picker</h1>
-                        <p className="text-slate-500">Find the perfect emoji. Click to copy.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.emoji-picker.title')}</h1>
+                        <p className="text-slate-500">{t('tools.emoji-picker.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -45,7 +47,7 @@ export default function EmojiPicker() {
                             height={500}
                             previewConfig={{ showPreview: false }}
                             skinTonesDisabled
-                            searchPlaceHolder="Search emojis..."
+                            searchPlaceHolder={t('tools.emoji-picker.placeholders.search')}
                         />
                     </div>
                 </div>
@@ -67,18 +69,18 @@ export default function EmojiPicker() {
                                 
                                 {copied ? (
                                     <div className="flex items-center gap-2 text-green-500 font-bold bg-green-50 px-4 py-2 rounded-xl">
-                                        <Check size={20} /> Copied!
+                                        <Check size={20} /> {t('tools.emoji-picker.labels.copied')}
                                     </div>
                                 ) : (
                                     <div className="text-slate-400 text-sm">
-                                        Click to copy again
+                                        {t('tools.emoji-picker.labels.clickCopy')}
                                     </div>
                                 )}
                             </div>
                         ) : (
                             <div className="text-slate-400">
                                 <Smile size={64} className="mx-auto mb-4 opacity-20" />
-                                <p className="font-medium">Select an emoji to view details and copy code.</p>
+                                <p className="font-medium">{t('tools.emoji-picker.labels.empty')}</p>
                             </div>
                         )}
                     </div>

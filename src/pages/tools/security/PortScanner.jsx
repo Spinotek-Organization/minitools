@@ -111,7 +111,7 @@ export default function PortScanner() {
                                 placeholder={t('tools.port-scanner.form.placeholder')} // Example needed
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                onKeyDown={handleKeyDown}
+                                  onKeyDown={handleKeyDown}
                                 className="w-full pl-10 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 font-mono"
                             />
                         </div>

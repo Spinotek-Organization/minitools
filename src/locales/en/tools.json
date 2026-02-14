@@ -522,99 +522,777 @@
     },
     "img-resizer": {
         "title": "Social Media Image Resizer",
-        "desc": "Resize images for Instagram, Twitter, and Facebook."
+        "desc": "Resize images for Instagram, Twitter, and Facebook.",
+        "subtitle": "Crop images to perfect dimensions for any platform.",
+        "buttons": {
+            "download": "Download Image",
+            "upload": "Upload Image",
+            "remove": "Remove"
+        },
+        "labels": {
+            "upload": "Upload Image",
+            "loaded": "Image Loaded",
+            "platform": "Platform",
+            "format": "Format"
+        },
+        "placeholders": {
+            "empty": "Upload an image to start resizing"
+        },
+        "platforms": {
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "twitter": "Twitter / X",
+            "linkedin": "LinkedIn"
+        },
+        "formats": {
+            "square": "Square (1:1)",
+            "portrait": "Portrait (4:5)",
+            "landscape": "Landscape (1.91:1)",
+            "story": "Story (9:16)",
+            "post": "Post",
+            "cover": "Cover",
+            "header": "Header",
+            "fb_post": "Post (1.91:1)",
+            "fb_story": "Story (9:16)",
+            "fb_cover": "Cover (16:9)",
+            "tw_post": "Post (16:9)",
+            "tw_header": "Header (3:1)",
+            "li_post": "Post (1.91:1)",
+            "li_cover": "Cover (4:1)"
+        }
     },
     "video-outline": {
         "title": "Video Script Outliner",
-        "desc": "Structure your video content for maximum impact."
+        "desc": "Structure your video content for maximum impact.",
+        "subtitle": "Plan engaging video content in minutes.",
+        "buttons": {
+            "copy": "Copy Text",
+            "copied": "Copied!",
+            "download": "Download .txt",
+            "generate": "Generate Outline",
+            "add": "Add Section",
+            "clear": "Clear Outline"
+        },
+        "labels": {
+            "topic": "Video Topic / Title",
+            "framework": "Story Framework",
+            "outline": "Outline"
+        },
+        "placeholders": {
+            "topic": "e.g., How to Bake Sourdough",
+            "write": "Write your {{label}} here..."
+        },
+        "messages": {
+            "empty": "Select a framework and title to generate your script outline."
+        },
+        "frameworks": {
+            "educational": {
+                "title": "Educational (How-to)",
+                "blocks": [
+                    {
+                        "label": "Hook (0-5s)",
+                        "hint": "Grab attention immediately with a promise or question."
+                    },
+                    {
+                        "label": "Intro (5-15s)",
+                        "hint": "Who are you and what will they learn?"
+                    },
+                    {
+                        "label": "Step 1",
+                        "hint": "First major point or action."
+                    },
+                    {
+                        "label": "Step 2",
+                        "hint": "Second point."
+                    },
+                    {
+                        "label": "Step 3",
+                        "hint": "Third point."
+                    },
+                    {
+                        "label": "Summary",
+                        "hint": "Recap what they learned."
+                    },
+                    {
+                        "label": "CTA",
+                        "hint": "Subscribe, Like, Check description."
+                    }
+                ]
+            },
+            "storytelling": {
+                "title": "Storytelling (Hero's Journey)",
+                "blocks": [
+                    {
+                        "label": "The Status Quo",
+                        "hint": "Establish normal life before the incident."
+                    },
+                    {
+                        "label": "Inciting Incident",
+                        "hint": "What changed? The problem appears."
+                    },
+                    {
+                        "label": "The Quest",
+                        "hint": "Trying to solve the problem."
+                    },
+                    {
+                        "label": "The Climax",
+                        "hint": "The peak of conflict where success/failure hangs."
+                    },
+                    {
+                        "label": "Resolution",
+                        "hint": "The new normal. What was learned?"
+                    },
+                    {
+                        "label": "Moral/CTA",
+                        "hint": "Applying the lesson to the viewer."
+                    }
+                ]
+            },
+            "review": {
+                "title": "Product Review",
+                "blocks": [
+                    {
+                        "label": "Verdict First",
+                        "hint": "Give the bottom line immediately (Buy or Pass?)."
+                    },
+                    {
+                        "label": "Context",
+                        "hint": "Specs, Price, Who is it for?"
+                    },
+                    {
+                        "label": "The Good",
+                        "hint": "Best features."
+                    },
+                    {
+                        "label": "The Bad",
+                        "hint": "Flaws and annoyances."
+                    },
+                    {
+                        "label": "Competition",
+                        "hint": "How does it compare to rivals?"
+                    },
+                    {
+                        "label": "Final Verdict",
+                        "hint": "Detailed recommendation."
+                    }
+                ]
+            }
+        }
     },
     "ig-grid": {
         "title": "Instagram Grid Preview",
-        "desc": "Plan and visualize your Instagram feed aesthetic."
+        "desc": "Plan and visualize your Instagram feed aesthetic.",
+        "subtitle": "Plan your feed aesthetic (Drag to Reorder).",
+        "buttons": {
+            "clear": "Clear All",
+            "download": "Download Grid",
+            "downloading": "Saving..."
+        },
+        "labels": {
+            "uploadTitle": "Upload Photos",
+            "uploadDesc": "Select up to 12 images to preview your grid layout.",
+            "posts": "Posts",
+            "empty": "Grid is empty",
+            "slotEmpty": "Empty"
+        },
+        "headings": {
+            "howTo": "How to use",
+            "preview": "Preview"
+        },
+        "howToSteps": [
+            "Upload multiple images at once.",
+            "Drag and drop images in the preview to reorder them based on your posting schedule.",
+            "The top-left image represents your newest post."
+        ]
     },
     "hashtag-manager": {
         "title": "Hashtag Manager",
-        "desc": "Organize, count, and save your hashtag groups."
+        "desc": "Organize, count, and save your hashtag groups.",
+        "subtitle": "Curate and optimize your hashtag strategy.",
+        "buttons": {
+            "clear": "Clear",
+            "copyAll": "Copy All",
+            "copied": "Copied",
+            "removeDupes": "Remove Dupes",
+            "fixSpacing": "Fix Spacing",
+            "lowercase": "Lowercase",
+            "save": "Save",
+            "copyGroup": "Copy Hashtags"
+        },
+        "placeholders": {
+            "input": "Paste your hashtags here... #travel #fun",
+            "groupName": "Group Name (e.g. Travel Monday)"
+        },
+        "labels": {
+            "count": "Count: {{count}} / 30"
+        },
+        "headings": {
+            "saveGroup": "Save Group",
+            "savedGroups": "Saved Groups"
+        },
+        "tooltips": {
+            "load": "Load into Editor",
+            "delete": "Delete"
+        },
+        "messages": {
+            "empty": "No saved groups yet."
+        }
     },
     "aspect-ratio": {
         "title": "Video Aspect Ratio Calc",
-        "desc": "Calculate perfect dimensions for any video format."
+        "desc": "Calculate perfect dimensions for any video format.",
+        "subtitle": "Video resolution and ratio calculator.",
+        "modes": {
+            "calculate": "Calculate Dimensions",
+            "find": "Find Ratio"
+        },
+        "labels": {
+            "ratio": "Aspect Ratio",
+            "width": "Width (px)",
+            "height": "Height (px)",
+            "result": "Result"
+        },
+        "headings": {
+            "resolutions": "Common Resolutions"
+        },
+        "presets": {
+            "standard": "Standard",
+            "old": "TV/Old Monitor",
+            "ultrawide": "Ultrawide",
+            "vertical": "Vertical",
+            "square": "Square",
+            "cinema": "Cinema"
+        }
     },
     "caption-fmt": {
         "title": "Caption Formatter",
-        "desc": "Clean up your captions with clean line breaks."
+        "desc": "Clean up your captions with clean line breaks.",
+        "subtitle": "Clean up your captions with clean line breaks.",
+        "labels": {
+            "input": "Draft Your Caption",
+            "output": "Formatted Result"
+        },
+        "placeholders": {
+            "input": "Type your caption here. Use Enter for line breaks.",
+            "output": "Formatted caption will appear here..."
+        },
+        "buttons": {
+            "convert": "Convert & Format",
+            "copy": "Copy Text",
+            "copied": "Copied!"
+        },
+        "tip": {
+            "title": "Pro Tip:",
+            "text": "Paste the result directly into Instagram. The invisible characters maintain your paragraphs."
+        }
     },
     "yt-thumbnail": {
         "title": "YouTube Thumbnail Preview",
-        "desc": "Test your thumbnails against various backgrounds."
+        "desc": "Test your thumbnails against various backgrounds.",
+        "subtitle": "Test your thumbnail in Dark & Light modes.",
+        "labels": {
+            "upload": "Upload Thumbnail",
+            "recommended": "1280x720 recommended",
+            "title": "Video Title",
+            "channel": "Channel Name",
+            "views": "Views",
+            "time": "Time",
+            "noImage": "No Image"
+        },
+        "buttons": {
+            "light": "Light",
+            "dark": "Dark"
+        },
+        "placeholders": {
+            "title": "My Amazing Video Title Goes Here in 2024",
+            "channel": "Channel Name",
+            "views": "1.2M views",
+            "time": "2 days ago"
+        }
     },
     "podcast-planner": {
-        "title": "Podcast Episode Planner",
-        "desc": "Organize your podcast episodes and guest notes."
+        "title": "Podcast Planner",
+        "desc": "Plan podcast segments and track duration.",
+        "subtitle": "Organize segments and track episode length.",
+        "buttons": {
+            "export": "Export Agenda",
+            "addSegment": "Add Segment"
+        },
+        "labels": {
+            "episodeTitle": "Episode Title",
+            "totalDuration": "Total Duration",
+            "totalMinutes": "{{count}} minutes",
+            "seconds": "sec"
+        },
+        "placeholders": {
+            "title": "Ep 42: The Future of AI",
+            "segment": "Segment Name",
+            "notes": "Add notes, key points, or script cues..."
+        }
     },
     "tiktok-hooks": {
         "title": "TikTok Viral Hook Ideas",
-        "desc": "Get attention-grabbing hooks for your TikToks."
+        "desc": "Get attention-grabbing hooks for your TikToks.",
+        "subtitle": "Stop the scroll with these proven opening lines.",
+        "buttons": {
+            "shuffle": "Shuffle"
+        },
+        "headings": {
+            "categories": "Categories"
+        },
+        "labels": {
+            "clickCopy": "Click to Copy",
+            "copied": "Copied"
+        },
+        "categories": {
+            "all": "All",
+            "Educational": "Educational",
+            "Storytime": "Storytime",
+            "Shocking": "Shocking",
+            "Listicle": "Listicle",
+            "Relatable": "Relatable",
+            "Behind the Scenes": "Behind the Scenes"
+        },
+        "hookTexts": [
+            {
+                "category": "Educational",
+                "text": "Stop doing [x] if you want to [y]."
+            },
+            {
+                "category": "Educational",
+                "text": "Here's the secret to [result] that no one tells you."
+            },
+            {
+                "category": "Educational",
+                "text": "3 websites that feel illegal to know."
+            },
+            {
+                "category": "Educational",
+                "text": "I tried [x] so you don't have to."
+            },
+            {
+                "category": "Storytime",
+                "text": "You won't believe what just happened to me."
+            },
+            {
+                "category": "Storytime",
+                "text": "Have you ever felt like [emotion]? well..."
+            },
+            {
+                "category": "Storytime",
+                "text": "I made a huge mistake and here is what I learned."
+            },
+            {
+                "category": "Shocking",
+                "text": "This is why you are failing at [topic]."
+            },
+            {
+                "category": "Shocking",
+                "text": "What if I told you everything you know about [x] is wrong?"
+            },
+            {
+                "category": "Shocking",
+                "text": "Do not scroll if you care about [topic]."
+            },
+            {
+                "category": "Listicle",
+                "text": "5 tools I utilize every single day."
+            },
+            {
+                "category": "Listicle",
+                "text": "Top 3 reasons why [x] is better than [y]."
+            },
+            {
+                "category": "Listicle",
+                "text": "The only [x] checklist you will ever need."
+            },
+            {
+                "category": "Relatable",
+                "text": "POV: You finally figured out how to [x]."
+            },
+            {
+                "category": "Relatable",
+                "text": "Is it just me or does everyone struggle with [x]?"
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "Come with me to [event/place]."
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "A day in the life of a [job title]."
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "How we built [product] from scratch."
+            }
+        ]
     },
     "emoji-picker": {
         "title": "Emoji Keyboard/Picker",
-        "desc": "Quickly find and copy the perfect emojis."
+        "desc": "Quickly find and copy the perfect emojis.",
+        "subtitle": "Find the perfect emoji. Click to copy.",
+        "placeholders": {
+            "search": "Search emojis..."
+        },
+        "labels": {
+            "clickCopy": "Click to copy again",
+            "copied": "Copied!",
+            "empty": "Select an emoji to view details and copy code."
+        }
     },
     "teleprompter": {
         "title": "Online Teleprompter",
-        "desc": "Read your scripts smoothly while recording videos."
+        "desc": "Read your scripts smoothly while recording videos.",
+        "subtitle": "Read scripts naturally while recording video.",
+        "buttons": {
+            "start": "Start Prompter"
+        },
+        "labels": {
+            "scriptEditor": "Script Editor",
+            "words": "{{count}} words",
+            "minRead": "~{{count}} min read"
+        },
+        "placeholders": {
+            "input": "Paste your video script here...",
+            "empty": "Enter your script in the editor to start..."
+        },
+        "tip": "<strong>Tip:</strong> Click \"Start Prompter\" to enter fullscreen mode. Use Spacebar to Play/Pause, Esc to Exit.",
+        "controls": {
+            "exit": "Exit",
+            "mirror": "Mirror Text",
+            "speed": "Speed",
+            "fontSize": "Font Size"
+        }
     },
     "watermark-tool": {
         "title": "Watermark Tool",
-        "desc": "Protect your content with custom watermarks."
+        "desc": "Protect your content with custom watermarks.",
+        "subtitle": "Protect your images with custom logos or text.",
+        "buttons": {
+            "download": "Download",
+            "text": "Text",
+            "image": "Logo / Image"
+        },
+        "labels": {
+            "uploadBase": "Upload Base Image",
+            "uploadLogo": "Upload Logo",
+            "changeLogo": "Change Logo",
+            "opacity": "Opacity",
+            "scale": "Scale",
+            "rotation": "Rotation",
+            "position": "Position",
+            "color": "Color",
+            "size": "Size"
+        },
+        "placeholders": {
+            "text": "Watermark Text",
+            "empty": "Upload an image to start editing"
+        }
     },
     "palette-gen": {
         "title": "Color Palette Generator",
-        "desc": "Create beautiful, harmonious color schemes."
+        "desc": "Create beautiful, harmonious color schemes.",
+        "subtitle": "Generate color palettes based on harmony rules.",
+        "actions": {
+            "resetLocks": "Unlock All",
+            "randomize": "Generate Random",
+            "export": "Export Image"
+        },
+        "labels": {
+            "baseColor": "Base Seed Color",
+            "harmonyRule": "Harmony Rule",
+            "paletteSize": "Number of Colors"
+        },
+        "methods": {
+            "monochromatic": "Monochromatic",
+            "analogous": "Analogous",
+            "complementary": "Complementary",
+            "triadic": "Triadic",
+            "split-complementary": "Split Comp.",
+            "tetradic": "Tetradic",
+            "random": "Totally Random"
+        }
     },
     "contrast-check": {
         "title": "Contrast Checker",
-        "desc": "Check WCAG accessibility contrast ratios."
+        "desc": "Check WCAG accessibility contrast ratios.",
+        "subtitle": "Analyze readability of text on background colors.",
+        "labels": {
+            "textColor": "Text Color",
+            "bgColor": "Background Color",
+            "scores": "Accessibility Scores",
+            "normal": "Normal Text",
+            "large": "Large Text",
+            "ratio": "Contrast Ratio"
+        },
+        "actions": {
+            "swap": "Swap Colors"
+        },
+        "status": {
+            "pass": "PASS",
+            "fail": "FAIL"
+        },
+        "suggestions": {
+            "pass": "Great! This combination is accessible.",
+            "fail": "Consider choosing a darker foreground or lighter background."
+        },
+        "preview": {
+            "heading": "Preview Heading",
+            "desc": "This is how your text will look with the selected colors.",
+            "primary": "Primary Button",
+            "secondary": "Secondary Button",
+            "small": "Even small details matter for accessibility."
+        }
     },
     "gradient-maker": {
         "title": "CSS Gradient Maker",
-        "desc": "Design and generate CSS linear and radial gradients."
+        "desc": "Design and generate CSS linear and radial gradients.",
+        "subtitle": "Design beautiful CSS gradients visually.",
+        "actions": {
+            "copy": "Copy CSS",
+            "copied": "Copied!"
+        },
+        "labels": {
+            "type": "Gradient Type",
+            "angle": "Angle",
+            "shape": "Shape",
+            "position": "Position",
+            "stops": "Color Stops",
+            "stopPosition": "Position",
+            "preview": "Preview"
+        },
+        "types": {
+            "linear": "Linear",
+            "radial": "Radial",
+            "conic": "Conic",
+            "repeating-linear": "Repeating Linear",
+            "repeating-radial": "Repeating Radial"
+        },
+        "positions": {
+            "center": "Center",
+            "top": "Top",
+            "bottom": "Bottom",
+            "left": "Left",
+            "right": "Right",
+            "top-left": "Top Left",
+            "top-right": "Top Right",
+            "bottom-left": "Bottom Left",
+            "bottom-right": "Bottom Right"
+        },
+        "shapes": {
+            "circle": "Circle",
+            "ellipse": "Ellipse"
+        }
     },
     "shadow-maker": {
         "title": "CSS Shadow Maker",
-        "desc": "Visual editor for complex CSS box-shadows."
+        "desc": "Visual editor for complex CSS box-shadows.",
+        "subtitle": "Create complex CSS box-shadows visually.",
+        "actions": {
+            "clear": "Clear All",
+            "copy": "Copy Code",
+            "copied": "Copied!"
+        },
+        "labels": {
+            "layers": "Shadow Layers",
+            "noShadows": "No shadows added yet.",
+            "xOffset": "X Offset",
+            "yOffset": "Y Offset",
+            "blur": "Blur Radius",
+            "spread": "Spread Radius",
+            "color": "Shadow Color",
+            "inset": "Inset",
+            "boxColor": "Box Color",
+            "bgColor": "Preview BG",
+            "previewBox": "The Box"
+        }
     },
     "svg-placeholder": {
         "title": "SVG Placeholder Generator",
-        "desc": "Generate custom SVG placeholder images for layouts."
+        "desc": "Generate custom SVG placeholder images for layouts.",
+        "subtitle": "Custom SVG placeholder images for your mockups.",
+        "actions": {
+            "copyDataUri": "Copy Data URI",
+            "copiedDataUri": "Copied!",
+            "downloadSvg": "Download SVG File"
+        },
+        "labels": {
+            "width": "Width",
+            "height": "Height",
+            "textContent": "Text Content",
+            "background": "Fill Color",
+            "textColor": "Text Color",
+            "fontSize": "Font Size",
+            "svgSource": "SVG Code"
+        }
     },
     "webp-conv": {
         "title": "Image-to-WebP Converter",
-        "desc": "Convert your images to high-performance WebP format."
+        "desc": "Convert your images to high-performance WebP format.",
+        "subtitle": "Convert JPG/PNG to WebP for better performance.",
+        "actions": {
+            "upload": "Select Images to Convert",
+            "convert": "Convert to WebP",
+            "converting": "Converting...",
+            "downloadAll": "Download All (.zip)"
+        },
+        "labels": {
+            "supports": "Supports PNG, JPG, JPEG",
+            "quality": "Output Quality",
+            "results": "Conversion Results",
+            "error": "Failed to convert",
+            "placeholder": "Upload images to see them here"
+        }
     },
     "icon-viewer": {
         "title": "SVG Icon Viewer/Editor",
-        "desc": "View, edit colors, and optimize your SVG icons."
+        "desc": "View, edit colors, and optimize your SVG icons.",
+        "subtitle": "Edit colors and optimize SVG icons instantly.",
+        "actions": {
+            "copy": "Copy code",
+            "copied": "Copied!",
+            "download": "Download SVG",
+            "set": "Set",
+            "none": "None"
+        },
+        "labels": {
+            "upload": "Upload SVG file",
+            "fill": "Fill Color",
+            "stroke": "Stroke Color",
+            "width": "Stroke Width",
+            "optimize": "Optimize SVG (Minify)",
+            "placeholder": "Upload an SVG file to start editing"
+        }
     },
     "font-pairer": {
         "title": "Font Pairer Suggestions",
-        "desc": "Find perfect typography combinations for your project."
+        "desc": "Find perfect typography combinations for your project.",
+        "subtitle": "Preview and compare Google Font combinations.",
+        "actions": {
+            "getCss": "Get CSS Code",
+            "copied": "Copied!"
+        },
+        "headings": {
+            "presets": "Theme Presets",
+            "custom": "Custom Pairing"
+        },
+        "labels": {
+            "headingFont": "Heading Font",
+            "bodyFont": "Body Font",
+            "preview": "Website Preview"
+        },
+        "themes": {
+            "modern": "Modern",
+            "classic": "Classic",
+            "contrast": "High Contrast",
+            "tech": "Tech & Minimal",
+            "fun": "Playful",
+            "minimal": "Minimalist",
+            "editorial": "Editorial",
+            "corporate": "Corporate",
+            "geometric": "Geometric",
+            "luxury": "Luxury",
+            "friendly": "Friendly",
+            "retro": "Retro",
+            "display": "Display",
+            "handwritten": "Handwritten"
+        },
+        "previewText": {
+            "heading": "Design Better with Better Fonts",
+            "subheading": "The perfect pair for your next project.",
+            "body": "Typography is the art and technique of arranging type to make written language legible, readable and appealing when displayed. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.",
+            "primary": "Start Project",
+            "secondary": "Learn More"
+        }
     },
     "favicon-gen": {
         "title": "Favicon Generator",
-        "desc": "Create favicons for all platforms and browsers."
+        "desc": "Create favicons for all platforms and browsers.",
+        "subtitle": "Generate favicon packages for web projects.",
+        "actions": {
+            "download": "Download Package",
+            "textMode": "Text/Emoji",
+            "imageMode": "Image",
+            "upload": "Click or Drag Image"
+        },
+        "labels": {
+            "textEmoji": "Text / Emoji (Max 2)",
+            "fontFamily": "Font Family",
+            "shape": "Icon Shape",
+            "background": "Background",
+            "textColor": "Text Color",
+            "preview": "Live Preview",
+            "appIcon": "App Icon",
+            "browserTab": "Browser Tab"
+        }
     },
     "image-filters": {
         "title": "Image Filters & Effects",
-        "desc": "Apply beautiful filters and adjustments to your photos."
+        "desc": "Apply beautiful filters and adjustments to your photos.",
+        "subtitle": "Adjust brightness, contrast and apply filters.",
+        "actions": {
+            "reset": "Reset All",
+            "compare": "Hold to Compare",
+            "download": "Save Image"
+        },
+        "labels": {
+            "upload": "Click or drop an image to start",
+            "presets": "Quick Presets",
+            "adjustments": "Manual Adjustments",
+            "noImage": "Please upload an image",
+            "original": "ORIGINAL"
+        },
+        "presets": {
+            "vintage": "Vintage",
+            "grayscale": "B&W",
+            "warm": "Warm",
+            "cool": "Cool",
+            "dramatic": "Dramatic"
+        },
+        "filters": {
+            "brightness": "Brightness",
+            "contrast": "Contrast",
+            "saturate": "Saturation",
+            "blur": "Blur",
+            "hueRotate": "Hue Rotate",
+            "grayscale": "Grayscale",
+            "sepia": "Sepia"
+        }
     },
     "aspect-calc": {
         "title": "Aspect Ratio Calculator",
-        "desc": "Calculate dimensions and ratios for various displays."
+        "desc": "Calculate dimensions and ratios for various displays.",
+        "subtitle": "Calculate dimensions for screens and images.",
+        "presets": {
+            "hd": "16:9 HD",
+            "sd": "4:3 Standard",
+            "square": "1:1 Square",
+            "ultrawide": "21:9 Ultrawide",
+            "mobile": "9:16 Story",
+            "golden": "Golden Ratio"
+        },
+        "headings": {
+            "common": "Common Ratios",
+            "dimensions": "Dimensions"
+        },
+        "labels": {
+            "width": "Width (px)",
+            "height": "Height (px)"
+        }
     },
     "pixel-rem": {
         "title": "Pixel to REM Converter",
-        "desc": "Convert pixels to REM for modern responsive CSS."
+        "desc": "Convert pixels to REM for modern responsive CSS.",
+        "subtitle": "Quickly convert between Pixels and REM units.",
+        "labels": {
+            "baseSize": "Root Font Size (px)",
+            "baseSizeHelp": "Usually 16px for browsers",
+            "pixels": "Pixels (px)",
+            "rem": "REM (rem)",
+            "result": "Calculation based on {{baseSize}}px base.",
+            "quickRef": "Quick Reference Table"
+        }
     },
     "pdf-merge": {
         "title": "PDF Merge/Split",

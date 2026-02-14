@@ -522,99 +522,777 @@
     },
     "img-resizer": {
         "title": "Pengubah Ukuran Gambar Medsos",
-        "desc": "Ubah ukuran gambar untuk Instagram, Twitter, dan Facebook."
+        "desc": "Ubah ukuran gambar untuk Instagram, Twitter, dan Facebook.",
+        "subtitle": "Ubah ukuran gambar ke dimensi sempurna untuk platform apa pun.",
+        "buttons": {
+            "download": "Unduh Gambar",
+            "upload": "Unggah Gambar",
+            "remove": "Hapus"
+        },
+        "labels": {
+            "upload": "Unggah Gambar",
+            "loaded": "Gambar Dimuat",
+            "platform": "Platform",
+            "format": "Format"
+        },
+        "placeholders": {
+            "empty": "Unggah gambar untuk mulai mengubah ukuran"
+        },
+        "platforms": {
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "twitter": "Twitter / X",
+            "linkedin": "LinkedIn"
+        },
+        "formats": {
+            "square": "Kotak (1:1)",
+            "portrait": "Potret (4:5)",
+            "landscape": "Lanskap (1.91:1)",
+            "story": "Story (9:16)",
+            "post": "Postingan",
+            "cover": "Sampul",
+            "header": "Header",
+            "fb_post": "Postingan (1.91:1)",
+            "fb_story": "Story (9:16)",
+            "fb_cover": "Sampul (16:9)",
+            "tw_post": "Postingan (16:9)",
+            "tw_header": "Header (3:1)",
+            "li_post": "Postingan (1.91:1)",
+            "li_cover": "Sampul (4:1)"
+        }
     },
     "video-outline": {
-        "title": "Outliner Naskah Video",
-        "desc": "Strukturkan konten video Anda untuk dampak maksimal."
+        "title": "Garis Besar Naskah Video",
+        "desc": "Strukturkan konten video Anda untuk dampak maksimal.",
+        "subtitle": "Rencanakan konten video yang menarik dalam hitungan menit.",
+        "buttons": {
+            "copy": "Salin Teks",
+            "copied": "Tersalin!",
+            "download": "Unduh .txt",
+            "generate": "Buat Garis Besar",
+            "add": "Tambah Bagian",
+            "clear": "Hapus Garis Besar"
+        },
+        "labels": {
+            "topic": "Topik / Judul Video",
+            "framework": "Kerangka Cerita",
+            "outline": "Garis Besar"
+        },
+        "placeholders": {
+            "topic": "contoh: Cara Membuat Roti Sourdough",
+            "write": "Tulis {{label}} Anda di sini..."
+        },
+        "messages": {
+            "empty": "Pilih kerangka dan judul untuk membuat garis besar naskah Anda."
+        },
+        "frameworks": {
+            "educational": {
+                "title": "Edukasi (How-to)",
+                "blocks": [
+                    {
+                        "label": "Hook (0-5d)",
+                        "hint": "Tarik perhatian segera dengan janji atau pertanyaan."
+                    },
+                    {
+                        "label": "Intro (5-15d)",
+                        "hint": "Siapa Anda dan apa yang akan mereka pelajari?"
+                    },
+                    {
+                        "label": "Langkah 1",
+                        "hint": "Poin atau tindakan utama pertama."
+                    },
+                    {
+                        "label": "Langkah 2",
+                        "hint": "Poin kedua."
+                    },
+                    {
+                        "label": "Langkah 3",
+                        "hint": "Poin ketiga."
+                    },
+                    {
+                        "label": "Ringkasan",
+                        "hint": "Rangkum apa yang mereka pelajari."
+                    },
+                    {
+                        "label": "CTA",
+                        "hint": "Subscribe, Like, Cek deskripsi."
+                    }
+                ]
+            },
+            "storytelling": {
+                "title": "Bercerita (Hero's Journey)",
+                "blocks": [
+                    {
+                        "label": "Status Quo",
+                        "hint": "Tetapkan kehidupan normal sebelum insiden terjadi."
+                    },
+                    {
+                        "label": "Insiden Pemicu",
+                        "hint": "Apa yang berubah? Masalah muncul."
+                    },
+                    {
+                        "label": "Pencarian",
+                        "hint": "Mencoba memecahkan masalah."
+                    },
+                    {
+                        "label": "Klimaks",
+                        "hint": "Puncak konflik di mana keberhasilan/kegagalan dipertaruhkan."
+                    },
+                    {
+                        "label": "Resolusi",
+                        "hint": "Normal baru. Apa yang telah dipelajari?"
+                    },
+                    {
+                        "label": "Moral/CTA",
+                        "hint": "Menerapkan pelajaran kepada penonton."
+                    }
+                ]
+            },
+            "review": {
+                "title": "Ulasan Produk",
+                "blocks": [
+                    {
+                        "label": "Putusan Terlebih Dahulu",
+                        "hint": "Berikan intinya segera (Beli atau Lewati?)."
+                    },
+                    {
+                        "label": "Konteks",
+                        "hint": "Spesifikasi, Harga, Untuk siapa?"
+                    },
+                    {
+                        "label": "Kelebihan",
+                        "hint": "Fitur-fitur terbaik."
+                    },
+                    {
+                        "label": "Kekurangan",
+                        "hint": "Kekurangan dan gangguan."
+                    },
+                    {
+                        "label": "Kompetisi",
+                        "hint": "Bagaimana perbandingannya dengan rival?"
+                    },
+                    {
+                        "label": "Putusan Akhir",
+                        "hint": "Rekomendasi detail."
+                    }
+                ]
+            }
+        }
     },
     "ig-grid": {
         "title": "Pratinjau Grid Instagram",
-        "desc": "Rencanakan dan visualisasikan estetika feed Instagram Anda."
+        "desc": "Rencanakan dan visualisasikan estetika feed Instagram Anda.",
+        "subtitle": "Rencanakan estetika feed Anda (Tarik untuk Mengatur Ulang).",
+        "buttons": {
+            "clear": "Hapus Semua",
+            "download": "Unduh Grid",
+            "downloading": "Menyimpan..."
+        },
+        "labels": {
+            "uploadTitle": "Unggah Foto",
+            "uploadDesc": "Pilih hingga 12 gambar untuk melihat pratinjau tata letak grid Anda.",
+            "posts": "Postingan",
+            "empty": "Grid kosong",
+            "slotEmpty": "Kosong"
+        },
+        "headings": {
+            "howTo": "Cara Penggunaan",
+            "preview": "Pratinjau"
+        },
+        "howToSteps": [
+            "Unggah beberapa gambar sekaligus.",
+            "Tarik dan lepas gambar di pratinjau untuk mengaturnya sesuai jadwal posting Anda.",
+            "Gambar kiri atas mewakili postingan terbaru Anda."
+        ]
     },
     "hashtag-manager": {
-        "title": "Manajer Hashtag",
-        "desc": "Atur, hitung, dan simpan grup hashtag Anda."
+        "title": "Pengelola Hashtag",
+        "desc": "Atur, hitung, dan simpan grup hashtag Anda.",
+        "subtitle": "Kelola dan optimalkan strategi hashtag Anda.",
+        "buttons": {
+            "clear": "Hapus",
+            "copyAll": "Salin Semua",
+            "copied": "Tersalin",
+            "removeDupes": "Hapus Duplikat",
+            "fixSpacing": "Perbaiki Spasi",
+            "lowercase": "Huruf Kecil",
+            "save": "Simpan",
+            "copyGroup": "Salin Hashtag"
+        },
+        "placeholders": {
+            "input": "Tempel hashtag Anda di sini... #liburan #seru",
+            "groupName": "Nama Grup (contoh: Senin Jalan-jalan)"
+        },
+        "labels": {
+            "count": "Jumlah: {{count}} / 30"
+        },
+        "headings": {
+            "saveGroup": "Simpan Grup",
+            "savedGroups": "Grup Tersimpan"
+        },
+        "tooltips": {
+            "load": "Masukkan ke Editor",
+            "delete": "Hapus"
+        },
+        "messages": {
+            "empty": "Belum ada grup yang disimpan."
+        }
     },
     "aspect-ratio": {
-        "title": "Kalkulator Rasio Aspek Video",
-        "desc": "Hitung dimensi sempurna untuk format video apa pun."
+        "title": "Kalkulator Aspek Rasio Video",
+        "desc": "Hitung dimensi sempurna untuk format video apa pun.",
+        "subtitle": "Kalkulator resolusi dan rasio video.",
+        "modes": {
+            "calculate": "Hitung Dimensi",
+            "find": "Cari Rasio"
+        },
+        "labels": {
+            "ratio": "Aspek Rasio",
+            "width": "Lebar (px)",
+            "height": "Tinggi (px)",
+            "result": "Hasil"
+        },
+        "headings": {
+            "resolutions": "Resolusi Umum"
+        },
+        "presets": {
+            "standard": "Standar",
+            "old": "TV/Monitor Tua",
+            "ultrawide": "Ultrawide",
+            "vertical": "Vertikal",
+            "square": "Kotak",
+            "cinema": "Sinema"
+        }
     },
     "caption-fmt": {
-        "title": "Formatter Keterangan",
-        "desc": "Rapikan keterangan Anda dengan jeda baris yang bersih."
+        "title": "Pemformat Keterangan",
+        "desc": "Rapikan keterangan Anda dengan jeda baris yang bersih.",
+        "subtitle": "Rapikan keterangan Anda dengan jeda baris yang bersih.",
+        "labels": {
+            "input": "Draf Keterangan Anda",
+            "output": "Hasil Pemformatan"
+        },
+        "placeholders": {
+            "input": "Ketik keterangan Anda di sini. Gunakan Enter untuk jeda baris.",
+            "output": "Keterangan yang diformat akan muncul di sini..."
+        },
+        "buttons": {
+            "convert": "Konversi & Format",
+            "copy": "Salin Teks",
+            "copied": "Tersalin!"
+        },
+        "tip": {
+            "title": "Tips Pro:",
+            "text": "Tempel hasilnya langsung ke Instagram. Karakter tak terlihat menjaga paragraf Anda."
+        }
     },
     "yt-thumbnail": {
         "title": "Pratinjau Thumbnail YouTube",
-        "desc": "Uji thumbnail Anda dengan berbagai latar belakang."
+        "desc": "Uji thumbnail Anda dengan berbagai latar belakang.",
+        "subtitle": "Uji thumbnail Anda dalam mode Gelap & Terang.",
+        "labels": {
+            "upload": "Unggah Thumbnail",
+            "recommended": "disarankan 1280x720",
+            "title": "Judul Video",
+            "channel": "Nama Channel",
+            "views": "Tayangan",
+            "time": "Waktu",
+            "noImage": "Tanpa Gambar"
+        },
+        "buttons": {
+            "light": "Terang",
+            "dark": "Gelap"
+        },
+        "placeholders": {
+            "title": "Judul Video Luar Biasa Saya di Sini 2024",
+            "channel": "Nama Saluran",
+            "views": "1,2 jt tayangan",
+            "time": "2 hari yang lalu"
+        }
     },
     "podcast-planner": {
-        "title": "Perencana Episode Podcast",
-        "desc": "Atur episode podcast dan catatan tamu Anda."
+        "title": "Perencana Podcast",
+        "desc": "Rencanakan segmen podcast dan lacak durasinya.",
+        "subtitle": "Atur segmen dan lacak panjang episode.",
+        "buttons": {
+            "export": "Ekspor Agenda",
+            "addSegment": "Tambah Segmen"
+        },
+        "labels": {
+            "episodeTitle": "Judul Episode",
+            "totalDuration": "Total Durasi",
+            "totalMinutes": "{{count}} menit",
+            "seconds": "dtk"
+        },
+        "placeholders": {
+            "title": "Ep 42: Masa Depan AI",
+            "segment": "Nama Segmen",
+            "notes": "Tambah catatan, poin kunci, atau isyarat naskah..."
+        }
     },
     "tiktok-hooks": {
         "title": "Ide Hook Viral TikTok",
-        "desc": "Dapatkan hook yang menarik perhatian untuk TikTok Anda."
+        "desc": "Dapatkan hook yang menarik perhatian untuk TikTok Anda.",
+        "subtitle": "Hentikan scroll dengan kalimat pembuka yang terbukti manjur.",
+        "buttons": {
+            "shuffle": "Acak"
+        },
+        "headings": {
+            "categories": "Kategori"
+        },
+        "labels": {
+            "clickCopy": "Klik untuk Menyalin",
+            "copied": "Tersalin"
+        },
+        "categories": {
+            "all": "Semua",
+            "Educational": "Edukasi",
+            "Storytime": "Cerita",
+            "Shocking": "Mengejutkan",
+            "Listicle": "Listicle",
+            "Relatable": "Relatable",
+            "Behind the Scenes": "Di Balik Layar"
+        },
+        "hookTexts": [
+            {
+                "category": "Educational",
+                "text": "Berhenti melakukan [x] jika Anda ingin [y]."
+            },
+            {
+                "category": "Educational",
+                "text": "Inilah rahasia [hasil] yang tidak diberitahukan siapapun kepada Anda."
+            },
+            {
+                "category": "Educational",
+                "text": "3 situs web yang rasanya ilegal untuk diketahui."
+            },
+            {
+                "category": "Educational",
+                "text": "Saya mencoba [x] jadi Anda tidak perlu melakukannya."
+            },
+            {
+                "category": "Storytime",
+                "text": "Anda tidak akan percaya apa yang baru saja terjadi pada saya."
+            },
+            {
+                "category": "Storytime",
+                "text": "Pernahkah Anda merasa seperti [emosi]? nah..."
+            },
+            {
+                "category": "Storytime",
+                "text": "Saya membuat kesalahan besar dan inilah yang saya pelajari."
+            },
+            {
+                "category": "Shocking",
+                "text": "Inilah alasan mengapa Anda gagal di [topik]."
+            },
+            {
+                "category": "Shocking",
+                "text": "Bagaimana jika saya memberi tahu Anda semua yang Anda ketahui tentang [x] itu salah?"
+            },
+            {
+                "category": "Shocking",
+                "text": "Jangan scroll jika Anda peduli tentang [topik]."
+            },
+            {
+                "category": "Listicle",
+                "text": "5 alat yang saya gunakan setiap hari."
+            },
+            {
+                "category": "Listicle",
+                "text": "3 alasan utama mengapa [x] lebih baik daripada [y]."
+            },
+            {
+                "category": "Listicle",
+                "text": "Satu-satunya daftar periksa [x] yang akan Anda butuhkan."
+            },
+            {
+                "category": "Relatable",
+                "text": "POV: Anda akhirnya tahu cara [x]."
+            },
+            {
+                "category": "Relatable",
+                "text": "Apakah cuma saya atau semua orang kesulitan dengan [x]?"
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "Ikutlah dengan saya ke [acara/tempat]."
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "Sehari dalam kehidupan seorang [jabatan]."
+            },
+            {
+                "category": "Behind the Scenes",
+                "text": "Bagaimana kami membangun [produk] dari awal."
+            }
+        ]
     },
     "emoji-picker": {
-        "title": "Pemilih Emoji",
-        "desc": "Temukan dan salin emoji yang sempurna dengan cepat."
+        "title": "Keyboard/Pemilih Emoji",
+        "desc": "Temukan dan salin emoji yang sempurna dengan cepat.",
+        "subtitle": "Temukan emoji yang sempurna. Klik untuk menyalin.",
+        "placeholders": {
+            "search": "Cari emoji..."
+        },
+        "labels": {
+            "clickCopy": "Klik untuk menyalin lagi",
+            "copied": "Tersalin!",
+            "empty": "Pilih emoji untuk melihat detail dan menyalin kode."
+        }
     },
     "teleprompter": {
         "title": "Teleprompter Online",
-        "desc": "Baca naskah Anda dengan lancar saat merekam video."
+        "desc": "Baca naskah Anda dengan lancar saat merekam video.",
+        "subtitle": "Baca naskah secara alami sambil merekam video.",
+        "buttons": {
+            "start": "Mulai Prompter"
+        },
+        "labels": {
+            "scriptEditor": "Editor Naskah",
+            "words": "{{count}} kata",
+            "minRead": "~{{count}} mnt baca"
+        },
+        "placeholders": {
+            "input": "Tempel naskah video Anda di sini...",
+            "empty": "Masukkan naskah Anda di editor untuk memulai..."
+        },
+        "tip": "<strong>Tip:</strong> Klik \"Mulai Prompter\" untuk masuk ke mode layar penuh. Gunakan Spasi untuk Play/Pause, Esc untuk Keluar.",
+        "controls": {
+            "exit": "Keluar",
+            "mirror": "Cermin Teks",
+            "speed": "Kecepatan",
+            "fontSize": "Ukuran Font"
+        }
     },
     "watermark-tool": {
         "title": "Alat Watermark",
-        "desc": "Lindungi konten Anda dengan watermark kustom."
+        "desc": "Lindungi konten Anda dengan watermark kustom.",
+        "subtitle": "Lindungi gambar Anda dengan logo atau teks kustom.",
+        "buttons": {
+            "download": "Unduh",
+            "text": "Teks",
+            "image": "Logo / Gambar"
+        },
+        "labels": {
+            "uploadBase": "Unggah Gambar Dasar",
+            "uploadLogo": "Unggah Logo",
+            "changeLogo": "Ubah Logo",
+            "opacity": "Opasitas",
+            "scale": "Skala",
+            "rotation": "Rotasi",
+            "position": "Posisi",
+            "color": "Warna",
+            "size": "Ukuran"
+        },
+        "placeholders": {
+            "text": "Teks Watermark",
+            "empty": "Unggah gambar untuk mulai mengedit"
+        }
     },
     "palette-gen": {
         "title": "Generator Palet Warna",
-        "desc": "Buat skema warna yang indah dan harmonis."
+        "desc": "Buat skema warna yang indah dan harmonis.",
+        "subtitle": "Hasilkan palet warna berdasarkan aturan harmoni.",
+        "actions": {
+            "resetLocks": "Buka Semua Kunci",
+            "randomize": "Hasilkan Acak",
+            "export": "Ekspor Gambar"
+        },
+        "labels": {
+            "baseColor": "Warna Dasar",
+            "harmonyRule": "Aturan Harmoni",
+            "paletteSize": "Jumlah Warna"
+        },
+        "methods": {
+            "monochromatic": "Monokromatik",
+            "analogous": "Analog",
+            "complementary": "Komplementer",
+            "triadic": "Triadik",
+            "split-complementary": "Komplementer Terpisah",
+            "tetradic": "Tetradik",
+            "random": "Sangat Acak"
+        }
     },
     "contrast-check": {
         "title": "Pemeriksa Kontras",
-        "desc": "Periksa rasio kontras aksesibilitas WCAG."
+        "desc": "Periksa rasio kontras aksesibilitas WCAG.",
+        "subtitle": "Analisis keterbacaan teks pada warna latar belakang.",
+        "labels": {
+            "textColor": "Warna Teks",
+            "bgColor": "Warna Latar",
+            "scores": "Skor Aksesibilitas",
+            "normal": "Teks Normal",
+            "large": "Teks Besar",
+            "ratio": "Rasio Kontras"
+        },
+        "actions": {
+            "swap": "Tukar Warna"
+        },
+        "status": {
+            "pass": "LOLOS",
+            "fail": "GAGAL"
+        },
+        "suggestions": {
+            "pass": "Bagus! Kombinasi ini dapat diakses.",
+            "fail": "Pertimbangkan untuk memilih teks yang lebih gelap atau latar yang lebih terang."
+        },
+        "preview": {
+            "heading": "Judul Pratinjau",
+            "desc": "Inilah tampilan teks Anda dengan warna yang dipilih.",
+            "primary": "Tombol Utama",
+            "secondary": "Tombol Sekunder",
+            "small": "Bahkan detail kecil pun penting untuk aksesibilitas."
+        }
     },
     "gradient-maker": {
         "title": "Pembuat Gradien CSS",
-        "desc": "Desain dan hasilkan gradien linear dan radial CSS."
+        "desc": "Desain dan hasilkan gradien linear dan radial CSS.",
+        "subtitle": "Desain gradien CSS yang indah secara visual.",
+        "actions": {
+            "copy": "Salin CSS",
+            "copied": "Disalin!"
+        },
+        "labels": {
+            "type": "Tipe Gradien",
+            "angle": "Sudut",
+            "shape": "Bentuk",
+            "position": "Posisi",
+            "stops": "Pemberhentian Warna",
+            "stopPosition": "Posisi",
+            "preview": "Pratinjau"
+        },
+        "types": {
+            "linear": "Linear",
+            "radial": "Radial",
+            "conic": "Konik",
+            "repeating-linear": "Linear Berulang",
+            "repeating-radial": "Radial Berulang"
+        },
+        "positions": {
+            "center": "Tengah",
+            "top": "Atas",
+            "bottom": "Bawah",
+            "left": "Kiri",
+            "right": "Kanan",
+            "top-left": "Atas Kiri",
+            "top-right": "Atas Kanan",
+            "bottom-left": "Bawah Kiri",
+            "bottom-right": "Bawah Kanan"
+        },
+        "shapes": {
+            "circle": "Lingkaran",
+            "ellipse": "Elips"
+        }
     },
     "shadow-maker": {
         "title": "Pembuat Bayangan CSS",
-        "desc": "Editor visual untuk box-shadow CSS yang kompleks."
+        "desc": "Editor visual untuk box-shadow CSS yang kompleks.",
+        "subtitle": "Buat box-shadow CSS yang kompleks secara visual.",
+        "actions": {
+            "clear": "Hapus Semua",
+            "copy": "Salin Kode",
+            "copied": "Disalin!"
+        },
+        "labels": {
+            "layers": "Lapisan Bayangan",
+            "noShadows": "Belum ada bayangan yang ditambahkan.",
+            "xOffset": "Offset X",
+            "yOffset": "Offset Y",
+            "blur": "Radius Blur",
+            "spread": "Radius Spread",
+            "color": "Warna Bayangan",
+            "inset": "Inset",
+            "boxColor": "Warna Kotak",
+            "bgColor": "Latar Pratinjau",
+            "previewBox": "Kotak"
+        }
     },
     "svg-placeholder": {
         "title": "Generator Placeholder SVG",
-        "desc": "Hasilkan gambar placeholder SVG kustom untuk tata letak."
+        "desc": "Hasilkan gambar placeholder SVG kustom untuk tata letak.",
+        "subtitle": "Gambar placeholder SVG kustom untuk mockup Anda.",
+        "actions": {
+            "copyDataUri": "Salin Data URI",
+            "copiedDataUri": "Disalin!",
+            "downloadSvg": "Unduh File SVG"
+        },
+        "labels": {
+            "width": "Lebar",
+            "height": "Tinggi",
+            "textContent": "Konten Teks",
+            "background": "Warna Isi",
+            "textColor": "Warna Teks",
+            "fontSize": "Ukuran Font",
+            "svgSource": "Kode SVG"
+        }
     },
     "webp-conv": {
         "title": "Konverter Gambar ke WebP",
-        "desc": "Konversi gambar Anda ke format WebP berkinerja tinggi."
+        "desc": "Konversi gambar Anda ke format WebP berkinerja tinggi.",
+        "subtitle": "Konversi JPG/PNG ke WebP untuk performa lebih baik.",
+        "actions": {
+            "upload": "Pilih Gambar untuk Dikonversi",
+            "convert": "Konversi ke WebP",
+            "converting": "Sedang Mengonversi...",
+            "downloadAll": "Unduh Semua (.zip)"
+        },
+        "labels": {
+            "supports": "Mendukung PNG, JPG, JPEG",
+            "quality": "Kualitas Output",
+            "results": "Hasil Konversi",
+            "error": "Gagal mengonversi",
+            "placeholder": "Unggah gambar untuk melihatnya di sini"
+        }
     },
     "icon-viewer": {
         "title": "Penampil/Editor Ikon SVG",
-        "desc": "Lihat, edit warna, dan optimalkan ikon SVG Anda."
+        "desc": "Lihat, edit warna, dan optimalkan ikon SVG Anda.",
+        "subtitle": "Edit warna dan optimalkan ikon SVG secara instan.",
+        "actions": {
+            "copy": "Salin kode",
+            "copied": "Disalin!",
+            "download": "Unduh SVG",
+            "set": "Atur",
+            "none": "Tidak Ada"
+        },
+        "labels": {
+            "upload": "Unggah file SVG",
+            "fill": "Warna Isi",
+            "stroke": "Warna Garis",
+            "width": "Lebar Garis",
+            "optimize": "Optimalkan SVG (Minify)",
+            "placeholder": "Unggah file SVG untuk mulai mengedit"
+        }
     },
     "font-pairer": {
         "title": "Saran Pasangan Font",
-        "desc": "Temukan kombinasi tipografi yang sempurna untuk proyek Anda."
+        "desc": "Temukan kombinasi tipografi yang sempurna untuk proyek Anda.",
+        "subtitle": "Pratinjau dan bandingkan kombinasi Google Font.",
+        "actions": {
+            "getCss": "Dapatkan Kode CSS",
+            "copied": "Disalin!"
+        },
+        "headings": {
+            "presets": "Preset Tema",
+            "custom": "Pasangan Kustom"
+        },
+        "labels": {
+            "headingFont": "Font Judul",
+            "bodyFont": "Font Isi",
+            "preview": "Pratinjau Situs Web"
+        },
+        "themes": {
+            "modern": "Modern",
+            "classic": "Klasik",
+            "contrast": "Kontras Tinggi",
+            "tech": "Teknologi & Minimal",
+            "fun": "Playful",
+            "minimal": "Minimalis",
+            "editorial": "Editorial",
+            "corporate": "Korporat",
+            "geometric": "Geometris",
+            "luxury": "Mewah",
+            "friendly": "Ramah",
+            "retro": "Retro",
+            "display": "Display",
+            "handwritten": "Tulis Tangan"
+        },
+        "previewText": {
+            "heading": "Desain Lebih Baik dengan Font Lebih Baik",
+            "subheading": "Pasangan sempurna untuk proyek Anda berikutnya.",
+            "body": "Tipografi adalah seni dan teknik mengatur jenis huruf agar bahasa tertulis menjadi jelas, terbaca, dan menarik saat ditampilkan. Pengaturan ini melibatkan pemilihan jenis huruf, ukuran poin, panjang baris, spasi antar baris, dan spasi antar huruf.",
+            "primary": "Mulai Proyek",
+            "secondary": "Pelajari Lebih Lanjut"
+        }
     },
     "favicon-gen": {
         "title": "Generator Favicon",
-        "desc": "Buat favicon untuk semua platform dan browser."
+        "desc": "Buat favicon untuk semua platform dan browser.",
+        "subtitle": "Hasilkan paket favicon untuk proyek web.",
+        "actions": {
+            "download": "Unduh Paket",
+            "textMode": "Teks/Emoji",
+            "imageMode": "Gambar",
+            "upload": "Klik atau Seret Gambar"
+        },
+        "labels": {
+            "textEmoji": "Teks / Emoji (Maks 2)",
+            "fontFamily": "Keluarga Font",
+            "shape": "Bentuk Ikon",
+            "background": "Latar Belakang",
+            "textColor": "Warna Teks",
+            "preview": "Pratinjau Langsung",
+            "appIcon": "Ikon Aplikasi",
+            "browserTab": "Tab Browser"
+        }
     },
     "image-filters": {
         "title": "Filter & Efek Gambar",
-        "desc": "Terapkan filter dan penyesuaian indah pada foto Anda."
+        "desc": "Terapkan filter dan penyesuaian indah pada foto Anda.",
+        "subtitle": "Atur kecerahan, kontras, dan terapkan filter.",
+        "actions": {
+            "reset": "Atur Ulang Semua",
+            "compare": "Tahan untuk Bandingkan",
+            "download": "Simpan Gambar"
+        },
+        "labels": {
+            "upload": "Klik atau letakkan gambar untuk memulai",
+            "presets": "Preset Cepat",
+            "adjustments": "Pengaturan Manual",
+            "noImage": "Silakan unggah gambar",
+            "original": "ASLI"
+        },
+        "presets": {
+            "vintage": "Vintage",
+            "grayscale": "Hitam Putih",
+            "warm": "Warm",
+            "cool": "Cool",
+            "dramatic": "Dramatis"
+        },
+        "filters": {
+            "brightness": "Kecerahan",
+            "contrast": "Kontras",
+            "saturate": "Saturasi",
+            "blur": "Blur",
+            "hueRotate": "Rotasi Hue",
+            "grayscale": "Grayscale",
+            "sepia": "Sepia"
+        }
     },
     "aspect-calc": {
         "title": "Kalkulator Rasio Aspek",
-        "desc": "Hitung dimensi dan rasio untuk berbagai tampilan."
+        "desc": "Hitung dimensi dan rasio untuk berbagai tampilan.",
+        "subtitle": "Hitung dimensi untuk layar dan gambar.",
+        "presets": {
+            "hd": "16:9 HD",
+            "sd": "4:3 Standar",
+            "square": "1:1 Kotak",
+            "ultrawide": "21:9 Ultrawide",
+            "mobile": "9:16 Story",
+            "golden": "Rasio Emas"
+        },
+        "headings": {
+            "common": "Rasio Umum",
+            "dimensions": "Dimensi"
+        },
+        "labels": {
+            "width": "Lebar (px)",
+            "height": "Tinggi (px)"
+        }
     },
     "pixel-rem": {
         "title": "Konverter Pixel ke REM",
-        "desc": "Konversi pixel ke REM untuk CSS responsif modern."
+        "desc": "Konversi pixel ke REM untuk CSS responsif modern.",
+        "subtitle": "Konversi cepat antara unit Pixel dan REM.",
+        "labels": {
+            "baseSize": "Ukuran Font Dasar (px)",
+            "baseSizeHelp": "Biasanya 16px untuk browser",
+            "pixels": "Piksel (px)",
+            "rem": "REM (rem)",
+            "result": "Perhitungan berdasarkan basis {{baseSize}}px.",
+            "quickRef": "Tabel Referensi Cepat"
+        }
     },
     "pdf-merge": {
         "title": "Gabung/Pisah PDF",

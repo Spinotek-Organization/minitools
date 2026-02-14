@@ -3,8 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { Hash, Save, Copy, Trash2, Check, RefreshCw } from 'lucide-react';
 import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
+import { useTranslation } from 'react-i18next';
 
 export default function HashtagManager() {
+    const { t } = useTranslation();
     const [text, setText] = useState('');
     const [hashtags, setHashtags] = useState([]);
     const [savedGroups, setSavedGroups] = useState([]);
@@ -94,8 +96,8 @@ export default function HashtagManager() {
                         <Hash size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">Hashtag Manager</h1>
-                        <p className="text-slate-500">Curate and optimize your hashtag strategy.</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tools.hashtag-manager.title')}</h1>
+                        <p className="text-slate-500">{t('tools.hashtag-manager.subtitle')}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
@@ -103,13 +105,13 @@ export default function HashtagManager() {
                         onClick={() => setText('')}
                         className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-red-500 transition-colors"
                     >
-                        Clear
+                        {t('tools.hashtag-manager.buttons.clear')}
                     </button>
                     <button 
                         onClick={() => copyToClipboard()}
                         className="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg shadow-blue-200"
                     >
-                        {copied ? 'Copied' : 'Copy All'}
+                        {copied ? t('tools.hashtag-manager.buttons.copied') : t('tools.hashtag-manager.buttons.copyAll')}
                     </button>
                 </div>
             </div>
@@ -121,37 +123,37 @@ export default function HashtagManager() {
                         <textarea 
                             value={text}
                             onChange={(e) => updateText(e.target.value)}
-                            placeholder="Paste your hashtags here... #travel #fun"
+                            placeholder={t('tools.hashtag-manager.placeholders.input')}
                             className="w-full h-48 p-4 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-blue-500 resize-none font-mono text-sm"
                         />
                         
                         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-100 pt-4">
                             <div className={`text-sm font-bold ${hashtags.length > 30 ? 'text-red-500' : 'text-slate-500'}`}>
-                                Count: {hashtags.length} / 30
+                                {t('tools.hashtag-manager.labels.count', { count: hashtags.length })}
                             </div>
                             
                             <div className="flex gap-2">
                                 <button onClick={removeDuplicates} className="text-xs font-medium px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                                    Remove Dupes
+                                    {t('tools.hashtag-manager.buttons.removeDupes')}
                                 </button>
                                 <button onClick={addSpaces} className="text-xs font-medium px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                                    Fix Spacing
+                                    {t('tools.hashtag-manager.buttons.fixSpacing')}
                                 </button>
                                 <button onClick={toLowercase} className="text-xs font-medium px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                                    Lowercase
+                                    {t('tools.hashtag-manager.buttons.lowercase')}
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-4">
-                        <h3 className="font-bold text-slate-700">Save Group</h3>
+                        <h3 className="font-bold text-slate-700">{t('tools.hashtag-manager.headings.saveGroup')}</h3>
                         <div className="flex gap-2">
                             <input 
                                 type="text" 
                                 value={groupName}
                                 onChange={(e) => setGroupName(e.target.value)}
-                                placeholder="Group Name (e.g. Travel Monday)"
+                                placeholder={t('tools.hashtag-manager.placeholders.groupName')}
                                 className="flex-1 rounded-xl border-slate-200 focus:border-blue-500 focus:ring-blue-500"
                             />
                             <button 
@@ -159,7 +161,7 @@ export default function HashtagManager() {
                                 disabled={!groupName || hashtags.length === 0}
                                 className="px-4 py-2 bg-slate-800 text-white rounded-xl font-bold hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                             >
-                                <Save size={18} /> Save
+                                <Save size={18} /> {t('tools.hashtag-manager.buttons.save')}
                             </button>
                         </div>
                     </div>
@@ -168,11 +170,11 @@ export default function HashtagManager() {
                 {/* Saved Groups */}
                 <div className="lg:col-span-1">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-4 h-full max-h-[600px] overflow-y-auto">
-                        <h3 className="font-bold text-slate-700 sticky top-0 bg-white py-2 border-b border-slate-100">Saved Groups</h3>
+                        <h3 className="font-bold text-slate-700 sticky top-0 bg-white py-2 border-b border-slate-100">{t('tools.hashtag-manager.headings.savedGroups')}</h3>
                         
                         {savedGroups.length === 0 ? (
                             <div className="text-slate-400 text-center py-8">
-                                <p>No saved groups yet.</p>
+                                <p>{t('tools.hashtag-manager.messages.empty')}</p>
                             </div>
                         ) : (
                             <div className="space-y-4">
@@ -181,17 +183,17 @@ export default function HashtagManager() {
                                         <div className="flex justify-between items-start mb-2">
                                             <h4 className="font-bold text-slate-700">{group.name}</h4>
                                             <div className="flex gap-1">
-                                                <button 
+                                                 <button 
                                                     onClick={() => loadGroup(group.tags)}
                                                     className="p-1 text-slate-400 hover:text-blue-600 transition-colors"
-                                                    title="Load into Editor"
+                                                    title={t('tools.hashtag-manager.tooltips.load')}
                                                 >
                                                     <RefreshCw size={14} />
                                                 </button>
                                                 <button 
                                                     onClick={() => deleteGroup(group.id)}
                                                     className="p-1 text-slate-400 hover:text-red-500 transition-colors"
-                                                    title="Delete"
+                                                    title={t('tools.hashtag-manager.tooltips.delete')}
                                                 >
                                                     <Trash2 size={14} />
                                                 </button>
@@ -204,7 +206,7 @@ export default function HashtagManager() {
                                             onClick={() => copyToClipboard(group.tags)}
                                             className="w-full py-2 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors flex items-center justify-center gap-1"
                                         >
-                                            <Copy size={12} /> Copy Hashtags
+                                            <Copy size={12} /> {t('tools.hashtag-manager.buttons.copyGroup')}
                                         </button>
                                     </div>
                                 ))}
