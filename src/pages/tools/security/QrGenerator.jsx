@@ -15,7 +15,7 @@ const TABS = [
 ];
 
 export default function QrGenerator() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [activeTab, setActiveTab] = useState('url');
     const [fgColor, setFgColor] = useState('#000000');
     const [bgColor, setBgColor] = useState('#ffffff');
@@ -69,8 +69,8 @@ export default function QrGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.qr-gen.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.qr-gen.desc')} />
+                <title>{t('qr-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('qr-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -79,8 +79,8 @@ export default function QrGenerator() {
                         <QrCode size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.qr-gen.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.qr-gen.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('qr-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('qr-gen.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ export default function QrGenerator() {
                                 }`}
                             >
                                 <tab.icon size={16} />
-                                {t(`tools.qr-gen.tabs.${tab.id}`)}
+                                {t(`qr-gen.tabs.${tab.id}`)}
                             </button>
                         ))}
                     </div>
@@ -112,10 +112,10 @@ export default function QrGenerator() {
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                         {activeTab === 'url' && (
                             <div>
-                                <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.urlLabel')}</label>
+                                <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.urlLabel')}</label>
                                 <input
                                     type="url"
-                                    placeholder={t('tools.qr-gen.forms.urlPlaceholder')}
+                                    placeholder={t('qr-gen.forms.urlPlaceholder')}
                                     value={url}
                                     onChange={(e) => setUrl(e.target.value)}
                                     className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -125,9 +125,9 @@ export default function QrGenerator() {
 
                         {activeTab === 'text' && (
                             <div>
-                                <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.textLabel')}</label>
+                                <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.textLabel')}</label>
                                 <textarea
-                                    placeholder={t('tools.qr-gen.forms.textPlaceholder')}
+                                    placeholder={t('qr-gen.forms.textPlaceholder')}
                                     value={text}
                                     onChange={(e) => setText(e.target.value)}
                                     className="w-full h-32 p-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
@@ -138,29 +138,29 @@ export default function QrGenerator() {
                         {activeTab === 'email' && (
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.recipient')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.recipient')}</label>
                                     <input
                                         type="email"
-                                        placeholder={t('tools.qr-gen.forms.recipientPlaceholder')}
+                                        placeholder={t('qr-gen.forms.recipientPlaceholder')}
                                         value={email.to}
                                         onChange={(e) => setEmail({ ...email, to: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.subject')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.subject')}</label>
                                     <input
                                         type="text"
-                                        placeholder={t('tools.qr-gen.forms.subjectPlaceholder')}
+                                        placeholder={t('qr-gen.forms.subjectPlaceholder')}
                                         value={email.subject}
                                         onChange={(e) => setEmail({ ...email, subject: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.body')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.body')}</label>
                                     <textarea
-                                        placeholder={t('tools.qr-gen.forms.bodyPlaceholder')}
+                                        placeholder={t('qr-gen.forms.bodyPlaceholder')}
                                         value={email.body}
                                         onChange={(e) => setEmail({ ...email, body: e.target.value })}
                                         className="w-full h-24 p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
@@ -172,35 +172,35 @@ export default function QrGenerator() {
                         {activeTab === 'wifi' && (
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.ssid')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.ssid')}</label>
                                     <input
                                         type="text"
-                                        placeholder={t('tools.qr-gen.forms.ssidPlaceholder')}
+                                        placeholder={t('qr-gen.forms.ssidPlaceholder')}
                                         value={wifi.ssid}
                                         onChange={(e) => setWifi({ ...wifi, ssid: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.password')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.password')}</label>
                                     <input
                                         type="text"
-                                        placeholder={t('tools.qr-gen.forms.passwordPlaceholder')}
+                                        placeholder={t('qr-gen.forms.passwordPlaceholder')}
                                         value={wifi.password}
                                         onChange={(e) => setWifi({ ...wifi, password: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.encryption')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.encryption')}</label>
                                     <select
                                         value={wifi.encryption}
                                         onChange={(e) => setWifi({ ...wifi, encryption: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                                     >
-                                        <option value="WPA">{t('tools.qr-gen.forms.encryptions.wpa')}</option>
-                                        <option value="WEP">{t('tools.qr-gen.forms.encryptions.wep')}</option>
-                                        <option value="nopass">{t('tools.qr-gen.forms.encryptions.none')}</option>
+                                        <option value="WPA">{t('qr-gen.forms.encryptions.wpa')}</option>
+                                        <option value="WEP">{t('qr-gen.forms.encryptions.wep')}</option>
+                                        <option value="nopass">{t('qr-gen.forms.encryptions.none')}</option>
                                     </select>
                                 </div>
                             </div>
@@ -209,10 +209,10 @@ export default function QrGenerator() {
                         {activeTab === 'vcard' && (
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.fullName')}</label>
+                                    <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.fullName')}</label>
                                     <input
                                         type="text"
-                                        placeholder={t('tools.qr-gen.forms.namePlaceholder')}
+                                        placeholder={t('qr-gen.forms.namePlaceholder')}
                                         value={contact.fn}
                                         onChange={(e) => setContact({ ...contact, fn: e.target.value })}
                                         className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -220,20 +220,20 @@ export default function QrGenerator() {
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.phone')}</label>
+                                        <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.phone')}</label>
                                         <input
                                             type="tel"
-                                            placeholder={t('tools.qr-gen.forms.phonePlaceholder')}
+                                            placeholder={t('qr-gen.forms.phonePlaceholder')}
                                             value={contact.tel}
                                             onChange={(e) => setContact({ ...contact, tel: e.target.value })}
                                             className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-slate-700 font-bold mb-2">{t('tools.qr-gen.forms.email')}</label>
+                                        <label className="block text-slate-700 font-bold mb-2">{t('qr-gen.forms.email')}</label>
                                         <input
                                             type="email"
-                                            placeholder={t('tools.qr-gen.forms.emailPlaceholder')}
+                                            placeholder={t('qr-gen.forms.emailPlaceholder')}
                                             value={contact.email}
                                             onChange={(e) => setContact({ ...contact, email: e.target.value })}
                                             className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -246,10 +246,10 @@ export default function QrGenerator() {
                     
                     {/* Customization Options */}
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <h3 className="font-bold text-slate-800 mb-4">{t('tools.qr-gen.appearance.title')}</h3>
+                        <h3 className="font-bold text-slate-800 mb-4">{t('qr-gen.appearance.title')}</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm text-slate-500 mb-2">{t('tools.qr-gen.appearance.fgColor')}</label>
+                                <label className="block text-sm text-slate-500 mb-2">{t('qr-gen.appearance.fgColor')}</label>
                                 <div className="flex items-center gap-3">
                                     <input 
                                         type="color" 
@@ -261,7 +261,7 @@ export default function QrGenerator() {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm text-slate-500 mb-2">{t('tools.qr-gen.appearance.bgColor')}</label>
+                                <label className="block text-sm text-slate-500 mb-2">{t('qr-gen.appearance.bgColor')}</label>
                                 <div className="flex items-center gap-3">
                                     <input 
                                         type="color" 
@@ -273,7 +273,7 @@ export default function QrGenerator() {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm text-slate-500 mb-2">{t('tools.qr-gen.appearance.size', { size })}</label>
+                                <label className="block text-sm text-slate-500 mb-2">{t('qr-gen.appearance.size', { size })}</label>
                                 <input 
                                     type="range" 
                                     min="128" 
@@ -285,16 +285,16 @@ export default function QrGenerator() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-slate-500 mb-2">{t('tools.qr-gen.appearance.errorCorrection')}</label>
+                                <label className="block text-sm text-slate-500 mb-2">{t('qr-gen.appearance.errorCorrection')}</label>
                                 <select 
                                     value={level} 
                                     onChange={(e) => setLevel(e.target.value)}
                                     className="w-full p-2 border border-slate-200 rounded-lg text-sm"
                                 >
-                                    <option value="L">{t('tools.qr-gen.appearance.levels.L')}</option>
-                                    <option value="M">{t('tools.qr-gen.appearance.levels.M')}</option>
-                                    <option value="Q">{t('tools.qr-gen.appearance.levels.Q')}</option>
-                                    <option value="H">{t('tools.qr-gen.appearance.levels.H')}</option>
+                                    <option value="L">{t('qr-gen.appearance.levels.L')}</option>
+                                    <option value="M">{t('qr-gen.appearance.levels.M')}</option>
+                                    <option value="Q">{t('qr-gen.appearance.levels.Q')}</option>
+                                    <option value="H">{t('qr-gen.appearance.levels.H')}</option>
                                 </select>
                             </div>
                         </div>
@@ -307,7 +307,7 @@ export default function QrGenerator() {
                         <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-lg text-center">
                             <h2 className="text-lg font-bold text-slate-800 mb-6 flex items-center justify-center gap-2">
                                 <Share2 size={20} className="text-blue-500" />
-                                {t('tools.qr-gen.preview.title')}
+                                {t('qr-gen.preview.title')}
                             </h2>
                             
                             <div className="flex justify-center mb-8" ref={qrRef}>
@@ -323,7 +323,7 @@ export default function QrGenerator() {
                                     />
                                 ) : (
                                     <div className="w-64 h-64 bg-slate-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-200 text-slate-400">
-                                        {t('tools.qr-gen.preview.empty')}
+                                        {t('qr-gen.preview.empty')}
                                     </div>
                                 )}
                             </div>
@@ -338,7 +338,7 @@ export default function QrGenerator() {
                                 }`}
                             >
                                 <Download size={20} />
-                                {t('tools.qr-gen.preview.download')}
+                                {t('qr-gen.preview.download')}
                             </button>
                         </div>
 

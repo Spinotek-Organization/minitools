@@ -1101,7 +1101,7 @@
             }
         },
         "password-gen": {
-            "title": "Strong Password Generator",
+            "title": "Password Generator",
             "desc": "Create secure, random passwords using cryptographic randomness.",
             "length": "Password Length",
             "options": {

@@ -7,7 +7,7 @@ import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function FakeIdentity() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [identity, setIdentity] = useState(null);
     const [gender, setGender] = useState('random');
     const [loading, setLoading] = useState(true);
@@ -91,8 +91,8 @@ export default function FakeIdentity() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.fake-identity.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.fake-identity.desc')} />
+                <title>{t('fake-identity.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('fake-identity.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -101,8 +101,8 @@ export default function FakeIdentity() {
                         <UserCircle size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.fake-identity.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.fake-identity.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('fake-identity.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('fake-identity.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -112,11 +112,11 @@ export default function FakeIdentity() {
                 {/* Controls */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <label className="block text-slate-700 font-bold mb-4">{t('tools.fake-identity.config')}</label>
+                        <label className="block text-slate-700 font-bold mb-4">{t('fake-identity.config')}</label>
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.fake-identity.gender.label')}</label>
+                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('fake-identity.gender.label')}</label>
                                 <div className="grid grid-cols-3 gap-2">
                                     {['random', 'male', 'female'].map(g => (
                                         <button
@@ -128,7 +128,7 @@ export default function FakeIdentity() {
                                                     : 'border-slate-100 text-slate-500 hover:border-slate-200'
                                             }`}
                                         >
-                                            {t(`tools.fake-identity.gender.${g}`)}
+                                            {t(`fake-identity.gender.${g}`)}
                                         </button>
                                     ))}
                                 </div>
@@ -140,15 +140,15 @@ export default function FakeIdentity() {
                                 className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-lg active:scale-95"
                             >
                                 <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
-                                {loading ? t('tools.fake-identity.generating') : t('tools.fake-identity.generate')}
+                                {loading ? t('fake-identity.generating') : t('fake-identity.generate')}
                             </button>
                         </div>
                     </div>
 
                     <div className="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 text-indigo-900 text-sm">
-                        <h4 className="font-bold mb-2">{t('tools.fake-identity.usage.title')}</h4>
+                        <h4 className="font-bold mb-2">{t('fake-identity.usage.title')}</h4>
                         <p className="opacity-80 leading-relaxed">
-                            {t('tools.fake-identity.usage.text')}
+                            {t('fake-identity.usage.text')}
                         </p>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ export default function FakeIdentity() {
                             <button
                                 onClick={handleCopyJson}
                                 className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-lg text-slate-500 hover:text-indigo-600 hover:border-indigo-200 transition-all z-10"
-                                title={t('tools.fake-identity.copy')}
+                                title={t('fake-identity.copy')}
                             >
                                 {copied ? <Check size={20} className="text-emerald-500" /> : <Copy size={20} />}
                             </button>
@@ -198,18 +198,18 @@ export default function FakeIdentity() {
                                 
                                 {/* Personal Info */}
                                 <section>
-                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('tools.fake-identity.personal.title')}</h3>
+                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('fake-identity.personal.title')}</h3>
                                     <div className="space-y-1">
-                                        <InfoRow icon={Calendar} label={t('tools.fake-identity.personal.dob')} value={identity.birthDate} />
-                                        <InfoRow icon={UserCircle} label={t('tools.fake-identity.personal.gender')} value={<span className="capitalize">{t(`tools.fake-identity.gender.${identity.gender}`)}</span>} />
-                                        <InfoRow icon={Mail} label={t('tools.fake-identity.personal.email')} value={identity.email} />
-                                        <InfoRow icon={Phone} label={t('tools.fake-identity.personal.phone')} value={identity.phone} />
+                                        <InfoRow icon={Calendar} label={t('fake-identity.personal.dob')} value={identity.birthDate} />
+                                        <InfoRow icon={UserCircle} label={t('fake-identity.personal.gender')} value={<span className="capitalize">{t(`fake-identity.gender.${identity.gender}`)}</span>} />
+                                        <InfoRow icon={Mail} label={t('fake-identity.personal.email')} value={identity.email} />
+                                        <InfoRow icon={Phone} label={t('fake-identity.personal.phone')} value={identity.phone} />
                                     </div>
                                 </section>
 
                                 {/* Location */}
                                 <section>
-                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('tools.fake-identity.location.title')}</h3>
+                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('fake-identity.location.title')}</h3>
                                     <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
                                         <MapPin className="text-slate-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
@@ -222,10 +222,10 @@ export default function FakeIdentity() {
 
                                 {/* Digital Footprint */}
                                 <section>
-                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('tools.fake-identity.online.title')}</h3>
+                                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">{t('fake-identity.online.title')}</h3>
                                     <div className="space-y-1">
-                                         <InfoRow icon={Globe} label={t('tools.fake-identity.online.username')} value={identity.username} mono />
-                                         <InfoRow icon={UserCircle} label={t('tools.fake-identity.online.uuid')} value={<span className="text-xs">{identity.uuid}</span>} mono />
+                                         <InfoRow icon={Globe} label={t('fake-identity.online.username')} value={identity.username} mono />
+                                         <InfoRow icon={UserCircle} label={t('fake-identity.online.uuid')} value={<span className="text-xs">{identity.uuid}</span>} mono />
                                     </div>
                                 </section>
 

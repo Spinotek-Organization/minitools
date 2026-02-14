@@ -6,8 +6,8 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function TiktokHooks() {
-    const { t } = useTranslation();
-    const HOOKS = t('tools.tiktok-hooks.hookTexts', { returnObjects: true }) || [];
+    const { t } = useTranslation('tools');
+    const HOOKS = t('tiktok-hooks.hookTexts', { returnObjects: true }) || [];
 
     const [filter, setFilter] = useState('all');
     const [hooks, setHooks] = useState([]);
@@ -42,8 +42,8 @@ export default function TiktokHooks() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>TikTok Viral Hook Ideas | MiniTools by Spinotek</title>
-                <meta name="description" content="Discover high-performing hooks to make your short-form videos go viral." />
+                <title>{t('tiktok-hooks.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('tiktok-hooks.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -52,15 +52,15 @@ export default function TiktokHooks() {
                         <Zap size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.tiktok-hooks.title')}</h1>
-                        <p className="text-slate-500">{t('tools.tiktok-hooks.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('tiktok-hooks.title')}</h1>
+                        <p className="text-slate-500">{t('tiktok-hooks.subtitle')}</p>
                     </div>
                 </div>
                 <button 
                     onClick={shuffleHooks}
                     className="px-6 py-3 bg-emerald-50 text-emerald-600 rounded-xl font-bold hover:bg-emerald-100 transition-colors flex items-center gap-2"
                 >
-                    <Shuffle size={20} /> {t('tools.tiktok-hooks.buttons.shuffle')}
+                    <Shuffle size={20} /> {t('tiktok-hooks.buttons.shuffle')}
                 </button>
             </div>
 
@@ -68,7 +68,7 @@ export default function TiktokHooks() {
                 {/* Filters */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6">
-                        <h3 className="font-bold text-slate-700 mb-4">{t('tools.tiktok-hooks.headings.categories')}</h3>
+                        <h3 className="font-bold text-slate-700 mb-4">{t('tiktok-hooks.headings.categories')}</h3>
                         <div className="space-y-2">
                             {categories.map(cat => (
                                 <button
@@ -80,7 +80,7 @@ export default function TiktokHooks() {
                                             : 'text-slate-600 hover:bg-slate-50'
                                     }`}
                                 >
-                                    {t(`tools.tiktok-hooks.categories.${cat}`)}
+                                    {t(`tiktok-hooks.categories.${cat}`)}
                                 </button>
                             ))}
                         </div>
@@ -100,13 +100,13 @@ export default function TiktokHooks() {
                                     {copiedIndex === index ? <Check size={20} /> : <Copy size={20} />}
                                 </div>
                                 <span className="inline-block px-2 py-1 bg-slate-100 rounded-md text-[10px] uppercase font-bold text-slate-500 mb-3 group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-colors">
-                                    {t(`tools.tiktok-hooks.categories.${hook.category}`)}
+                                    {t(`tiktok-hooks.categories.${hook.category}`)}
                                 </span>
                                 <p className="font-bold text-slate-800 text-lg leading-relaxed pr-8">
                                     "{hook.text}"
                                 </p>
                                 <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-emerald-500">
-                                    {t('tools.tiktok-hooks.labels.clickCopy')}
+                                    {t('tiktok-hooks.labels.clickCopy')}
                                 </div>
                             </div>
                         ))}

@@ -12,7 +12,7 @@ const SCORE_COLORS = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-5
 const SCORE_TEXT_COLORS = ['text-red-600', 'text-orange-600', 'text-yellow-600', 'text-lime-600', 'text-green-600'];
 
 export default function PasswordStrength() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     
@@ -26,11 +26,11 @@ export default function PasswordStrength() {
 
     // Composition Checks
     const checks = [
-        { label: t('tools.password-strength.composition.length'), valid: password.length >= 12 },
-        { label: t('tools.password-strength.composition.uppercase'), valid: /[A-Z]/.test(password) },
-        { label: t('tools.password-strength.composition.lowercase'), valid: /[a-z]/.test(password) },
-        { label: t('tools.password-strength.composition.number'), valid: /[0-9]/.test(password) },
-        { label: t('tools.password-strength.composition.symbol'), valid: /[^A-Za-z0-9]/.test(password) },
+        { label: t('password-strength.composition.length'), valid: password.length >= 12 },
+        { label: t('password-strength.composition.uppercase'), valid: /[A-Z]/.test(password) },
+        { label: t('password-strength.composition.lowercase'), valid: /[a-z]/.test(password) },
+        { label: t('password-strength.composition.number'), valid: /[0-9]/.test(password) },
+        { label: t('password-strength.composition.symbol'), valid: /[^A-Za-z0-9]/.test(password) },
     ];
 
     // Simple Entropy Calculation
@@ -49,8 +49,8 @@ export default function PasswordStrength() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.password-strength.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.password-strength.desc')} />
+                <title>{t('password-strength.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('password-strength.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -59,8 +59,8 @@ export default function PasswordStrength() {
                         <Key size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.password-strength.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.password-strength.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('password-strength.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('password-strength.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -70,13 +70,13 @@ export default function PasswordStrength() {
                 {/* Input Section */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
-                        <label className="block text-slate-700 font-bold mb-2">{t('tools.password-strength.inputLabel')}</label>
+                        <label className="block text-slate-700 font-bold mb-2">{t('password-strength.inputLabel')}</label>
                         <div className="relative mb-4">
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder={t('tools.password-strength.placeholder')}
+                                placeholder={t('password-strength.placeholder')}
                                 className="w-full pl-4 pr-12 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-amber-500 font-mono text-lg transition-colors"
                             />
                             <button
@@ -90,9 +90,9 @@ export default function PasswordStrength() {
                         {/* Quick Meter */}
                         <div className="space-y-2">
                             <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
-                                <span>{t('tools.password-strength.strength')}</span>
+                                <span>{t('password-strength.strength')}</span>
                                 <span className={result ? SCORE_TEXT_COLORS[score] : 'text-slate-400'}>
-                                    {result ? t(`tools.password-strength.scores.${score}`) : t('tools.password-strength.scores.empty')}
+                                    {result ? t(`password-strength.scores.${score}`) : t('password-strength.scores.empty')}
                                 </span>
                             </div>
                             <div className="flex gap-1 h-2">
@@ -114,7 +114,7 @@ export default function PasswordStrength() {
                         <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm">
                             <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
                                 <CheckCircle size={18} className="text-slate-400" />
-                                {t('tools.password-strength.composition.title')}
+                                {t('password-strength.composition.title')}
                             </h3>
                             <div className="space-y-3">
                                 {checks.map((check, i) => (
@@ -147,30 +147,30 @@ export default function PasswordStrength() {
                             <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex justify-between items-center">
                                 <h3 className="font-bold text-slate-800 flex items-center gap-2">
                                     <Clock size={20} className="text-slate-400" />
-                                    {t('tools.password-strength.analysis.crackTime')}
+                                    {t('password-strength.analysis.crackTime')}
                                 </h3>
                                 <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200">
                                     <Calculator size={12} />
-                                    {t('tools.password-strength.analysis.entropy', { bits: entropy })}
+                                    {t('password-strength.analysis.entropy', { bits: entropy })}
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                                 <div className="p-6">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('tools.password-strength.analysis.online')}</div>
+                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('password-strength.analysis.online')}</div>
                                     <div className="text-2xl font-black text-slate-800 mb-1">
                                         {result.crack_times_display.online_throttling_100_per_hour}
                                     </div>
                                     <p className="text-xs text-slate-500 leading-relaxed">
-                                        {t('tools.password-strength.analysis.onlineScenario')}
+                                        {t('password-strength.analysis.onlineScenario')}
                                     </p>
                                 </div>
                                 <div className="p-6">
-                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('tools.password-strength.analysis.offline')}</div>
+                                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t('password-strength.analysis.offline')}</div>
                                     <div className="text-2xl font-black text-slate-800 mb-1">
                                         {result.crack_times_display.offline_fast_hashing_1e10_per_second}
                                     </div>
                                     <p className="text-xs text-slate-500 leading-relaxed">
-                                        {t('tools.password-strength.analysis.offlineScenario')}
+                                        {t('password-strength.analysis.offlineScenario')}
                                     </p>
                                 </div>
                             </div>
@@ -183,7 +183,7 @@ export default function PasswordStrength() {
                             <div className="bg-slate-50 px-6 py-4 border-b border-slate-100">
                                 <h3 className="font-bold text-slate-800 flex items-center gap-2">
                                     <ShieldCheck size={20} className="text-slate-400" />
-                                    {t('tools.password-strength.analysis.weakness')}
+                                    {t('password-strength.analysis.weakness')}
                                 </h3>
                             </div>
                             <div className="p-6 space-y-4">
@@ -193,7 +193,7 @@ export default function PasswordStrength() {
                                     <div className="bg-red-50 border border-red-100 rounded-xl p-4 flex items-start gap-3">
                                         <AlertTriangle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
                                         <div>
-                                            <h4 className="font-bold text-red-700 text-sm mb-1">{t('tools.password-strength.analysis.critical')}</h4>
+                                            <h4 className="font-bold text-red-700 text-sm mb-1">{t('password-strength.analysis.critical')}</h4>
                                             <p className="text-red-600 text-sm">{warning}</p>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@ export default function PasswordStrength() {
                                 {/* Suggestions */}
                                 {suggestions.length > 0 ? (
                                     <div>
-                                        <h4 className="font-bold text-slate-700 text-sm mb-3">{t('tools.password-strength.analysis.suggestions')}</h4>
+                                        <h4 className="font-bold text-slate-700 text-sm mb-3">{t('password-strength.analysis.suggestions')}</h4>
                                         <ul className="space-y-2">
                                             {suggestions.map((s, i) => (
                                                 <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
@@ -217,8 +217,8 @@ export default function PasswordStrength() {
                                         <div className="flex items-center gap-3 text-emerald-600 bg-emerald-50 p-4 rounded-xl border border-emerald-100">
                                             <CheckCircle size={24} />
                                             <div>
-                                                <div className="font-bold">{t('tools.password-strength.analysis.excellent')}</div>
-                                                <div className="text-sm">{t('tools.password-strength.analysis.excellentDesc')}</div>
+                                                <div className="font-bold">{t('password-strength.analysis.excellent')}</div>
+                                                <div className="text-sm">{t('password-strength.analysis.excellentDesc')}</div>
                                             </div>
                                         </div>
                                     )
@@ -226,7 +226,7 @@ export default function PasswordStrength() {
 
                                 {score < 4 && !warning && suggestions.length === 0 && (
                                      <div className="text-slate-500 text-sm italic">
-                                        {t('tools.password-strength.analysis.generic')}
+                                        {t('password-strength.analysis.generic')}
                                      </div>
                                 )}
                             </div>
@@ -236,8 +236,8 @@ export default function PasswordStrength() {
                     {!result && (
                         <div className="bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 p-12 text-center text-slate-400">
                             <Key size={48} className="mx-auto mb-4 opacity-20" />
-                            <p className="font-medium">{t('tools.password-strength.empty.title')}</p>
-                            <p className="text-sm mt-2">{t('tools.password-strength.empty.subtitle')}</p>
+                            <p className="font-medium">{t('password-strength.empty.title')}</p>
+                            <p className="text-sm mt-2">{t('password-strength.empty.subtitle')}</p>
                         </div>
                     )}
                 </div>

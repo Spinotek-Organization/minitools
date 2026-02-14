@@ -7,7 +7,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function InstagramGrid() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [images, setImages] = useState([]);
     const [draggedItem, setDraggedItem] = useState(null);
     const [isDownloading, setIsDownloading] = useState(false);
@@ -92,8 +92,8 @@ export default function InstagramGrid() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Instagram Grid Preview | MiniTools by Spinotek</title>
-                <meta name="description" content="Visualize and plan your Instagram feed aesthetic with our grid planner." />
+                <title>{t('ig-grid.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('ig-grid.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -102,15 +102,15 @@ export default function InstagramGrid() {
                         <Grid size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.ig-grid.title')}</h1>
-                        <p className="text-slate-500">{t('tools.ig-grid.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('ig-grid.title')}</h1>
+                        <p className="text-slate-500">{t('ig-grid.subtitle')}</p>
                     </div>
                 </div>
                 <button 
                     onClick={() => setImages([])}
                     className="px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-50 rounded-xl transition-colors"
                 >
-                    {t('tools.ig-grid.buttons.clear')}
+                    {t('ig-grid.buttons.clear')}
                 </button>
                 {images.length > 0 && (
                     <button 
@@ -118,7 +118,7 @@ export default function InstagramGrid() {
                         disabled={isDownloading}
                         className="px-4 py-2 text-sm font-medium bg-fuchsia-600 text-white hover:bg-fuchsia-700 rounded-xl transition-colors flex items-center gap-2 shadow-lg shadow-fuchsia-200 disabled:opacity-50 disabled:cursor-wait"
                     >
-                        <Download size={16} /> {isDownloading ? t('tools.ig-grid.buttons.downloading') : t('tools.ig-grid.buttons.download')}
+                        <Download size={16} /> {isDownloading ? t('ig-grid.buttons.downloading') : t('ig-grid.buttons.download')}
                     </button>
                 )}
             </div>
@@ -141,16 +141,16 @@ export default function InstagramGrid() {
                         <div className="w-16 h-16 bg-fuchsia-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-fuchsia-100 text-fuchsia-500 transition-colors">
                             <Upload size={32} />
                         </div>
-                        <h3 className="font-bold text-slate-700 text-lg mb-2">{t('tools.ig-grid.labels.uploadTitle')}</h3>
-                        <p className="text-slate-400 text-sm">{t('tools.ig-grid.labels.uploadDesc')}</p>
+                        <h3 className="font-bold text-slate-700 text-lg mb-2">{t('ig-grid.labels.uploadTitle')}</h3>
+                        <p className="text-slate-400 text-sm">{t('ig-grid.labels.uploadDesc')}</p>
                     </div>
 
                     <div className="bg-fuchsia-50 rounded-2xl p-6 border border-fuchsia-100">
                         <h4 className="font-bold text-fuchsia-800 mb-2 flex items-center gap-2">
-                            <Move size={16} /> {t('tools.ig-grid.headings.howTo')}
+                            <Move size={16} /> {t('ig-grid.headings.howTo')}
                         </h4>
                         <ul className="text-sm text-fuchsia-700/80 space-y-2 list-disc pl-4">
-                            {(t('tools.ig-grid.howToSteps', { returnObjects: true }) || []).map((step, i) => (
+                            {(t('ig-grid.howToSteps', { returnObjects: true }) || []).map((step, i) => (
                                 <li key={i}>{step}</li>
                             ))}
                         </ul>
@@ -161,8 +161,8 @@ export default function InstagramGrid() {
                 <div className="lg:col-span-2">
                     <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden max-w-md mx-auto">
                         <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                            <span className="font-bold text-slate-700">{t('tools.ig-grid.headings.preview')}</span>
-                            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t('tools.ig-grid.labels.posts')}</span>
+                            <span className="font-bold text-slate-700">{t('ig-grid.headings.preview')}</span>
+                            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t('ig-grid.labels.posts')}</span>
                         </div>
                         
                         {images.length > 0 ? (
@@ -197,14 +197,14 @@ export default function InstagramGrid() {
                                 {/* Fill empty slots to maintain 3-col look if needed */}
                                 {[...Array(Math.max(0, (3 - (images.length % 3)) % 3))].map((_, i) => (
                                     <div key={`empty-${i}`} className="aspect-square bg-slate-50 border border-slate-100 flex items-center justify-center">
-                                        <span className="text-slate-200 text-xs">{t('tools.ig-grid.labels.slotEmpty')}</span>
+                                        <span className="text-slate-200 text-xs">{t('ig-grid.labels.slotEmpty')}</span>
                                     </div>
                                 ))}
                             </div>
                         ) : (
                             <div className="aspect-[3/4] flex flex-col items-center justify-center text-slate-300 bg-slate-50/50">
                                 <Grid size={48} className="mb-4 opacity-30" />
-                                <p>{t('tools.ig-grid.labels.empty')}</p>
+                                <p>{t('ig-grid.labels.empty')}</p>
                             </div>
                         )}
                         

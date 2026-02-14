@@ -6,7 +6,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function Teleprompter() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [text, setText] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
     const [speed, setSpeed] = useState(2); // 1-10
@@ -99,7 +99,7 @@ export default function Teleprompter() {
                         <button 
                             onClick={() => setIsMirrored(!isMirrored)} 
                             className={`p-2 rounded-full ${isMirrored ? 'bg-white text-black' : 'hover:bg-white/20'}`}
-                            title={t('tools.teleprompter.controls.mirror')}
+                            title={t('teleprompter.controls.mirror')}
                         >
                             <FlipHorizontal size={24} />
                         </button>
@@ -113,7 +113,7 @@ export default function Teleprompter() {
                         }}
                         className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2"
                     >
-                        <X size={20} /> {t('tools.teleprompter.controls.exit')}
+                        <X size={20} /> {t('teleprompter.controls.exit')}
                     </button>
                 </div>
 
@@ -135,7 +135,7 @@ export default function Teleprompter() {
                         style={{ fontSize: `${fontSize}px` }}
                         contentEditable={false} // Read only in prompter mode
                     >
-                        {text || t('tools.teleprompter.placeholders.empty')}
+                        {text || t('teleprompter.placeholders.empty')}
                     </p>
                     
                     {/* End Padding */}
@@ -158,8 +158,8 @@ export default function Teleprompter() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Online Teleprompter | MiniTools by Spinotek</title>
-                <meta name="description" content="Professional browser-based teleprompter with mirroring, speed control, and fullscreen mode." />
+                <title>{t('teleprompter.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('teleprompter.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -168,8 +168,8 @@ export default function Teleprompter() {
                         <Monitor size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.teleprompter.title')}</h1>
-                        <p className="text-slate-500">{t('tools.teleprompter.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('teleprompter.title')}</h1>
+                        <p className="text-slate-500">{t('teleprompter.subtitle')}</p>
                     </div>
                 </div>
                 <button 
@@ -177,7 +177,7 @@ export default function Teleprompter() {
                     disabled={!text}
                     className="px-6 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors flex items-center gap-2 shadow-lg shadow-red-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    <Play size={20} /> {t('tools.teleprompter.buttons.start')}
+                    <Play size={20} /> {t('teleprompter.buttons.start')}
                 </button>
             </div>
 
@@ -185,21 +185,21 @@ export default function Teleprompter() {
                 {/* Editor */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-4">
                     <div className="flex justify-between items-center">
-                        <label className="font-bold text-slate-700 block">{t('tools.teleprompter.labels.scriptEditor')}</label>
+                        <label className="font-bold text-slate-700 block">{t('teleprompter.labels.scriptEditor')}</label>
                         <div className="flex gap-4 text-sm text-slate-500">
-                            <span>{t('tools.teleprompter.labels.words', { count: text.split(/\s+/).filter(w => w.length > 0).length })}</span>
-                            <span>{t('tools.teleprompter.labels.minRead', { count: Math.ceil(text.split(/\s+/).filter(w => w.length > 0).length / 130) })}</span>
+                            <span>{t('teleprompter.labels.words', { count: text.split(/\s+/).filter(w => w.length > 0).length })}</span>
+                            <span>{t('teleprompter.labels.minRead', { count: Math.ceil(text.split(/\s+/).filter(w => w.length > 0).length / 130) })}</span>
                         </div>
                     </div>
                     <textarea 
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                        placeholder={t('tools.teleprompter.placeholders.input')}
+                        placeholder={t('teleprompter.placeholders.input')}
                         className="w-full h-96 p-6 text-lg leading-relaxed rounded-2xl border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-500 focus:ring-sky-500 transition-colors resize-y"
                     />
                     <div className="flex items-center gap-2 text-sm text-slate-500 bg-sky-50 p-4 rounded-xl border border-sky-100">
                         <Monitor size={16} className="text-sky-600" />
-                        <p dangerouslySetInnerHTML={{ __html: t('tools.teleprompter.tip') }} />
+                        <p dangerouslySetInnerHTML={{ __html: t('teleprompter.tip') }} />
                     </div>
                 </div>
             </div>

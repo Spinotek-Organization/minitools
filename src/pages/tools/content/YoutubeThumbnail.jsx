@@ -6,11 +6,11 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function YoutubeThumbnail() {
-    const { t } = useTranslation();
-    const [title, setTitle] = useState(t('tools.yt-thumbnail.placeholders.title'));
-    const [channel, setChannel] = useState(t('tools.yt-thumbnail.placeholders.channel'));
-    const [views, setViews] = useState(t('tools.yt-thumbnail.placeholders.views'));
-    const [time, setTime] = useState(t('tools.yt-thumbnail.placeholders.time'));
+    const { t } = useTranslation('tools');
+    const [title, setTitle] = useState(t('yt-thumbnail.placeholders.title'));
+    const [channel, setChannel] = useState(t('yt-thumbnail.placeholders.channel'));
+    const [views, setViews] = useState(t('yt-thumbnail.placeholders.views'));
+    const [time, setTime] = useState(t('yt-thumbnail.placeholders.time'));
     const [thumbnail, setThumbnail] = useState(null);
     const [darkMode, setDarkMode] = useState(true);
 
@@ -23,8 +23,8 @@ export default function YoutubeThumbnail() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.yt-thumbnail.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.yt-thumbnail.desc')} />
+                <title>{t('yt-thumbnail.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('yt-thumbnail.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -33,8 +33,8 @@ export default function YoutubeThumbnail() {
                         <Youtube size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.yt-thumbnail.title')}</h1>
-                        <p className="text-slate-500">{t('tools.yt-thumbnail.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('yt-thumbnail.title')}</h1>
+                        <p className="text-slate-500">{t('yt-thumbnail.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@ export default function YoutubeThumbnail() {
                              <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-2 text-slate-500">
                                  <Upload size={20} />
                              </div>
-                             <p className="text-sm font-bold text-slate-600">{t('tools.yt-thumbnail.labels.upload')}</p>
-                             <p className="text-xs text-slate-400">{t('tools.yt-thumbnail.labels.recommended')}</p>
+                             <p className="text-sm font-bold text-slate-600">{t('yt-thumbnail.labels.upload')}</p>
+                             <p className="text-xs text-slate-400">{t('yt-thumbnail.labels.recommended')}</p>
                         </div>
 
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('tools.yt-thumbnail.labels.title')}</label>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('yt-thumbnail.labels.title')}</label>
                             <input 
                                 type="text" 
                                 value={title}
@@ -63,7 +63,7 @@ export default function YoutubeThumbnail() {
                         </div>
 
                         <div>
-                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('tools.yt-thumbnail.labels.channel')}</label>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('yt-thumbnail.labels.channel')}</label>
                             <input 
                                 type="text" 
                                 value={channel}
@@ -74,7 +74,7 @@ export default function YoutubeThumbnail() {
 
                          <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('tools.yt-thumbnail.labels.views')}</label>
+                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('yt-thumbnail.labels.views')}</label>
                                 <input 
                                     type="text" 
                                     value={views}
@@ -83,7 +83,7 @@ export default function YoutubeThumbnail() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('tools.yt-thumbnail.labels.time')}</label>
+                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{t('yt-thumbnail.labels.time')}</label>
                                 <input 
                                     type="text" 
                                     value={time}
@@ -98,13 +98,13 @@ export default function YoutubeThumbnail() {
                                 onClick={() => setDarkMode(false)}
                                 className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-bold transition-all ${!darkMode ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}
                             >
-                                <Sun size={16} /> {t('tools.yt-thumbnail.buttons.light')}
+                                <Sun size={16} /> {t('yt-thumbnail.buttons.light')}
                             </button>
                             <button 
                                 onClick={() => setDarkMode(true)}
                                 className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-bold transition-all ${darkMode ? 'bg-slate-800 shadow text-white' : 'text-slate-500'}`}
                             >
-                                <Moon size={16} /> {t('tools.yt-thumbnail.buttons.dark')}
+                                <Moon size={16} /> {t('yt-thumbnail.buttons.dark')}
                             </button>
                         </div>
                     </div>
@@ -132,7 +132,7 @@ export default function YoutubeThumbnail() {
                                         ) : (
                                             <div className="w-full h-full flex flex-col items-center justify-center text-slate-500">
                                                 <Youtube size={48} className="opacity-20 mb-2" />
-                                                <span className="text-xs uppercase font-bold opacity-40">{t('tools.yt-thumbnail.labels.noImage')}</span>
+                                                <span className="text-xs uppercase font-bold opacity-40">{t('yt-thumbnail.labels.noImage')}</span>
                                             </div>
                                         )}
                                         <div className="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1 rounded">10:24</div>

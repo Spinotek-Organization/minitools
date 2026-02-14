@@ -14,7 +14,7 @@ const CHAR_SETS = {
 };
 
 export default function PasswordGenerator() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [password, setPassword] = useState('');
     const [length, setLength] = useState(16);
     const [options, setOptions] = useState({
@@ -80,8 +80,8 @@ export default function PasswordGenerator() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.password-gen.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.password-gen.desc')} />
+                <title>{t('password-gen.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('password-gen.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -90,8 +90,8 @@ export default function PasswordGenerator() {
                         <Shield size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.password-gen.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.password-gen.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('password-gen.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('password-gen.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@ export default function PasswordGenerator() {
                             <button
                                 onClick={generatePassword}
                                 className="p-4 bg-slate-100 text-slate-600 rounded-2xl hover:bg-slate-200 transition-colors"
-                                title={t('tools.password-gen.actions.regenerate')}
+                                title={t('password-gen.actions.regenerate')}
                             >
                                 <RefreshCw size={24} />
                             </button>
@@ -123,7 +123,7 @@ export default function PasswordGenerator() {
                                 }`}
                             >
                                 {copied ? <Check size={24} /> : <Copy size={24} />}
-                                {copied ? t('tools.password-gen.actions.copied') : t('tools.password-gen.actions.copy')}
+                                {copied ? t('password-gen.actions.copied') : t('password-gen.actions.copy')}
                             </button>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ export default function PasswordGenerator() {
                         {/* Length Slider */}
                         <div className="mb-8">
                             <div className="flex justify-between items-center mb-4">
-                                <label className="font-bold text-slate-700">{t('tools.password-gen.length')}</label>
+                                <label className="font-bold text-slate-700">{t('password-gen.length')}</label>
                                 <span className="bg-emerald-100 text-emerald-800 font-mono font-bold px-3 py-1 rounded-lg">
                                     {length}
                                 </span>
@@ -170,7 +170,7 @@ export default function PasswordGenerator() {
                                             : 'border-slate-100 bg-white text-slate-400'
                                     }`}
                                 >
-                                    <span className="font-bold">{t(`tools.password-gen.options.${opt.id}`)}</span>
+                                    <span className="font-bold">{t(`password-gen.options.${opt.id}`)}</span>
                                     {options[opt.id] && <Check size={18} className="text-emerald-600" />}
                                 </button>
                             ))}
@@ -185,8 +185,8 @@ export default function PasswordGenerator() {
                                 }`}
                             >
                                 <div className="flex items-center gap-2">
-                                    <span className="font-bold">{t('tools.password-gen.options.ambiguous')}</span>
-                                    <span className="text-xs opacity-60">{t('tools.password-gen.options.ambiguousHint')}</span>
+                                    <span className="font-bold">{t('password-gen.options.ambiguous')}</span>
+                                    <span className="text-xs opacity-60">{t('password-gen.options.ambiguousHint')}</span>
                                 </div>
                                 {options.avoidAmbiguous && <Check size={18} className="text-emerald-600" />}
                             </button>
@@ -200,7 +200,7 @@ export default function PasswordGenerator() {
                     <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6">
                         <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
                             <Info size={20} className="text-slate-400" />
-                            {t('tools.password-gen.history.title')}
+                            {t('password-gen.history.title')}
                         </h3>
                         <div className="space-y-2">
                             {history.length > 0 ? (
@@ -212,14 +212,14 @@ export default function PasswordGenerator() {
                                             navigator.clipboard.writeText(pass);
                                             // Optional: visual feedback for history copy
                                         }}
-                                        title={t('tools.password-gen.history.clickToCopy')}
+                                        title={t('password-gen.history.clickToCopy')}
                                     >
                                         {pass}
                                     </div>
                                 ))
                             ) : (
                                 <div className="text-sm text-slate-400 italic text-center py-4">
-                                    {t('tools.password-gen.history.empty')}
+                                    {t('password-gen.history.empty')}
                                 </div>
                             )}
                         </div>

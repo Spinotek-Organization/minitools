@@ -6,7 +6,7 @@ import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function BrowserFingerprint() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [info, setInfo] = useState(null);
 
     useEffect(() => {
@@ -59,15 +59,15 @@ export default function BrowserFingerprint() {
 
             return {
                 userAgent: nav.userAgent,
-                platform: nav.platform || t('tools.browser-fingerprint.unknown'),
-                language: nav.language || t('tools.browser-fingerprint.unknown'),
+                platform: nav.platform || t('browser-fingerprint.unknown'),
+                language: nav.language || t('browser-fingerprint.unknown'),
                 resolution: `${screen.width} x ${screen.height}`,
                 colorDepth: `${screen.colorDepth}-bit`,
                 pixelRatio: window.devicePixelRatio || 1,
                 timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                 cookiesEnabled: nav.cookieEnabled,
-                cores: nav.hardwareConcurrency || t('tools.browser-fingerprint.unknown'),
-                memory: nav.deviceMemory ? `~${nav.deviceMemory} GB` : t('tools.browser-fingerprint.unknown'),
+                cores: nav.hardwareConcurrency || t('browser-fingerprint.unknown'),
+                memory: nav.deviceMemory ? `~${nav.deviceMemory} GB` : t('browser-fingerprint.unknown'),
                 canvasHash: getCanvasFingerprint()
             };
         };
@@ -90,8 +90,8 @@ export default function BrowserFingerprint() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.browser-fingerprint.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.browser-fingerprint.desc')} />
+                <title>{t('browser-fingerprint.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('browser-fingerprint.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -100,8 +100,8 @@ export default function BrowserFingerprint() {
                         <Fingerprint size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.browser-fingerprint.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.browser-fingerprint.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('browser-fingerprint.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('browser-fingerprint.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -118,12 +118,12 @@ export default function BrowserFingerprint() {
                                 <Fingerprint size={120} />
                             </div>
                             <div className="relative z-10">
-                                <h3 className="text-violet-200 font-bold uppercase text-sm mb-2">{t('tools.browser-fingerprint.canvas.title')}</h3>
+                                <h3 className="text-violet-200 font-bold uppercase text-sm mb-2">{t('browser-fingerprint.canvas.title')}</h3>
                                 <div className="text-4xl sm:text-5xl font-mono font-black tracking-widest mb-4 drop-shadow-md">
                                     {info.canvasHash}
                                 </div>
                                 <p className="text-violet-100 text-sm max-w-lg leading-relaxed">
-                                    {t('tools.browser-fingerprint.canvas.desc')}
+                                    {t('browser-fingerprint.canvas.desc')}
                                 </p>
                             </div>
                         </div>
@@ -134,15 +134,15 @@ export default function BrowserFingerprint() {
                         <div>
                              <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                                 <Monitor size={20} className="text-slate-400" />
-                                {t('tools.browser-fingerprint.hardware.title')}
+                                {t('browser-fingerprint.hardware.title')}
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <InfoCard icon={Monitor} label={t('tools.browser-fingerprint.hardware.screen')} value={info.resolution} />
-                                <InfoCard icon={Grid} label={t('tools.browser-fingerprint.hardware.pixel')} value={`${info.pixelRatio}x`} />
-                                <InfoCard icon={Eye} label={t('tools.browser-fingerprint.hardware.color')} value={info.colorDepth} />
-                                <InfoCard icon={Cpu} label={t('tools.browser-fingerprint.hardware.cores')} value={info.cores} />
-                                <InfoCard icon={Grid} label={t('tools.browser-fingerprint.hardware.memory')} value={info.memory} />
-                                <InfoCard icon={Globe} label={t('tools.browser-fingerprint.hardware.platform')} value={info.platform} />
+                                <InfoCard icon={Monitor} label={t('browser-fingerprint.hardware.screen')} value={info.resolution} />
+                                <InfoCard icon={Grid} label={t('browser-fingerprint.hardware.pixel')} value={`${info.pixelRatio}x`} />
+                                <InfoCard icon={Eye} label={t('browser-fingerprint.hardware.color')} value={info.colorDepth} />
+                                <InfoCard icon={Cpu} label={t('browser-fingerprint.hardware.cores')} value={info.cores} />
+                                <InfoCard icon={Grid} label={t('browser-fingerprint.hardware.memory')} value={info.memory} />
+                                <InfoCard icon={Globe} label={t('browser-fingerprint.hardware.platform')} value={info.platform} />
                             </div>
                         </div>
                     )}
@@ -151,12 +151,12 @@ export default function BrowserFingerprint() {
                         <div>
                              <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                                 <Globe size={20} className="text-slate-400" />
-                                {t('tools.browser-fingerprint.location.title')}
+                                {t('browser-fingerprint.location.title')}
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <InfoCard icon={Globe} label={t('tools.browser-fingerprint.location.language')} value={info.language} />
-                                <InfoCard icon={Clock} label={t('tools.browser-fingerprint.location.timezone')} value={info.timezone} />
-                                <InfoCard icon={Cookie} label={t('tools.browser-fingerprint.location.cookies')} value={info.cookiesEnabled ? t('tools.browser-fingerprint.location.yes') : t('tools.browser-fingerprint.location.no')} />
+                                <InfoCard icon={Globe} label={t('browser-fingerprint.location.language')} value={info.language} />
+                                <InfoCard icon={Clock} label={t('browser-fingerprint.location.timezone')} value={info.timezone} />
+                                <InfoCard icon={Cookie} label={t('browser-fingerprint.location.cookies')} value={info.cookiesEnabled ? t('browser-fingerprint.location.yes') : t('browser-fingerprint.location.no')} />
                             </div>
                         </div>
                     )}
@@ -164,7 +164,7 @@ export default function BrowserFingerprint() {
                     {/* User Agent */}
                     {info && (
                          <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 break-all">
-                            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('tools.browser-fingerprint.ua')}</div>
+                            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('browser-fingerprint.ua')}</div>
                             <code className="text-slate-700 text-sm font-mono leading-relaxed">
                                 {info.userAgent}
                             </code>

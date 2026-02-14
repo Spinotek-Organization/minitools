@@ -6,7 +6,7 @@ import ToolPageLayout from '../../../components/shared/ToolPageLayout';
 import RelatedTools from '../../../components/shared/RelatedTools';
 
 export default function SecretNote() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [mode, setMode] = useState('encrypt'); // 'encrypt' or 'decrypt'
     const [input, setInput] = useState('');
     const [password, setPassword] = useState('');
@@ -57,7 +57,7 @@ export default function SecretNote() {
     const handleEncrypt = async () => {
         setStatus({ type: '', msg: '' });
         if (!input || !password) {
-            setStatus({ type: 'error', msg: t('tools.secret-note.messages.errorInput') });
+            setStatus({ type: 'error', msg: t('secret-note.messages.errorInput') });
             return;
         }
 
@@ -78,17 +78,17 @@ export default function SecretNote() {
             combined.set(new Uint8Array(encrypted), salt.byteLength + iv.byteLength);
 
             setOutput(ab2base64(combined));
-            setStatus({ type: 'success', msg: t('tools.secret-note.messages.successEncrypt') });
+            setStatus({ type: 'success', msg: t('secret-note.messages.successEncrypt') });
         } catch (err) {
             console.error(err);
-            setStatus({ type: 'error', msg: t('tools.secret-note.messages.errorEncrypt') });
+            setStatus({ type: 'error', msg: t('secret-note.messages.errorEncrypt') });
         }
     };
 
     const handleDecrypt = async () => {
         setStatus({ type: '', msg: '' });
         if (!input || !password) {
-            setStatus({ type: 'error', msg: t('tools.secret-note.messages.errorDecryptInput') });
+            setStatus({ type: 'error', msg: t('secret-note.messages.errorDecryptInput') });
             return;
         }
 
@@ -109,23 +109,23 @@ export default function SecretNote() {
             );
             
             setOutput(new TextDecoder().decode(decrypted));
-            setStatus({ type: 'success', msg: t('tools.secret-note.messages.successDecrypt') });
+            setStatus({ type: 'success', msg: t('secret-note.messages.successDecrypt') });
         } catch (err) {
             console.error(err);
-            setStatus({ type: 'error', msg: t('tools.secret-note.messages.errorDecrypt') });
+            setStatus({ type: 'error', msg: t('secret-note.messages.errorDecrypt') });
         }
     };
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(output);
-        setStatus({ type: 'success', msg: t('tools.secret-note.messages.copySuccess') });
+        setStatus({ type: 'success', msg: t('secret-note.messages.copySuccess') });
     };
 
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.secret-note.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.secret-note.desc')} />
+                <title>{t('secret-note.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('secret-note.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -134,8 +134,8 @@ export default function SecretNote() {
                         <EyeOff size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.secret-note.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.secret-note.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('secret-note.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('secret-note.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -152,14 +152,14 @@ export default function SecretNote() {
                             className={`px-6 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${mode === 'encrypt' ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
                         >
                             <Lock size={16} />
-                            {t('tools.secret-note.modes.encrypt')}
+                            {t('secret-note.modes.encrypt')}
                         </button>
                         <button
                             onClick={() => { setMode('decrypt'); setInput(''); setOutput(''); setStatus({}); }}
                             className={`px-6 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${mode === 'decrypt' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
                         >
                             <Unlock size={16} />
-                            {t('tools.secret-note.modes.decrypt')}
+                            {t('secret-note.modes.decrypt')}
                         </button>
                     </div>
 
@@ -167,23 +167,23 @@ export default function SecretNote() {
                         <div className="space-y-4">
                             <div>
                                 <label className="block text-slate-700 font-bold mb-2">
-                                    {mode === 'encrypt' ? t('tools.secret-note.form.messageLabel') : t('tools.secret-note.form.encryptedLabel')}
+                                    {mode === 'encrypt' ? t('secret-note.form.messageLabel') : t('secret-note.form.encryptedLabel')}
                                 </label>
                                 <textarea
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
-                                    placeholder={mode === 'encrypt' ? t('tools.secret-note.form.messagePlaceholder') : t('tools.secret-note.form.encryptedPlaceholder')}
+                                    placeholder={mode === 'encrypt' ? t('secret-note.form.messagePlaceholder') : t('secret-note.form.encryptedPlaceholder')}
                                     className="w-full h-32 p-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all resize-none font-mono text-sm"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-slate-700 font-bold mb-2">{t('tools.secret-note.form.passwordLabel')}</label>
+                                <label className="block text-slate-700 font-bold mb-2">{t('secret-note.form.passwordLabel')}</label>
                                 <input
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    placeholder={t('tools.secret-note.form.passwordPlaceholder')}
+                                    placeholder={t('secret-note.form.passwordPlaceholder')}
                                     className="w-full p-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all bg-slate-50"
                                 />
                             </div>
@@ -193,7 +193,7 @@ export default function SecretNote() {
                                 className={`w-full py-3 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 ${mode === 'encrypt' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-emerald-600 hover:bg-emerald-700'}`}
                             >
                                 {mode === 'encrypt' ? <Lock size={18} /> : <Unlock size={18} />}
-                                {mode === 'encrypt' ? t('tools.secret-note.form.encryptBtn') : t('tools.secret-note.form.decryptBtn')}
+                                {mode === 'encrypt' ? t('secret-note.form.encryptBtn') : t('secret-note.form.decryptBtn')}
                             </button>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ export default function SecretNote() {
                     {output && (
                         <div className="bg-slate-50 rounded-3xl border border-slate-200 p-6 relative animation-fade-in">
                             <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">
-                                {mode === 'encrypt' ? t('tools.secret-note.results.encryptedLabel') : t('tools.secret-note.results.decryptedLabel')}
+                                {mode === 'encrypt' ? t('secret-note.results.encryptedLabel') : t('secret-note.results.decryptedLabel')}
                             </label>
                             <div className="bg-white border border-slate-200 rounded-xl p-4 font-mono text-sm break-all text-slate-700 max-h-48 overflow-y-auto">
                                 {output}
@@ -210,7 +210,7 @@ export default function SecretNote() {
                             <button
                                 onClick={copyToClipboard}
                                 className="absolute top-6 right-6 p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                                title={t('tools.secret-note.results.copy')}
+                                title={t('secret-note.results.copy')}
                             >
                                 <Copy size={20} />
                             </button>

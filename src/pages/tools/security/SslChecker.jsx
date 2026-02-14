@@ -54,7 +54,7 @@ const TOOLS = [
 ];
 
 export default function SslChecker() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [domain, setDomain] = useState('');
     
     const handleDomainChange = (e) => {
@@ -66,7 +66,7 @@ export default function SslChecker() {
 
     const openTool = (template) => {
         if (!domain) {
-            alert(t('tools.ssl-checker.alert'));
+            alert(t('ssl-checker.alert'));
             return;
         }
         window.open(template(domain), '_blank');
@@ -75,8 +75,8 @@ export default function SslChecker() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.ssl-checker.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.ssl-checker.desc')} />
+                <title>{t('ssl-checker.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('ssl-checker.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -85,8 +85,8 @@ export default function SslChecker() {
                         <Lock size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.ssl-checker.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.ssl-checker.headerDesc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('ssl-checker.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('ssl-checker.headerDesc')}</p>
                     </div>
                 </div>
             </div>
@@ -94,14 +94,14 @@ export default function SslChecker() {
             {/* Input Section */}
             <div className="bg-white rounded-3xl border border-slate-100 p-8 mb-8 text-center shadow-sm">
                 <label htmlFor="domain-input" className="block text-slate-900 font-bold mb-4 text-lg">
-                    {t('tools.ssl-checker.inputLabel')}
+                    {t('ssl-checker.inputLabel')}
                 </label>
                 <div className="max-w-xl mx-auto relative flex items-center">
                     <Search className="absolute left-4 text-slate-400" size={20} />
                     <input
                         id="domain-input"
                         type="text"
-                        placeholder={t('tools.ssl-checker.placeholder')}
+                        placeholder={t('ssl-checker.placeholder')}
                         value={domain}
                         onChange={handleDomainChange}
                         className="w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-2xl text-lg outline-none focus:border-teal-500 transition-colors"
@@ -109,7 +109,7 @@ export default function SslChecker() {
                 </div>
                 {!domain && (
                     <p className="text-slate-400 text-sm mt-3">
-                        {t('tools.ssl-checker.hint')}
+                        {t('ssl-checker.hint')}
                     </p>
                 )}
             </div>
@@ -126,8 +126,8 @@ export default function SslChecker() {
                                 <tool.icon size={24} />
                             </div>
                             <div>
-                                <h3 className="font-bold text-slate-900 text-lg">{t(`tools.ssl-checker.tools.${tool.id}.name`)}</h3>
-                                <p className="text-slate-500 text-sm">{t(`tools.ssl-checker.tools.${tool.id}.desc`)}</p>
+                                <h3 className="font-bold text-slate-900 text-lg">{t(`ssl-checker.tools.${tool.id}.name`)}</h3>
+                                <p className="text-slate-500 text-sm">{t(`ssl-checker.tools.${tool.id}.desc`)}</p>
                             </div>
                         </div>
                         
@@ -140,7 +140,7 @@ export default function SslChecker() {
                                     : 'bg-slate-100 text-slate-400 cursor-not-allowed'
                             }`}
                         >
-                            {t('tools.ssl-checker.analyzeBtn')}
+                            {t('ssl-checker.analyzeBtn')}
                             <ExternalLink size={16} />
                         </button>
                     </div>

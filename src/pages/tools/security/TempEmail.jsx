@@ -8,7 +8,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 
 
 export default function TempEmail() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
 
     const PROVIDERS_DATA = [
         {
@@ -58,8 +58,8 @@ export default function TempEmail() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.temp-email.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.temp-email.desc')} />
+                <title>{t('temp-email.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('temp-email.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -68,8 +68,8 @@ export default function TempEmail() {
                         <Mail size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.temp-email.title')}</h1>
-                        <p className="text-slate-500 text-sm">{t('tools.temp-email.desc')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('temp-email.title')}</h1>
+                        <p className="text-slate-500 text-sm">{t('temp-email.desc')}</p>
                     </div>
                 </div>
             </div>
@@ -94,12 +94,12 @@ export default function TempEmail() {
                             </div>
                             
                             <p className="text-slate-500 text-sm mb-4 min-h-[40px]">
-                                {t(`tools.temp-email.providers.${provider.id}.desc`)}
+                                {t(`temp-email.providers.${provider.id}.desc`)}
                             </p>
                             
                             <div className="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-50 py-1.5 px-3 rounded-lg w-fit">
                                 <Clock size={12} />
-                                {t(`tools.temp-email.providers.${provider.id}.lifespan`)}
+                                {t(`temp-email.providers.${provider.id}.lifespan`)}
                             </div>
                         </a>
                     ))}
@@ -110,10 +110,10 @@ export default function TempEmail() {
                     <div className="bg-amber-50 rounded-2xl border border-amber-100 p-6">
                         <h3 className="font-bold text-amber-800 flex items-center gap-2 mb-3">
                             <ShieldAlert size={20} />
-                            {t('tools.temp-email.warnings.title')}
+                            {t('temp-email.warnings.title')}
                         </h3>
                         <ul className="space-y-3 text-sm text-amber-700">
-                            {(t('tools.temp-email.warnings.list', { returnObjects: true }) || []).map((warning, idx) => (
+                            {(t('temp-email.warnings.list', { returnObjects: true }) || []).map((warning, idx) => (
                                 <li key={idx} className="flex gap-2">
                                     <span className="select-none">•</span>
                                     {warning}
@@ -125,13 +125,13 @@ export default function TempEmail() {
                     <div className="bg-blue-50 rounded-2xl border border-blue-100 p-6">
                         <h3 className="font-bold text-blue-800 flex items-center gap-2 mb-3">
                             <Info size={20} />
-                            {t('tools.temp-email.info.title')}
+                            {t('temp-email.info.title')}
                         </h3>
                         <p className="text-sm text-blue-700 mb-3">
-                            {t('tools.temp-email.info.p1')}
+                            {t('temp-email.info.p1')}
                         </p>
                         <p className="text-sm text-blue-700">
-                            {t('tools.temp-email.info.p2')}
+                            {t('temp-email.info.p2')}
                         </p>
                     </div>
                 </div>

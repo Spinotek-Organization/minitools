@@ -1219,7 +1219,7 @@ export const TOOLS = [
     // CATEGORY: SECURITY & PRIVACY
     {
         id: 'password-gen',
-        title: 'Strong Password Generator',
+        title: 'Password Generator',
         cat: 'security',
         path: '/tools/security/password-generator',
         isReady: true,

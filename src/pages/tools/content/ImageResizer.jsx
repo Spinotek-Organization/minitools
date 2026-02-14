@@ -25,7 +25,7 @@ function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
 }
 
 export default function ImageResizer() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [imgSrc, setImgSrc] = useState('');
     const [crop, setCrop] = useState();
     const [completedCrop, setCompletedCrop] = useState();
@@ -38,37 +38,37 @@ export default function ImageResizer() {
 
     const platforms = {
         instagram: {
-            name: t('tools.img-resizer.platforms.instagram'),
+            name: t('img-resizer.platforms.instagram'),
             formats: {
-                square: { label: t('tools.img-resizer.formats.square'), aspect: 1/1 },
-                portrait: { label: t('tools.img-resizer.formats.portrait'), aspect: 4/5 },
-                landscape: { label: t('tools.img-resizer.formats.landscape'), aspect: 1.91/1 },
-                story: { label: t('tools.img-resizer.formats.story'), aspect: 9/16 }
+                square: { label: t('img-resizer.formats.square'), aspect: 1/1 },
+                portrait: { label: t('img-resizer.formats.portrait'), aspect: 4/5 },
+                landscape: { label: t('img-resizer.formats.landscape'), aspect: 1.91/1 },
+                story: { label: t('img-resizer.formats.story'), aspect: 9/16 }
             }
         },
         facebook: {
-            name: t('tools.img-resizer.platforms.facebook'),
+            name: t('img-resizer.platforms.facebook'),
             formats: {
-                post: { label: t('tools.img-resizer.formats.fb_post'), aspect: 1.91/1 },
-                square: { label: t('tools.img-resizer.formats.square'), aspect: 1/1 },
-                story: { label: t('tools.img-resizer.formats.fb_story'), aspect: 9/16 },
-                cover: { label: t('tools.img-resizer.formats.fb_cover'), aspect: 16/9 }
+                post: { label: t('img-resizer.formats.fb_post'), aspect: 1.91/1 },
+                square: { label: t('img-resizer.formats.square'), aspect: 1/1 },
+                story: { label: t('img-resizer.formats.fb_story'), aspect: 9/16 },
+                cover: { label: t('img-resizer.formats.fb_cover'), aspect: 16/9 }
             }
         },
         twitter: {
-            name: t('tools.img-resizer.platforms.twitter'),
+            name: t('img-resizer.platforms.twitter'),
             formats: {
-                post: { label: t('tools.img-resizer.formats.tw_post'), aspect: 16/9 },
-                square: { label: t('tools.img-resizer.formats.square'), aspect: 1/1 },
-                header: { label: t('tools.img-resizer.formats.tw_header'), aspect: 3/1 }
+                post: { label: t('img-resizer.formats.tw_post'), aspect: 16/9 },
+                square: { label: t('img-resizer.formats.square'), aspect: 1/1 },
+                header: { label: t('img-resizer.formats.tw_header'), aspect: 3/1 }
             }
         },
         linkedin: {
-            name: t('tools.img-resizer.platforms.linkedin'),
+            name: t('img-resizer.platforms.linkedin'),
             formats: {
-                post: { label: t('tools.img-resizer.formats.li_post'), aspect: 1.91/1 },
-                square: { label: t('tools.img-resizer.formats.square'), aspect: 1/1 },
-                cover: { label: t('tools.img-resizer.formats.li_cover'), aspect: 4/1 }
+                post: { label: t('img-resizer.formats.li_post'), aspect: 1.91/1 },
+                square: { label: t('img-resizer.formats.square'), aspect: 1/1 },
+                cover: { label: t('img-resizer.formats.li_cover'), aspect: 4/1 }
             }
         }
     };
@@ -165,8 +165,8 @@ export default function ImageResizer() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Social Media Image Resizer | MiniTools by Spinotek</title>
-                <meta name="description" content="Resize and crop images perfectly for Instagram, Twitter, Facebook, and LinkedIn." />
+                <title>{t('img-resizer.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('img-resizer.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -175,8 +175,8 @@ export default function ImageResizer() {
                         <Maximize size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.img-resizer.title')}</h1>
-                        <p className="text-slate-500">{t('tools.img-resizer.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('img-resizer.title')}</h1>
+                        <p className="text-slate-500">{t('img-resizer.subtitle')}</p>
                     </div>
                 </div>
                 {completedCrop && (
@@ -184,7 +184,7 @@ export default function ImageResizer() {
                         onClick={downloadResult}
                         className="px-6 py-3 bg-pink-600 text-white rounded-xl font-bold hover:bg-pink-700 transition-colors flex items-center gap-2 shadow-lg shadow-pink-200"
                     >
-                        <Download size={20} /> {t('tools.img-resizer.buttons.download')}
+                        <Download size={20} /> {t('img-resizer.buttons.download')}
                     </button>
                 )}
             </div>
@@ -202,7 +202,7 @@ export default function ImageResizer() {
                                     className="absolute inset-0 opacity-0 cursor-pointer"
                                 />
                                 <Upload className="mx-auto text-pink-500 mb-4" size={48} />
-                                <p className="font-bold text-slate-700">{t('tools.img-resizer.labels.upload')}</p>
+                                <p className="font-bold text-slate-700">{t('img-resizer.labels.upload')}</p>
                             </div>
                         )}
 
@@ -212,14 +212,14 @@ export default function ImageResizer() {
                                     <ImageIcon size={20} />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-bold text-slate-700 truncate">{t('tools.img-resizer.labels.loaded')}</p>
-                                    <button onClick={() => setImgSrc('')} className="text-xs text-red-500 hover:text-red-700 font-medium">{t('tools.img-resizer.buttons.remove')}</button>
+                                    <p className="text-sm font-bold text-slate-700 truncate">{t('img-resizer.labels.loaded')}</p>
+                                    <button onClick={() => setImgSrc('')} className="text-xs text-red-500 hover:text-red-700 font-medium">{t('img-resizer.buttons.remove')}</button>
                                 </div>
                             </div>
                         )}
 
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.img-resizer.labels.platform')}</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('img-resizer.labels.platform')}</label>
                             <div className="space-y-2">
                                 {Object.keys(platforms).map(p => (
                                     <button
@@ -238,7 +238,7 @@ export default function ImageResizer() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.img-resizer.labels.format')}</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('img-resizer.labels.format')}</label>
                             <div className="grid grid-cols-2 gap-2">
                                 {Object.keys(platforms[platform].formats).map(f => (
                                     <button
@@ -280,7 +280,7 @@ export default function ImageResizer() {
                         ) : (
                             <div className="text-slate-500 flex flex-col items-center">
                                 <Maximize size={48} className="mb-4 opacity-20" />
-                                <p>{t('tools.img-resizer.placeholders.empty')}</p>
+                                <p>{t('img-resizer.placeholders.empty')}</p>
                             </div>
                         )}
                     </div>

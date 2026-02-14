@@ -6,7 +6,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function WatermarkTool() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [baseImage, setBaseImage] = useState(null);
     const [watermarkImage, setWatermarkImage] = useState(null);
     const [watermarkText, setWatermarkText] = useState('My Watermark');
@@ -144,8 +144,8 @@ export default function WatermarkTool() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>{t('tools.watermark-tool.title')} | MiniTools by Spinotek</title>
-                <meta name="description" content={t('tools.watermark-tool.desc')} />
+                <title>{t('watermark-tool.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('watermark-tool.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -154,8 +154,8 @@ export default function WatermarkTool() {
                         <BadgeCheck size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.watermark-tool.title')}</h1>
-                        <p className="text-slate-500">{t('tools.watermark-tool.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('watermark-tool.title')}</h1>
+                        <p className="text-slate-500">{t('watermark-tool.subtitle')}</p>
                     </div>
                 </div>
                 {baseImage && (
@@ -163,7 +163,7 @@ export default function WatermarkTool() {
                         onClick={downloadImage}
                         className="px-6 py-3 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition-colors flex items-center gap-2 shadow-lg shadow-amber-200"
                     >
-                        <Download size={20} /> {t('tools.watermark-tool.buttons.download')}
+                        <Download size={20} /> {t('watermark-tool.buttons.download')}
                     </button>
                 )}
             </div>
@@ -177,7 +177,7 @@ export default function WatermarkTool() {
                             <div className="border-2 border-dashed border-slate-200 rounded-2xl p-8 hover:bg-slate-50 transition-colors text-center cursor-pointer relative">
                                 <input type="file" onChange={handleBaseUpload} accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" />
                                 <Upload className="mx-auto text-amber-500 mb-4" size={40} />
-                                <p className="font-bold text-slate-700">{t('tools.watermark-tool.labels.uploadBase')}</p>
+                                <p className="font-bold text-slate-700">{t('watermark-tool.labels.uploadBase')}</p>
                             </div>
                         )}
 
@@ -185,8 +185,8 @@ export default function WatermarkTool() {
                             <>
                                 {/* Mode Switch */}
                                 <div className="flex bg-slate-100 rounded-lg p-1">
-                                    <button onClick={() => setMode('text')} className={`flex-1 py-2 text-xs font-bold rounded-md ${mode === 'text' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}>{t('tools.watermark-tool.buttons.text')}</button>
-                                    <button onClick={() => setMode('image')} className={`flex-1 py-2 text-xs font-bold rounded-md ${mode === 'image' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}>{t('tools.watermark-tool.buttons.image')}</button>
+                                    <button onClick={() => setMode('text')} className={`flex-1 py-2 text-xs font-bold rounded-md ${mode === 'text' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}>{t('watermark-tool.buttons.text')}</button>
+                                    <button onClick={() => setMode('image')} className={`flex-1 py-2 text-xs font-bold rounded-md ${mode === 'image' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}>{t('watermark-tool.buttons.image')}</button>
                                 </div>
 
                                 {/* Watermark Input */}
@@ -197,7 +197,7 @@ export default function WatermarkTool() {
                                             value={watermarkText}
                                             onChange={(e) => setWatermarkText(e.target.value)}
                                             className="w-full text-sm font-bold p-3 rounded-xl border-slate-200 focus:ring-amber-500"
-                                            placeholder={t('tools.watermark-tool.placeholders.text')}
+                                            placeholder={t('watermark-tool.placeholders.text')}
                                         />
                                         <div className="flex gap-2">
                                             <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="h-10 w-10 p-0 border-0 rounded cursor-pointer" />
@@ -206,7 +206,7 @@ export default function WatermarkTool() {
                                                 value={fontSize} 
                                                 onChange={(e) => setFontSize(Number(e.target.value))} 
                                                 className="flex-1 p-2 border rounded-lg"
-                                                placeholder={t('tools.watermark-tool.labels.size')}
+                                                placeholder={t('watermark-tool.labels.size')}
                                             />
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@ export default function WatermarkTool() {
                                     <div className="border-2 border-dashed border-slate-200 rounded-xl p-4 text-center relative hover:bg-slate-50">
                                         <input type="file" onChange={handleWmUpload} accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" />
                                          <p className="text-xs font-bold text-slate-500">
-                                             {watermarkImage ? t('tools.watermark-tool.labels.changeLogo') : t('tools.watermark-tool.labels.uploadLogo')}
+                                             {watermarkImage ? t('watermark-tool.labels.changeLogo') : t('watermark-tool.labels.uploadLogo')}
                                          </p>
                                     </div>
                                 )}
@@ -223,7 +223,7 @@ export default function WatermarkTool() {
                                 <div className="space-y-4">
                                     <div className="space-y-1">
                                         <div className="flex justify-between text-xs font-bold text-slate-500">
-                                            <span>{t('tools.watermark-tool.labels.opacity')}</span>
+                                            <span>{t('watermark-tool.labels.opacity')}</span>
                                             <span>{Math.round(opacity * 100)}%</span>
                                         </div>
                                         <input type="range" min="0" max="1" step="0.1" value={opacity} onChange={(e) => setOpacity(Number(e.target.value))} className="w-full h-1 bg-slate-200 rounded-full appearance-none accent-amber-500" />
@@ -231,7 +231,7 @@ export default function WatermarkTool() {
 
                                     <div className="space-y-1">
                                         <div className="flex justify-between text-xs font-bold text-slate-500">
-                                            <span>{t('tools.watermark-tool.labels.scale')}</span>
+                                            <span>{t('watermark-tool.labels.scale')}</span>
                                             <span>{scale}x</span>
                                         </div>
                                         <input type="range" min="0.1" max="5" step="0.1" value={scale} onChange={(e) => setScale(Number(e.target.value))} className="w-full h-1 bg-slate-200 rounded-full appearance-none accent-amber-500" />
@@ -239,7 +239,7 @@ export default function WatermarkTool() {
 
                                     <div className="space-y-1">
                                         <div className="flex justify-between text-xs font-bold text-slate-500">
-                                            <span>{t('tools.watermark-tool.labels.rotation')}</span>
+                                            <span>{t('watermark-tool.labels.rotation')}</span>
                                             <span>{rotation}°</span>
                                         </div>
                                         <input type="range" min="0" max="360" value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="w-full h-1 bg-slate-200 rounded-full appearance-none accent-amber-500" />
@@ -248,7 +248,7 @@ export default function WatermarkTool() {
 
                                 {/* Position Grid */}
                                 <div>
-                                    <label className="block text-xs font-bold text-slate-500 mb-2">{t('tools.watermark-tool.labels.position')}</label>
+                                    <label className="block text-xs font-bold text-slate-500 mb-2">{t('watermark-tool.labels.position')}</label>
                                     <div className="grid grid-cols-3 gap-1 w-24 mx-auto">
                                         {positions.map(pos => (
                                             <button 

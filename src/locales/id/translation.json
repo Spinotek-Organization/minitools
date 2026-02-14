@@ -49,10 +49,10 @@
         "quick_search": "Pencarian Cepat"
     },
     "categories": {
-        "office": "Kantor & Admin",
-        "marketing": "Pemasaran & SEO",
+        "office": "Office & Admin",
+        "marketing": "Marketing & SEO",
         "biz": "Bisnis & Keuangan",
-        "sales": "Penjualan & Dukungan",
+        "sales": "Sales & Support",
         "content": "Konten & Sosial",
         "design": "Desain & Visual",
         "dev": "Dev Kit",
@@ -275,7 +275,7 @@
             }
         },
         "tweet-counter": {
-            "title": "Penghitung Thread Twitter/X",
+            "title": "Hitung Karakter Thread Twitter/X",
             "desc": "Hitung karakter dan kelola batas thread X/Twitter Anda.",
             "input": {
                 "label": "Draf Konten",
@@ -1099,7 +1099,6 @@
             }
         },
         "password-gen": {
-            "title": "Generator Kata Sandi Kuat",
             "desc": "Buat kata sandi acak yang aman menggunakan keacakan kriptografis.",
             "length": "Panjang Kata Sandi",
             "options": {
@@ -1122,7 +1121,7 @@
             }
         },
         "password-strength": {
-            "title": "Pemeriksa Kekuatan Kata Sandi",
+            "title": "Pemeriksa Kata Sandi",
             "desc": "Analisa ketahanan kata sandi Anda terhadap upaya peretasan.",
             "inputLabel": "Kata Sandi Saya",
             "placeholder": "Ketik kata sandi...",
@@ -1163,7 +1162,7 @@
             }
         },
         "fake-identity": {
-            "title": "Generator Identitas Palsu",
+            "title": "Generator Identitas",
             "desc": "Hasilkan profil acak untuk pengujian perangkat lunak dan privasi.",
             "config": "Konfigurasi",
             "gender": {
@@ -1271,7 +1270,7 @@
             }
         },
         "ip-checker": {
-            "title": "Pemeriksa Alamat IP",
+            "title": "Cek Alamat IP",
             "desc": "Temukan alamat IP publik dan perkiraan lokasi Anda.",
             "refresh": "Segarkan Data",
             "checking": "Memeriksa...",
@@ -1360,7 +1359,7 @@
             }
         },
         "ssl-checker": {
-            "title": "Pemeriksa Sertifikat SSL",
+            "title": "Cek Sertifikat SSL",
             "desc": "Verifikasi validitas dan detail sertifikat SSL situs web",
             "headerDesc": "Analisa konfigurasi SSL Anda dan temukan masalah keamanan.",
             "inputLabel": "Masukkan Domain untuk Dianalisa",
@@ -1392,7 +1391,6 @@
             }
         },
         "port-scanner": {
-            "title": "Pemindai Port",
             "desc": "Periksa port terbuka pada IP atau domain tertentu.",
             "services": {
                 "21": "FTP (Transfer File)",
@@ -1883,7 +1881,7 @@
             ]
         },
         "decision-matrix": {
-            "title": "Matriks Keputusan (Pilihkan untuk saya)",
+            "title": "Matriks Pengambilan Keputusan",
             "desc": "Secara matematis menentukan pilihan terbaik berdasarkan kriteria berbobot.",
             "metaDesc": "Terjebak? Biarkan logika membantu Anda memutuskan apa yang harus dilakukan selanjutnya.",
             "steps": {
@@ -1923,7 +1921,6 @@
             }
         },
         "eye-break": {
-            "title": "Pengatur Waktu Istirahat Mata",
             "desc": "Lindungi mata Anda menggunakan aturan istirahat 20-20-20.",
             "subtitle": "Ikuti aturan 20-20-20: Setiap 20 menit, lihat jarak 20 kaki selama 20 detik.",
             "status": {
@@ -1935,13 +1932,12 @@
                 "break": "Lihat sesuatu yang berjarak 20 kaki untuk mengendurkan mata Anda."
             },
             "documentTitle": {
-                "default": "Pengatur Waktu Istirahat Mata | MiniTools oleh Spinotek",
                 "work": "Kerja",
                 "break": "Lihat Jauh!"
             }
         },
         "gratitude-journal": {
-            "title": "Jurnal Rasa Syukur",
+            "title": "Jurnal Pribadi",
             "desc": "Tingkatkan kesejahteraan Anda dengan merenungkan momen-momen positif.",
             "tabs": {
                 "write": "Tulis Entri",
@@ -1971,7 +1967,7 @@
             }
         },
         "habit-tracker": {
-            "title": "Pelacak Kebiasaan Harian",
+            "title": "Pantau Kebiasaan Harian",
             "desc": "Lacak dan bangun rutinitas dan kebiasaan harian yang lebih baik.",
             "subtitle": "Gamifikasi rutinitas harian Anda.",
             "stats": {
@@ -2065,7 +2061,6 @@
             }
         },
         "todo-list": {
-            "title": "Daftar Tugas Minimalis",
             "desc": "Jaga tugas Anda tetap sederhana dan terorganisir untuk hari ini.",
             "placeholder": "Apa yang perlu dilakukan?",
             "filters": {
@@ -2087,7 +2082,7 @@
             }
         },
         "water-reminder": {
-            "title": "Pengingat Minum Air",
+            "title": "Pengingat Asupan Air",
             "desc": "Lacak target hidrasi harian Anda.",
             "goal": "Target",
             "actions": {
@@ -2515,7 +2510,7 @@
             }
         },
         "icon-viewer": {
-            "title": "Penampil & Editor Ikon SVG",
+            "title": "Preview & Editor Ikon SVG",
             "desc": "Lihat, edit warna, dan optimalkan ikon SVG langsung di browser.",
             "subtitle": "Periksa, warnai ulang, dan optimalkan file SVG.",
             "actions": {

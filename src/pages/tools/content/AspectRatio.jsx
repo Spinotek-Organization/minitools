@@ -6,7 +6,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function AspectRatio() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [mode, setMode] = useState('calculate'); // calculate, find
     const [width, setWidth] = useState(1920);
     const [height, setHeight] = useState(1080);
@@ -24,12 +24,12 @@ export default function AspectRatio() {
     ];
 
     const ratios = [
-        { label: t('tools.aspect-ratio.presets.standard'), w: 16, h: 9 },
-        { label: t('tools.aspect-ratio.presets.old'), w: 4, h: 3 },
-        { label: t('tools.aspect-ratio.presets.ultrawide'), w: 21, h: 9 },
-        { label: t('tools.aspect-ratio.presets.vertical'), w: 9, h: 16 },
-        { label: t('tools.aspect-ratio.presets.square'), w: 1, h: 1 },
-        { label: t('tools.aspect-ratio.presets.cinema'), w: 2.35, h: 1 },
+        { label: t('aspect-ratio.presets.standard'), w: 16, h: 9 },
+        { label: t('aspect-ratio.presets.old'), w: 4, h: 3 },
+        { label: t('aspect-ratio.presets.ultrawide'), w: 21, h: 9 },
+        { label: t('aspect-ratio.presets.vertical'), w: 9, h: 16 },
+        { label: t('aspect-ratio.presets.square'), w: 1, h: 1 },
+        { label: t('aspect-ratio.presets.cinema'), w: 2.35, h: 1 },
     ];
 
     useEffect(() => {
@@ -74,8 +74,8 @@ export default function AspectRatio() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Video Aspect Ratio Calculator | MiniTools by Spinotek</title>
-                <meta name="description" content="Calculate dimensions and find aspect ratios for video production." />
+                <title>{t('aspect-ratio.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('aspect-ratio.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -84,8 +84,8 @@ export default function AspectRatio() {
                         <Box size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.aspect-ratio.title')}</h1>
-                        <p className="text-slate-500">{t('tools.aspect-ratio.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('aspect-ratio.title')}</h1>
+                        <p className="text-slate-500">{t('aspect-ratio.subtitle')}</p>
                     </div>
                 </div>
             </div>
@@ -99,20 +99,20 @@ export default function AspectRatio() {
                                 onClick={() => setMode('calculate')}
                                 className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${mode === 'calculate' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}
                              >
-                                 {t('tools.aspect-ratio.modes.calculate')}
+                                 {t('aspect-ratio.modes.calculate')}
                              </button>
                              <button 
                                 onClick={() => setMode('find')}
                                 className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${mode === 'find' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}
                              >
-                                 {t('tools.aspect-ratio.modes.find')}
+                                 {t('aspect-ratio.modes.find')}
                              </button>
                         </div>
 
                         {mode === 'calculate' ? (
                             <div className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.aspect-ratio.labels.ratio')}</label>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">{t('aspect-ratio.labels.ratio')}</label>
                                     <div className="grid grid-cols-2 gap-2 mb-4">
                                         {ratios.map(r => (
                                             <button 
@@ -133,33 +133,33 @@ export default function AspectRatio() {
 
                                 <div className="grid grid-cols-2 gap-8 items-center">
                                     <div className="space-y-2">
-                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('tools.aspect-ratio.labels.width')}</label>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('aspect-ratio.labels.width')}</label>
                                         <input type="number" value={width} onChange={e => handleWidthChange(Number(e.target.value))} className="w-full text-2xl font-mono font-bold p-3 border-slate-200 rounded-xl focus:ring-slate-500 focus:border-slate-500" />
                                     </div>
                                     <div className="space-y-2 relative">
                                         <div className="absolute -left-4 top-1/2 -translate-y-1/2 text-slate-300">
                                             <ArrowRightLeft size={16} />
                                         </div>
-                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('tools.aspect-ratio.labels.height')}</label>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('aspect-ratio.labels.height')}</label>
                                         <input type="number" value={height} onChange={e => handleHeightChange(Number(e.target.value))} className="w-full text-2xl font-mono font-bold p-3 border-slate-200 rounded-xl focus:ring-slate-500 focus:border-slate-500" />
                                     </div>
                                 </div>
                             </div>
                         ) : (
                              <div className="space-y-6">
-                                <p className="text-sm text-slate-500">{t('tools.aspect-ratio.desc')}</p>
+                                <p className="text-sm text-slate-500">{t('aspect-ratio.desc')}</p>
                                 <div className="grid grid-cols-2 gap-4">
                                      <div className="space-y-2">
-                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('tools.aspect-ratio.labels.width')}</label>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('aspect-ratio.labels.width')}</label>
                                         <input type="number" value={width} onChange={e => setWidth(Number(e.target.value))} className="w-full text-2xl font-mono font-bold p-3 border-slate-200 rounded-xl" />
                                     </div>
                                      <div className="space-y-2">
-                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('tools.aspect-ratio.labels.height')}</label>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase">{t('aspect-ratio.labels.height')}</label>
                                         <input type="number" value={height} onChange={e => setHeight(Number(e.target.value))} className="w-full text-2xl font-mono font-bold p-3 border-slate-200 rounded-xl" />
                                     </div>
                                 </div>
                                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-center">
-                                    <div className="text-sm text-slate-400 font-bold uppercase mb-1">{t('tools.aspect-ratio.labels.result')}</div>
+                                    <div className="text-sm text-slate-400 font-bold uppercase mb-1">{t('aspect-ratio.labels.result')}</div>
                                     <div className="text-4xl font-black text-slate-800">{result}</div>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ export default function AspectRatio() {
                 {/* Reference */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6">
-                        <h3 className="font-bold text-slate-700 mb-4">{t('tools.aspect-ratio.headings.resolutions')}</h3>
+                        <h3 className="font-bold text-slate-700 mb-4">{t('aspect-ratio.headings.resolutions')}</h3>
                         <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                             {presets.map(p => (
                                 <button 

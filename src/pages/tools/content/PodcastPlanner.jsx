@@ -6,7 +6,7 @@ import RelatedTools from '../../../components/shared/RelatedTools';
 import { useTranslation } from 'react-i18next';
 
 export default function PodcastPlanner() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('tools');
     const [title, setTitle] = useState('');
     const [sections, setSections] = useState([
         { id: 1, label: 'Intro Music', duration: 15, notes: 'Theme song fade in/out' },
@@ -83,8 +83,8 @@ export default function PodcastPlanner() {
     return (
         <ToolPageLayout>
             <Helmet>
-                <title>Podcast Episode Planner | MiniTools by Spinotek</title>
-                <meta name="description" content="Structure your podcast episodes, manage timing, and export agendas." />
+                <title>{t('podcast-planner.title')} | MiniTools by Spinotek</title>
+                <meta name="description" content={t('podcast-planner.desc')} />
             </Helmet>
 
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
@@ -93,8 +93,8 @@ export default function PodcastPlanner() {
                         <Mic size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-black text-slate-900">{t('tools.podcast-planner.title')}</h1>
-                        <p className="text-slate-500">{t('tools.podcast-planner.subtitle')}</p>
+                        <h1 className="text-2xl font-black text-slate-900">{t('podcast-planner.title')}</h1>
+                        <p className="text-slate-500">{t('podcast-planner.subtitle')}</p>
                     </div>
                 </div>
                 {sections.length > 0 && (
@@ -102,7 +102,7 @@ export default function PodcastPlanner() {
                         onClick={downloadAgenda}
                         className="px-6 py-3 bg-violet-600 text-white rounded-xl font-bold hover:bg-violet-700 transition-colors flex items-center gap-2 shadow-lg shadow-violet-200"
                     >
-                        <Download size={20} /> {t('tools.podcast-planner.buttons.export')}
+                        <Download size={20} /> {t('podcast-planner.buttons.export')}
                     </button>
                 )}
             </div>
@@ -112,21 +112,21 @@ export default function PodcastPlanner() {
                 <div className="lg:col-span-1 space-y-6">
                     <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-6">
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('tools.podcast-planner.labels.episodeTitle')}</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">{t('podcast-planner.labels.episodeTitle')}</label>
                             <input 
                                 type="text" 
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                placeholder={t('tools.podcast-planner.placeholders.title')}
+                                placeholder={t('podcast-planner.placeholders.title')}
                                 className="w-full rounded-xl border-slate-200 focus:border-violet-500 focus:ring-violet-500"
                             />
                         </div>
                         
                         <div className="bg-violet-50 rounded-2xl p-6 border border-violet-100 text-center">
                              <div className="text-violet-500 mb-2 flex justify-center"><Clock size={32} /></div>
-                             <div className="text-sm font-bold text-violet-400 uppercase tracking-widest mb-1">{t('tools.podcast-planner.labels.totalDuration')}</div>
+                             <div className="text-sm font-bold text-violet-400 uppercase tracking-widest mb-1">{t('podcast-planner.labels.totalDuration')}</div>
                              <div className="text-4xl font-black text-violet-900">{formatTime(totalDuration)}</div>
-                             <div className="text-xs text-violet-400 mt-2">({t('tools.podcast-planner.labels.totalMinutes', { count: Math.round(totalDuration / 60) })})</div>
+                             <div className="text-xs text-violet-400 mt-2">({t('podcast-planner.labels.totalMinutes', { count: Math.round(totalDuration / 60) })})</div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ export default function PodcastPlanner() {
                                             value={section.label}
                                             onChange={(e) => updateSection(section.id, 'label', e.target.value)}
                                             className="font-bold text-slate-700 border-none p-0 focus:ring-0 w-full placeholder-slate-300 text-lg"
-                                            placeholder={t('tools.podcast-planner.placeholders.segment')}
+                                            placeholder={t('podcast-planner.placeholders.segment')}
                                          />
                                      </div>
                                      <input 
@@ -163,7 +163,7 @@ export default function PodcastPlanner() {
                                         value={section.notes}
                                         onChange={(e) => updateSection(section.id, 'notes', e.target.value)}
                                         className="text-sm text-slate-500 border-none p-0 focus:ring-0 w-full placeholder-slate-300"
-                                        placeholder={t('tools.podcast-planner.placeholders.notes')}
+                                        placeholder={t('podcast-planner.placeholders.notes')}
                                      />
                                 </div>
                                 <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
@@ -175,7 +175,7 @@ export default function PodcastPlanner() {
                                             onChange={(e) => updateSection(section.id, 'duration', Number(e.target.value))}
                                             className="w-12 bg-transparent border-none p-0 text-right text-sm font-mono font-bold text-slate-700 focus:ring-0"
                                         />
-                                        <span className="text-xs text-slate-400">{t('tools.podcast-planner.labels.seconds')}</span>
+                                        <span className="text-xs text-slate-400">{t('podcast-planner.labels.seconds')}</span>
                                     </div>
                                     <button 
                                         onClick={() => removeSection(section.id)}
@@ -192,7 +192,7 @@ export default function PodcastPlanner() {
                         onClick={addSection}
                         className="w-full py-4 border-2 border-dashed border-slate-200 rounded-2xl text-slate-400 font-bold hover:text-violet-500 hover:border-violet-300 hover:bg-violet-50 transition-colors flex items-center justify-center gap-2"
                     >
-                        <Plus size={20} /> {t('tools.podcast-planner.buttons.addSegment')}
+                        <Plus size={20} /> {t('podcast-planner.buttons.addSegment')}
                     </button>
                 </div>
             </div>
